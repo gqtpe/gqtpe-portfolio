@@ -1,4 +1,23 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+@theme {
+    --color-primary-100: #b2e0e7;
+    --color-primary-200: #80c5d1;
+    --color-primary-300: #4fb3bb;
+    --color-primary-400: #26a2a3;
+    --color-primary-500: #2fb3cd;
+
+    --color-secondary-100: #fff2b3;
+    --color-secondary-200: #ffe066;
+    --color-secondary-300: #ffcc19;
+    --color-secondary-400: #e6b600;
+    --color-secondary-500: #ffc815;
+    --white: #FFFFFF;
+    --black: #000000;
+    --shadow-custom:inset 0 0 0.5px 1px hsla(0, 0%,
+    100%, 0.075),
+    0 0 0 1px hsla(0, 0%, 0%, 0.05),
+    0 0.3px 0.4px hsla(0, 0%, 0%, 0.02),
+    0 0.9px 1.5px hsla(0, 0%, 0%, 0.045),
+    0 3.5px 6px hsla(0, 0%, 0%, 0.09);
+}
