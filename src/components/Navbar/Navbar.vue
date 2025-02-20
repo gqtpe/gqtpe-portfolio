@@ -5,18 +5,17 @@
 <template>
   <nav class="flex justify-around w-1/2 ">
     <div class="flex link justify-center grow h100">
-      <a  href="#">Home</a>
+      <RouterLink to="/">Home</RouterLink>
     </div>
     <div class="flex link justify-center grow h100">
-      <a  href="#">About</a>
+      <RouterLink to="/about">About</RouterLink>
     </div>
     <div class="flex link justify-center grow h100">
-      <a  href="#">Projects</a>
+      <RouterLink to="/projects">Projects</RouterLink>
     </div>
     <div class="flex link justify-center grow h100">
-      <a  href="#">Contacts</a>
+      <RouterLink to="/projects">Joker</RouterLink>
     </div>
-
   </nav>
 </template>
 
@@ -24,13 +23,13 @@
 
 .link a{
   padding: 0.4rem 0.25rem;
-  transition: background-color, 0.2s ease-in;
-
+  transition: background 1s ease, color 0.5s ease-in-out;
+  border-radius: 0.125rem;
 }
 
 .link:hover a{
-  color: var(--black);
-  background-color: var(--white);
-  border-radius: 0.125rem;
+  color: var(--white);
+  background-color: var(--black);
+
 }
 </style>
