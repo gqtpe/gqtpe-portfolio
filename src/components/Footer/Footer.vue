@@ -6,8 +6,8 @@ import {links} from "../../router.js";
 
 </script>
 <template>
-  <footer class="bg-black h-[60px] text-white">
-    <div class="page-wrapper footer h-full flex justify-around items-center">
+  <footer class="bg-black text-white">
+    <div class="page-wrapper footer h-full flex justify-between items-center">
       <span>© 2025 All rights reserved.</span>
       <div class="flex gap-3 text-gray-500 ">
         <a :href="links.linkedin" target="_blank" class="link"><img :src="linkedin">Linkedin</a>
@@ -39,6 +39,6 @@ import {links} from "../../router.js";
 }
 .link:active{
   transition: color 0.1s ease-in-out;
-  color: var(--secondary-color-500);
+  color: var(--color-secondary-500);
 }
 </style>

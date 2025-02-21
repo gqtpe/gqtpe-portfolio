@@ -4,7 +4,7 @@ import Button from "../Button.vue";
 </script>
 
 <template>
-  <header class="page-wrapper flex justify-between items-center px-12 h-[48px]">
+  <header class="page-wrapper flex justify-between items-center px-12">
       <div class="logo font-black">GQTPE</div>
       <Navbar/>
       <Button color="primary">
