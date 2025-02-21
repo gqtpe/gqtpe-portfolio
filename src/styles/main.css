@@ -26,6 +26,7 @@ html{
     max-height: 100vh;
     height: 100vh;
     display: grid;
+    overflow: hidden;
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 3rem auto 4rem;
 }
