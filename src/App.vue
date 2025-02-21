@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Header from "./components/Header/Header.vue";
 import Footer from "./components/Footer/Footer.vue";
+import Home from "./components/pages/Home/Home.vue"
 </script>
 
 <template>
@@ -14,6 +15,14 @@ import Footer from "./components/Footer/Footer.vue";
 <style>
 .content-wrapper{
   border: 2px dotted var(--color-sky-300);
+}
+main {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+}
+
+section {
+  scroll-snap-align: start;
 }
 .page-wrapper {
   max-width: 1440px;
