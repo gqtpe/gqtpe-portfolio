@@ -4,6 +4,23 @@
 html{
     font-size: 16px;
     font-family: Roboto, sans-serif;
+    transition:font-size 0.2s ease-in-out,width 1s ease-in-out;
+
+        @media (max-width: 1200px) {
+            font-size: 15px;
+        }
+
+        @media (max-width: 992px) {
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 13px;
+        }
+
+        @media (max-width: 576px) {
+            font-size: 12px;
+        }
 }
 #app{
     max-height: 100vh;
