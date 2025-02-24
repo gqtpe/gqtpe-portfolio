@@ -22,6 +22,7 @@ main {
 }
 
 section {
+  height: 100%;
   scroll-snap-align: start;
 }
 .page-wrapper {
