@@ -7,9 +7,9 @@ import {links} from "../../router.js";
     <div class="page-wrapper footer h-full flex justify-between items-center">
       <span>© 2025 All rights reserved.</span>
       <div class="flex gap-3 text-gray-500 ">
-        <a :href="links.linkedin" target="_blank" class="link"><img :src="footerSVGs.linkedin">Linkedin</a>
-        <a :href="links.github" target="_blank" class="link"><img :src="footerSVGs.github">Github</a>
-        <a :href="links.telegram" target="_blank" class="link"><img :src="footerSVGs.telegram">Telegram</a>
+        <a :href="links.linkedin" target="_blank" class="link"><img :src="footerSVGs.linkedin" alt="linkedin-icon">Linkedin</a>
+        <a :href="links.github" target="_blank" class="link"><img :src="footerSVGs.github" alt="github-icon">Github</a>
+        <a :href="links.telegram" target="_blank" class="link"><img :src="footerSVGs.telegram" alt="telegram-icon">Telegram</a>
       </div>
     </div>
   </footer>
