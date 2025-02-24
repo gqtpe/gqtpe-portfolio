@@ -6,8 +6,10 @@ import Home from "./components/pages/Home/Home.vue"
 
 <template>
   <Header/>
-  <main class="content-wrapper w-full h-full bg-sky-50">
-    <RouterView/>
+  <main class="content-wrapper w-full h-full bg-sky-50 text-white">
+    <Home/>
+    <About/>
+    <Projects/>
   </main>
   <Footer/>
 </template>
