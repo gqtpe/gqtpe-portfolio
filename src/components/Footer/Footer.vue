@@ -1,43 +1,44 @@
 <script setup>
-import linkedin from "../../assets/svg/linkedin-1-svgrepo-com.svg"
-import github from "../../assets/svg/github-svgrepo-com.svg"
-import telegram from "../../assets/svg/telegram-svgrepo-com.svg"
+import {footerSVGs} from "../../assets/svg/index.js";
 import {links} from "../../router.js";
-
 </script>
 <template>
   <footer class="bg-black text-white">
     <div class="page-wrapper footer h-full flex justify-between items-center">
       <span>© 2025 All rights reserved.</span>
       <div class="flex gap-3 text-gray-500 ">
-        <a :href="links.linkedin" target="_blank" class="link"><img :src="linkedin">Linkedin</a>
-        <a :href="links.github" target="_blank" class="link"><img :src="github">Github</a>
-        <a :href="links.telegram" target="_blank" class="link"><img :src="telegram">Telegram</a>
+        <a :href="links.linkedin" target="_blank" class="link"><img :src="footerSVGs.linkedin">Linkedin</a>
+        <a :href="links.github" target="_blank" class="link"><img :src="footerSVGs.github">Github</a>
+        <a :href="links.telegram" target="_blank" class="link"><img :src="footerSVGs.telegram">Telegram</a>
       </div>
     </div>
   </footer>
 </template>
 
 <style scoped>
-.footer{
+.footer {
   border: 1px dashed white;
 }
-.link{
+
+.link {
   display: flex;
   align-items: center;
   transition: color 0.5s ease-in;
   gap: var(--spacing);
-  img{
+
+  img {
     height: 1.5rem;
     width: 1.5rem;
     box-shadow: var(--shadow);
     border-radius: 50%;
   }
 }
-.link:hover{
+
+.link:hover {
   color: var(--color-gray-300)
 }
-.link:active{
+
+.link:active {
   transition: color 0.1s ease-in-out;
   color: var(--color-secondary-500);
 }
