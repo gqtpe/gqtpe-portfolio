@@ -4,7 +4,7 @@ import Button from "../Button.vue";
 </script>
 
 <template>
-  <header class="page-wrapper flex justify-between items-center px-12">
+  <header class="page-wrapper flex justify-between items-center">
       <div class="logo font-black">GQTPE</div>
       <Navbar/>
       <Button color="primary">
@@ -14,7 +14,6 @@ import Button from "../Button.vue";
 </template>
 
 <style scoped>
-
 .logo{
   font-size: 1.5rem;
 }
