@@ -3,9 +3,9 @@ import Button from "../../Button.vue";
 import Typing from "../../Typing.vue";
 
 const items = [
-    'web developer',
-    'frontend developer',
-    'software engineer',
+  'web developer',
+  'frontend developer',
+  'software engineer',
 ]
 </script>
 
