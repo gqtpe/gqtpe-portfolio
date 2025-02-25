@@ -5,8 +5,8 @@ type Props = {
   image: string
   title: string
   description: string
-  preview: string
-  url: string
+  preview?: string
+  url?: string
 }
 
 const props = defineProps<Props>()
