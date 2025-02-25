@@ -1,9 +1,6 @@
 <script setup>
 import Header from './components/Header/Header.vue';
 import Footer from './components/Footer/Footer.vue';
-import Home from "./components/pages/Home/Home.vue";
-import About from "./components/pages/About/About.vue";
-import Projects from "./components/pages/Projects/Projects.vue";
 </script>
 
 <template>
@@ -15,8 +12,9 @@ import Projects from "./components/pages/Projects/Projects.vue";
 </template>
 
 <style>
-.content-wrapper{
+.content-wrapper {
 }
+
 main {
   scroll-snap-type: y mandatory;
   overflow-y: auto;
@@ -27,6 +25,7 @@ section {
   height: 100%;
   scroll-snap-align: start;
 }
+
 .page-wrapper {
   max-width: 1440px;
   width: 100%;
