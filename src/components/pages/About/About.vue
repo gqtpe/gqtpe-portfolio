@@ -43,6 +43,4 @@ import Button from "../../Button.vue";
 
 }
 
-.block {
-}
 </style>
