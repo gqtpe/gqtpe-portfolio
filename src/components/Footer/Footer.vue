@@ -1,5 +1,5 @@
-<script setup>
-import {footerSVGs} from "../../assets/svg/index.js";
+<script setup lang="ts">
+import {footerSVGs} from "../../assets/svg";
 import {links} from "../../router.js";
 </script>
 <template>

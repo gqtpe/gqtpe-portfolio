@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import Navbar from "../Navbar/Navbar.vue";
 import Button from "../Button.vue";
 </script>
