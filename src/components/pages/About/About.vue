@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import Side from "../../Side.vue";
 import {aboutSVGs} from "../../../assets/svg/index.js";
 import Button from "../../Button.vue";
