@@ -17,7 +17,7 @@ import {links} from "../../router.js";
 
 <style scoped>
 .footer {
-  border: 1px dashed white;
+
 }
 
 .link {
