@@ -8,21 +8,19 @@ import Projects from "./components/pages/Projects/Projects.vue";
 
 <template>
   <Header/>
-  <main class="content-wrapper w-full h-full bg-sky-50 text-white">
-    <Home/>
-    <About/>
-    <Projects/>
+  <main class="content-wrapper w-full h-full text-white inset-shadow-sm">
+    <RouterView/>
   </main>
   <Footer/>
 </template>
 
 <style>
 .content-wrapper{
-  border: 2px dotted var(--color-sky-300);
 }
 main {
   scroll-snap-type: y mandatory;
   overflow-y: auto;
+  //box-shadow: rgba(175, 189, 183, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 section {
@@ -33,7 +31,7 @@ section {
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  border: 1px dashed black;
+
   @media (max-width: 1440px) {
     max-width: 1280px;
   }
