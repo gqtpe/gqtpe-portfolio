@@ -7,7 +7,14 @@ import Projects from "./components/pages/Projects/Projects.vue";
 const routes = [
     {path: '/', component: Home},
     {path: '/about', component: About},
-    {path: '/projects', component: Projects}
+    {
+        path: '/projects',
+        component: Projects,
+    },
+    {
+        path: '/project/:projectName',
+        component: Project
+    }
 ]
 export const links ={
     linkedin: "https://www.linkedin.com/in/temirtas-nursayyn-4090a0350/",
