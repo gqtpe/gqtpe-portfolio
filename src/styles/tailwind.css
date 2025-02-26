@@ -29,3 +29,25 @@
 .text-highlight-2{
     @apply uppercase font-bold text-2xl border-b-4 border-t-4 border-primary-500 border-dashed;
 }
+.text-comment {
+    @apply italic text-gray-500;
+}
+.text-link-1 {
+    @apply font-bold text-gray-800 hover:text-primary-500 active:text-secondary-500;
+}
+.text-link-2 {
+    @apply font-bold text-gray-800 hover:text-secondary-500 active:text-primary-500;
+}
+.card {
+    padding: 0.5rem;
+    border-width: 1px 1px 4px;
+    border-style: solid;
+    border-color: rgb(221, 221, 221);
+    border-image: initial;
+    background: white;
+    transition: transform 0.1s ease-in-out;
+    &:hover {
+        transform: translateY(-1%);
+
+    }
+}
