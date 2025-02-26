@@ -1,69 +1,58 @@
 <script setup lang="ts">
 import {cutFrom} from "../../../utils/cutFrom.ts";
+import type {Project} from "./projects.ts";
 
 type Props = {
-  image: string
-  title: string
-  description: string
-  preview?: string
-  url?: string
+  project: Project
 }
-
-const props = defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <template>
   <div class="card">
-    <div class="card__image">
-      <img :src="props.image" alt="project-img"/>
-      <div class="card__actions flex items-center justify-center gap-2">
-          <div class="card-action ">
-            <v-icon name="fa-expand"/>
-          </div>
-          <div class="card-action">
-            <v-icon name="fa-external-link-square-alt"/>
-          </div>
+    <div class="card__image relative overflow-hidden flex items-center justify-center">
+      <v-icon
+          :name="project.icon"
+          class="card__icon"
+          fill="var(--color-gray-900)"
+      />
+      <div v-if="(!!project.path)&&(!!project.preview)"
+           class="card__actions absolute left-0 bottom-0 flex items-center justify-center gap-2">
+        <RouterLink v-if="!!project.path" :to="project.path" class="card-action">
+          <v-icon
+              :hover="true"
+              speed="fast"
+              animation="flash"
+              name="fa-expand"/>
+        </RouterLink>
+        <a v-if="!!project.preview" class="card-action" :href="project.preview">
+          <v-icon
+              :hover="true"
+              speed="fast"
+              animation="flash"
+              name="fa-external-link-square-alt"/>
+        </a>
       </div>
     </div>
     <div class="card__description">
-      <h3 class="font-bold text-gray-800 text-lg">{{ props.title }}</h3>
-      <p class="text-xs text-gray-500">{{ cutFrom(props.description) }}</p>
-      <!--      <p>-->
-      <!--        {{ props.description }}-->
-      <!--      </p>-->
+      <RouterLink :to="project.path || '#'"><h3 class="text-link-1 text-lg ">{{ project.title }}</h3></RouterLink>
+      <p class="text-xs text-gray-500">{{ cutFrom(project.description) }}</p>
     </div>
   </div>
 </template>
 
 <style scoped>
-.card {
-  padding: 0.5rem;
-  gap: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  border-width: 1px 1px 4px;
-  border-style: solid;
-  border-color: rgb(221, 221, 221);
-  border-image: initial;
-  background: white;
-  transition: transform 0.1s ease-in-out;
 
-  &:hover {
-    transform: translateY(-1%);
-
-  }
-}
 
 .card__actions {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.5);
   transform: translateX(-20%);
   height: 2rem;
   opacity: 0;
   transition: opacity 0.1s ease-out, transform 0.1s ease-in-out;
-  .card-action{
+
+  .card-action {
     background: var(--color-gray-900);
     width: 1.5rem;
     height: 1.5rem;
@@ -77,26 +66,26 @@ const props = defineProps<Props>()
 .card__description {
   padding: 0.5rem;
   margin-right: 1rem;
-  h3{
-    &:hover{
-      color: var(--color-primary-500);
-    }
+}
+.card__icon{
+  font-size: 3rem !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  @media(max-width: 1440px){
+    width: 5rem !important;
+    height: 5rem !important;
   }
 }
-
 .card__image {
-  position: relative;
-  overflow: hidden;
+  background: rgb(255, 224, 102);
+  background: linear-gradient(135deg, var(--color-secondary-200) 0%, var(--color-primary-200) 100%);
   aspect-ratio: 16/9;
-  &:hover{
+
+  &:hover {
     .card__actions {
-      opacity: 0.8;
+      opacity: 1;
       transform: translateX(0);
     }
-  }
-  img {
-    width: 100%;
-    height: 100%;
   }
 }
 </style>
