@@ -7,19 +7,23 @@ const items = [
   'frontend developer',
   'software engineer',
 ]
+
+const onClick = () =>{
+//todo: add CV.pdf downloading
+}
 </script>
 
 <template>
   <section class="flex items-center text-white max-md:justify-center">
     <div class="bg-black p-8 inline-flex flex-col gap-[10px] p-12 items-start max-md:w-full">
       <h6 class="ellipse1 uppercase text-lg font-bold">hello, there</h6>
-      <h1 class="ellipse2 uppercase font-black lg:text-8xl sm:text-6xl max-md:text-7xl max-sm:text-3xl">i'm Nursain Temirtas</h1>
+      <h1 class="ellipse2 uppercase font-black lg:text-7xl sm:text-6xl max-md:text-7xl max-sm:text-3xl">i'm Nursain Temirtas</h1>
       <h6 class="uppercase font-bold">
         <Typing
             :items=items
         />
       </h6>
-      <Button color="secondary">Download CV</Button>
+      <Button @click="onClick" color="secondary">Download CV</Button>
     </div>
   </section>
 </template>
