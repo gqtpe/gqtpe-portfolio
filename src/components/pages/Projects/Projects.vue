@@ -2,35 +2,7 @@
 
 import Side from "../../Side.vue";
 import ProjectCard from "./ProjectCard.vue";
-
-type Projects = {
-  title: string
-  image: string
-  description: string
-  id: number
-}
-const imageAddress = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcHBwcHCAcHBwcHBwoHBwcHCA8ICQYKFREiFhURHx8YHSggGBolGx8TITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDy0ZFRkrLSsrKy03KysrKzctKysrKysrKys3KysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALcBEwMBIgACEQEDEQH/xAAWAAEBAQAAAAAAAAAAAAAAAAAAAQf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAEFBP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ANBFHQykFAQAAAAAAFBBQEBQRQAABFAEFAQUQRQEQUAAARQEUAAFUABFAAABFARQAAAAAAAAAAAAAAQABAAAAAAAAABVAAAAAAEUAAAAAAAAAAAAAAAAQABAAAAAAAAABVAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQAAAAAVQAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAAAAFUAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAAAABVAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAQAAAVQAAAAAAQBRFAAAAAAAAAAAAAAAAAAQABAAAAAEVQAAAAAAABUAURQBAFEUAAEVAFEAURQAAAAAEAAQAAEFUAAAAAAAAAAAAAAVAFQAVAAAAVAFBAUAAAABEBFBAFUAAAAAAAAAAAAAAAAAAAAAAAAABQABFQABAAEAVQAAAAAAAAAAAAAAAAAAAAAAAABAUBEUAAARQB//9k="
-const projects: Projects[] = [
-  {
-    id: 1,
-    title: 'Trello',
-    description: 'Todolist is a pet project for task management, created using modern web technologies. This project allows for convenient task management and supports user authorization.',
-    image: imageAddress,
-  },
-  {
-    id: 2,
-    title: 'Spotify',
-    description: 'A Spotify clone built with Next.js, offering a similar user experience to the original Spotify platform. This project integrates with the Spotify Web API to provide music streaming, playlists, and user interaction features.',
-    image: imageAddress,
-  },
-  {
-    id: 3,
-    title: 'Portfolio',
-    description: ' A Portfolio application build with Vue.',
-    image: imageAddress,
-  }
-]
-
+import projects from "./projects.ts";
 </script>
 
 <template>
