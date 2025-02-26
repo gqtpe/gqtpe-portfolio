@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {footerSVGs} from "../../assets/svg";
-import {links} from "../../router.js";
+import {links} from "../../app/links.ts";
 </script>
 <template>
   <footer class="bg-black text-white">
