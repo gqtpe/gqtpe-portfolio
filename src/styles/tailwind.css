@@ -21,6 +21,11 @@
     0 0.9px 1.5px hsla(0, 0%, 0%, 0.045),
     0 3.5px 6px hsla(0, 0%, 0%, 0.09);
 }
+
+
 .text-highlight-1 {
     @apply inline-block text-xl uppercase text-white bg-secondary-500 p-1 mb-4;
+}
+.text-highlight-2{
+    @apply uppercase font-bold text-2xl border-b-4 border-t-4 border-primary-500 border-dashed;
 }
