@@ -10,7 +10,7 @@ import projects from "./projects.ts";
         of my latest projects."</h6>
       <div class="flex flex-col items-start p-8 gap-8">
         <h3 class="text-highlight-2">my projects</h3>
-        <div class="cards w-full grid grid-cols-3 gap-2 ">
+        <div class="cards w-full grid grid-cols-3 gap-2 max-lg:grid-cols-1">
           <ProjectCard v-for="project in projects"
                        :project="project"
                        :key="project.id"
