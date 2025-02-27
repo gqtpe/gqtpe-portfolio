@@ -33,6 +33,7 @@ main {
 
 section {
   @apply w-3/4;
+  color: black;
   height: 100%;
 }
 
