@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import Button from "../../Button.vue";
-import Typing from "../../Typing.vue";
-
+import Button from "@/components/Button.vue";
+import Typing from "@/components/Typing.vue";
+import cv from "@/assets/CV.pdf";
 const items = [
   'web developer',
   'frontend developer',
   'software engineer',
 ]
 
-const onClick = () =>{
-//todo: add CV.pdf downloading
-}
 </script>
 
 <template>

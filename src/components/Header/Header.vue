@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Navbar from "../Navbar/Navbar.vue";
-import Button from "../Button.vue";
+import Navbar from "@/components/Navbar/Navbar.vue";
+import Button from "@/components/Button.vue";
 </script>
 
 <template>

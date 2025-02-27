@@ -1,8 +1,8 @@
-import Home from "../components/pages/Home/Home.vue";
-import About from "../components/pages/About/About.vue";
+import Home from "@/components/pages/Home/Home.vue";
+import About from "@/components/pages/About/About.vue";
 import {createRouter, createWebHistory} from "vue-router";
-import Projects from "../components/pages/Projects/Projects.vue";
-import Project from "../components/pages/Projects/Project/Project.vue";
+import Projects from "@/components/pages/Projects/Projects.vue";
+import Project from "@/components/pages/Projects/Project/Project.vue";
 
 
 const routes = [
