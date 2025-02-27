@@ -20,7 +20,9 @@ const items = [
             :items=items
         />
       </h6>
-      <Button @click="onClick" color="secondary">Download CV</Button>
+      <a :href="cv" download="CV" target='_blank'>
+        <Button color="secondary">Download CV</Button>
+      </a>
     </div>
   </section>
 </template>
