@@ -14,7 +14,7 @@
       <RouterLink to="/projects">Projects</RouterLink>
     </div>
     <div class="flex link justify-center grow h100">
-      <RouterLink to="/projects">Joker</RouterLink>
+      <RouterLink to="/contacts">Contacts</RouterLink>
     </div>
   </nav>
 </template>
