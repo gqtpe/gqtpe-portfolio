@@ -34,7 +34,7 @@ const items = [
             :items=items
         />
       </h6>
-      <a :href="cv" download="CV" target='_blank'>
+      <a :href="cv" download="CV.pdf" target='_blank'>
         <Button color="secondary">Download CV</Button>
       </a>
     </div>
