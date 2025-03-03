@@ -26,7 +26,7 @@ import vercel from "./about/vercel.svg";
 import vite from "./about/vitejs.svg";
 import vue from "./about/vue.svg";
 
-const aboutSVGs = {
+const aboutSVGs = [
     html,
     css,
     sass,
@@ -50,7 +50,7 @@ const aboutSVGs = {
     styledcomponents,
     tailwindcss,
     tanstack,
-}
+]
 
 const footerSVGs = {
     github,
