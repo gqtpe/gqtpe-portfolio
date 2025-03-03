@@ -56,11 +56,7 @@ import FallingItems from "@/components/bits/FallingItems.vue";
     </div>
     <div class="stack flex flex-col items-center grow-1 pb">
       <h4 class="section-title text-highlight-2 inline">My stack</h4>
-      <div  class="flex flex-wrap items-center justify-center w-full gap-[10px]">
-        <div v-for="item in aboutSVGs" class="skill">
-          <img class="w-[2rem] h-[2rem]" :src="item" alt="icon">
-        </div>
-      </div>
+      <FallingItems/>
     </div>
 
   </section>
