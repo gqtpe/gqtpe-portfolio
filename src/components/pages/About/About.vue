@@ -7,11 +7,10 @@ import Section from "@/components/pages/About/Section.vue";
 </script>
 
 <template>
-  <section class="about-wr">
-    <h3 class="text-highlight-1 mb-4 max-sm:mb-0">who i am</h3>
-    <div class="flex p-4 gap-4  sm:items-start max-sm:flex-col items-center">
-      <div class="about__image max-sm:w-50">
-        <img class="" :src="ava" alt="">
+  <section class="flex flex-col">
+    <h3 class="text-highlight-1 mb-4 max-sm:mb-0 self-start">who i am</h3>
+    <div class="flex p-4 gap-4 mb-20  sm:items-start max-sm:flex-col items-center">
+      <div class="flex flex-col items-center about__image basis-1/6 max-sm:w-[50%]">
         <img loading="lazy" class="" :src="ava" alt="">
       </div>
       <div class="about__info max-sm:text-center">
@@ -49,8 +48,7 @@ import Section from "@/components/pages/About/Section.vue";
         </a>
       </div>
     </div>
-
-    <div class="flex flex-col items-center pb-4">
+    <div class="stack flex flex-col items-center grow-1 pb">
       <h4 class="section-title text-highlight-2 inline">My stack</h4>
       <div  class="flex flex-wrap items-center justify-center w-full gap-[10px]">
         <div v-for="item in aboutSVGs" class="skill">
