@@ -27,7 +27,7 @@ const initMatter = () => {
       height,
       background: "transparent",
       wireframes: false,
-      pixelRatio: window.devicePixelRatio,
+      pixelRatio: 1,
     },
   });
 
