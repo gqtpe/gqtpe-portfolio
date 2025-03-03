@@ -12,6 +12,7 @@ import Section from "@/components/pages/About/Section.vue";
     <div class="flex p-4 gap-4  sm:items-start max-sm:flex-col items-center">
       <div class="about__image max-sm:w-50">
         <img class="" :src="ava" alt="">
+        <img loading="lazy" class="" :src="ava" alt="">
       </div>
       <div class="about__info max-sm:text-center">
         <h3 class="hero-title">i'm Nursain Temirtas</h3>
