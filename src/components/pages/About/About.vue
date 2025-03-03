@@ -4,6 +4,7 @@ import ava from "@/assets/img/ava.jpg"
 import cv from "@/assets/CV.pdf";
 import Button from "@/components/Button.vue";
 import Section from "@/components/pages/About/Section.vue";
+import DecryptedText from "@/components/bits/DecryptedText.vue";
 </script>
 
 <template>
