@@ -64,7 +64,9 @@ import FallingItems from "@/components/bits/FallingItems.vue";
 
 <style>
 @import "tailwindcss";
-
+.stack{
+  min-height: 10rem;
+}
 .hero-title {
   @apply uppercase mb-6 font-bold text-2xl;
 }
