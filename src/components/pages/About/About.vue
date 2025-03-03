@@ -16,8 +16,10 @@ import Section from "@/components/pages/About/Section.vue";
           <Button color="secondary">Download CV</Button>
         </a>
       </div>
-      <div class="about__info max-sm:text-center">
-        <h3 class="hero-title">i'm Nursain Temirtas</h3>
+      <div class="about__info basis-5/6 max-sm:text-center">
+        <h3 class="hero-title">
+          <DecryptedText text="i'm Nursain Temirtas" animateOn="view" use-original-chars-only></DecryptedText>
+        </h3>
         <p class="body">
           A Front-end developer with one year of freelance experience(1 year). I have strong skills in modern
           technologies like React, Vite,
