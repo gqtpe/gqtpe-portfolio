@@ -34,7 +34,7 @@ import Section from "@/components/pages/About/Section.vue";
           <div>
             <h3 class="section-title">Experience</h3>
             <Section
-                title="Udemy"
+                title="Upwork"
                 period="2023 - current"
                 body="Developed web applications using React and Vite. Independently designed architecture, integrated APIs, and optimized performance. Worked with TypeScript, Redux Toolkit, and testing (TDD/BDD)"
             />
