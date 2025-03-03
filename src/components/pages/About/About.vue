@@ -12,6 +12,9 @@ import Section from "@/components/pages/About/Section.vue";
     <div class="flex p-4 gap-4 mb-20  sm:items-start max-sm:flex-col items-center">
       <div class="flex flex-col items-center about__image basis-1/6 max-sm:w-[50%]">
         <img loading="lazy" class="" :src="ava" alt="">
+        <a class="mt-4" :href="cv" download="CV" target='_blank'>
+          <Button color="secondary">Download CV</Button>
+        </a>
       </div>
       <div class="about__info max-sm:text-center">
         <h3 class="hero-title">i'm Nursain Temirtas</h3>
