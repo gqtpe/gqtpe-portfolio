@@ -35,6 +35,7 @@ section {
   @apply w-3/4;
   color: black;
   height: 100%;
+  max-height:100%;
 }
 
 .page-wrapper {
