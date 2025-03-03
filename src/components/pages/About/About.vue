@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import {aboutSVGs} from "@/assets/svg";
-import ava from "@/assets/img/ava.jpg"
+import ava from "@/assets/img/ava-without-background.png"
 import cv from "@/assets/CV.pdf";
 import Button from "@/components/Button.vue";
 import Section from "@/components/pages/About/Section.vue";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
+import FallingItems from "@/components/bits/FallingItems.vue";
 </script>
 
 <template>
