@@ -81,8 +81,6 @@ import FallingItems from "@/components/bits/FallingItems.vue";
 }
 
 .about__image {
-  overflow: hidden;
-
   img {
     border-radius: 1rem;
     aspect-ratio: 1/1;
