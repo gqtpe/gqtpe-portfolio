@@ -74,8 +74,8 @@ const initMatter = () => {
   Render.run(render);
 
   // Ограничение перетаскивания внутри контейнера
-  Events.on(mouseConstraint, "enddrag", (event) => {
-    const body = event.body;
+  Events.on(mouseConstraint, "enddrag", () => {
+    const body = mouseConstraint.body;
     if (body) {
       const x = Math.max(20, Math.min(body.position.x, width - 20));
       const y = Math.max(20, Math.min(body.position.y, height - 20));
@@ -86,7 +86,7 @@ const initMatter = () => {
 
 const destroyMatter = () => {
   if (engine) {
-    World.clear(engine.world);
+    World.clear(engine.world, true);
     Engine.clear(engine);
     Render.stop(render);
     Runner.stop(runner);
@@ -139,6 +139,5 @@ onUnmounted(() => {
   height: 100%;
   position: relative;
   overflow: hidden;
-  border: 1px dashed var(--color-primary-200);
 }
 </style>
