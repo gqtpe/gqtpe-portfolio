@@ -49,9 +49,6 @@ import FallingItems from "@/components/bits/FallingItems.vue";
             />
           </div>
         </div>
-        <a class="mt-4" :href="cv" download="CV" target='_blank'>
-          <Button color="secondary">Download CV</Button>
-        </a>
       </div>
     </div>
     <div class="stack flex flex-col items-center grow-1 pb">
