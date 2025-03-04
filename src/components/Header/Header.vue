@@ -8,9 +8,11 @@ import {links} from "@/app/links.ts";
   <header class="page-wrapper flex justify-between items-center">
       <div class="logo font-black">GQTPE</div>
       <Navbar/>
+    <a target="_blank" :href="links.telegram">
       <Button color="primary">
         Let's talk
       </Button>
+    </a>
   </header>
 </template>
 
