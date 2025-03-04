@@ -45,11 +45,7 @@
     border-color: rgb(221, 221, 221);
     border-image: initial;
     background: white;
-    transition: transform 0.1s ease-in-out;
-    &:hover {
-        transform: translateY(-1%);
 
-    }
 }
 
 .divider{
