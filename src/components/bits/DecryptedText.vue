@@ -162,7 +162,7 @@ onMounted(() => {
 <template>
   <span
       ref="containerRef"
-      class="inline-block whitespace-pre-wrap"
+      class="inline-block whitespace-nowrap"
       :class="parentClassName"
       v-bind="props.animateOn === 'hover' ? { onMouseenter: () => (isHovering = true), onMouseleave: () => (isHovering = false) } : {}"
   >
