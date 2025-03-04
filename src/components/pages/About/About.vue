@@ -10,14 +10,14 @@ import FallingItems from "@/components/bits/FallingItems.vue";
 <template>
   <section class="flex flex-col">
     <h3 class="text-highlight-1 mb-4 max-sm:mb-0 self-start">who i am</h3>
-    <div class="flex p-4 gap-4 mb-20  sm:items-start max-sm:flex-col items-center">
-      <div class="flex flex-col items-center about__image basis-1/6 max-sm:w-[50%]">
+    <div class="flex p-4 gap-4 mb-20  md:items-start max-md:flex-col items-center">
+      <div class="flex flex-col items-center about__image basis-1/6 max-md:w-[50%]">
         <img loading="lazy" class="" :src="ava" alt="">
         <a class="mt-4" :href="cv" download="CV" target='_blank'>
           <Button color="secondary">Download CV</Button>
         </a>
       </div>
-      <div class="about__info basis-5/6 max-sm:text-center">
+      <div class="about__info basis-5/6 max-md:text-center">
         <h3 class="hero-title">
           <DecryptedText text="i'm Nursain Temirtas" animateOn="view" use-original-chars-only></DecryptedText>
         </h3>
@@ -31,7 +31,7 @@ import FallingItems from "@/components/bits/FallingItems.vue";
           work better with Back-end developers. I'm constantly developing person, open-minded and dedicated
         </p>
         <div class="divider"/>
-        <div class="grid grid-cols-2 gap-8 max-sm:flex flex-col">
+        <div class="grid grid-cols-2 gap-8 max-md:flex flex-col">
           <div>
             <h3 class="section-title">Experience</h3>
             <Section
