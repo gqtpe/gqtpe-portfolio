@@ -20,13 +20,15 @@ defineProps<Props>()
            class="card__actions absolute left-0 bottom-0 flex items-center justify-center gap-2">
         <RouterLink v-if="!!project.path" :to="project.path" class="card-action">
           <v-icon
+              :scale="1.5"
               :hover="true"
               speed="fast"
               animation="flash"
               name="fa-expand"/>
         </RouterLink>
-        <a v-if="!!project.preview" class="card-action" :href="project.preview">
+        <a v-if="!!project.preview" target="_blank" class="card-action" :href="project.preview">
           <v-icon
+              :scale="1.5"
               :hover="true"
               speed="fast"
               animation="flash"
@@ -42,20 +44,25 @@ defineProps<Props>()
 </template>
 
 <style scoped>
+.card{
+  min-width: 10rem;
+  transition: transform 0.1s ease-in-out;
+  &:hover {
+    transform: translateY(-1%);
 
+  }
+}
 
 .card__actions {
   width: 100%;
   background: rgba(255, 255, 255, 0.5);
   transform: translateX(-20%);
-  height: 2rem;
+  height:20%;
   opacity: 0;
   transition: opacity 0.1s ease-out, transform 0.1s ease-in-out;
 
   .card-action {
     background: var(--color-gray-900);
-    width: 1.5rem;
-    height: 1.5rem;
     color: white;
     display: flex;
     align-items: center;
