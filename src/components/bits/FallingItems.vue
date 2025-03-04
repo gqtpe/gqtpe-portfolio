@@ -41,7 +41,8 @@ const initMatter = () => {
   // Иконки
   const spacing = 0;
   const diameter = Math.floor(width / aboutSVGs.length);
-  const scale = diameter / 250;
+  const scaleFactor = 0.8; // Можно подбирать вручную
+  const scale = (diameter / 250) * scaleFactor;
 
   const icons = aboutSVGs.map((src, i) =>
       Bodies.circle(i * (diameter + spacing) + 30, 20, diameter / 2, {
