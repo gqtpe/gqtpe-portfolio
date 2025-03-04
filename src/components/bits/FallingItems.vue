@@ -49,7 +49,6 @@ const initMatter = () => {
         restitution: 0.8,
         friction: 0.3,
         render: {
-          fillStyle: "#000",
           sprite: {
             texture: src,
             xScale: scale,
