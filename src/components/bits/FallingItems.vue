@@ -44,8 +44,21 @@ const initMatter = () => {
   const scaleFactor = 0.8; // Можно подбирать вручную
   const scale = (diameter / 250) * scaleFactor;
 
-  const icons = aboutSVGs.map((src, i) =>
-      Bodies.circle(i * (diameter + spacing) + 30, 20, diameter / 2, {
+  const icons = aboutSVGs.map((src, i) =>{
+      if(width<1024){
+        return Bodies.circle(i * (diameter + spacing), 20, diameter*0.625 , {
+          restitution: 0.8,
+          friction: 0.3,
+          render: {
+            sprite: {
+              texture: src,
+              xScale: scale*1.25,
+              yScale: scale*1.25,
+            },
+          },
+        })
+      }
+      return Bodies.circle(i * (diameter + spacing) + 30, 20, diameter / 2, {
         restitution: 0.8,
         friction: 0.3,
         render: {
@@ -56,6 +69,7 @@ const initMatter = () => {
           },
         },
       })
+    }
   );
 
   // Добавляем перетаскивание с ограничением
