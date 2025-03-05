@@ -21,3 +21,24 @@ export const links ={
     trelloGithub: "https://github.com/gqtpe/trello",
     spotifyGithub: "https://github.com/gqtpe/spotify",
 }
+type ProjectImages = {
+    [key in ProjectName]:Image[]
+}
+export const projectImages: ProjectImages ={
+    "trello": [
+        {id: 1, title: "Home page", url:trelloHome},
+        {id: 2, title: "Login page", url:trelloLogin},
+    ],
+    "spotify":[
+        {id: 1, title: "Home page", url: spotifyHome},
+        {id: 2, title: "Login page", url: spotifyLogin},
+        {id: 3, title: "Album page", url: spotifyAlbum},
+        {id: 4, title: "Track page", url: spotifyTrack},
+        {id: 5, title: "Liked songs page", url: spotifyLiked},
+        {id: 6, title: "Account confirmation page", url: spotifyAccountConfirmation},
+        {id: 7, title: "Search start page", url: spotifySearchStart},
+        {id: 8, title: "Search page", url: spotifySearch},
+        {id: 9, title: "Spotify artists page", url: spotifyArtists},
+    ],
+    "portfolio":[]
+}
