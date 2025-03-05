@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ava from "@/assets/img/ava-without-background.png"
+import ava from "@/assets/img/ava_corrected.png"
 import cv from "@/assets/CV.pdf";
 import Button from "@/components/Button.vue";
 import Section from "@/components/pages/About/Section.vue";
