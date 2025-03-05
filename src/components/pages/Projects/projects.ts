@@ -1,16 +1,7 @@
 import {links} from "../../../app/links.ts";
 
-export type Project = {
-    title: string
-    description: string
-    id: string
-    icon: string
-    preview?: string
-    path?: string
-}
-export type Projects ={
-    [key:string]:Project
-}
+
+
 const projects: Projects = {
     ['trello']:{
         id: 'trello',
