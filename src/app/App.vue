@@ -10,7 +10,7 @@ const route = useRoute()
 <template>
   <Header/>
   <main class="w-full h-full text-white inset-shadow-sm flex">
-    <Side v-if="!!route.path.slice(1)" :title="route.path.slice(1)"/>
+    <Side v-if="!!route.path.slice(1) && !route.path.includes('/project/')" :title="route.path.slice(1)"/>
     <RouterView/>
   </main>
   <Footer/>
