@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import {cutFrom} from "../../../utils/cutFrom.ts";
-import type {Project} from "./projects.ts";
+import {cutFrom} from "@/utils/cutFrom.ts";
+import type {Project} from "@/components/pages/Projects/types.ts";
+
 
 type Props = {
   project: Project
@@ -16,9 +17,9 @@ defineProps<Props>()
           class="card__icon"
           fill="var(--color-gray-900)"
       />
-      <div v-if="(!!project.path)&&(!!project.preview)"
+      <div v-if="(!!project.links)"
            class="card__actions absolute left-0 bottom-0 flex items-center justify-center gap-2">
-        <RouterLink v-if="!!project.path" :to="project.path" class="card-action">
+        <RouterLink v-if="!!project.links.path" :to="project.links.path" class="card-action">
           <v-icon
               :scale="1.5"
               :hover="true"
@@ -26,7 +27,7 @@ defineProps<Props>()
               animation="flash"
               name="fa-expand"/>
         </RouterLink>
-        <a v-if="!!project.preview" target="_blank" class="card-action" :href="project.preview">
+        <a v-if="!!project.links.url" target="_blank" class="card-action" :href="project.links.url">
           <v-icon
               :scale="1.5"
               :hover="true"
@@ -34,10 +35,18 @@ defineProps<Props>()
               animation="flash"
               name="fa-external-link-square-alt"/>
         </a>
+        <a v-if="!!project.links.github" target="_blank" class="card-action" :href="project.links.github">
+          <v-icon
+              :scale="1.5"
+              :hover="true"
+              speed="fast"
+              animation="flash"
+              name="bi-github"/>
+        </a>
       </div>
     </div>
     <div class="card__description">
-      <RouterLink :to="project.path || '#'"><h3 class="text-link-1 text-lg ">{{ project.title }}</h3></RouterLink>
+      <RouterLink :to="project.links.path || '#'"><h3 class="text-link-1 text-lg ">{{ project.title }}</h3></RouterLink>
       <p class="text-xs text-gray-500">{{ cutFrom(project.description) }}</p>
     </div>
   </div>
