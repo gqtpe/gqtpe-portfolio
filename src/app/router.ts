@@ -15,7 +15,8 @@ const routes = [
     },
     {
         path: '/project/:projectName',
-        component: Project
+        component: Project,
+        props: true,
     },
     {
         path: '/contacts',
