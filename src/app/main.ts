@@ -1,8 +1,8 @@
-import router from "./router.ts";
+import router from "./router";
 import { createApp } from 'vue';
 import './main.css';
 import App from './App.vue';
-import {OhVueIcon} from "./ohh-vue.ts";
+import {OhVueIcon} from "./ohh-vue";
 
 
 

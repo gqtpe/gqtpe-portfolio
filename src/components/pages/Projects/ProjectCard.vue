@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {cutFrom} from "@/utils/cutFrom.ts";
-import type {Project} from "@/components/pages/Projects/types.ts";
+import {cutFrom} from "@/utils/cutFrom";
+import type {Project} from "@/components/pages/Projects/types";
 
 
 type Props = {

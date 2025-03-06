@@ -1,9 +1,5 @@
-import {links, projectImages} from "@/app/links.ts";
-import type {Projects} from "@/components/pages/Projects/types.ts";
-
-
-
-
+import {links, projectImages} from "@/app/links";
+import type {Projects} from "@/components/pages/Projects/types";
 const projects: Projects = {
     ["trello"]: {
         id: 'trello',
