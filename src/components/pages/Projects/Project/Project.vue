@@ -38,7 +38,7 @@ const project = projects[props.projectName]
       </div>
     </div>
     <!--   {{JSON.stringify(project)}}-->
-    <!--   {{JSON.stringify(route)}}-->
+       {{JSON.stringify(route)}}
   </section>
 </template>
 
