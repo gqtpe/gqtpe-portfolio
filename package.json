@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@splidejs/splide": "^4.1.4",
+    "@splidejs/vue-splide": "^0.6.12",
     "@tailwindcss/vite": "^4.0.7",
     "@vueuse/motion": "^2.2.6",
     "matter-js": "^0.20.0",
