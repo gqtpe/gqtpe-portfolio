@@ -1,6 +1,5 @@
 @import url('../styles/reset.css');
-
-
+@import '@splidejs/splide/dist/css/splide.min.css';
 html{
     font-size: 16px;
     font-family: Roboto, sans-serif;
