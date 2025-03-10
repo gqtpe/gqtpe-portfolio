@@ -27,16 +27,30 @@ const initMatter = () => {
       height,
       background: "transparent",
       wireframes: false,
-      pixelRatio: 1,
+      pixelRatio: window.devicePixelRatio || 1, // Оставляем высокое разрешение
     },
   });
 
-  // Границы (верх, низ, лево, право) с увеличенной плотностью
+  // Создаём мышь и корректируем её поведение
+  const mouse = Mouse.create(render.canvas);
+  mouse.scale.x = 1 / (window.devicePixelRatio || 1);
+  mouse.scale.y = 1 / (window.devicePixelRatio || 1);
+
+  // Настраиваем mouseConstraint
+  mouseConstraint = MouseConstraint.create(engine, {
+    mouse,
+    constraint: {
+      stiffness: 0.2,
+      render: { visible: false },
+    },
+  });
+
+  // Границы
   const thickness = 30;
-  const ground = Bodies.rectangle(width / 2, height + thickness / 2, width, thickness, { render: { fillStyle: "#FFF" }, isStatic: true });
-  const leftWall = Bodies.rectangle(-thickness / 2, height / 2, thickness, height, { render: { fillStyle: "#FFF" }, isStatic: true });
-  const rightWall = Bodies.rectangle(width + thickness / 2, height / 2, thickness, height, { render: { fillStyle: "#FFF" }, isStatic: true });
-  const topWall = Bodies.rectangle(width / 2, -thickness / 2, width, thickness, { render: { fillStyle: "#FFF" }, isStatic: true });
+  const ground = Bodies.rectangle(width / 2, height + thickness / 2, width, thickness, { isStatic: true, render:{fillStyle:"transparent"} });
+  const leftWall = Bodies.rectangle(-thickness / 2, height / 2, thickness, height, { isStatic: true,  render:{fillStyle:"transparent"}});
+  const rightWall = Bodies.rectangle(width + thickness / 2, height / 2, thickness, height, { isStatic: true,  render:{fillStyle:"transparent"}});
+  const topWall = Bodies.rectangle(width / 2, -thickness / 2, width, thickness, { isStatic: true, render:{fillStyle:"transparent"}});
 
   // Иконки
   const spacing = 0;
@@ -45,51 +59,42 @@ const initMatter = () => {
   const scale = (diameter / 250) * scaleFactor;
 
   const icons = aboutSVGs.map((src, i) =>{
-      if(width<1024){
-        return Bodies.circle(i * (diameter + spacing), 20, diameter*0.625 , {
+        if(width<1024){
+          return Bodies.circle(i * (diameter + spacing), 20, diameter*0.625 , {
+            restitution: 0.8,
+            friction: 0.3,
+            render: {
+              sprite: {
+                texture: src,
+                xScale: scale*1.25,
+                yScale: scale*1.25,
+              },
+            },
+          })
+        }
+        return Bodies.circle(i * (diameter + spacing) + 30, 20, diameter / 2, {
           restitution: 0.8,
           friction: 0.3,
           render: {
             sprite: {
               texture: src,
-              xScale: scale*1.25,
-              yScale: scale*1.25,
+              xScale: scale,
+              yScale: scale,
             },
           },
         })
       }
-      return Bodies.circle(i * (diameter + spacing) + 30, 20, diameter / 2, {
-        restitution: 0.8,
-        friction: 0.3,
-        render: {
-          sprite: {
-            texture: src,
-            xScale: scale,
-            yScale: scale,
-          },
-        },
-      })
-    }
   );
-
-  // Добавляем перетаскивание с ограничением
-  const mouse = Mouse.create(render.canvas);
-  mouseConstraint = MouseConstraint.create(engine, {
-    mouse,
-    constraint: {
-      stiffness: 0.2,
-      render: { visible: false }, // Скрываем линию соединения
-    },
-  });
-
-  World.add(engine.world, [ground, leftWall, rightWall, topWall, ...icons, mouseConstraint]);
+  // Добавляем в мир
+  World.add(engine.world, [ground, leftWall, rightWall, topWall, ...icons]);
+  World.add(engine.world, mouseConstraint);
 
   Runner.run(runner, engine);
   Render.run(render);
 
-  // Ограничение перетаскивания внутри контейнера
-  Events.on(mouseConstraint, "enddrag", () => {
-    const body = mouseConstraint.body;
+  // Исправленный обработчик перетаскивания
+  Events.on(mouseConstraint, "enddrag", (event: any) => {
+    const body = event.body as Body | undefined;
     if (body) {
       const x = Math.max(20, Math.min(body.position.x, width - 20));
       const y = Math.max(20, Math.min(body.position.y, height - 20));
@@ -97,6 +102,8 @@ const initMatter = () => {
     }
   });
 };
+
+
 
 const destroyMatter = () => {
   if (engine) {
