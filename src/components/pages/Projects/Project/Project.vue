@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import {useRoute} from "vue-router";
 import projects from "@/components/pages/Projects/projects.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import type {ProjectName} from "@/components/pages/Projects/types.ts";
+import Slide from "@/components/Splide.vue";
 
 const props = defineProps<{
   projectName: ProjectName
 }>()
-const route = useRoute()
 const project = projects[props.projectName]
+
 </script>
 
 <template>
-  <section class="project text-black">
-    <h2 class="text-3xl font-black uppercase">
+  <section class="project-page text-black flex flex-col items-center">
+    <h2 class="text-3xl font-black uppercase self-start">
       <DecryptedText
           :speed="50"
           :use-original-chars-only="true"
@@ -22,7 +22,7 @@ const project = projects[props.projectName]
           :text="project.title"
       />
     </h2>
-    <p class="text-comment text-sm">
+    <p class="text-comment text-sm self-start">
       <DecryptedText
           :speed="100"
           :use-original-chars-only="true"
@@ -31,21 +31,17 @@ const project = projects[props.projectName]
           :text="project.description"
       />
     </p>
-    <div v-if="project.images" class="flex flex-row w-full  justify-start items-start gap-4 scroll-x p-4">
-      <div class="w-[30%] flex flex-col items-center" v-for="image in project.images">
-        <img class="border-2 mb-2 border-primary-500" :src="image.url" :alt="project.id">
-        <div v-if="image.title">{{image.title}}</div>
-      </div>
+    <div class="w-[50%]">
+      <Slide v-if="project.images"  :images="project.images"/>
     </div>
-    <!--   {{JSON.stringify(project)}}-->
-       {{JSON.stringify(route)}}
+    <!--       {{JSON.stringify(project)}}-->
+    <!--       {{JSON.stringify(route)}}-->
   </section>
 </template>
 
-<style scoped>
-.project {
+<style>
+.project-page {
   max-width: 100vw;
   width: 100% !important;
 }
-
 </style>
