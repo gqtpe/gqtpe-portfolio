@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {Image} from "@/components/pages/Projects/types.ts";
-import {Options} from "@splidejs/splide";
+import type {Options} from "@splidejs/splide";
 
 defineProps<{ images: Image[] }>()
 const splideOption: Options = {
