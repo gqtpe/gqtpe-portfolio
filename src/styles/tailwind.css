@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import '@splidejs/splide/dist/css/splide.min.css';
 
 @theme {
     --color-primary-100: #b2e0e7;
@@ -47,7 +48,9 @@
     background: white;
 
 }
-
+.section-title{
+    @apply text-xl font-bold mb-2
+}
 .divider{
     @apply w-full border-b-2 border-gray-500 my-6
 }
