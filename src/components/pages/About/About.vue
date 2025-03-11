@@ -18,7 +18,7 @@ import FallingItems from "@/components/bits/FallingItems.vue";
         </a>
       </div>
       <div class="about__info basis-5/6 max-md:text-center">
-        <h3 class="hero-title">
+        <h3 class="uppercase mb-6 font-bold text-2xl">
           <DecryptedText text="i'm Nursain Temirtas" animateOn="view" use-original-chars-only></DecryptedText>
         </h3>
         <p class="body">
@@ -43,7 +43,7 @@ import FallingItems from "@/components/bits/FallingItems.vue";
           <div>
             <h3 class="section-title">Education</h3>
             <Section
-                title="Kozybaev-Arizona Universit"
+                title="Kozybaev-Arizona University"
                 period="2022 - current"
                 body="Gained expertise in engineering and computational mathematics, focusing on numerical methods, optimization algorithms, data analysis, and mathematical modeling."
             />
@@ -60,25 +60,10 @@ import FallingItems from "@/components/bits/FallingItems.vue";
 </template>
 
 <style>
-@import "tailwindcss";
 .stack{
   min-height: 10rem;
 }
-.hero-title {
-  @apply uppercase mb-6 font-bold text-2xl;
-}
 
-.section-title {
-  @apply text-xl font-bold mb-2;
-}
-
-.subtitle {
-  @apply text-sm font-bold
-}
-
-.body {
-  @apply text-sm text-gray-600;
-}
 
 .about__image {
   img {
