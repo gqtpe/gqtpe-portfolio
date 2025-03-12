@@ -25,7 +25,7 @@ main {
       display: none;
     }
     section{
-      @apply w-full
+      width: 100%;
     }
   }
 
@@ -36,6 +36,7 @@ section {
   color: black;
   height: 100%;
   max-height:100%;
+  overflow-y: auto;
 }
 
 .page-wrapper {
