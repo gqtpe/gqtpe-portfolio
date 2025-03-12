@@ -1,35 +1,76 @@
 <script setup lang="ts">
+import { ref, onMounted } from "vue";
+import { useMotion } from "@vueuse/motion";
+
+const links = [
+  { id: 1, title: "Home", href: "/" },
+  { id: 2, title: "About", href: "/about" },
+  { id: 3, title: "Contact", href: "/contact" },
+];
+
+const targets = ref<(HTMLDivElement | null)[]>([]);
+
+
+onMounted(() => {
+  targets.value.forEach((el) => {
+    if (!(el instanceof HTMLElement)) return;
+    const height = el.clientHeight;
+    useMotion(el, {
+      initial: { y: 0 },
+      hovered: { y: -height / 2 },
+      transition: {
+        type: "spring",
+        stiffness: 250,
+        damping: 25,
+        mass: 0.5,
+      },
+    });
+  });
+});
+
 
 </script>
 
 <template>
-  <nav class="flex justify-around w-1/2 ">
-    <div class="flex link justify-center grow h100">
-      <RouterLink to="/">Home</RouterLink>
-    </div>
-    <div class="flex link justify-center grow h100">
-      <RouterLink to="/about">About</RouterLink>
-    </div>
-    <div class="flex link justify-center grow h100">
-      <RouterLink to="/projects">Projects</RouterLink>
-    </div>
-    <div class="flex link justify-center grow h100">
-      <RouterLink to="/contacts">Contacts</RouterLink>
+  <nav class="flex w-1/2 items-center justify-center gap-8 text-black ">
+    <div
+        class="link-wrapper"
+        v-for="(link, index) in links"
+        :key="link.id"
+    >
+      <div
+          :ref="(el) => { if (el) targets[index] = el as HTMLDivElement; }"
+          v-motion
+      >
+        <div class="flex flex-col">
+          <span class="link">{{ link.title }}</span>
+          <span class="link dark">{{ link.title }}</span>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
 
+
 <style scoped>
 
-.link a{
-  padding: 0.4rem 0.25rem;
-  transition: background 1s ease, color 0.5s ease-in-out;
-  border-radius: 0.125rem;
+.link-wrapper {
+  max-height: 2rem;
+  height: 2rem;
+  overflow: hidden;
 }
 
-.link:hover a{
-  color: var(--white);
-  background-color: var(--black);
-
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 2rem;
+  padding: 0 0.5rem;
+  background: white;
+  border-radius: 0.25rem;
+}
+.dark{
+  filter: invert(100%);
 }
 </style>
