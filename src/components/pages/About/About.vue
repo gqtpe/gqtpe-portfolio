@@ -11,7 +11,7 @@ import FallingItems from "@/components/bits/FallingItems.vue";
   <section class="flex flex-col">
     <h3 class="text-highlight-1 mb-4 max-sm:mb-0 self-start">who i am</h3>
     <div class="flex p-4 gap-4 mb-8  md:items-start max-md:flex-col items-center">
-      <div class="flex flex-col items-center about__image basis-1/6 max-md:w-[30%]">
+      <div class="flex flex-col items-center about__image basis-1/6 max-md:w-[50%]">
         <img loading="lazy" class="" :src="ava" alt="">
         <a class="mt-4" :href="cv" download="CV" target='_blank'>
           <Button color="secondary">Download CV</Button>
@@ -21,7 +21,7 @@ import FallingItems from "@/components/bits/FallingItems.vue";
         <h3 class="uppercase mb-6 font-bold text-2xl">
           <DecryptedText text="i'm Nursain Temirtas" animateOn="view" use-original-chars-only></DecryptedText>
         </h3>
-        <p class="body">
+        <p class="text-sm text-gray-600">
           A Front-end developer with one year of freelance experience(1 year). I have strong skills in modern
           technologies like React, Vite,
           TypeScript, and Redux Toolkit. I build scalable and well-structured applications. I like learning new things,
