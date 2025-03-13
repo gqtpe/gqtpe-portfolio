@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import { useMotion } from "@vueuse/motion";
+import {onMounted, ref} from "vue";
 import {useRoute} from "vue-router";
+
 const router = useRoute()
 
 const links = [
