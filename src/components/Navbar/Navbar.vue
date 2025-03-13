@@ -35,15 +35,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav class="flex w-1/2 items-center justify-center gap-8 text-black ">
+  <nav class="flex w-1/2 items-center justify-around  text-black ">
     <div
         class="link-wrapper"
-        v-for="(link, index) in links"
-        :key="link.id"
+        v-for="link in links"
+        :key="link.href"
     >
-      <div
-          :ref="(el) => { if (el) targets[index] = el as HTMLDivElement; }"
-          v-motion
+      <RouterLink
+          :to="link.href"
+          :class="['flex flex-col links', { active: active === link.id }]"
+          @mouseenter="onMouseEnter(link.id)"
+          @mouseleave="onMouseLeave"
       >
         <div class="flex flex-col">
           <span class="link">{{ link.title }}</span>
@@ -58,9 +60,17 @@ onMounted(() => {
 <style scoped>
 
 .link-wrapper {
+  overflow: hidden;
   max-height: 2rem;
   height: 2rem;
-  overflow: hidden;
+
+  .links {
+    transition: transform, 0.2s ease-in-out;
+  }
+}
+
+.active {
+  transform: translateY(-50%);
 }
 
 .link {
@@ -73,7 +83,7 @@ onMounted(() => {
   background: white;
   border-radius: 0.25rem;
 }
-.dark{
+.dark {
   filter: invert(100%);
 }
 </style>
