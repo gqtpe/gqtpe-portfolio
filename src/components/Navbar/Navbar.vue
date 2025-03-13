@@ -3,9 +3,10 @@ import { ref, onMounted } from "vue";
 import { useMotion } from "@vueuse/motion";
 
 const links = [
-  { id: 1, title: "Home", href: "/" },
-  { id: 2, title: "About", href: "/about" },
-  { id: 3, title: "Contact", href: "/contact" },
+  {id: 1, title: "Home", href: "/"},
+  {id: 2, title: "About", href: "/about"},
+  {id: 3, title: "Projects", href: "/projects"},
+  {id: 4, title: "Contacts", href: "/contacts"},
 ];
 
 const targets = ref<(HTMLDivElement | null)[]>([]);
