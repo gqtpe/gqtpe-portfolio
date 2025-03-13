@@ -10,10 +10,7 @@ const links = [
   {id: 3, title: "Projects", href: "/projects"},
   {id: 4, title: "Contacts", href: "/contacts"},
 ];
-
-const targets = ref<(HTMLDivElement | null)[]>([]);
-
-
+const active = ref<number>(0)
 onMounted(() => {
   active.value = links.find(l => l.href === window.location.pathname)!.id
 })
@@ -21,7 +18,12 @@ const onMouseLeave = () => {
   const link = links.find(l => l.href === router.path)
   if (link) {
 
-
+    active.value = link.id
+  }
+}
+const onMouseEnter = (id: number) => {
+  active.value = id
+}
 </script>
 
 <template>
@@ -37,11 +39,9 @@ const onMouseLeave = () => {
           @mouseenter="onMouseEnter(link.id)"
           @mouseleave="onMouseLeave"
       >
-        <div class="flex flex-col">
-          <span class="link">{{ link.title }}</span>
-          <span class="link dark">{{ link.title }}</span>
-        </div>
-      </div>
+        <span class="link">{{ link.title }}</span>
+        <span class="link dark">{{ link.title }}</span>
+      </RouterLink>
     </div>
   </nav>
 </template>
