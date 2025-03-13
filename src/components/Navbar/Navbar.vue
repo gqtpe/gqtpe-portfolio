@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useMotion } from "@vueuse/motion";
+import {useRoute} from "vue-router";
+const router = useRoute()
 
 const links = [
   {id: 1, title: "Home", href: "/"},
