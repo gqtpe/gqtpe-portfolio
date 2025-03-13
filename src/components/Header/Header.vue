@@ -5,7 +5,7 @@ import {links} from "@/app/links.ts";
 </script>
 
 <template>
-  <header class="page-wrapper flex justify-between items-center">
+  <header v-motion-slide-top class="page-wrapper flex justify-between items-center">
       <div class="logo font-black">GQTPE</div>
       <Navbar/>
     <a target="_blank" :href="links.telegram">
