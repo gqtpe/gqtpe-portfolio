@@ -35,7 +35,7 @@ const items = [
             :items=items
         />
       </h6>
-      <a :href="cv" download="CV.pdf" target='_blank'>
+      <a v-motion-fade-visible :href="cv" download="CV.pdf" target='_blank'>
         <Button color="secondary">Download CV</Button>
       </a>
     </div>
