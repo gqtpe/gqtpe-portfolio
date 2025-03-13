@@ -15,21 +15,11 @@ const targets = ref<(HTMLDivElement | null)[]>([]);
 
 
 onMounted(() => {
-  targets.value.forEach((el) => {
-    if (!(el instanceof HTMLElement)) return;
-    const height = el.clientHeight;
-    useMotion(el, {
-      initial: { y: 0 },
-      hovered: { y: -height / 2 },
-      transition: {
-        type: "spring",
-        stiffness: 250,
-        damping: 25,
-        mass: 0.5,
-      },
-    });
-  });
-});
+  active.value = links.find(l => l.href === window.location.pathname)!.id
+})
+const onMouseLeave = () => {
+  const link = links.find(l => l.href === router.path)
+  if (link) {
 
 
 </script>
