@@ -43,30 +43,33 @@ const items = [
 </template>
 <style scoped>
 
-.ellipse1,.ellipse2 {
+.ellipse1, .ellipse2 {
   position: relative;
   z-index: 1;
 }
+
 .ellipse1:before, .ellipse2:after {
   content: "";
   position: absolute;
-  width:2rem;
-  height:2rem;
+  width: 2rem;
+  height: 2rem;
 
 }
+
 .ellipse1:before {
   background-color: var(--color-secondary-500);
   border-radius: 50%;
   z-index: -1;
-  bottom:-10%;
-  left:-1%;
+  bottom: -10%;
+  left: -1%;
 }
-.ellipse2:after{
+
+.ellipse2:after {
   background-color: var(--color-primary-500);
   border-radius: 50%;
   z-index: -1;
-  bottom:-10%;
-  right:-1%;
+  bottom: -10%;
+  right: -1%;
 }
 
 </style>
