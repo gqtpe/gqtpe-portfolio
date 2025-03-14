@@ -3,12 +3,14 @@ import Button from "@/components/Button.vue";
 import Typing from "@/components/Typing.vue";
 import cv from "@/assets/CV.pdf";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
+import {getFadePreset} from "@/motion/motion-presets.ts";
+
 const items = [
   'web developer',
   'frontend developer',
   'software engineer',
 ]
-
+// todo: normal items switching
 </script>
 
 <template>
