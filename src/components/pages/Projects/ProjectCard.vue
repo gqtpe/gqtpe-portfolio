@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {cutFrom} from "@/utils/cutFrom";
 import type {Project} from "@/components/pages/Projects/types";
+import {getSlidePreset} from "@/motion/motion-presets.ts";
 
 
 type Props = {
@@ -10,7 +11,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" v-motion="getSlidePreset({delay: project.id*300, direction: 'bottom'})">
     <div class="card__image relative overflow-hidden flex items-center justify-center">
       <v-icon
           :name="project.icon"
@@ -55,11 +56,6 @@ defineProps<Props>()
 <style scoped>
 .card{
   min-width: 10rem;
-  transition: transform 0.1s ease-in-out;
-  &:hover {
-    transform: translateY(-1%);
-
-  }
 }
 
 .card__actions {
