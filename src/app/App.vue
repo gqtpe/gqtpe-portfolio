@@ -5,6 +5,12 @@ import Footer from "@/components/Footer/Footer.vue"
 import {useRoute} from "vue-router";
 
 const route = useRoute()
+
+
+const isLoaded = ref(false);
+onMounted(() => {
+  window.onload = () => setTimeout(()=>isLoaded.value = true,500)
+});
 </script>
 
 <template>
