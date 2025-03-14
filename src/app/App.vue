@@ -3,6 +3,7 @@ import Header from '@/components/Header/Header.vue'
 import Side from "@/components/Side.vue";
 import Footer from "@/components/Footer/Footer.vue"
 import {useRoute} from "vue-router";
+import { ref, onMounted } from "vue";
 import Loading from "@/components/Loading.vue";
 
 const route = useRoute()
@@ -15,12 +16,14 @@ onMounted(() => {
 </script>
 
 <template>
+  <template v-if="isLoaded" v-motion-roll-visible-top>
   <Header/>
   <main class="w-full h-full text-white inset-shadow-sm flex">
     <Side v-if="!!route.path.slice(1) && !route.path.includes('/project/')" :title="route.path.slice(1)"/>
     <RouterView/>
   </main>
   <Footer/>
+  </template>
   <template v-else><Loading/></template>
 </template>
 
