@@ -7,11 +7,22 @@ import {getSlidePreset} from "@/motion/motion-presets.ts";
 type Props = {
   project: Project
 }
-defineProps<Props>()
+const props = defineProps<Props>()
+const preset1 = {...(getSlidePreset({delay: props.project.id*300, direction: 'bottom'})),
+  hovered: {
+    y: -10,
+    transition: {
+      type: "ease",
+      stiffness: 250,
+      damping: 25,
+      mass: 0.5,
+    }
+  }
+}
 </script>
 
 <template>
-  <div class="card" v-motion="getSlidePreset({delay: project.id*300, direction: 'bottom'})">
+  <div class="card" v-motion="preset1">
     <div class="card__image relative overflow-hidden flex items-center justify-center">
       <v-icon
           :name="project.icon"
