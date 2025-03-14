@@ -32,7 +32,7 @@ export type Pill =
 export type Project = {
     title: string
     description: string
-    id: string
+    id: number
     icon: string
     links: {
         url?: string
