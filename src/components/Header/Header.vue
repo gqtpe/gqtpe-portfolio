@@ -2,11 +2,12 @@
 import Navbar from "@/components/Navbar/Navbar.vue";
 import Button from "@/components/Button.vue";
 import {links} from "@/app/links.ts";
+import DecryptedText from "@/components/bits/DecryptedText.vue";
 </script>
 
 <template>
   <header v-motion-slide-top class="page-wrapper flex justify-between items-center">
-      <div class="logo font-black">GQTPE</div>
+      <DecryptedText text="GQTPE" use-original-chars-only class="logo font-black" />
       <Navbar/>
     <a target="_blank" :href="links.telegram">
       <Button color="primary">
