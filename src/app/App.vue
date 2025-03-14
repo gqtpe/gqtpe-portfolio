@@ -3,6 +3,7 @@ import Header from '@/components/Header/Header.vue'
 import Side from "@/components/Side.vue";
 import Footer from "@/components/Footer/Footer.vue"
 import {useRoute} from "vue-router";
+import Loading from "@/components/Loading.vue";
 
 const route = useRoute()
 
@@ -20,6 +21,7 @@ onMounted(() => {
     <RouterView/>
   </main>
   <Footer/>
+  <template v-else><Loading/></template>
 </template>
 
 <style>
