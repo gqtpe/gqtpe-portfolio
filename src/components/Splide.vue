@@ -2,13 +2,15 @@
 import type {Image} from "@/components/pages/Projects/types.ts";
 import type {Options} from "@splidejs/splide";
 
-defineProps<{ images: Image[] }>()
-const splideOption: Options = {
-  type: 'loop',
-  perPage: 1,
+defineProps<{ images?: Image[] }>()
+const options: Options = {
+  type: "loop",
   autoplay: false,
   lazyLoad: true,
   arrows: true,
+  perPage: 1,
+  pagination: true,
+  paginationKeyboard: true
 }
 </script>
 
@@ -40,9 +42,6 @@ const splideOption: Options = {
 }
 
 .splide__arrow {
-  background: var(--color-primary-500);
-
-
   &:active {
     background: var(--color-secondary-500);
     opacity: 1;
