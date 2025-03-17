@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import Header from '@/components/Header/Header.vue'
+import { ref, onMounted, nextTick } from "vue";
+import { useRoute } from "vue-router";
+import Header from "@/components/Header/Header.vue";
 import Side from "@/components/Side.vue";
-import Footer from "@/components/Footer/Footer.vue"
-import {useRoute} from "vue-router";
-import { ref, onMounted } from "vue";
+import Footer from "@/components/Footer/Footer.vue";
 import Loading from "@/components/Loading.vue";
 
-const route = useRoute()
-
-
+const route = useRoute();
 const isLoaded = ref(false);
 
 onMounted(async () => {
@@ -43,7 +41,7 @@ async function waitForFontsAndImages() {
   </main>
   <Footer/>
   </template>
-  <template v-else><Loading/></template>
+  <template v-if="!isLoaded"><Loading/></template>
 </template>
 
 <style>
