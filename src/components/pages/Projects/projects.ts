@@ -71,7 +71,8 @@ const projects: Projects = {
         description: ' A Portfolio application build with Vue.',
         icon: "bi-file-earmark-person",
         links: {
-            github: links.spotifyGithub
+            github: links.portfolioGithub,
+            path:'/project/portfolio',
         },
         images: [],
         pills:[
