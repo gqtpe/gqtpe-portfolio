@@ -10,8 +10,7 @@ const route = useRoute()
 
 
 const isLoaded = ref(false);
-onMounted(() => {
-  window.onload = () => setTimeout(()=>isLoaded.value = true,500)
+
 onMounted(async () => {
   await nextTick(); // Ждём рендеринг
   await waitForFontsAndImages();
