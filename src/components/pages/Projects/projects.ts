@@ -11,7 +11,26 @@ const projects: Projects = {
             path: '/project/trello',
             github: links.trelloGithub
         },
-        images: projectImages["trello"]
+        images: projectImages["trello"],
+        pills: [
+            'react',
+            'redux',
+            'react-router-dom',
+            'typescript',
+            'axios',
+            'jest',
+            'redux-toolkit',
+            'storybook',
+            'scss',
+            'rest-api',
+            'mui-material',
+            'feature-based',
+            'chromatic',
+            'auth-token',
+            "custom-hooks",
+            'formik',
+            'gh-pages',
+        ]
     },
     ["spotify"]: {
         id: 2,
