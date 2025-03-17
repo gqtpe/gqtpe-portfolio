@@ -12,7 +12,7 @@ const project = projects[props.projectName]
 </script>
 
 <template>
-  <section class="project-page text-black flex flex-col items-center">
+  <section class=" page-wrapper project-page text-black flex flex-col items-center">
     <h2 class="text-3xl font-black uppercase self-start">
       <DecryptedText
           :speed="50"
