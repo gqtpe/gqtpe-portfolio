@@ -12,7 +12,7 @@ import {getSlidePreset} from "@/motion/motion-presets.ts";
   <section class="flex flex-col">
     <h3 class="text-highlight-1 mb-4 max-sm:mb-0 self-start">who i am</h3>
     <div class="flex p-4 gap-4 mb-8  md:items-start max-md:flex-col items-center">
-      <div class="flex flex-col items-center about__image basis-1/6 max-md:w-[50%]">
+      <div class="flex flex-col items-center about__image basis-1/6 ">
         <img v-motion-roll-visible-once-top loading="lazy" class="" :src="ava" alt="">
         <a
             v-motion="getSlidePreset({delay: 1000, initDistance: 50})"
