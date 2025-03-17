@@ -13,6 +13,19 @@ const isLoaded = ref(false);
 onMounted(() => {
   window.onload = () => setTimeout(()=>isLoaded.value = true,500)
 });
+
+async function waitForFontsAndImages() {
+  await document.fonts.ready;
+
+  const images = Array.from(document.images).map(
+      (img) =>
+          img.complete
+              ? Promise.resolve()
+              : new Promise((resolve) => (img.onload = img.onerror = resolve))
+  );
+  await Promise.all(images);
+}
+
 </script>
 
 <template>
