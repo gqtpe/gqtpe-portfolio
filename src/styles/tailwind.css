@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import '@splidejs/splide/dist/css/splide.min.css';
+
 
 @theme {
     --color-primary-100: #b2e0e7;
