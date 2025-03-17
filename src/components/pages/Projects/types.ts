@@ -17,7 +17,7 @@ export type Pill =
     | "redux-toolkit"
     | "axios"
     | "react-router-dom"
-    | "open-auth"
+    | "open-auth-v2"
     | "spotify-dashboard"
     | "scss"
     | "tailwind"
@@ -29,6 +29,18 @@ export type Pill =
     | "motion"
     | "vercel"
     | "matter-js"
+    | "gh-pages"
+    | "formik"
+    | "feature-based"
+    | "auth-token"
+    | "custom-hooks"
+    | "intersection-observer"
+    | "tanstack-tables"
+    | "player"
+    | "search"
+    | "vueuse/motion"
+    | "splidejs"
+
 export type Project = {
     title: string
     description: string
