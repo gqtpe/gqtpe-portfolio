@@ -42,7 +42,28 @@ const projects: Projects = {
             path: '/project/spotify',
             github: links.spotifyGithub
         },
-        images: projectImages["spotify"]
+        images: projectImages["spotify"],
+        pills: [
+            'react',
+            'open-auth-v2',
+            'typescript',
+            'ES',
+            'spotify-dashboard',
+            'scss',
+            'storybook',
+            'intersection-observer',
+            'toasts',
+            'vite',
+            'custom-hooks',
+            'storybook',
+            'redux-toolkit',
+            'tanstack-tables',
+            'vitest',
+            'react-router-dom',
+            'auth-token',
+            'player',
+            'search',
+        ]
     },
     ["portfolio"]: {
         id: 3,
@@ -52,7 +73,16 @@ const projects: Projects = {
         links: {
             github: links.spotifyGithub
         },
-        images: []
+        images: [],
+        pills:[
+            'vue',
+            'vue-router',
+            'matter-js',
+            'vueuse/motion',
+            'tailwind',
+            'typescript',
+            'splidejs'
+        ]
     },
 }
 export default projects;
