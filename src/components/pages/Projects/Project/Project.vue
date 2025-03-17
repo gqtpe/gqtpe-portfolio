@@ -31,8 +31,12 @@ const project = projects[props.projectName]
           :text="project.description"
       />
     </p>
-    <div class="w-[50%]">
-      <Slide v-if="project.images"  :images="project.images"/>
+    <div class="project-page__content">
+        <Slide class="project-page__slider" :images="project.images"/>
+        <aside class="project-page__aside">
+          <div class="text-link-1 " v-if="project.links.url">{{project.links.url.split('//')[1]}}</div><div class="helper" v-else>(preview link not provided)</div>
+          <Pills class="project-page__pills" :pills="project.pills"/>
+        </aside>
     </div>
     <!--       {{JSON.stringify(project)}}-->
     <!--       {{JSON.stringify(route)}}-->
