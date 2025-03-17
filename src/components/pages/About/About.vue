@@ -74,6 +74,7 @@ import {getSlidePreset} from "@/motion/motion-presets.ts";
 
 
 .about__image {
+  max-width: 15rem;
   img {
     border-radius: 1rem;
     aspect-ratio: 1/1;
