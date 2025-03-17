@@ -8,7 +8,7 @@ type Props = {
   project: Project
 }
 const props = defineProps<Props>()
-const preset1 = {...(getSlidePreset({delay: props.project.id*300, direction: 'bottom'})),
+const cardPreset = {...(getSlidePreset({delay: props.project.id*300, direction: 'bottom'})),
   hovered: {
     y: -10,
     transition: {
@@ -22,7 +22,7 @@ const preset1 = {...(getSlidePreset({delay: props.project.id*300, direction: 'bo
 </script>
 
 <template>
-  <div class="card" v-motion="preset1">
+  <div class="card" v-motion="cardPreset">
     <div class="card__image relative overflow-hidden flex items-center justify-center">
       <v-icon
           :name="project.icon"
