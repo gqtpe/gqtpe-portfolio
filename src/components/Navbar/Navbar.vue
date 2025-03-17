@@ -12,12 +12,14 @@ const links = [
 ];
 const active = ref<number>(0)
 onMounted(() => {
-  active.value = links.find(l => l.href === window.location.pathname)!.id
+  const value = links.find(l => l.href === window.location.pathname)
+  if(value){
+    active.value = value.id
+  }
 })
 const onMouseLeave = () => {
   const link = links.find(l => l.href === router.path)
   if (link) {
-
     active.value = link.id
   }
 }
