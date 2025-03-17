@@ -24,9 +24,19 @@ const splideOption: Options = {
 </template>
 
 <style>
-.splide__pagination__page.is-active {
-  background: var(--color-primary-500);
+.slider {
+  margin-top:1px;
+  margin-left: 1px;
+  outline: 1px solid rgb(221, 221, 221);
+  border: 0.5rem solid white;
+  background: linear-gradient(135deg, var(--color-secondary-200) 0%, var(--color-primary-200) 100%);
+}
+.splide__pagination {
   opacity: 1;
+  display: flex !important;
+  .is-active{
+    background: #2fb3cd !important;
+  }
 }
 
 .splide__arrow {
