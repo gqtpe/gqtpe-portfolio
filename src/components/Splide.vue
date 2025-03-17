@@ -13,12 +13,14 @@ const splideOption: Options = {
 </script>
 
 <template>
-  <splide-wrapper :options="splideOption">
-    <slide v-for="image in images" :key="image.id">
-      <img :src="image.url" alt="Image 1"/>
-    </slide>
-  </splide-wrapper>
-
+  <div class="slider flex items-center justify-center">
+    <splide-wrapper  v-if="images && images.length"  :options="options">
+      <slide v-for="image in images" :key="image.id">
+        <img :src="image.url" alt="Image 1"/>
+      </slide>
+    </splide-wrapper>
+    <div class="helper" v-else> (no images)</div>
+  </div>
 </template>
 
 <style>
