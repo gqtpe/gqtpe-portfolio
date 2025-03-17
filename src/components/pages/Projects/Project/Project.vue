@@ -39,9 +39,40 @@ const project = projects[props.projectName]
   </section>
 </template>
 
-<style>
+<style lang="scss">
 .project-page {
-  max-width: 100vw;
+  padding-top: 1rem;
   width: 100% !important;
+  &__aside{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  &__content {
+    width: 100%;
+    margin: 1rem 0;
+    align-self:flex-start;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    .slider {
+      flex-grow: 1;
+    }
+  }
+
+  &__slider {
+    max-width: 60rem;
+    min-width: 20rem;
+    min-height: 20rem;
+    padding: 2rem;
+  }
+
+  &__pills {
+    width: 20rem;
+  }
 }
+.helper{
+  color: var(--color-gray-400)
+}
+
 </style>
