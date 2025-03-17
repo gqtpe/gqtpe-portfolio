@@ -17,7 +17,7 @@ export const links ={
     github: "https://github.com/gqtpe",
     telegram: "https://t.me/gqtpe",
     trello: "https://gqtpe.github.io/trello",
-    spotify: "https://spotify-gqtpe.vercel.app/home",
+    spotify: "https://spotify-gqtpe.vercel.app",
     trelloGithub: "https://github.com/gqtpe/trello",
     spotifyGithub: "https://github.com/gqtpe/spotify",
 }
