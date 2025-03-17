@@ -100,7 +100,6 @@ const cardPreset = {...(getSlidePreset({delay: props.project.id*300, direction: 
   }
 }
 .card__image {
-  background: rgb(255, 224, 102);
   background: linear-gradient(135deg, var(--color-secondary-200) 0%, var(--color-primary-200) 100%);
   aspect-ratio: 16/9;
 
