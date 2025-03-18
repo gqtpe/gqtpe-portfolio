@@ -85,5 +85,6 @@ function getPopupPreset({delay,variant = 'visible',}:Args){
 
 export {
     getSlidePreset,
-    getFadePreset
+    getFadePreset,
+    getPopupPreset
 }
