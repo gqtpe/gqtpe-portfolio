@@ -35,7 +35,14 @@ const project = projects[props.projectName]
     <div class="project-page__content">
         <Slide class="project-page__slider" :images="project.images"/>
         <aside class="project-page__aside">
-          <div class="text-link-1 " v-if="project.links.url">{{project.links.url.split('//')[1]}}</div><div class="helper" v-else>(preview link not provided)</div>
+          <a v-if="project.links.url" :href="project.links.url" class="flex items-center">
+            <v-icon
+                :scale="1.5"
+                name="bi-link-45deg"
+            />
+            <span class="text-link-1 ">{{project.links.url.split('//')[1]}}</span>
+          </a>
+          <div v-else class="helper">(preview link not provided)</div>
           <Pills class="project-page__pills" :pills="project.pills"/>
         </aside>
     </div>
