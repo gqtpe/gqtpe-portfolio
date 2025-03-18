@@ -10,7 +10,7 @@ import {
 
 } from "oh-vue-icons/icons";
 
-addIcons(BiGithub,FaExpand, FaExternalLinkSquareAlt, CoTrello,BiFileEarmarkPerson , BiSpotify);
+addIcons(BiGithub,FaExpand, FaExternalLinkSquareAlt, CoTrello,BiFileEarmarkPerson , BiSpotify, BiLink45Deg);
 
 
 export {OhVueIcon}
