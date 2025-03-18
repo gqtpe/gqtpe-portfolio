@@ -70,6 +70,10 @@ const project = projects[props.projectName]
     .slider {
       flex-grow: 1;
     }
+    @media(max-width: 40rem){
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   &__slider {
