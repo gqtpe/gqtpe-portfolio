@@ -5,7 +5,9 @@ import {
     BiSpotify,
     CoTrello,
     FaExpand,
-    FaExternalLinkSquareAlt
+    FaExternalLinkSquareAlt,
+    BiLink45Deg,
+
 } from "oh-vue-icons/icons";
 
 addIcons(BiGithub,FaExpand, FaExternalLinkSquareAlt, CoTrello,BiFileEarmarkPerson , BiSpotify);
