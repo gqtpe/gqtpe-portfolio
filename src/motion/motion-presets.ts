@@ -67,6 +67,20 @@ function getFadePreset({delay,variant = 'visible',}:Args){
             }}
     }
 }
+function getPopupPreset({delay,variant = 'visible',}:Args){
+    return {
+        initial: {opacity: 0, scale: 0, transition: { type: 'spring',
+                stiffness: 250,
+                damping: 25,
+                mass: 0.5,}},
+        [variant]: {opacity: 1,scale: 1, transition: { type: 'spring',
+                stiffness: 250,
+                damping: 25,
+                mass: 0.5,
+                delay:delay,
+            }}
+    }
+}
 
 
 export {
