@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type {Pill} from "@/components/pages/Projects/types.ts";
+import {getPopupPreset} from "@/motion/motion-presets.ts";
 
 defineProps<{ pills?: Pill[] }>()
 
