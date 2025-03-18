@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {Pill} from "@/components/pages/Projects/types.ts";
 
-defineProps<{ pills: Pill[] }>()
+defineProps<{ pills?: Pill[] }>()
 
 </script>
 
