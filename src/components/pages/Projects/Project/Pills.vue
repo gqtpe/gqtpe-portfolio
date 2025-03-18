@@ -7,7 +7,14 @@ defineProps<{ pills?: Pill[] }>()
 
 <template>
   <div class="pills">
-    <span v-if="pills && pills.length" v-for="pill in pills" class="pill">{{ pill }}</span>
+    <span
+        v-if="pills && pills.length"
+        v-for="(pill, index) in pills"
+        class="pill"
+        v-motion="getPopupPreset({delay: index * 50, variant: 'visible' })"
+    >
+      {{ pill }}
+    </span>
     <div class="helper" v-else>(no pills)</div>
   </div>
 </template>
