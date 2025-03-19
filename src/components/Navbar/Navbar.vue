@@ -107,10 +107,6 @@ const toggleMenuVisibility = () =>{
   }
 }
 
-.active {
-  transform: translateY(-50%);
-}
-
 .link {
   display: flex;
   align-items: center;
