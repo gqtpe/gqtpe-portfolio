@@ -30,6 +30,16 @@ const onMouseEnter = (id: number) => {
 
 <template>
   <nav class="flex w-1/2 items-center justify-around  text-black ">
+    <v-icon
+        :scale="2"
+        name="co-hamburger-menu"
+    />
+    <div class="burger" @click="toggleMenuVisibility">
+      <v-icon
+          :scale="2"
+          name="co-hamburger-menu"
+      />
+    </div>
     <div
         class="link-wrapper"
         v-for="link in links"
