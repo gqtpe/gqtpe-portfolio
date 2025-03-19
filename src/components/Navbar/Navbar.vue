@@ -29,11 +29,13 @@ const onMouseEnter = (id: number) => {
 </script>
 
 <template>
-  <nav class="flex w-1/2 items-center justify-around  text-black ">
+  <div class="burger" @click="toggleMenuVisibility">
     <v-icon
         :scale="2"
         name="co-hamburger-menu"
     />
+  </div>
+  <nav :class="`flex w-1/2 items-center justify-around  text-black ${isNavbarHidden?'hide':'show'}` ">
     <div class="burger" @click="toggleMenuVisibility">
       <v-icon
           :scale="2"
@@ -60,6 +62,12 @@ const onMouseEnter = (id: number) => {
 
 
 <style scoped>
+.burger {
+  display: none;
+}
+  .burger{
+    display: block;
+  }
 
 .link-wrapper {
   overflow: hidden;
