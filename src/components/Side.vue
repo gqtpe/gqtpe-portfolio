@@ -14,11 +14,7 @@ const show = computed(() => {
   }
 
   // checking except equality with `route.path`
-  if (Array.from(except).some(e => e !== "/" && route.path === e)) {
-    return false;
-  }
-
-  return true;
+  return !Array.from(except).some(e => e !== "/" && route.path === e);
 });
 </script>
 

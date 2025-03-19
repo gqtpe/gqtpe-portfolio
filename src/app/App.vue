@@ -67,16 +67,5 @@ section {
   overflow-y: auto;
 }
 
-.page-wrapper {
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 1rem;
-  @media (max-width: 1440px) {
-    max-width: 1280px;
-  }
-  @media (max-width: 1280px) {
-    max-width: 1024px;
-  }
-}
+
 </style>

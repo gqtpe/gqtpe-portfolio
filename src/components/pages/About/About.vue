@@ -8,12 +8,11 @@ import FallingItems from "@/components/bits/FallingItems.vue";
 import {getSlidePreset} from "@/motion/motion-presets.ts";
 import SimpleStack from "@/components/pages/About/SimpleStack.vue";
 
-
 const windowWidth = window.innerWidth
 </script>
 
 <template>
-  <section class="flex flex-col">
+  <section  class="flex flex-col">
     <h3 class="text-highlight-1 mb-4 max-sm:mb-0 self-start">who i am</h3>
     <div class="flex p-4 gap-4 mb-8  md:items-start max-md:flex-col items-center">
       <div class="flex flex-col items-center about__image basis-1/6 ">
@@ -84,13 +83,6 @@ const windowWidth = window.innerWidth
     border-radius: 1rem;
     aspect-ratio: 1/1;
   }
-}
-
-
-.skill {
-  background: white;
-  border-radius: 50%;
-
 }
 
 </style>

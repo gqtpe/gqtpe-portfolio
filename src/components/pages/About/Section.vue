@@ -14,6 +14,3 @@ defineProps<Props>()
     <p class="text-left text-sm text-gray-600">{{body}}</p>
   </div>
 </template>
-<styles scoped>
-
-</styles>
