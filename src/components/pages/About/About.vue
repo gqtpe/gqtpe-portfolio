@@ -62,6 +62,8 @@ import {getSlidePreset} from "@/motion/motion-presets.ts";
       <DecryptedText v-motion-slide-visible-bottom text="My stack" use-original-chars-only animateOn="hover"
                      class="section-title text-highlight-2 inline"/>
       <FallingItems/>
+      <FallingItems v-if="windowWidth >= 768"/><!--optimization for mobile devices-->
+      <SimpleStack v-else/>
     </div>
 
   </section>
