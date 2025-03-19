@@ -5,6 +5,7 @@ import {useRoute} from "vue-router";
 const router = useRoute()
 
 const active = ref<number>(0)
+const isNavbarHidden = ref(true)
 const links = [
   {id: 1, title: "Home", href: "/"},
   {id: 2, title: "About", href: "/about"},
@@ -25,6 +26,9 @@ const onMouseLeave = () => {
 }
 const onMouseEnter = (id: number) => {
   active.value = id
+}
+const toggleMenuVisibility = () =>{
+    isNavbarHidden.value = !isNavbarHidden.value
 }
 </script>
 
@@ -52,6 +56,7 @@ const onMouseEnter = (id: number) => {
           :class="['flex flex-col links', { active: active === link.id }]"
           @mouseenter="onMouseEnter(link.id)"
           @mouseleave="onMouseLeave"
+          @click="toggleMenuVisibility"
       >
         <span class="link">{{ link.title }}</span>
         <span class="link dark">{{ link.title }}</span>
@@ -116,6 +121,7 @@ const onMouseEnter = (id: number) => {
   background: white;
   border-radius: 0.25rem;
 }
+
 .dark {
   filter: invert(100%);
 }
