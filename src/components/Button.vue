@@ -3,6 +3,7 @@ type Props = {
   color: 'primary' | 'secondary'
 }
  defineProps<Props>()
+//color variant style cases
 const secondaryClasses = "bg-secondary-500 hover:bg-primary-500"
 const primaryClasses = "bg-primary-500 hover:bg-secondary-500"
 </script>

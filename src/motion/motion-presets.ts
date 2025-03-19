@@ -1,14 +1,18 @@
+//functions that return vueuse/motion presets
 type Direction = "top" | "bottom" | "left" | "right";
 type Variant = "visible"|"visibleOnce"|"enter"
+//base Args interface
 interface Args {
     delay?: number //ms
     variant?:Variant
 
 }
+
 interface SlideArgs extends Args {
     initDistance?: number
     direction?: Direction
 }
+//isMobile boolean variable for removing delay in mobile device cases
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
 function getSlidePreset({delay = 0,variant = 'visible',direction = 'bottom', initDistance = 100}:SlideArgs){
     let x:number;
@@ -54,6 +58,9 @@ function getSlidePreset({delay = 0,variant = 'visible',direction = 'bottom', ini
 }
 
 function getFadePreset({delay,variant = 'visible',}:Args){
+    if (isMobile) {
+        delay = 0;
+    }
     return {
         initial: {opacity: 0 , transition: { type: 'spring',
                 stiffness: 250,
@@ -68,6 +75,9 @@ function getFadePreset({delay,variant = 'visible',}:Args){
     }
 }
 function getPopupPreset({delay,variant = 'visible',}:Args){
+    if (isMobile) {
+        delay = 0;
+    }
     return {
         initial: {opacity: 0, scale: 0, transition: { type: 'spring',
                 stiffness: 250,

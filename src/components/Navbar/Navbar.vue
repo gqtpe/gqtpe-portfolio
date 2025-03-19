@@ -1,30 +1,29 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
 import {useRoute} from "vue-router";
-
+import {navbarLinks as links} from "./links"
 const router = useRoute()
-
+//active value sets on active routeLink, or on hovered routeLink
 const active = ref<number>(0)
+//screen <40rem
 const isNavbarHidden = ref(true)
-const links = [
-  {id: 1, title: "Home", href: "/"},
-  {id: 2, title: "About", href: "/about"},
-  {id: 3, title: "Projects", href: "/projects"},
-  {id: 4, title: "Contacts", href: "/contacts"},
-];
+
 onMounted(() => {
-  const value = links.find(l => l.href === window.location.pathname)
+  //initial value setting
+  const value = links.find(l => l.href === router.path)
   if (value) {
     active.value = value.id
   }
 })
 const onMouseLeave = () => {
+  //return active to its initial value on mouseLeave
   const link = links.find(l => l.href === router.path)
   if (link) {
     active.value = link.id
   }
 }
 const onMouseEnter = (id: number) => {
+  //setting active value on hover
   active.value = id
 }
 const toggleMenuVisibility = () =>{
@@ -39,7 +38,7 @@ const toggleMenuVisibility = () =>{
         name="co-hamburger-menu"
     />
   </div>
-  <nav :class="`flex w-1/2 items-center justify-around  text-black ${isNavbarHidden?'hide':'show'}` ">
+  <nav :class="`flex w-1/2 items-center justify-around  text-black` ">
     <div class="burger" @click="toggleMenuVisibility">
       <v-icon
           :scale="2"
@@ -96,7 +95,9 @@ const toggleMenuVisibility = () =>{
     display: block;
   }
 }
-
+.active {
+  transform: translateY(-50%);
+}
 .link-wrapper {
   overflow: hidden;
   max-height: 2rem;

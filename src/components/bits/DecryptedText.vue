@@ -15,7 +15,7 @@ interface Props {
   encryptedClassName?: string
   animateOn?: 'view' | 'hover'
 }
-
+//default props
 const props = withDefaults(defineProps<Props>(), {
   speed: 50,
   maxIterations: 10,
@@ -40,11 +40,11 @@ useMotion(containerRef, {
   initial: { opacity: 0, y: 10, visibility: 'hidden' },
   enter: { opacity: 1, y: 0, visibility: 'visible', transition: { duration: 0.4 } },
 })
-
+//useOriginalChars only logic
 const availableChars = computed(() => {
   return props.useOriginalCharsOnly
       ? Array.from(new Set(props.text.split(''))).filter((char) => char !== ' ')
-      : props.characters.split('')
+      : props.characters.split('')//else using characters default value
 })
 
 const getNextIndex = (revealedSet: Set<number>) => {

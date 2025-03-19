@@ -4,7 +4,7 @@ import Typing from "@/components/Typing.vue";
 import cv from "@/assets/CV.pdf";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import {getFadePreset} from "@/motion/motion-presets.ts";
-
+//switching items on home page
 const items = [
   'web developer',
   'frontend developer',
@@ -17,12 +17,10 @@ const items = [
   <section class="flex items-center text-white max-md:justify-center">
     <div class="bg-black p-8 flex flex-col gap-[10px] items-start max-md:w-full text-white">
       <h6 class="ellipse1 uppercase text-lg font-bold">
-
         <DecryptedText
             text="hello, there"
             animateOn="view"
             revealDirection="start"
-
         />
       </h6>
       <h1 class="ellipse2 uppercase font-black lg:text-7xl sm:text-6xl max-md:text-7xl max-sm:text-3xl">
