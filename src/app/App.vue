@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from "vue";
-import { useRoute } from "vue-router";
+import {nextTick, onMounted, ref} from "vue";
 import Header from "@/components/Header/Header.vue";
 import Side from "@/components/Side.vue";
 import Footer from "@/components/Footer/Footer.vue";
 import Loading from "@/components/Loading.vue";
 
-const route = useRoute();
+//value for detect all fonts and images is loaded
 const isLoaded = ref(false);
-
 onMounted(async () => {
   await nextTick(); // Ждём рендеринг
   await waitForFontsAndImages();
@@ -19,17 +17,18 @@ onMounted(async () => {
 });
 
 async function waitForFontsAndImages() {
+  //waiting all fonts is loaded
   await document.fonts.ready;
-
+  //waiting all images is loaded
   const images = Array.from(document.images).map(
       (img) =>
           img.complete
               ? Promise.resolve()
               : new Promise((resolve) => (img.onload = img.onerror = resolve))
   );
+
   await Promise.all(images);
 }
-
 </script>
 
 <template>
@@ -52,7 +51,8 @@ main {
     aside {
       display: none;
     }
-    section{
+
+    section {
       width: 100%;
     }
   }
@@ -63,7 +63,7 @@ section {
   @apply w-3/4;
   color: black;
   height: 100%;
-  max-height:100%;
+  max-height: 100%;
   overflow-y: auto;
 }
 
@@ -71,7 +71,7 @@ section {
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-
+  padding: 1rem;
   @media (max-width: 1440px) {
     max-width: 1280px;
   }
