@@ -2,7 +2,7 @@
 import cv from "@/assets/CV.pdf";
 import ava from "@/assets/img/ava_corrected.png"
 import Button from "@/components/Button.vue";
-import Section from "@/components/pages/About/Section.vue";
+import SectionT from "@/components/pages/About/Section.vue";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import FallingItems from "@/components/bits/FallingItems.vue";
 import {getSlidePreset} from "@/motion/motion-presets.ts";
@@ -12,7 +12,7 @@ const windowWidth = window.innerWidth
 </script>
 
 <template>
-  <section title="about" body="body" period="2"  class="flex flex-col">
+  <section  class="flex flex-col">
     <h3 class="text-highlight-1 mb-4 max-sm:mb-0 self-start">who i am</h3>
     <div class="flex p-4 gap-4 mb-8  md:items-start max-md:flex-col items-center">
       <div class="flex flex-col items-center about__image basis-1/6 ">
@@ -44,7 +44,7 @@ const windowWidth = window.innerWidth
         <div class="grid grid-cols-2 gap-8 max-md:flex flex-col">
           <div v-motion="getSlidePreset({delay: 400})">
             <DecryptedText text="experience" use-original-chars-only animateOn="hover" class="section-title"/>
-            <Section
+            <SectionT
                 title="Upwork"
                 period="2023 - current"
                 body="Developed web applications using React and Vite. Independently designed architecture, integrated APIs, and optimized performance. Worked with TypeScript, Redux Toolkit, and testing (TDD/BDD)"
@@ -52,7 +52,7 @@ const windowWidth = window.innerWidth
           </div>
           <div v-motion="getSlidePreset({delay: 600})">
             <DecryptedText text="education" use-original-chars-only animateOn="hover" class="section-title"/>
-            <Section
+            <SectionT
                 title="Kozybaev-Arizona University"
                 period="2022 - current"
                 body="Gained expertise in engineering and computational mathematics, focusing on numerical methods, optimization algorithms, data analysis, and mathematical modeling."
