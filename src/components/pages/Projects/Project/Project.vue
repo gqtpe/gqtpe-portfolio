@@ -24,13 +24,7 @@ const project = projects[props.projectName]
       />
     </h2>
     <p class="text-comment text-sm self-start">
-      <DecryptedText
-          :speed="100"
-          :use-original-chars-only="true"
-          animate-on="view"
-          revealDirection="start"
-          :text="project.description"
-      />
+      {{project.description}}
     </p>
     <div class="project-page__content">
         <Slide class="project-page__slider" :images="project.images"/>
