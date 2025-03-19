@@ -34,12 +34,12 @@ async function waitForFontsAndImages() {
 
 <template>
   <template v-if="isLoaded" v-motion-roll-visible-top>
-  <Header/>
-  <main class="w-full h-full text-white inset-shadow-sm flex">
-    <Side v-if="!!route.path.slice(1) && !route.path.includes('/project/')" :title="route.path.slice(1)"/>
-    <RouterView/>
-  </main>
-  <Footer/>
+    <Header/>
+    <main class="w-full h-full text-white inset-shadow-sm flex">
+      <Side :except="['/project/', '/']"/>
+      <RouterView/>
+    </main>
+    <Footer/>
   </template>
   <template v-if="!isLoaded"><Loading/></template>
 </template>
