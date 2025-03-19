@@ -38,7 +38,7 @@ const toggleMenuVisibility = () =>{
         name="co-hamburger-menu"
     />
   </div>
-  <nav :class="`flex w-1/2 items-center justify-around  text-black` ">
+  <nav :class="`flex w-1/2 items-center justify-around  text-black ${isNavbarHidden?'hide':'show'}`">
     <div class="burger" @click="toggleMenuVisibility">
       <v-icon
           :scale="2"
