@@ -9,11 +9,9 @@ import DecryptedText from "@/components/bits/DecryptedText.vue";
   <header v-motion-slide-top class="z-20 page-wrapper flex justify-between items-center">
       <DecryptedText text="GQTPE" use-original-chars-only class="logo font-black" />
       <Navbar/>
-    <a target="_blank" :href="links.telegram">
-      <Button color="primary">
+      <Button color="primary" :link="links.telegram">
         Let's talk
       </Button>
-    </a>
   </header>
 </template>
 
