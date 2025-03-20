@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Button from "@/components/Button.vue";
 import Typing from "@/components/Typing.vue";
-import cv from "@/assets/CV.pdf";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import {getFadePreset} from "@/motion/motion-presets.ts";
 //switching items on home page
@@ -35,9 +34,13 @@ const items = [
             :items=items
         />
       </h6>
-      <a v-motion="getFadePreset({delay: 500})" :href="cv" download="CV.pdf" target='_blank'>
-        <Button color="secondary">Download CV</Button>
-      </a>
+      <Button
+          v-motion="getFadePreset({delay: 500})"
+          color="secondary"
+          link="/CV.pdf"
+      >
+        Download CV
+      </Button>
     </div>
   </section>
 </template>
