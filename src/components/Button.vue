@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 type Props = {
   color: 'primary' | 'secondary'
   link?: string
