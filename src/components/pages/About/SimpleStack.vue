@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { aboutSVGs } from "@/assets/svg";
+defineProps<{svgs: string[]}>()
 </script>
 
 <template>
   <div class="wrapper">
-      <img loading="lazy" v-for="svg in aboutSVGs" :src="svg" alt="stack-item">
+      <img loading="lazy" v-for="svg in svgs" :src="svg" alt="stack-item">
   </div>
 </template>
 
