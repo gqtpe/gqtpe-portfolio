@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, nextTick } from "vue";
 import { Engine, Render, World, Bodies, Runner, Mouse, MouseConstraint, Events, Body } from "matter-js";
-import { aboutSVGs } from "@/assets/svg";
-//todo: define props
+const props = defineProps<{svgs: string[]}>()
+
 
 const stackContainer = ref<HTMLElement | null>(null);
 let engine: Engine;
@@ -54,11 +54,11 @@ const initMatter = () => {
 
   // Иконки
   const spacing = 0;
-  const diameter = Math.floor(width / aboutSVGs.length);
+  const diameter = Math.floor(width / props.svgs.length);
   const scaleFactor = 0.8; // Можно подбирать вручную
   const scale = (diameter / 250) * scaleFactor;
 
-  const icons = aboutSVGs.map((src, i) =>{
+  const icons = props.svgs.map((src, i) =>{
         if(width<1024){
           return Bodies.circle(i * (diameter + spacing), 20, diameter*0.625 , {
             restitution: 0.8,
