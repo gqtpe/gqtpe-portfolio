@@ -11,17 +11,24 @@ import spotifySearchStart from "@/assets/img/spotify/spotify-gqtpe.vercel.app_se
 import spotifyTrack from "@/assets/img/spotify/spotify-gqtpe.vercel.app_track-page.png";
 import spotifyArtists from "@/assets/img/spotify/spotify-gqtpe.vercel.artists-search.png";
 import spotifyAccountConfirmation from "@/assets/img/spotify/user-account-confirmation.png";
-
-export const links ={
+export const socialLinks = {
     linkedin: "https://www.linkedin.com/in/temirtas-nursayyn-4090a0350/",
     github: "https://github.com/gqtpe",
     telegram: "https://t.me/gqtpe",
+    instagram: "https://instagram/nursain.t",
+    codewars: "https://codewars.com/gqtpe",
+}
+export const links ={
+    ...socialLinks,
     trello: "https://gqtpe.github.io/trello",
     spotify: "https://spotify-gqtpe.vercel.app",
     trelloGithub: "https://github.com/gqtpe/trello",
     spotifyGithub: "https://github.com/gqtpe/spotify",
     portfolioGithub: "https://github.com/gqtpe/gqtpe-portfolio",
+
+
 }
+
 type ProjectImages = {
     [key in ProjectName]:Image[]
 }
