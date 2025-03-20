@@ -7,7 +7,7 @@ import DecryptedText from "@/components/bits/DecryptedText.vue";
 import FallingItems from "@/components/bits/FallingItems.vue";
 import {getSlidePreset} from "@/motion/motion-presets.ts";
 import SimpleStack from "@/components/pages/About/SimpleStack.vue";
-
+import Info from "@/components/pages/About/Info.vue";
 import aboutPage from "./about.ts";
 const windowWidth = window.innerWidth
 </script>
