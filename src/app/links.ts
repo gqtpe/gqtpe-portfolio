@@ -15,8 +15,8 @@ export const socialLinks = {
     linkedin: "https://www.linkedin.com/in/temirtas-nursayyn-4090a0350/",
     github: "https://github.com/gqtpe",
     telegram: "https://t.me/gqtpe",
-    instagram: "https://instagram/nursain.t",
-    codewars: "https://codewars.com/gqtpe",
+    instagram: "https://instagram.com/nursain.t",
+    codewars: "https://codewars.com/users/gqtpe",
 }
 export const links ={
     ...socialLinks,
