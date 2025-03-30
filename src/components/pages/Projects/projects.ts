@@ -3,7 +3,7 @@ import type {Projects} from "@/components/pages/Projects/types";
 const projects: Projects = {
     ["trello"]: {
         id: 1,
-        title: 'Trello',
+        title: 'Trello-Clone',
         description: 'Todolist is a pet project for task management, created using modern web technologies. This project allows for convenient task management and supports user authorization.',
         icon: "co-trello",
         links: {
@@ -34,7 +34,7 @@ const projects: Projects = {
     },
     ["spotify"]: {
         id: 2,
-        title: 'Spotify',
+        title: 'Spotify-Clone',
         description: 'A Spotify clone built with Next.js, offering a similar user experience to the original Spotify platform. This project integrates with the Spotify Web API to provide music streaming, playlists, and user interaction features.',
         icon: "bi-spotify",
         links: {

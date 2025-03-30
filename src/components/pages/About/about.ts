@@ -25,11 +25,11 @@ const aboutPage:AboutPage = {
     info:{
         ava: ava,
         icons: [
-            {fill: "#E4405F", name: "bi-instagram",link: links.instagram},
-            {fill: "#0088CC", name: "bi-telegram",link: links.telegram},
-            {fill: "#0A66C2", name: "bi-linkedin",link: links.linkedin},
             {fill: "#181717", name: "bi-github",link: links.github},
+            {fill: "#0A66C2", name: "bi-linkedin",link: links.linkedin},
+            {fill: "#0088CC", name: "bi-telegram",link: links.telegram},
             {fill: "#AD2C27", name: "co-codewars",link: links.codewars},
+            {fill: "#E4405F", name: "bi-instagram",link: links.instagram},
         ],
         hero: "i'm Nursain Temirtas",
         subtitle: "A Front-end developer with one year of freelance experience (1 year). I have strong skills in modern technologies like React, Vite, TypeScript, and Redux Toolkit. I build scalable and well-structured applications. I like learning new things, discussing ideas with the team, and finding the best solutions together. I also have some Back-end experience, which helps me understand the full development process and work better with Back-end developers. I'm a constantly developing person, open-minded and dedicated.",
