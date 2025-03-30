@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ProjectCard from "./ProjectCard.vue";
 import projects from "./projects";
+import {getPopupPreset} from "@/motion/motion-presets.ts";
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import projects from "./projects";
           <ProjectCard v-for="project in projects"
                        :project="project"
                        :key="project.id"
+
           />
         </div>
       </div>

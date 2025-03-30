@@ -1,28 +1,17 @@
 <script setup lang="ts">
 import {cutFrom} from "@/utils/cutFrom";
 import type {Project} from "@/components/pages/Projects/types";
-import {getSlidePreset} from "@/motion/motion-presets.ts";
+import {getPopupPreset, getSlidePreset} from "@/motion/motion-presets.ts";
 
 
 type Props = {
   project: Project
 }
 const props = defineProps<Props>()
-const cardPreset = {...(getSlidePreset({delay: props.project.id*300, direction: 'bottom'})),
-  hovered: {
-    y: -10,
-    transition: {
-      type: "ease",
-      stiffness: 250,
-      damping: 25,
-      mass: 0.5,
-    }
-  }
-}
 </script>
 
 <template>
-  <div class="card" v-motion="cardPreset">
+  <div class="card" v-motion="getPopupPreset({delay: project.id*100, variant: 'visibleOnce'})">
     <div class="card__image relative overflow-hidden flex items-center justify-center">
       <v-icon
           :name="project.icon"
