@@ -10,7 +10,7 @@ defineProps<InfoPage>()
 
 <template>
   <div class="flex p-4 gap-4 mb-8  md:items-start max-md:flex-col items-center">
-    <div class="flex flex-col items-center about__image basis-1/6 ">
+    <div class="flex flex-col items-center about__image basis-1/6  ">
       <img v-motion-roll-visible-once-top loading="lazy" class="" :src="ava" alt="">
       <Button
           link="/CV.pdf"
@@ -22,7 +22,7 @@ defineProps<InfoPage>()
       </Button>
     </div>
     <div class="about__info basis-5/6 max-md:text-center">
-      <h3 class="uppercase mb-6 font-bold text-2xl flex flex-row items-center gap-2 max-md: flex-col">
+      <h3 class="uppercase mb-6 font-bold text-2xl flex flex-row items-center gap-2 flex-wrap max-md:flex-col">
         <DecryptedText :text="hero" animateOn="view" use-original-chars-only></DecryptedText>
         <div v-motion="getSlidePreset({delay: 1100, initDistance: 50})" class="flex items-center justify-center">
           <a target="_blank" class="flex items-center justify-center" v-for="icon in icons" :href="icon.link">
