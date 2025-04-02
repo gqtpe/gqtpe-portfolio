@@ -12,7 +12,7 @@ import spotifyTrack from "@/assets/img/spotify/spotify-gqtpe.vercel.app_track-pa
 import spotifyArtists from "@/assets/img/spotify/spotify-gqtpe.vercel.artists-search.png";
 import spotifyAccountConfirmation from "@/assets/img/spotify/user-account-confirmation.png";
 export const socialLinks = {
-    linkedin: "https://www.linkedin.com/in/temirtas-nursayyn-4090a0350/",
+    linkedin: "https://www.linkedin.com/in/temirtas-nursain",
     github: "https://github.com/gqtpe",
     telegram: "https://t.me/gqtpe",
     instagram: "https://instagram.com/nursain.t",
