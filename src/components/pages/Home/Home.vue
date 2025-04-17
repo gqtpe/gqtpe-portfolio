@@ -2,14 +2,18 @@
 import Button from "@/components/Button.vue";
 import Typing from "@/components/Typing.vue";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
-import {getFadePreset} from "@/motion/motion-presets.ts";
-//switching items on home page
+import {getSlidePreset} from "@/motion/motion-presets.ts";
+import {computed} from "vue";
+
+// switching items on home page
 const items = [
   'web developer',
   'frontend developer',
   'software engineer',
-]
-// todo: normal items switching
+];
+
+// motion presets
+const buttonMotion = computed(() => getSlidePreset({ delay: 500 ,direction: "bottom" ,variant:'visibleOnce'}));
 </script>
 
 <template>
@@ -22,6 +26,7 @@ const items = [
             revealDirection="start"
         />
       </h6>
+
       <h1 class="ellipse2 uppercase font-black lg:text-7xl sm:text-6xl max-md:text-7xl max-sm:text-3xl">
         <DecryptedText
             text="i'm Nursain Temirtas"
@@ -29,13 +34,13 @@ const items = [
             revealDirection="start"
         />
       </h1>
+
       <h6 class="uppercase font-bold">
-        <Typing
-            :items=items
-        />
+        <Typing :items="items" />
       </h6>
+
       <Button
-          v-motion="getFadePreset({delay: 500})"
+          v-motion="buttonMotion"
           color="secondary"
           link="/CV.pdf"
       >
@@ -44,8 +49,8 @@ const items = [
     </div>
   </section>
 </template>
-<style scoped>
 
+<style scoped>
 .ellipse1, .ellipse2 {
   position: relative;
   z-index: 1;
@@ -56,7 +61,6 @@ const items = [
   position: absolute;
   width: 2rem;
   height: 2rem;
-
 }
 
 .ellipse1:before {
@@ -74,5 +78,4 @@ const items = [
   bottom: -10%;
   right: -1%;
 }
-
 </style>

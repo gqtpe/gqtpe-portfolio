@@ -6,7 +6,6 @@ import Info from "@/components/pages/About/Info.vue";
 import aboutPage from "./about.ts";
 
 const windowWidth = window.innerWidth;
-
 </script>
 
 <template>
@@ -26,6 +25,7 @@ const windowWidth = window.innerWidth;
 .stack {
   min-height: 10rem;
 }
+
 .about__image {
   max-width: 15rem;
 

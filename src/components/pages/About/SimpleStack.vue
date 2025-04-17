@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import {getPopupPreset} from "@/motion/motion-presets.ts";
 
 defineProps<{svgs: string[]}>()
 </script>
 
 <template>
   <div class="wrapper gap-1">
-    <div v-for="(svg,i) in svgs"  v-motion="getPopupPreset({delay: i * 50, variant: 'visible' })" >
+    <div v-for="(svg) in svgs"  v-motion-pop-visible-once>
       <img  :src="svg" alt="stack-item" >
     </div>
     </div>
