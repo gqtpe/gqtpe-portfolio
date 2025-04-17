@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import {cutFrom} from "@/utils/cutFrom";
 import type {Project} from "@/components/pages/Projects/types";
-import {getPopupPreset, getSlidePreset} from "@/motion/motion-presets.ts";
+import {getPopupPreset} from "@/motion/motion-presets.ts";
 
 
 type Props = {
   project: Project
 }
-const props = defineProps<Props>()
 </script>
 
 <template>
@@ -54,7 +53,7 @@ const props = defineProps<Props>()
 </template>
 
 <style scoped>
-.card{
+.card {
   min-width: 10rem;
 }
 
@@ -62,7 +61,7 @@ const props = defineProps<Props>()
   width: 100%;
   background: rgba(255, 255, 255, 0.5);
   transform: translateX(-20%);
-  height:20%;
+  height: 20%;
   opacity: 0;
   transition: opacity 0.1s ease-out, transform 0.1s ease-in-out;
 
@@ -79,15 +78,17 @@ const props = defineProps<Props>()
   padding: 0.5rem;
   margin-right: 1rem;
 }
-.card__icon{
+
+.card__icon {
   font-size: 3rem !important;
   width: 3rem !important;
   height: 3rem !important;
-  @media(max-width: 1440px){
+  @media (max-width: 1440px) {
     width: 5rem !important;
     height: 5rem !important;
   }
 }
+
 .card__image {
   background: linear-gradient(135deg, var(--color-secondary-200) 0%, var(--color-primary-200) 100%);
   aspect-ratio: 16/9;
