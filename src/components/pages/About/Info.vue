@@ -20,6 +20,9 @@ defineProps<InfoPage>()
       >
         Download CV
       </Button>
+<!--      <div v-for="lang in languages">-->
+
+<!--      </div>-->
     </div>
     <div class="about__info basis-5/6 max-md:text-center">
       <h3 class="uppercase mb-6 font-bold text-2xl flex flex-row items-center gap-2 flex-wrap max-md:flex-col">
