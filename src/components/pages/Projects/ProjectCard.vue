@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {cutFrom} from "@/utils/cutFrom";
 import type {Project} from "@/components/pages/Projects/types";
-import {getPopupPreset} from "@/motion/motion-presets.ts";
 
 
 type Props = {
@@ -11,7 +10,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div class="card" v-motion="getPopupPreset({delay: project.id*100, variant: 'visibleOnce'})">
+  <div class="card" v-motion-slide-visible-once-left>
     <div class="card__image relative overflow-hidden flex items-center justify-center">
       <v-icon
           :name="project.icon"
