@@ -38,7 +38,7 @@ const toggleMenuVisibility = () =>{
         name="co-hamburger-menu"
     />
   </div>
-  <nav :class="`flex w-1/2 items-center justify-around  text-black ${isNavbarHidden?'hide':'show'}`">
+  <nav :class="`flex w-1/2 items-center justify-around text-black ${isNavbarHidden?'hide':'show'}`">
     <div class="burger" @click="toggleMenuVisibility">
       <v-icon
           :scale="2"
@@ -75,7 +75,6 @@ const toggleMenuVisibility = () =>{
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -116,6 +115,10 @@ const toggleMenuVisibility = () =>{
   height: 2rem;
   padding: 0 0.5rem;
   background: white;
+  @media(prefers-color-scheme: dark){
+    background: var(--color-zinc-800);
+    color: white;
+  }
   border-radius: 0.25rem;
 }
 
