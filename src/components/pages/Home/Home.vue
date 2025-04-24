@@ -17,9 +17,9 @@ const buttonMotion = computed(() => getSlidePreset({ delay: 500 ,direction: "bot
 </script>
 
 <template>
-  <section class="flex items-center text-white max-md:justify-center">
-    <div class="bg-black p-8 flex flex-col gap-[10px] items-start max-md:w-full text-white">
-      <h6 class="ellipse1 uppercase text-lg font-bold">
+  <section class="flex items-center max-md:justify-center dark:bg-zinc-900">
+    <div class="bg-black dark:bg-zinc-100 dark:text-black p-8 flex flex-col gap-[10px] items-start max-md:w-full text-white">
+      <h6 class="ellipse1 uppercase text-lg font-bold dark:text-zinc-500">
         <DecryptedText
             text="hello, there"
             animateOn="view"
@@ -27,7 +27,7 @@ const buttonMotion = computed(() => getSlidePreset({ delay: 500 ,direction: "bot
         />
       </h6>
 
-      <h1 class="ellipse2 uppercase font-black lg:text-7xl sm:text-6xl max-md:text-7xl max-sm:text-3xl">
+      <h1 class="ellipse2 dark:text-zinc-800 uppercase font-black lg:text-7xl sm:text-6xl max-md:text-7xl max-sm:text-3xl">
         <DecryptedText
             text="i'm Nursain Temirtas"
             animateOn="view"
@@ -35,7 +35,7 @@ const buttonMotion = computed(() => getSlidePreset({ delay: 500 ,direction: "bot
         />
       </h1>
 
-      <h6 class="uppercase font-bold">
+      <h6 class="uppercase font-bold  dark:text-zinc-500">
         <Typing :items="items" />
       </h6>
 
@@ -65,6 +65,10 @@ const buttonMotion = computed(() => getSlidePreset({ delay: 500 ,direction: "bot
 
 .ellipse1:before {
   background-color: var(--color-secondary-500);
+  @media(prefers-color-scheme: dark){
+    background-color: var(--color-secondary-300);
+  }
+
   border-radius: 50%;
   z-index: -1;
   bottom: -10%;
@@ -73,6 +77,9 @@ const buttonMotion = computed(() => getSlidePreset({ delay: 500 ,direction: "bot
 
 .ellipse2:after {
   background-color: var(--color-primary-500);
+  @media(prefers-color-scheme: dark){
+    background-color: var(--color-primary-200);
+  }
   border-radius: 50%;
   z-index: -1;
   bottom: -10%;
