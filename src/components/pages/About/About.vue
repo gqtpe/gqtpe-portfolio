@@ -9,7 +9,7 @@ const windowWidth = window.innerWidth;
 </script>
 
 <template>
-  <section class="flex flex-col">
+  <section class="flex flex-col dark:bg-zinc-900 dark:text-white">
     <h3 class="text-highlight-1 mb-4 max-sm:mb-0 self-start">who i am</h3>
     <Info v-bind="aboutPage.info"/>
     <div class="stack flex flex-col items-center grow-1">
