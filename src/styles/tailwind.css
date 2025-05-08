@@ -21,6 +21,15 @@
     0 0.3px 0.4px hsla(0, 0%, 0%, 0.02),
     0 0.9px 1.5px hsla(0, 0%, 0%, 0.045),
     0 3.5px 6px hsla(0, 0%, 0%, 0.09);
+
+    --section1:
+            radial-gradient(at 40% 20%, hsla(3,0%,0%,1) 0px, transparent 50%),
+            radial-gradient(at 80% 0%, hsla(189,100%,50%,1) 0px, transparent 50%),
+            radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
+            radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%),
+            radial-gradient(at 0% 100%, hsla(22,100%,77%,1) 0px, transparent 50%),
+            radial-gradient(at 80% 100%, hsla(240,42%,31%,1) 0px, transparent 50%),
+            radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);
 }
 
 
