@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import {nextTick, onMounted, ref} from "vue";
 import Header from "@/components/Header/Header.vue";
-import Side from "@/components/Side.vue";
-import Footer from "@/components/Footer/Footer.vue";
 import Loading from "@/components/Loading.vue";
 
 //value for detect all fonts and images is loaded
@@ -34,37 +32,52 @@ async function waitForFontsAndImages() {
 <template>
   <template v-if="isLoaded" v-motion-roll-visible-top>
     <Header/>
-    <main class="w-full h-full text-white inset-shadow-sm flex">
-      <Side :except="['/project/', '/']"/>
-      <RouterView/>
+    <main>
+    <section class="home">
+
+    </section>
+    <section class="about">
+
+    </section>
     </main>
-    <Footer/>
   </template>
-  <template v-if="!isLoaded"><Loading/></template>
+  <template v-if="!isLoaded">
+    <Loading/>
+  </template>
 </template>
 
 <style>
 
 main {
   overflow-y: auto;
+  scroll-snap-type: y mandatory;
   @media (max-width: 1024px) {
     aside {
       display: none;
     }
-
     section {
       width: 100%;
     }
   }
 
 }
-
 section {
-  @apply w-3/4;
+  scroll-snap-align: start;
   color: black;
   height: 100%;
   max-height: 100%;
   overflow-y: auto;
+}
+.home{
+  background-color:hsla(0,100%,50%,1);
+  background-image: var(--section1);
+  @media(prefers-color-scheme: dark){
+    filter: grayscale(100%);
+  }
+
+}
+.about{
+  background: black;
 }
 
 
