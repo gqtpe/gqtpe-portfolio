@@ -24,6 +24,7 @@ html{
 }
 #app{
     max-height: 100vh;
+    max-width: 100vw;
     height: 100vh;
     display: grid;
     overflow: hidden;
