@@ -3,8 +3,8 @@ import gsap from "gsap";
 import {SplitText} from "gsap/SplitText"
 import {onBeforeMount, onMounted, useTemplateRef} from "vue";
 
-const hero = useTemplateRef('hero')
-const subtitle = useTemplateRef('title')
+const hero = useTemplateRef<null|Element>('hero')
+const subtitle = useTemplateRef<null|Element>('title')
 onBeforeMount(() => {
   gsap.registerPlugin(SplitText)
 })
