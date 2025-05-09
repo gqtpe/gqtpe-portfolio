@@ -2,6 +2,7 @@
 import {nextTick, onMounted, ref} from "vue";
 import Header from "@/components/Header/Header.vue";
 import Loading from "@/components/Loading.vue";
+import Home from "@/components/pages/Home/Home.vue";
 
 //value for detect all fonts and images is loaded
 const isLoaded = ref(false);
