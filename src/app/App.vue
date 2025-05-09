@@ -34,12 +34,10 @@ async function waitForFontsAndImages() {
   <template v-if="isLoaded" v-motion-roll-visible-top>
     <Header/>
     <main>
-    <section class="home">
+      <Home/>
+      <section class="about">
 
-    </section>
-    <section class="about">
-
-    </section>
+      </section>
     </main>
   </template>
   <template v-if="!isLoaded">
@@ -56,12 +54,14 @@ main {
     aside {
       display: none;
     }
+
     section {
       width: 100%;
     }
   }
 
 }
+
 section {
   scroll-snap-align: start;
   color: black;
@@ -69,15 +69,8 @@ section {
   max-height: 100%;
   overflow-y: auto;
 }
-.home{
-  background-color:hsla(0,100%,50%,1);
-  background-image: var(--section1);
-  @media(prefers-color-scheme: dark){
-    filter: grayscale(100%);
-  }
 
-}
-.about{
+.about {
   background: black;
 }
 
