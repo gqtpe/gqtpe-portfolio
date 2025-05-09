@@ -30,6 +30,9 @@ onMounted(() => {
       stagger: 0.2,
       ease: "expoScale(0.5,7,none)",
 
+    })
+  }
+})
 </script>
 
 <template>
@@ -41,4 +44,24 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.home {
+  color: white;
+  text-align: center;
+  background-color: hsla(0, 100%, 50%, 1);
+  background-image: var(--section1);
+  @media (prefers-color-scheme: dark) {
+    filter: grayscale(100%);
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.home_hero {
+  width: 100%;
+  border: 1px solid red;
+  height: 20rem;
+
+}
 </style>
