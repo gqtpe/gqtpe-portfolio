@@ -33,7 +33,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="">
+  <section class="home">
+      <h3 ref="title" class="uppercase">hello there</h3>
+      <h1 ref="hero" class=" text-8xl font-black uppercase">nursain temirtas</h1>
 
   </section>
 </template>
