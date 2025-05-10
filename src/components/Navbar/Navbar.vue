@@ -34,6 +34,12 @@ const onMouseEnter = (id: number) => {
   //setting active value on hover
   active.value = id
 }
+const onLinkClick = (target: string)=>{
+  if(isMobile){
+    toggleMenuVisibility()
+  }
+  props.scrollTo(target)
+}
 const toggleMenuVisibility = () => {
   isNavbarHidden.value = !isNavbarHidden.value
 }
