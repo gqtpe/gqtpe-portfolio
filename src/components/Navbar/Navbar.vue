@@ -3,6 +3,7 @@ import {onMounted, ref} from "vue";
 import {useRoute} from "vue-router";
 import {navbarLinks as links} from "./links"
 import {useIsMobile} from "@/app/hooks/useIsMobile.ts"
+import Link from "@/components/Navbar/Link.vue";
 
 const isMobile = useIsMobile()
 const router = useRoute()
