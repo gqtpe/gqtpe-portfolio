@@ -95,44 +95,10 @@ const toggleMenuVisibility = () => {
     z-index: 40;
     transition: transform, 0.2s ease-in-out;
   }
-  nav.show{
-    transform: translateX(100%);
-  }
-  nav.hide{
-    transform: translateX(0);
-  }
   .burger{
     display: block;
   }
 }
 
-.active {
-  transform: translateY(-50%);
-}
 
-.link-wrapper {
-  overflow: hidden;
-  max-height: 2rem;
-  height: 2rem;
-
-  .links {
-    transition: transform, 0.2s ease-in-out;
-  }
-}
-
-.link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  height: 2rem;
-  padding: 0 1rem;
-  background: var(--color-zinc-800);
-  color: white;
-  border-radius: 0.25rem;
-}
-
-.dark {
-  filter: invert(100%);
-}
 </style>
