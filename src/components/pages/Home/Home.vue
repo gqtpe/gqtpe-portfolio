@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import gsap from "gsap";
-import {SplitText} from "gsap/SplitText"
-import {onBeforeMount, onMounted, useTemplateRef} from "vue";
+import SplitText from "gsap/SplitText"
+import {onMounted, useTemplateRef} from "vue";
 
-const hero = useTemplateRef<null|Element>('hero')
-const subtitle = useTemplateRef<null|Element>('title')
-onBeforeMount(() => {
-  gsap.registerPlugin(SplitText)
-})
+
+
+const hero = useTemplateRef<null | Element>('hero')
+const subtitle = useTemplateRef<null | Element>('title')
 onMounted(() => {
   if (hero.value) {
     const split = SplitText.create(hero.value, {type: 'chars, lines, words'})
