@@ -39,7 +39,6 @@ onMounted(() => {
         toggleActions: 'play none restart none',
       },
       ease: "expoScale(0.5,7,none)",
-
     })
   }
 })
@@ -47,9 +46,8 @@ onMounted(() => {
 
 <template>
   <section class="home">
-      <h3 ref="title" class="uppercase">hello there</h3>
-      <h1 ref="hero" class=" text-8xl font-black uppercase">nursain temirtas</h1>
-
+    <h3 ref="title" class="uppercase">front-end developer</h3>
+    <h1 ref="hero"  class=" text-8xl font-black uppercase">nursain temirtas</h1>
   </section>
 </template>
 
