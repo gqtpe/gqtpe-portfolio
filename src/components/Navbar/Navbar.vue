@@ -4,6 +4,10 @@ import {useRoute} from "vue-router";
 import {navbarLinks as links} from "./links"
 import {useIsMobile} from "@/app/hooks/useIsMobile.ts"
 import Link from "@/components/Navbar/Link.vue";
+type Props = {
+  scrollTo: (target: string)=>void
+}
+const props = defineProps<Props>()
 
 const isMobile = useIsMobile()
 const router = useRoute()
