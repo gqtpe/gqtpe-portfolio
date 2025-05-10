@@ -6,10 +6,10 @@ import DecryptedText from "@/components/bits/DecryptedText.vue";
 </script>
 
 <template>
-  <header v-motion-slide-top class="text-white dark:text-zinc-200">
-    <div class="header__wrapper glass ">
+  <header class="text-white dark:text-zinc-200">
+    <div class="header__wrapper glass">
       <DecryptedText text="GQTPE" use-original-chars-only class="logo font-black" />
-      <Navbar/>
+      <slot/>
       <Button color="primary" :link="links.telegram">
         Let's talk
       </Button>
