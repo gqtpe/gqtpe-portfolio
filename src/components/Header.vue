@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Navbar from "@/components/Navbar/Navbar.vue";
 import Button from "@/components/Button.vue";
 import {links} from "@/app/links.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
