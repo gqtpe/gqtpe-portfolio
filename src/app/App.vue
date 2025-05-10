@@ -69,10 +69,3 @@ section {
   max-height: 100%;
   overflow-y: auto;
 }
-
-.about {
-  background: black;
-}
-
-
-</style>
