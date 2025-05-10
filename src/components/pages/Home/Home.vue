@@ -28,7 +28,7 @@ onMounted(() => {
       opacity: 0
     })
   }
-  if(subtitle.value){
+  if (subtitle.value) {
     const titleSplit = SplitText.create(subtitle.value, {type: 'chars, lines, words'})
     gsap.from(titleSplit.chars, {
       delay: 1,
