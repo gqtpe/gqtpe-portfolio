@@ -6,6 +6,12 @@ import App from './App.vue';
 import {OhVueIcon} from "./ohh-vue";
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import {MotionPlugin} from "@vueuse/motion";
+import gsap from "gsap";
+import SplitText from "gsap/SplitText"
+import ScrollTrigger from "gsap/ScrollTrigger"
+import ScrollSmoother from "gsap/ScrollSmoother"
+//gsap plugins initialization
+gsap.registerPlugin(SplitText,ScrollTrigger, ScrollSmoother)
 
 
 createApp(App)
