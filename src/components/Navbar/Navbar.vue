@@ -79,7 +79,7 @@ const toggleMenuVisibility = () => {
   display: none;
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 768px) {
   nav {
     padding-top: 1rem;
     position: absolute;
