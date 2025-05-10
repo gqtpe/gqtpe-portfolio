@@ -1,0 +1,33 @@
+section {
+    color: black;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+section#about {
+    background-color: #ff99cc;
+    background-image: var(--section2);
+    @media (prefers-color-scheme: dark) {
+        filter: grayscale(100%);
+    }
+}
+
+section#projects {
+    background-color: #ff99cc;
+    background-image: var(--section2);
+    filter: invert(100%);
+    @media (prefers-color-scheme: dark) {
+        filter: grayscale(100%) invert(100%);
+    }
+}
+
+@media (max-width: 1024px) {
+    aside {
+        display: none;
+    }
+
+    section {
+        width: 100%;
+    }
+}
