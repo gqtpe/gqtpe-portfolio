@@ -78,6 +78,13 @@ const toggleMenuVisibility = () => {
 .burger {
   display: none;
 }
+.show {
+  transform: translateX(100%);
+}
+
+.hide {
+  transform: translateX(0);
+}
 
 @media (max-width: 768px) {
   nav {

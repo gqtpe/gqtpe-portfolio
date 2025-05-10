@@ -26,7 +26,5 @@ export function useScrollSmoother() {
             smoother.value.kill();
         }
     });
-    const scrollTo = (target: string) =>{
-    }
     return {isLoaded,scrollTo: scrollTo}
 }

@@ -66,10 +66,4 @@ onMounted(() => {
   flex-direction: column;
 }
 
-.home_hero {
-  width: 100%;
-  border: 1px solid red;
-  height: 20rem;
-
-}
 </style>

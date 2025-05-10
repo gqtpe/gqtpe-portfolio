@@ -21,21 +21,12 @@ defineProps<Props>()
 </template>
 
 <style scoped>
-.show {
-  transform: translateX(100%);
-}
-
-.hide {
-  transform: translateX(0);
-}
 
 .active {
   transform: translateY(-50%);
 }
 
-.links {
-  transition: transform, 0.2s ease-in-out;
-}
+
 
 .link {
   display: flex;
