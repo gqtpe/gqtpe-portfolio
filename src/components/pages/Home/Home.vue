@@ -16,6 +16,13 @@ onMounted(() => {
         amount: 0.2,
         from: 'random'
       },
+      scrollTrigger: {
+        trigger: hero.value,
+        toggleActions: 'restart none restart none',
+        markers: true,
+
+      },
+
       duration: 0.5,
       yPercent: 'random([-100, 100])',
       opacity: 0
