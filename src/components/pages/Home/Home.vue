@@ -31,10 +31,14 @@ onMounted(() => {
   if (subtitle.value) {
     const titleSplit = SplitText.create(subtitle.value, {type: 'chars, lines, words'})
     gsap.from(titleSplit.chars, {
-      delay: 1,
+      delay: 0.5,
       opacity: 0,
-      y:-20,
-      stagger: 0.2,
+      y: -20,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: hero.value,
+        toggleActions: 'play none restart none',
+      },
       ease: "expoScale(0.5,7,none)",
 
     })
