@@ -49,12 +49,15 @@ const toggleMenuVisibility = () => {
           name="co-hamburger-menu"
       />
     </div>
-    <div class="link-wrapper" v-for="link in links" :key="link.href">
-      <RouterLink :to="link.href" :class="['flex flex-col links', { active: active === link.id }]" @mouseenter="onMouseEnter(link.id)" @click="toggleMenuVisibility">
-        <span class="link">{{ link.title }}</span>
-        <span class="link dark">{{ link.title }}</span>
-      </RouterLink>
-    </div>
+    <Link
+        v-for="link in links"
+        :active="active === link.id"
+        :id="link.id"
+        @mouseenter="onMouseEnter(link.id)"
+        @click="onLinkClick(link.target)"
+        :link="link.href"
+        :title="link.title"
+    />
   </nav>
   </Teleport>
 </template>
