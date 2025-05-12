@@ -17,11 +17,7 @@ onMounted(() => {
       },
       scrollTrigger: {
         trigger: hero.value,
-        toggleActions: 'restart none restart none',
-        markers: true,
-
       },
-
       duration: 0.5,
       yPercent: 'random([-100, 100])',
       opacity: 0
@@ -30,7 +26,7 @@ onMounted(() => {
   if (subtitle.value) {
     const titleSplit = SplitText.create(subtitle.value, {type: 'chars, lines, words'})
     gsap.from(titleSplit.chars, {
-      delay: 0.5,
+      delay: 1,
       opacity: 0,
       y: -20,
       stagger: 0.1,
