@@ -27,7 +27,6 @@ onMounted(() => {
 })
 
 const scrollTo = (target: string) => {
-  debugger;
   smoother.value?.scrollTo(target, true, "center center")
 }
 </script>
