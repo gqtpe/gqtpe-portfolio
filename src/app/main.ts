@@ -10,8 +10,8 @@ import gsap from "gsap";
 import SplitText from "gsap/SplitText"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import ScrollSmoother from "gsap/ScrollSmoother"
-//gsap plugins initialization
-gsap.registerPlugin(SplitText,ScrollTrigger, ScrollSmoother)
+import ScrambleTextPlugin from "gsap/ScrambleTextPlugin"
+gsap.registerPlugin(SplitText,ScrollTrigger, ScrollSmoother,ScrambleTextPlugin)
 
 
 createApp(App)
