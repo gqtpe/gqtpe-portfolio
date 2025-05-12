@@ -3,22 +3,33 @@ import {nextTick, onMounted, ref, watch} from "vue";
 import Loading from "@/components/Loading.vue";
 import Home from "@/components/pages/Home/Home.vue";
 import Header from "@/components/Header.vue"
+import About from "@/components/pages/About/About.vue";
 import "./App.css"
 import Navbar from "@/components/Navbar/Navbar.vue";
 import {useLoadingMedia} from "@/app/hooks/useLoadingMedia.ts";
 import ScrollSmoother from "gsap/ScrollSmoother";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 
 const {isLoaded} = useLoadingMedia();
 const smoother = ref<any>(null);
 onMounted(() => {
   watch(isLoaded, async (newIsLoaded) => {
-    //loading is fulfilled and
     await nextTick();
-    if (newIsLoaded && !smoother.value && !ScrollTrigger.isTouch) {
+    if (newIsLoaded && !smoother.value) {
+      ScrollTrigger.defaults({
+        scroller: '#main',
+        start: "top 80%",
+        end: "top 10%",
+      })
+
       smoother.value = ScrollSmoother.create({
         wrapper: "#main-wrapper",
         content: "#main",
+        smooth: 1, // Скорость плавности
+        effects: true, // Включение эффектов (опционально)
+        normalizeScroll: true // Нормализация скролла для мобильных устройств
+
       });
 
     }
@@ -39,8 +50,7 @@ const scrollTo = (target: string) => {
     <div id="main-wrapper">
       <main id="main">
         <Home id="home"/>
-        <section id="about"></section>
-        <section id="projects"></section>
+        <About/>
       </main>
     </div>
   </template>
@@ -48,4 +58,6 @@ const scrollTo = (target: string) => {
     <Loading/>
   </template>
 </template>
+<style>
+</style>
 
