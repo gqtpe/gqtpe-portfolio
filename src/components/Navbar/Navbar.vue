@@ -53,7 +53,7 @@ const toggleMenuVisibility = () => {
     />
   </div>
   <Teleport to="#modal" :disabled="!isMobile">
-  <nav @mouseleave="onMouseLeave" :class="`flex gap-2 items-center justify-center text-black ${isMobile && isNavbarHidden?'hide':'show'}`">
+  <nav @mouseleave="onMouseLeave" :class="`flex gap-2 items-center justify-center text-black ${isNavbarHidden?'hide':'show'}`">
     <div class="burger" @click="toggleMenuVisibility">
       <v-icon
           :scale="2"
@@ -79,11 +79,11 @@ const toggleMenuVisibility = () => {
   display: none;
 }
 .show {
-  transform: translateX(100%);
+
 }
 
 .hide {
-  transform: translateX(0);
+
 }
 
 @media (max-width: 768px) {
@@ -101,6 +101,12 @@ const toggleMenuVisibility = () => {
     background: white;
     z-index: 40;
     transition: transform, 0.2s ease-in-out;
+  }
+  .show{
+    transform: translateX(0);
+  }
+  .hide{
+    transform: translateX(-100%);
   }
   .burger{
     display: block;
