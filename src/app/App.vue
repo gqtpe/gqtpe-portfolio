@@ -15,7 +15,7 @@ onMounted(() => {
   watch(isLoaded, async (newIsLoaded) => {
     //loading is fulfilled and
     await nextTick();
-    if (newIsLoaded && !smoother.value) {
+    if (newIsLoaded && !smoother.value && !ScrollTrigger.isTouch) {
       smoother.value = ScrollSmoother.create({
         wrapper: "#main-wrapper",
         content: "#main",
