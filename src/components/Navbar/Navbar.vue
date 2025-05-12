@@ -53,7 +53,7 @@ const toggleMenuVisibility = () => {
     />
   </div>
   <Teleport to="#modal" :disabled="!isMobile">
-  <nav @mouseleave="onMouseLeave" :class="`flex gap-2 items-center justify-center text-black ${isNavbarHidden?'hide':'show'}`">
+  <nav @mouseleave="onMouseLeave" :class="`flex gap-2 items-center justify-center text-black ${isMobile && isNavbarHidden?'hide':'show'}`">
     <div class="burger" @click="toggleMenuVisibility">
       <v-icon
           :scale="2"
