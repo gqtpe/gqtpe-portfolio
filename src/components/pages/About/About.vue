@@ -1,38 +1,49 @@
 <script setup lang="ts">
-import DecryptedText from "@/components/bits/DecryptedText.vue";
-import FallingItems from "@/components/bits/FallingItems.vue";
-import SimpleStack from "@/components/pages/About/SimpleStack.vue";
+import {onMounted} from 'vue';
+import {gsap} from 'gsap';
+import SplitText from "gsap/SplitText"
+import data from "./about.ts"
 import Info from "@/components/pages/About/Info.vue";
-import aboutPage from "./about.ts";
 
-const windowWidth = window.innerWidth;
-</script>
-
-<template>
-  <section class="flex flex-col dark:bg-zinc-900 dark:text-white">
-    <h3 class="text-highlight-1 mb-4 max-sm:mb-0 self-start">who i am</h3>
-    <Info v-bind="aboutPage.info"/>
-    <div class="stack flex flex-col items-center grow-1">
-      <DecryptedText v-motion-slide-visible-bottom text="My stack" :use-original-chars-only="true" animateOn="hover"
-                     class="section-title text-highlight-2 inline"/>
-      <FallingItems v-if="windowWidth >768" :svgs="aboutPage.stack"/><!--optimization for mobile devices-->
-      <SimpleStack v-else :svgs="aboutPage.stack"/>
-    </div>
-  </section>
-</template>
-
-<style>
-.stack {
-  min-height: 10rem;
-}
-
-.about__image {
-  max-width: 15rem;
-
-  img {
-    border-radius: 1rem;
-    aspect-ratio: 1/1;
+function animation1(trigger: string) {
+  return {
+    opacity: 0,
+    y: 200,
+    stagger: 0.04,
+    duration: 0.5,
+    ease: 'expo.out',
+    scrollTrigger: {
+      trigger: trigger,
+      toggleActions: 'restart none none none',
+    }
   }
 }
 
+
+onMounted(() => {
+  const split1 = SplitText.create('#animation1', {type: 'chars, lines, words'})
+  gsap.from(split1.chars, animation1('#animation1'));
+
+});
+</script>
+
+<style scoped>
+section {
+  color: white;
+}
+</style>
+
+<template>
+  <section class="whoiam flex justify-center items-center" id="about">
+    <div class="text-7xl font-black text-zinc-500" id="animation1">WHO I AM?</div>
+  </section>
+  <Info :info="data.info"/>
+  <section>
+  </section>
+</template>
+<style scoped>
+
+#about {
+  height: 50vh !important;
+}
 </style>
