@@ -15,48 +15,62 @@
     --color-secondary-500: #ffc815;
     --white: #FFFFFF;
     --black: #000000;
-    --shadow-custom:inset 0 0 0.5px 1px hsla(0, 0%,
+    --shadow-custom: inset 0 0 0.5px 1px hsla(0, 0%,
     100%, 0.075),
     0 0 0 1px hsla(0, 0%, 0%, 0.05),
     0 0.3px 0.4px hsla(0, 0%, 0%, 0.02),
     0 0.9px 1.5px hsla(0, 0%, 0%, 0.045),
     0 3.5px 6px hsla(0, 0%, 0%, 0.09);
 
-    --section1:
-            radial-gradient(at 40% 20%, hsla(3,0%,0%,1) 0px, transparent 50%),
-            radial-gradient(at 80% 0%, hsla(189,100%,50%,1) 0px, transparent 50%),
-            radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
-            radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%),
-            radial-gradient(at 0% 100%, hsla(22,100%,77%,1) 0px, transparent 50%),
-            radial-gradient(at 80% 100%, hsla(240,42%,31%,1) 0px, transparent 50%),
-            radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);
-    --section2:
-            radial-gradient(at 46% 8%, hsla(44,68%,77%,1) 0px, transparent 50%),
-            radial-gradient(at 64% 85%, hsla(348,83%,66%,1) 0px, transparent 50%),
-            radial-gradient(at 41% 26%, hsla(318,99%,67%,1) 0px, transparent 50%),
-            radial-gradient(at 72% 24%, hsla(275,91%,69%,1) 0px, transparent 50%),
-            radial-gradient(at 42% 23%, hsla(51,65%,79%,1) 0px, transparent 50%),
-            radial-gradient(at 1% 29%, hsla(100,66%,79%,1) 0px, transparent 50%),
-            radial-gradient(at 48% 4%, hsla(59,95%,79%,1) 0px, transparent 50%);
+    --section1: radial-gradient(at 40% 20%, hsla(3, 0%, 0%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(189, 100%, 50%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(240, 42%, 31%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 1) 0px, transparent 50%);
+    --section1-gray:
+            radial-gradient(at 40% 20%, hsla(0, 0%, 10%, 1) 0px, transparent 50%),
+            radial-gradient(at 80% 0%, hsla(0, 0%, 60%, 1) 0px, transparent 50%),
+            radial-gradient(at 0% 50%, hsla(0, 0%, 90%, 1) 0px, transparent 50%),
+            radial-gradient(at 80% 50%, hsla(0, 0%, 80%, 1) 0px, transparent 50%),
+            radial-gradient(at 0% 100%, hsla(0, 0%, 70%, 1) 0px, transparent 50%),
+            radial-gradient(at 80% 100%, hsla(0, 0%, 30%, 1) 0px, transparent 50%),
+            radial-gradient(at 0% 0%, hsla(0, 0%, 80%, 1) 0px, transparent 50%);
 
+    --section2: radial-gradient(at 46% 8%, hsla(44, 68%, 77%, 1) 0px, transparent 50%),
+    radial-gradient(at 64% 85%, hsla(348, 83%, 66%, 1) 0px, transparent 50%),
+    radial-gradient(at 41% 26%, hsla(318, 99%, 67%, 1) 0px, transparent 50%),
+    radial-gradient(at 72% 24%, hsla(275, 91%, 69%, 1) 0px, transparent 50%),
+    radial-gradient(at 42% 23%, hsla(51, 65%, 79%, 1) 0px, transparent 50%),
+    radial-gradient(at 1% 29%, hsla(100, 66%, 79%, 1) 0px, transparent 50%),
+    radial-gradient(at 48% 4%, hsla(59, 95%, 79%, 1) 0px, transparent 50%);
+    --section3: radial-gradient(circle at 20% 30%, rgba(39, 39, 42, 0.8) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(31, 41, 59, 0.7) 0%, /* Похожий цвет: темный сине-серый */ transparent 50%),
+    radial-gradient(circle at 50% 10%, rgba(63, 63, 70, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 30% 80%, rgba(30, 30, 36, 0.5) 0%, transparent 50%);
 }
 
 
 .text-highlight-1 {
     @apply inline-block text-xl uppercase text-white bg-secondary-500 p-1;
 }
-.text-highlight-2{
+
+.text-highlight-2 {
     @apply uppercase font-bold text-2xl border-b-4 border-t-4 border-primary-500 border-dashed;
 }
+
 .text-comment {
     @apply italic text-gray-500;
 }
+
 .text-link-1 {
     @apply font-bold text-gray-800 hover:text-primary-500 active:text-secondary-500;
 }
+
 .text-link-2 {
     @apply font-bold text-gray-800 hover:text-secondary-500 active:text-primary-500;
 }
+
 .card {
     padding: 0.5rem;
     border-width: 1px 1px 4px;
@@ -66,9 +80,11 @@
     background: white;
 
 }
-.section-title{
+
+.section-title {
     @apply text-xl font-bold mb-2 dark:text-white;
 }
-.divider{
+
+.divider {
     @apply w-full border-b-2 border-gray-500 my-6
 }
