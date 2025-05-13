@@ -11,6 +11,6 @@ defineProps<Props>()
 <template>
   <div class="w-full">
     <div class="text-xl font-bold flex justify-between"><span>{{ title }}</span> <span>{{period}}</span></div>
-    <p class="text-left text-md text-gray-300 dark:text-gray-300">{{body}}</p>
+    <p class="text-left text-xl text-gray-300 dark:text-gray-300">{{body}}</p>
   </div>
 </template>
