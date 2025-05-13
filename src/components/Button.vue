@@ -5,7 +5,7 @@ type Props = {
   size?: 'medium' | 'large'
   link?: string
   download?: string
-  className?:string
+  className?: string
 }
 const {size = 'medium',color, className} = defineProps<Props>()
 const sx = `${color==='primary'?primaryClasses:secondaryClasses} ${className?className:''}`
@@ -15,17 +15,23 @@ const primaryClasses = "bg-primary-500 hover:bg-secondary-500"
 </script>
 
 <template>
-  <a
-      :href="link"
+  <a :href="link"
+     aria-label="button-link"
+     class="shadow-lg rounded-full"
+     id="button-link"
       v-bind="download ? { download } : {}"
       :target="link?'_blank':'_self'">
-  <button
-           :class="`${color==='primary'?primaryClasses:secondaryClasses} transition-colors text-white font-bold py-2 px-4 rounded-full ${className?className:''}`">
-    <slot/>
-  </button>
+    <button
+        :class="`${sx} transition-colors text-white font-bold  ${size}`">
+      <slot/>
+    </button>
   </a>
 </template>
-
+<style scoped>
+  a{
+    display: inline-block;
+    overflow: hidden;
+  }
   .large{
     padding: 0.5rem 2rem;
   }
