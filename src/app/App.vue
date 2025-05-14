@@ -38,7 +38,17 @@ onMounted(() => {
 })
 
 const scrollTo = (target: string) => {
-  smoother.value?.scrollTo(target, true, "center center")
+  if (!smoother.value) {
+    console.warn("ScrollSmoother not initialized");
+    return;
+  }
+  const el = document.querySelector(target);
+  if (!el) {
+    console.warn(`Target element '${target}' not found in DOM`);
+    return;
+  }
+
+  smoother.value.scrollTo(target, true, "top end");
 }
 </script>
 
