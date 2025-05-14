@@ -8,12 +8,6 @@ section {
     overflow-y: auto;
 }
 
-section#about {
-    background: white;
-    @media(prefers-color-scheme: dark){
-        background: black;
-    }
-}
 
 section#projects {
     background-color: #ff99cc;
