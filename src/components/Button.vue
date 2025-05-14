@@ -22,7 +22,7 @@ const primaryClasses = "bg-primary-500 hover:bg-secondary-500"
       v-bind="download ? { download } : {}"
       :target="link?'_blank':'_self'">
     <button
-        :class="`${sx} transition-colors text-white font-bold  ${size}`">
+        :class="`${sx} transition-colors text-white font-bold ${size}`">
       <slot/>
     </button>
   </a>
@@ -33,7 +33,8 @@ const primaryClasses = "bg-primary-500 hover:bg-secondary-500"
     overflow: hidden;
   }
   .large{
-    padding: 0.5rem 2rem;
+    font-size: 1.25rem;
+    padding: 0.75rem 2rem;
   }
   .medium{
     padding: 0.5rem 1rem;
