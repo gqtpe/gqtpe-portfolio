@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import {nextTick, onMounted, ref, watch} from "vue";
 import Loading from "@/components/Loading.vue";
-import Home from "@/components/pages/Home/Home.vue";
 import Header from "@/components/Header.vue"
-import About from "@/components/pages/About/About.vue";
 import "./App.css"
 import Navbar from "@/components/Navbar/Navbar.vue";
 import {useLoadingMedia} from "@/app/hooks/useLoadingMedia.ts";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Footer from "@/components/Footer/Footer.vue";
+import Button from "@/components/Button.vue";
+import {useRouter} from "vue-router";
 
-
+const router = useRouter()
 const {isLoaded} = useLoadingMedia();
 const smoother = ref<any>(null);
 onMounted(() => {
+  router.forward()
   watch(isLoaded, async (newIsLoaded) => {
     await nextTick();
     if (newIsLoaded && !smoother.value) {
@@ -21,6 +23,7 @@ onMounted(() => {
         scroller: '#main',
         start: "top 80%",
         end: "top 10%",
+
       })
 
       smoother.value = ScrollSmoother.create({
@@ -59,15 +62,32 @@ const scrollTo = (target: string) => {
     </Header>
     <div id="main-wrapper">
       <main id="main">
-        <Home id="home"/>
-        <About/>
+        <RouterView v-slot="{ Component }">
+          <component
+              :is="Component"
+              :scroll="scrollTo"
+          />
+        </RouterView>
+        <section class="next-page half flex items-center justify-center bg-zinc-800">
+          <RouterLink to="">
+            <Button color="secondary" size="large" class-name="uppercase">Next Page</Button>
+          </RouterLink>
+        </section>
+        <Footer class="half">
+        </Footer>
       </main>
     </div>
+
   </template>
   <template v-if="!isLoaded">
     <Loading/>
   </template>
 </template>
 <style>
+.half {
+  height: 50vh !important;
+  overflow: hidden !important;
+}
+
 </style>
 
