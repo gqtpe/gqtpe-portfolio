@@ -33,7 +33,7 @@ onMounted(()=>{
 <style scoped>
 header{
   user-select: none;
-  position: absolute;
+  position: fixed;
   width: 100%;
   display: flex;
   align-items: center;
