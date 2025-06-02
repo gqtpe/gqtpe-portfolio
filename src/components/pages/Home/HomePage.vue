@@ -7,24 +7,29 @@ import data from "@/components/pages/Home/About/about.ts";
 import WhoIam from "@/components/pages/Home/About/WhoIam.vue";
 import {navbarLinks} from "@/components/Navbar/links.ts";
 
-const {scroll} = defineProps<{ scroll: (target: string) => void }>()
-const route = useRoute()
-
-onMounted(async () => {
-  const aboutPath = '/about';
-  const aboutLink = navbarLinks.find(t=>t.href === aboutPath);
-  if(aboutLink && (route.path === aboutLink.href) && aboutLink.target){
-    await nextTick()
-    scroll(aboutLink.target)
-  }
-})
+//helpers
+// onMounted(() => {
+//   console.log('HomePage')
+// })
+// onUpdated(() => {
+//   console.log('HomePage updated')
+// })
 </script>
 
 <template>
   <Home id="home"/>
   <WhoIam/>
   <About :info="data.info"/>
-
+  <section id="projects-hello" class="projects-hello flex items-center justify-center w-full">
+    <RouterLink to="/projects" class="projects-page-link">
+      <DecryptedText
+          text="projects"
+          use-original-chars-only
+          animateOn="hover"
+          class="text-9xl font-black uppercase"
+      />
+    </RouterLink>
+  </section>
 </template>
 <style scoped>
 .projects-page-link {
