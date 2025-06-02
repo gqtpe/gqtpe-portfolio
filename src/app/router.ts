@@ -1,6 +1,8 @@
 import {createRouter, createWebHistory} from "vue-router";
 import Projects from "@/components/pages/Projects/Projects.vue";
 import HomePage from "@/components/pages/Home/HomePage.vue";
+import {navbarLinks} from "@/components/Navbar/links.ts";
+import {nextTick} from "vue";
 
 declare global {
     interface Window {
