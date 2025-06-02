@@ -26,6 +26,9 @@ onMounted(async () => {
   <About :info="data.info"/>
 
 </template>
+<style scoped>
+.projects-page-link {
+  transition: opacity 1s ease;
 
   &:hover {
     opacity: 0.5;
