@@ -12,6 +12,14 @@ const isNavbarHidden = ref(true);
 onMounted(() => {
   const current = links.find(l => l.path === route.path);
   if (current) active.value = current.id;
+  if(active.value === null){
+    const link = links.find(i=>i.path === route.path)
+    if(link){
+      active.value = link.id
+    }else{
+      console.error("route path not found in navLinks for (Navbar.vue)")
+    }
+  }
 });
 
 const navClass = computed(() => ({
