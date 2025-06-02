@@ -58,14 +58,13 @@ const scrollTo = (target: string) => {
 <template>
   <template v-if="isLoaded">
     <Header>
-      <Navbar :scrollTo="scrollTo"/>
+      <Navbar/>
     </Header>
     <div id="main-wrapper">
       <main id="main">
         <RouterView v-slot="{ Component }">
           <component
               :is="Component"
-              :scroll="scrollTo"
           />
         </RouterView>
         <section class="next-page half flex items-center justify-center bg-zinc-800">
