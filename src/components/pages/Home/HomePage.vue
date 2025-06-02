@@ -26,3 +26,14 @@ onMounted(async () => {
   <About :info="data.info"/>
 
 </template>
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:active {
+    transition: opacity 0.1s ease;
+    opacity: 1;
+  }
+}
+</style>
