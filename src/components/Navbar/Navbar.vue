@@ -1,21 +1,16 @@
 <script setup lang="ts">
 import { onMounted, ref, computed } from "vue";
-import {RouterLink, useRoute, useRouter} from "vue-router";
+import {RouterLink, useRoute} from "vue-router";
 import { navbarLinks as links } from "./links";
 import { useIsMobile } from "@/app/hooks/useIsMobile.ts";
-type Props = {
-  scrollTo: (target: string) =>void
-}
-const {scrollTo} = defineProps<Props>()
 
 const isMobile = useIsMobile();
-const router = useRouter();
 const route = useRoute();
 const active = ref<number>(0);
 const isNavbarHidden = ref(true);
 
 onMounted(() => {
-  const current = links.find(l => l.href === route.path);
+  const current = links.find(l => l.path === route.path);
   if (current) active.value = current.id;
 });
 
@@ -30,67 +25,45 @@ const navClass = computed(() => ({
 }));
 
 const onMouseLeave = () => {
-  const link = links.find(l => l.href === route.path);
+  const link = links.find(l => l.path === route.path);
   if (link) active.value = link.id;
 };
 
 const onMouseEnter = (id: number) => {
   active.value = id;
 };
-
-const onClick = (id:number) =>{
-  const link = links.find(t=>t.id === id)
+const onClick = () =>{
   if(isMobile){
     toggleMenuVisibility()
   }
-  if(link){
-    const matchedRoute = router.options.routes.find(
-        r => r.path === route.path || r.alias === route.path
-    );
-
-    const isSamePage = link.href === route.path ||
-        link.href === matchedRoute?.path ||
-        link.href === matchedRoute?.alias;
-    // console.log('true1':'false1')
-  // console.log(route.path === link.href?'true':(route.path === router.options.routes.find(t=>t.path === link.href)!.alias)?'true':false)
-  // console.log(router.options.routes.find(r=>r.alias === route.path))
-  // console.log(route.path)
-  if(link.target && isSamePage){
-    scrollTo(link.target);
-  }
-}}
+}
 const toggleMenuVisibility = () => {
   isNavbarHidden.value = !isNavbarHidden.value;
 };
 </script>
 
 <template>
-  <!-- Burger icon (always visible on mobile) -->
   <div class="burger" @click="toggleMenuVisibility">
     <v-icon :scale="2" name="co-hamburger-menu" />
   </div>
 
-  <!-- Navigation -->
   <Teleport to="#modal" :disabled="!isMobile">
     <nav @mouseleave="onMouseLeave" :class="navClass">
-      <!-- Duplicate burger icon for closing menu inside nav -->
       <div class="burger" @click="toggleMenuVisibility">
         <v-icon :scale="2" name="co-hamburger-menu" />
       </div>
 
-      <!-- Navigation Links -->
-      <div v-for="link in links" :key="link.href" class="link-wrapper">
-        <component
-            :is="link.href?RouterLink:'div'"
-            :to="link.href?link.href:''"
+      <div v-for="link in links" :key="link.path" class="link-wrapper">
+        <RouterLink
+            :to="link.path"
             class="flex flex-col links"
             :class="{ active: active === link.id }"
             @mouseenter="onMouseEnter(link.id)"
-            @click="onClick(link.id)"
+            @click="onClick"
         >
           <span class="link">{{ link.title }}</span>
           <span class="link dark">{{ link.title }}</span>
-        </component>
+        </RouterLink>
       </div>
     </nav>
   </Teleport>
@@ -109,7 +82,7 @@ const toggleMenuVisibility = () => {
 
   nav {
     padding-top: 1rem;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
