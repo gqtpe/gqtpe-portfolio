@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, computed } from "vue";
+import {onMounted, ref, computed, watch} from "vue";
 import {RouterLink, useRoute} from "vue-router";
 import { navbarLinks as links } from "./links";
 import { useIsMobile } from "@/app/hooks/useIsMobile.ts";
