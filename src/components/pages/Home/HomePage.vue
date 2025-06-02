@@ -23,16 +23,5 @@ import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedire
   </section>
 </template>
 <style scoped>
-.projects-page-link {
-  transition: opacity 1s ease;
 
-  &:hover {
-    opacity: 0.5;
-  }
-
-  &:active {
-    transition: opacity 0.1s ease;
-    opacity: 1;
-  }
-}
 </style>
