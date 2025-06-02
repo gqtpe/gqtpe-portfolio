@@ -19,6 +19,22 @@ const routes = [
 
 const router = createRouter({
     history: createWebHistory(),//using default web history
-    routes
+    scrollBehavior(to) {
+        setTimeout(() => {
+            const link = navbarLinks.find(t => t.path === to.path)
+            if (link && link.target) {
+                const el = document.getElementById(link.target.slice(1));
+                if (el) {
+                    return {
+                        el,
+                        top: 0,
+                    }
+                } else {
+                    return {top: 0}
+                }
+            }
+        }, 1000)
+    },
+    routes,
 })
 export default router;
