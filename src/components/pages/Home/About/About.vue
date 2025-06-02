@@ -74,9 +74,8 @@ defineProps<{info: InfoPage}>()
 }
 
 @media (prefers-color-scheme: dark) {
-  #about {
-    background-color: var(--color-gray-400);
-    background-image: var(--section1-gray);
+  #about::before{
+    filter: grayscale(80%);
   }
 }
 
