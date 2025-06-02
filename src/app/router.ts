@@ -43,4 +43,16 @@ const router = createRouter({
     },
     routes,
 })
+router.afterEach(async (to) => {
+    await nextTick();
+    requestAnimationFrame(() => {
+        const link = navbarLinks.find(t => t.path === to.path);
+        if (link && link.target) {
+            const targetElement = document.querySelector(link.target);
+            if (targetElement && window._smoother) {
+                window._smoother.scrollTo(targetElement, true, "top top");
+            }
+        }
+    });
+});
 export default router;
