@@ -1,0 +1,89 @@
+<script setup lang="ts">
+import DecryptedText from "@/components/bits/DecryptedText.vue";
+import gsap from "gsap";
+import {RouterLink} from "vue-router";
+import {onMounted} from "vue";
+
+
+onMounted(() => {
+  if (!redirect) {
+    gsap.from('#page-header-subtitle', {
+      delay: 1,
+      opacity: 0,
+      ease: "expo",
+      x: gsap.utils.wrap([-100, 100]), // -100 для первого, +100 для второго
+      scrollTrigger: {
+        start: "center 80%",
+        end: "center 49%",
+        trigger: '#main-wrapper',
+        toggleActions: 'play reverse play play',
+  /*      onEnter: ()=>{
+          console.log("entered")
+        },
+        onLeave: ()=>{
+          console.log("leave")
+        },
+        onEnterBack: ()=>{
+          console.log("entered back")
+        },
+        onLeaveBack: ()=>{
+          console.log("leave back")
+        },*/
+      }
+    });
+
+  }
+})
+
+type Props = {
+  redirect?: string
+  text: string
+  subtitles?: [string, string]
+}
+const {redirect, text, subtitles} = defineProps<Props>()
+</script>
+
+<template>
+  <section :id="'page-'+redirect?'redirect':'header'" class="projects-hello flex items-center justify-center w-full">
+    <component
+        :is="redirect?RouterLink:'div'"
+        :to="redirect"
+        :class="redirect?'redirect-header-link':'redirect-header-wrapper'"
+    >
+      <span id="page-header-subtitle" v-if="!redirect">{{ subtitles![0] }}</span>
+      <DecryptedText
+          :text="text"
+          use-original-chars-only
+          :animateOn="redirect?'hover':'view'"
+          revealDirection="start"
+          :animate-once="true"
+          :max-iterations="redirect?10:15"
+          class="text-9xl font-black uppercase"
+      />
+      <span id="page-header-subtitle" v-if="!redirect">{{ subtitles![1] }}</span>
+    </component>
+  </section>
+</template>
+
+<style>
+.redirect-header-link {
+  transition: opacity 1s ease;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:active {
+    transition: opacity 0.1s ease;
+    opacity: 1;
+  }
+}
+
+.redirect-header-wrapper {
+  #page-header-subtitle {
+    display: inline-block;
+    margin: 0 1rem;
+    font-size: 1.25rem;
+  }
+}
+</style>
