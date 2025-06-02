@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import Home from "./Home.vue";
 import About from "./About/About.vue";
-import {nextTick, onMounted} from "vue";
-import {useRoute} from "vue-router";
 import data from "@/components/pages/Home/About/about.ts";
 import WhoIam from "@/components/pages/Home/About/WhoIam.vue";
-import {navbarLinks} from "@/components/Navbar/links.ts";
+import DecryptedText from "@/components/bits/DecryptedText.vue";
 
 //helpers
 // onMounted(() => {
