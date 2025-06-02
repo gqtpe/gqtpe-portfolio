@@ -2,19 +2,21 @@ import {createRouter, createWebHistory} from "vue-router";
 import Projects from "@/components/pages/Projects/Projects.vue";
 import HomePage from "@/components/pages/Home/HomePage.vue";
 
+declare global {
+    interface Window {
+        _smoother?: any
+    }
+}
 
 const routes = [
     {
         path: '/',
         component: HomePage,
-        alias: '/about',
     },
     {
         path: '/projects',
         component: Projects,
     }
-
-
 ]
 
 const router = createRouter({
