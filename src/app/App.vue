@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {nextTick, onMounted, ref, watch} from "vue";
+import {nextTick, onBeforeMount, onMounted, ref, watch} from "vue";
 import Loading from "@/components/Loading.vue";
 import Header from "@/components/Header.vue"
 import "./App.css"
@@ -7,9 +7,8 @@ import Navbar from "@/components/Navbar/Navbar.vue";
 import {useLoadingMedia} from "@/app/hooks/useLoadingMedia.ts";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import Footer from "@/components/Footer/Footer.vue";
-import Button from "@/components/Button.vue";
-import {useRouter} from "vue-router";
+import {useRoute} from "vue-router";
+const route = useRoute()
 
 console.log('APP')
 onBeforeMount(() => {
@@ -27,7 +26,6 @@ onBeforeMount(() => {
 const {isLoaded} = useLoadingMedia();
 const smoother = ref<any>(null);
 onMounted(() => {
-  router.forward()
   watch(isLoaded, async (newIsLoaded) => {
     await nextTick();
     if (newIsLoaded && !smoother.value) {
