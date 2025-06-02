@@ -37,20 +37,17 @@ onMounted(() => {
         end: "top 10%",
 
       })
-
-      smoother.value = ScrollSmoother.create({
+      const smootherObj = ScrollSmoother.create({
         wrapper: "#main-wrapper",
         content: "#main",
         smooth: 1, // Скорость плавности
         effects: true, // Включение эффектов (опционально)
         normalizeScroll: true // Нормализация скролла для мобильных устройств
-
       });
       smoother.value = smootherObj;
       window._smoother = smootherObj; // 💡 Глобально доступен
     }
-  });
-
+  })
 })
 
 const scrollTo = (target: string) => {
