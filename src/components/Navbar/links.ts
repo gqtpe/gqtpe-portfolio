@@ -1,7 +1,7 @@
 export type Link = {
     id: number
     title: string
-    href: string
+    path: string
     target?: string
 }
 export const navbarLinks: Link[] = [
