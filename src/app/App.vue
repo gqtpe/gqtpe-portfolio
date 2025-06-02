@@ -50,19 +50,6 @@ onMounted(() => {
   })
 })
 
-const scrollTo = (target: string) => {
-  if (!smoother.value) {
-    console.warn("ScrollSmoother not initialized");
-    return;
-  }
-  const el = document.querySelector(target);
-  if (!el) {
-    console.warn(`Target element '${target}' not found in DOM`);
-    return;
-  }
-
-  smoother.value.scrollTo(target, true, "top end");
-}
 </script>
 
 <template>
@@ -77,13 +64,6 @@ const scrollTo = (target: string) => {
               :is="Component"
           />
         </RouterView>
-        <section class="next-page half flex items-center justify-center bg-zinc-800">
-          <RouterLink to="">
-            <Button color="secondary" size="large" class-name="uppercase">Next Page</Button>
-          </RouterLink>
-        </section>
-        <Footer class="half">
-        </Footer>
       </main>
     </div>
 
