@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import Section from "@/components/pages/Home/About/Section.vue";
 import type {InfoPage} from "@/components/pages/Home/About/about.ts";
-import Button from "@/components/Button.vue";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
+import Button from "@/components/Button.vue";
 
-const {info} = defineProps<{ info: InfoPage }>();
+defineProps<{info: InfoPage}>()
 </script>
 
 <template>
@@ -13,44 +13,44 @@ const {info} = defineProps<{ info: InfoPage }>();
       <div class="about__image">
         <img loading="lazy" :src="info.ava" alt=""/>
       </div>
-      <div class="about__text max-md:text-center">
-        <h3 class="uppercase mb-3 font-bold text-4xl max-md:flex-col">
-          <DecryptedText :text="info.hero" animateOn="view" use-original-chars-only/>
-        </h3>
-        <p class="text-xl text-gray-300 dark:text-gray-300">
-          {{ info.subtitle }}
-        </p>
+    <div class="about__text max-md:text-center">
+      <h3 class="uppercase mb-3 font-bold text-4xl max-md:flex-col">
+        <DecryptedText :text="info.hero" animateOn="view" use-original-chars-only/>
+      </h3>
+      <p class="text-xl text-gray-300 dark:text-gray-300">
+        {{ info.subtitle }}
+      </p>
 
-        <div class="divider"/>
+      <div class="divider"/>
 
-        <div class="grid grid-cols-2 gap-8 max-md:flex flex-col">
-          <div v-for="(card, i) in info.cards" :key="i">
-            <DecryptedText
-                :text="card.cardTitle"
-                use-original-chars-only
-                animateOn="view"
-                class="section-title"
-            />
-            <Section
-                :title="card.title"
-                :period="card.period"
-                :body="card.body"
-            />
-          </div>
+      <div class="grid grid-cols-2 gap-8 max-md:flex flex-col">
+        <div v-for="(card, i) in info.cards" :key="i">
+          <DecryptedText
+              :text="card.cardTitle"
+              use-original-chars-only
+              animateOn="view"
+              class="section-title"
+          />
+          <Section
+              :title="card.title"
+              :period="card.period"
+              :body="card.body"
+          />
         </div>
       </div>
+    </div>
 
-      <div class="about__links flex flex-col justify-around items-center">
-        <Button size="large" link="/CV.pdf" class-name="w-[100%]" color="primary">
-          Download CV
-        </Button>
-        <div class="flex glass-light p-1">
-          <a target="_blank"  v-for="icon in info.icons" :href="icon.link">
-            <v-icon hover animation="flash" :scale="2" :fill="icon.fill" :name="icon.name"/>
-          </a>
-        </div>
-
+    <div class="about__links flex flex-col justify-around items-center">
+      <Button size="large" link="/CV.pdf" class-name="w-[100%]" color="primary">
+        Download CV
+      </Button>
+      <div class="flex glass-light p-1">
+        <a target="_blank"  v-for="icon in info.icons" :href="icon.link">
+          <v-icon hover animation="flash" :scale="2" :fill="icon.fill" :name="icon.name"/>
+        </a>
       </div>
+
+    </div>
     </div>
 
   </section>
@@ -59,8 +59,18 @@ const {info} = defineProps<{ info: InfoPage }>();
 <style scoped>
 #about {
   padding: 2.5rem 5rem;
-  background-color: var(--color-primary-500);
-  background-image: var(--section1-gray);
+  position: relative;
+  z-index: 1;
+}
+#about::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("src/assets/img/background/about.png");
+  background-size: cover;
+  background-position: center;
+
+  z-index: -1;
 }
 
 @media (prefers-color-scheme: dark) {
