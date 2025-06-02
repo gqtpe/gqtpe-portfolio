@@ -11,7 +11,19 @@ import Footer from "@/components/Footer/Footer.vue";
 import Button from "@/components/Button.vue";
 import {useRouter} from "vue-router";
 
-const router = useRouter()
+console.log('APP')
+onBeforeMount(() => {
+
+  watch(route, async () => {
+    await nextTick();
+    if (window._smoother) {
+      window._smoother.scrollTo(0, true);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  })
+
+})
 const {isLoaded} = useLoadingMedia();
 const smoother = ref<any>(null);
 onMounted(() => {
