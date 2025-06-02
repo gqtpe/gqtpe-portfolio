@@ -14,7 +14,7 @@ onMounted(() => {
     ease: 'expo.out',
     scrollTrigger: {
       trigger: '#animation1',
-      toggleActions: 'restart none resume pause',
+      toggleActions: 'resume pause resume pause',
     }
   });
 
