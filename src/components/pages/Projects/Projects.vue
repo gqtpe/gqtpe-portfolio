@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ProjectCard from "./ProjectCard.vue";
-import projects from "./projects";
+import projects from "@/components/pages/Projects/projects.ts";
+import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedirect.vue";
 </script>
 
 <template>
