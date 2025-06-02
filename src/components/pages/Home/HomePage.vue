@@ -19,14 +19,7 @@ import DecryptedText from "@/components/bits/DecryptedText.vue";
   <WhoIam/>
   <About :info="data.info"/>
   <section id="projects-hello" class="projects-hello flex items-center justify-center w-full">
-    <RouterLink to="/projects" class="projects-page-link">
-      <DecryptedText
-          text="projects"
-          use-original-chars-only
-          animateOn="hover"
-          class="text-9xl font-black uppercase"
-      />
-    </RouterLink>
+    <PageHeaderRedirect text="projects" redirect="/projects"/>
   </section>
 </template>
 <style scoped>
