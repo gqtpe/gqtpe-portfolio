@@ -34,7 +34,8 @@ onMounted(() => {
         normalizeScroll: true // Нормализация скролла для мобильных устройств
 
       });
-
+      smoother.value = smootherObj;
+      window._smoother = smootherObj; // 💡 Глобально доступен
     }
   });
 
