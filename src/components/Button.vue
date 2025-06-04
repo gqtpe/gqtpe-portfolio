@@ -6,6 +6,7 @@ type Props = {
   link?: string
   download?: string
   className?: string
+  up?:boolean
 }
 const {size = 'medium',color, className} = defineProps<Props>()
 const sx = `${color==='primary'?primaryClasses:color === 'secondary'?secondaryClasses:'gradient'} ${className?className:''}`
@@ -25,6 +26,16 @@ const sx = `${color==='primary'?primaryClasses:color === 'secondary'?secondaryCl
   </a>
 </template>
 <style scoped>
+.up {
+  transition: transform, 0.2s ease-in-out;
+  &:hover {
+    transform: translateY(-0.2rem);
+  }
+  &:active{
+    transform: translateY(0);
+      filter: brightness(80%);
+  }
+}
 .gradient{
   background: linear-gradient(0.25turn, var(--color-primary-500), var(--color-secondary-500));
 }
