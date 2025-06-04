@@ -10,7 +10,7 @@ onMounted(() => {
     y: 200,
     delay:0.5,
     stagger: 0.04,
-    duration: 0.5,
+    duration: 1,
     ease: 'expo.out',
     scrollTrigger: {
       trigger: '#animation1',
