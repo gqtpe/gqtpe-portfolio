@@ -23,7 +23,7 @@ onMounted(()=>{
     <div class="header__wrapper glass">
       <DecryptedText text="GQTPE" use-original-chars-only class="logo font-black" animate-on="view"/>
       <slot/>
-      <Button color="primary" :link="links.telegram">
+      <Button color="gradient" :link="links.telegram" up>
         Let's talk
       </Button>
     </div>
