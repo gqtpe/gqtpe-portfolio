@@ -3,6 +3,7 @@ export type Link = {
     title: string
     path: string
     target?: string
+    disableSmooth?: boolean
 }
 export const navbarLinks: Link[] = [
     {id: 0, title: "Home",target:"#home", path: "/"},//todo: disable button if /about route
