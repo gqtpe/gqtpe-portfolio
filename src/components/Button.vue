@@ -8,6 +8,11 @@ type Props = {
   className?: string
   up?:boolean
 }
+
+//color variant style cases
+const secondaryClasses = "bg-secondary-500 hover:bg-primary-500"
+const primaryClasses = "bg-primary-500 hover:bg-secondary-500"
+
 const {size = 'medium',color, className} = defineProps<Props>()
 const sx = `${color==='primary'?primaryClasses:color === 'secondary'?secondaryClasses:'gradient'} ${className?className:''}`
 </script>
@@ -15,7 +20,7 @@ const sx = `${color==='primary'?primaryClasses:color === 'secondary'?secondaryCl
 <template>
   <a :href="link"
      aria-label="button-link"
-     class="shadow-lg rounded-full"
+     :class="`shadow-lg rounded-full ${up?'up':''}`"
      id="button-link"
       v-bind="download ? { download } : {}"
       :target="link?'_blank':'_self'">
