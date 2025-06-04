@@ -1,17 +1,14 @@
 <script setup lang="ts">
 
 type Props = {
-  color: 'primary' | 'secondary'
+  color: 'primary' | 'secondary' | 'gradient'
   size?: 'medium' | 'large'
   link?: string
   download?: string
   className?: string
 }
 const {size = 'medium',color, className} = defineProps<Props>()
-const sx = `${color==='primary'?primaryClasses:secondaryClasses} ${className?className:''}`
-//color variant style cases
-const secondaryClasses = "bg-secondary-500 hover:bg-primary-500"
-const primaryClasses = "bg-primary-500 hover:bg-secondary-500"
+const sx = `${color==='primary'?primaryClasses:color === 'secondary'?secondaryClasses:'gradient'} ${className?className:''}`
 </script>
 
 <template>
@@ -28,6 +25,9 @@ const primaryClasses = "bg-primary-500 hover:bg-secondary-500"
   </a>
 </template>
 <style scoped>
+.gradient{
+  background: linear-gradient(0.25turn, var(--color-primary-500), var(--color-secondary-500));
+}
   a{
     display: inline-block;
     overflow: hidden;
