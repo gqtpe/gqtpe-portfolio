@@ -11,13 +11,14 @@ onMounted(() => {
       delay: 1,
       opacity: 0,
       ease: "expo",
-      x: gsap.utils.wrap([-100, 100]), // -100 для первого, +100 для второго
+      x: gsap.utils.wrap([-100, 100]),
       scrollTrigger: {
-        start: "center 80%",
-        end: "center 49%",
-        trigger: '#main-wrapper',
-        toggleActions: 'play reverse play play',
-  /*      onEnter: ()=>{
+          trigger: "#page-header-subtitle",
+          start: "center 80%",
+          end: "center 49%",
+          toggleActions: 'play reverse play reverse',
+        /*
+        onEnter: ()=>{
           console.log("entered")
         },
         onLeave: ()=>{
@@ -28,10 +29,10 @@ onMounted(() => {
         },
         onLeaveBack: ()=>{
           console.log("leave back")
-        },*/
-      }
-    });
-
+        },
+        */
+      },
+    })
   }
 })
 
@@ -44,7 +45,7 @@ const {redirect, text, subtitles} = defineProps<Props>()
 </script>
 
 <template>
-  <section :id="'page-'+redirect?'redirect':'header'" class="projects-hello flex items-center justify-center w-full">
+  <section :id="'page-'+(redirect?'redirect':'header')" class="projects-hello flex items-center justify-center w-full">
     <component
         :is="redirect?RouterLink:'div'"
         :to="redirect"
@@ -57,7 +58,8 @@ const {redirect, text, subtitles} = defineProps<Props>()
           :animateOn="redirect?'hover':'view'"
           revealDirection="start"
           :animate-once="true"
-          :max-iterations="redirect?10:15"
+          :max-iterations="redirect?20:5"
+          :speed="redirect?10:50"
           class="text-9xl font-black uppercase"
       />
       <span id="page-header-subtitle" v-if="!redirect">{{ subtitles![1] }}</span>
@@ -65,7 +67,10 @@ const {redirect, text, subtitles} = defineProps<Props>()
   </section>
 </template>
 
-<style>
+<style scoped>
+span {
+  display: inline-block
+}
 .redirect-header-link {
   transition: opacity 1s ease;
 
