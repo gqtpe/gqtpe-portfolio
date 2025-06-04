@@ -8,24 +8,13 @@ import {useLoadingMedia} from "@/app/hooks/useLoadingMedia.ts";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {useRoute} from "vue-router";
+import {navbarLinks} from "@/components/Navbar/links.ts";
 const route = useRoute()
 
-console.log('APP')
-onBeforeMount(() => {
-
-  watch(route, async () => {
-    await nextTick();
-    if (window._smoother) {
-      window._smoother.scrollTo(0, true);
-    } else {
-      window.scrollTo(0, 0);
-    }
-  })
-
-})
 const {isLoaded} = useLoadingMedia();
 const smoother = ref<any>(null);
 onMounted(() => {
+  console.log("onMounted")
   watch(isLoaded, async (newIsLoaded) => {
     await nextTick();
     if (newIsLoaded && !smoother.value) {
@@ -40,10 +29,15 @@ onMounted(() => {
         content: "#main",
         smooth: 1, // Скорость плавности
         effects: true, // Включение эффектов (опционально)
-        normalizeScroll: true // Нормализация скролла для мобильных устройств
+        normalizeScroll: true,  // Нормализация скролла для мобильных устройств
+        smoothTouch: 0
       });
       smoother.value = smootherObj;
       window._smoother = smootherObj; // 💡 Глобально доступен
+      const link = navbarLinks.find(t => t.path === route.path)
+      if (link && link.target) {
+        window._smoother.scrollTo(link.target, true, "top")
+      }
     }
   })
 })
