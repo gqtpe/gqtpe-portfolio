@@ -13,35 +13,31 @@ const route = useRoute()
 
 const {isLoaded} = useLoadingMedia();
 const smoother = ref<any>(null);
-onMounted(() => {
-  console.log("onMounted")
-  watch(isLoaded, async (newIsLoaded) => {
-    await nextTick();
-    if (newIsLoaded && !smoother.value) {
-      ScrollTrigger.defaults({
-        scroller: '#main',
-        start: "top 80%",
-        end: "top 10%",
-
-      })
-      const smootherObj = ScrollSmoother.create({
-        wrapper: "#main-wrapper",
-        content: "#main",
-        smooth: 1, // Скорость плавности
-        effects: true, // Включение эффектов (опционально)
-        normalizeScroll: true,  // Нормализация скролла для мобильных устройств
-        smoothTouch: 0
-      });
-      smoother.value = smootherObj;
-      window._smoother = smootherObj; // 💡 Глобально доступен
-      const link = navbarLinks.find(t => t.path === route.path)
-      if (link && link.target) {
-        window._smoother.scrollTo(link.target, true, "top")
-      }
+watch(isLoaded, async (newIsLoaded) => {
+  await nextTick();
+  if (newIsLoaded && !smoother.value) {
+    ScrollTrigger.defaults({
+      scroller: '#main',
+      start: "top 80%",
+      end: "top 10%",
+    })
+    const smootherObj = ScrollSmoother.create({
+      wrapper: "#main-wrapper",
+      content: "#main",
+      smooth: 1, // Скорость плавности
+      effects: true, // Включение эффектов (опционально)
+      normalizeScroll: true,  // Нормализация скролла для мобильных устройств
+      smoothTouch: 0
+    });
+    smoother.value = smootherObj;
+    window._smoother = smootherObj; // 💡 Глобально доступен
+    const link = navbarLinks.find(t => t.path === route.path)
+    if (link && link.target) {
+      console.log('inside watch')
+      window._smoother.scrollTo(link.target, true, "top")
     }
-  })
+  }
 })
-
 </script>
 
 <template>
