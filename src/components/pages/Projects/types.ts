@@ -40,17 +40,16 @@ export type Pill =
     | "search"
     | "vueuse/motion"
     | "splidejs"
-
+type Link = {
+    url: string
+    icon: 'fa-expand' | 'bi-github' | 'fa-external-link-square-alt'
+}
 export type Project = {
     title: string
     description: string
     id: number
     icon: string
-    links: {
-        url?: string
-        path?: string
-        github?: string
-    },
+    links: Link[],
     images?: Image[]
     pills?: Pill[]
 
