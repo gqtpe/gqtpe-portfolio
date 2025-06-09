@@ -59,7 +59,7 @@ const {redirect, text, subtitles} = defineProps<Props>()
           revealDirection="start"
           :animate-once="true"
           :max-iterations="redirect?20:5"
-          :speed="redirect?10:50"
+          :speed="redirect?10:55"
           class="text-9xl font-black uppercase"
       />
       <span id="page-header-subtitle" v-if="!redirect">{{ subtitles![1] }}</span>
