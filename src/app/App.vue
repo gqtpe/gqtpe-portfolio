@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {nextTick, onBeforeMount, onMounted, ref, watch} from "vue";
+import {nextTick, ref, watch} from "vue";
 import Loading from "@/components/Loading.vue";
 import Header from "@/components/Header.vue"
 import "./App.css"
@@ -9,6 +9,7 @@ import ScrollSmoother from "gsap/ScrollSmoother";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {useRoute} from "vue-router";
 import {navbarLinks} from "@/components/Navbar/links.ts";
+
 const route = useRoute()
 
 const {isLoaded} = useLoadingMedia();
@@ -56,7 +57,7 @@ watch(isLoaded, async (newIsLoaded) => {
     </div>
 
   </template>
-  <template v-if="!isLoaded">
+  <template v-else>
     <Loading/>
   </template>
 </template>
