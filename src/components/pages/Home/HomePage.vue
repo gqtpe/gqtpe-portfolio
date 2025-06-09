@@ -22,6 +22,3 @@ import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedire
     <PageHeaderRedirect text="projects" redirect="/projects"/>
   </section>
 </template>
-<style scoped>
-
-</style>
