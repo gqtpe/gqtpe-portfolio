@@ -1,16 +1,17 @@
 import {links, projectImages} from "@/app/links";
 import type {Projects} from "@/components/pages/Projects/types";
+
 const projects: Projects = {
     ["trello"]: {
         id: 1,
         title: 'Trello-Clone',
         description: 'Todolist is a pet project for task management, created using modern web technologies. This project allows for convenient task management and supports user authorization.',
         icon: "co-trello",
-        links: {
-            url: links.trello,
-            path: '/project/trello',
-            github: links.trelloGithub
-        },
+        links: [
+            {url: '/project/trello', icon: 'fa-expand'},
+            {url: links.trello, icon: 'fa-external-link-square-alt'},
+            {url: links.trelloGithub, icon: 'bi-github'},
+        ],
         images: projectImages["trello"],
         pills: [
             'react',
@@ -37,11 +38,11 @@ const projects: Projects = {
         title: 'Spotify-Clone',
         description: 'A Spotify clone built with Next.js, offering a similar user experience to the original Spotify platform. This project integrates with the Spotify Web API to provide music streaming, playlists, and user interaction features.',
         icon: "bi-spotify",
-        links: {
-            url: links.spotify,
-            path: '/project/spotify',
-            github: links.spotifyGithub
-        },
+        links: [
+            {url: links.spotify, icon: 'fa-external-link-square-alt'},
+            {url: '/project/spotify', icon: 'fa-expand'},
+            {url: links.spotifyGithub, icon: 'bi-github'},
+        ],
         images: projectImages["spotify"],
         pills: [
             'react',
@@ -70,12 +71,13 @@ const projects: Projects = {
         title: 'Portfolio',
         description: ' A Portfolio application build with Vue.',
         icon: "bi-file-earmark-person",
-        links: {
-            github: links.portfolioGithub,
-            path:'/project/portfolio',
-        },
+        links: [
+            {url: '/project/portfolio', icon: 'fa-expand'},
+            {url: '/', icon: 'fa-external-link-square-alt'},
+            {url: links.portfolioGithub, icon: 'bi-github'},
+        ],
         images: [],
-        pills:[
+        pills: [
             'vue',
             'vue-router',
             'matter-js',
