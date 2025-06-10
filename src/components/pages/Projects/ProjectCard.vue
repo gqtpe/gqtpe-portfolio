@@ -28,8 +28,8 @@ const getLinkProps = (link) => {
 </script>
 
 <template>
-  <section class="project-card flex justify-center items-center">
-    <div class="flex flex-col items-center">
+<!--  <section class="project-card flex justify-center items-center">
+    <div class="flex flex-col items-center">-->
       <v-icon
           :name="project.icon"
           class="card__icon"
@@ -51,8 +51,8 @@ const getLinkProps = (link) => {
 <!--          />-->
 <!--        </component>-->
 <!--      </div>-->
-    </div>
-  </section>
+<!--    </div>
+  </section>-->
 </template>
 
 <style scoped>
@@ -74,7 +74,9 @@ section {
     justify-content: center;
   }
 }
-
+section{
+  height: 100vh;
+}
 .card__icon {
   font-size: 3rem !important;
   width: 10rem !important;

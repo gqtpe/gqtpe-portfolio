@@ -45,17 +45,59 @@ onMounted(() => {
       text="projects"
       :subtitles="['ss', 'ss']"
   />
-  <!--    <ProjectCard v-for="project in projects" :project="project"/>-->
-  <section v-for="project in projects">
-    <div class="bg"></div>
-    <ProjectCard :project="project"/>
-  </section>
 
+  <div class="relative">
+    <div class="inner__wrapper">
+      <div class="inner__content">
+        <div class="inner__scroller">
+          <ProjectCard v-for="project in projects" :project="project"/>
+        </div>
+      </div>
+    </div>
+    <section v-for="project in projects">
+      <div class="bg"></div>
+    </section>
+  </div>
 
 </template>
 
 
 <style scoped>
+.inner__content {
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 10rem !important;
+  height: 10rem !important;
+  @media (max-width: 1440px) {
+    width: 20rem !important;
+    height: 20rem !important;
+  }
+}
+.inner__wrapper{
+  z-index: 20;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+}
+.inner__scroller {
+  overflow-y: scroll;
+  /* хром, сафари */
+  &::-webkit-scrollbar { width: 0; }
+
+  /* ie 10+ */
+ -ms-overflow-style: none;
+
+  /* фф (свойство больше не работает, других способов тоже нет)*/
+   overflow: -moz-scrollbars-none;
+}
+
 .projects-hello {
   background: var(--color-zinc-800);
 }
