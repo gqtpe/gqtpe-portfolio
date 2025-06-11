@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from "@/components/Button.vue"
+import Button from "@/components/common/Button.vue"
 </script>
 <!--todo: send contact data to email using php-->
 <template>

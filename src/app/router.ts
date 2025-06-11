@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from "vue-router";
 import Projects from "@/components/pages/Projects/Projects.vue";
 import HomePage from "@/components/pages/Home/HomePage.vue";
-import {navbarLinks} from "@/components/Navbar/links.ts";
+import {navbarLinks} from "@/components/pages/Navbar/links.ts";
 
 declare global {
     interface Window {

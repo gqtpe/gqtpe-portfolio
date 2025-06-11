@@ -2,7 +2,7 @@
 import Section from "@/components/pages/Home/About/Section.vue";
 import type {InfoPage} from "@/components/pages/Home/About/about.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
-import Button from "@/components/Button.vue";
+import Button from "@/components/common/Button.vue";
 
 defineProps<{info: InfoPage}>()
 </script>
@@ -69,16 +69,13 @@ defineProps<{info: InfoPage}>()
   background-image: url("src/assets/img/background/about.png");
   background-size: cover;
   background-position: center;
-
   z-index: -1;
 }
-
 @media (prefers-color-scheme: dark) {
   #about::before{
     filter: grayscale(80%);
   }
 }
-
 .about__info {
   display: grid;
   grid-template-rows: auto 1fr;

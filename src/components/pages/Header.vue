@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from "@/components/Button.vue";
+import Button from "@/components/common/Button.vue";
 import {links} from "@/app/links.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import gsap from "gsap";

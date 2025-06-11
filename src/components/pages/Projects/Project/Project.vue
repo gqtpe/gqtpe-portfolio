@@ -2,7 +2,7 @@
 import projects from "@/components/pages/Projects/projects.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import type {ProjectName} from "@/components/pages/Projects/types.ts";
-import Slide from "@/components/Splide.vue";
+import Slide from "@/components/common/Splide.vue";
 import Pills from "@/components/pages/Projects/Project/Pills.vue";
 
 const props = defineProps<{

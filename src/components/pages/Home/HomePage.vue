@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import Home from "./Home.vue";
+
 import About from "./About/About.vue";
 import data from "@/components/pages/Home/About/about.ts";
-import WhoIam from "@/components/pages/Home/About/WhoIam.vue";
-import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedirect.vue";
+import Hero from "@/components/pages/Home/Hero.vue";
+import WhoIam from "@/components/pages/Home/WhoIam.vue";
+import PageHeaderRedirect from "@/components/common/PageHeaderRedirect/PageHeaderRedirect.vue";
+
 
 //helpers
 // onMounted(() => {
@@ -15,7 +17,7 @@ import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedire
 </script>
 
 <template>
-  <Home id="home"/>
+  <Hero id="home"/>
   <WhoIam/>
   <About :info="data.info"/>
   <section id="projects-hello" class="projects-hello flex items-center justify-center w-full">

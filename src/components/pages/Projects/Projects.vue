@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {onMounted} from "vue";
 import gsap from "gsap";
-import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedirect.vue";
+import PageHeaderRedirect from "@/components/common/PageHeaderRedirect/PageHeaderRedirect.vue";
 import projects from "@/components/pages/Projects/projects.ts";
 import ProjectCard from "@/components/pages/Projects/ProjectCard.vue";
 

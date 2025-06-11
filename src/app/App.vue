@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import {nextTick, ref, watch} from "vue";
-import Loading from "@/components/Loading.vue";
-import Header from "@/components/Header.vue"
+import Loading from "@/components/common/Loading.vue";
+import Header from "@/components/pages/Header.vue"
 import "./App.css"
-import Navbar from "@/components/Navbar/Navbar.vue";
+import Navbar from "@/components/pages/Navbar/Navbar.vue";
 import {useLoadingMedia} from "@/app/hooks/useLoadingMedia.ts";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {useRoute} from "vue-router";
-import {navbarLinks} from "@/components/Navbar/links.ts";
+import {navbarLinks} from "@/components/pages/Navbar/links.ts";
 
 const route = useRoute()
 

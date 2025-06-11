@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CountUp from "@/components/CountUp.vue";
+import CountUp from "@/components/common/CountUp.vue";
 </script>
 
 <template>
