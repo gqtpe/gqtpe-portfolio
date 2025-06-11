@@ -95,7 +95,6 @@ onMounted(() => {
  -ms-overflow-style: none;
 
   /* фф (свойство больше не работает, других способов тоже нет)*/
-   overflow: -moz-scrollbars-none;
 }
 
 .projects-hello {
