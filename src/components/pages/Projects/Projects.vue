@@ -45,14 +45,15 @@ onMounted(() => {
       text="projects"
       :subtitles="['ss', 'ss']"
   />
-
-  <div class="relative">
+  <div class="projects-wrapper">
+<!--  <div class="relative projects-content">-->
     <div class="inner__wrapper">
-      <div class="inner__content">
-        <div class="inner__scroller">
-          <ProjectCard v-for="project in projects" :project="project"/>
-        </div>
-      </div>
+<!--      <div class="inner__content">
+        <div class="inner__scroller">-->
+<!--          <ProjectCard v-for="project in projects" :project="project"/>-->
+          <ProjectCard class="bg-cyan-800 target1" :project="projects.trello"/>
+<!--        </div>
+      </div>-->
     </div>
     <section v-for="project in projects">
       <div class="bg"></div>
