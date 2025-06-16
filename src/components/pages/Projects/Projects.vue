@@ -16,8 +16,7 @@ onMounted(() => {
     // Добавляем фоновые изображения
     bg.style.backgroundImage = `url(https://picsum.photos/1600/800?random=${i})`;
 
-    gsap.fromTo(
-        bg,
+    gsap.fromTo(bg,
         {
           backgroundPosition: () =>
               i === 0 ? "50% 0px" : `50% ${-window.innerHeight * getRatio(section)}px`,
@@ -58,15 +57,14 @@ onMounted(() => {
     <section v-for="project in projects">
       <div class="bg"></div>
     </section>
+<!--  </div>-->
   </div>
-
 </template>
 
 
 <style scoped>
 .inner__content {
   overflow: hidden;
-  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,25 +75,32 @@ onMounted(() => {
     height: 20rem !important;
   }
 }
-.inner__wrapper{
-  z-index: 20;
-  position: fixed;
+
+.inner__wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
+/*  align-items: center;*/
+  position: absolute;
+  height: 100%;
   background: transparent;
+  z-index: 20;
+  width: 100vw;
+  .target1{
+    position: fixed;
+  }
 }
+
 .inner__scroller {
   overflow-y: scroll;
   /* хром, сафари */
-  &::-webkit-scrollbar { width: 0; }
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 
   /* ie 10+ */
- -ms-overflow-style: none;
+  -ms-overflow-style: none;
 
-  /* фф (свойство больше не работает, других способов тоже нет)*/
 }
 
 .projects-hello {
