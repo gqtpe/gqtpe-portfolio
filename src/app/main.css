@@ -1,44 +1,55 @@
 @import url('../styles/reset.css');
 @import url('@splidejs/splide/dist/css/splide.min.css');
-html{
+body{
+    max-width: 100vw;
+    overflow: hidden;
+}
+html {
     font-size: 16px;
     font-family: Roboto, sans-serif;
     scroll-behavior: smooth;
+
     ::-moz-selection { /* Code for Firefox */
         background: var(--color-primary-500)
     }
-    ::selection{
+
+    ::selection {
         background: var(--color-primary-500)
     }
+
     /*transition:font-size 0.2s ease-in-out,width 1s ease-in-out;*/
 
-        @media (max-width: 1200px) {
-            font-size: 15px;
-        }
+    @media (max-width: 1200px) {
+        font-size: 15px;
+    }
 
-        @media (max-width: 992px) {
-            font-size: 14px;
-        }
+    @media (max-width: 992px) {
+        font-size: 14px;
+    }
 
-        @media (max-width: 768px) {
-            font-size: 14px;
-        }
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 
-        @media (max-width: 576px) {
-            font-size: 18px;
-        }
+    @media (max-width: 576px) {
+        font-size: 18px;
+    }
 }
-#app{
-    max-height: 100vh;
-    max-width: 100vw;
-    height: 100vh;
-    display: grid;
-    overflow: hidden;
-    grid-template-columns: 1fr;
-    grid-template-rows:  1fr;
+
+#app {
     /*background: var(--color-zinc-900)*/
 
 }
+
+#modal {
+    display: none;
+    @media ( max-width: 768px) {
+        display: block;
+        position: absolute;
+    }
+}
+
+
 .page-wrapper {
     max-width: 1440px;
     width: 100%;
@@ -52,17 +63,19 @@ html{
         max-width: 1024px;
     }
 }
-.glass{
+
+.glass {
     background: rgba(50, 50, 50, 0.08);
-    backdrop-filter: blur( 15px );
-    -webkit-backdrop-filter: blur( 15px );
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-radius: 1rem;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
-.glass-light{
-    background: rgba( 255, 255, 255, 0.3 );
-    backdrop-filter: blur( 15px );
-    -webkit-backdrop-filter: blur( 15px );
+
+.glass-light {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-radius: 1rem;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
