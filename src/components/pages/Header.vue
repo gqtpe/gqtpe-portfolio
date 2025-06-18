@@ -38,7 +38,7 @@ header{
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 20;
+  z-index: 10;
 }
 .header__wrapper{
   display:grid;
