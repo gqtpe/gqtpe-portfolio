@@ -41,26 +41,21 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="home">
+  <section class="home text-white text-center flex flex-col justify-center items-center">
+    <h1 ref="hero" class=" text-8xl font-black uppercase max-sm:text-5xl">nursain temirtas</h1>
     <h3 ref="title" class="uppercase">front-end developer</h3>
-    <h1 ref="hero"  class=" text-8xl font-black uppercase">nursain temirtas</h1>
   </section>
 </template>
 
 <style scoped>
 .home {
   color: white;
-  text-align: center;
   background-repeat: round;
   background-color: var(--color-primary-500);
   background-image: url("src/assets/img/background/home.png");
   @media (prefers-color-scheme: dark) {
     filter: grayscale(100%);
   }
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 </style>
