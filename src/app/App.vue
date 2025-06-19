@@ -63,8 +63,8 @@ watch(isLoaded, async (newIsLoaded) => {
 </template>
 <style>
 .half {
+  min-height: 50vh !important;
   height: 50vh !important;
-  overflow: hidden !important;
 }
 
 </style>
