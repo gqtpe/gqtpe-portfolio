@@ -2,52 +2,57 @@
 import gsap from "gsap";
 import SplitText from "gsap/SplitText"
 import {onMounted, useTemplateRef} from "vue";
+import Subtitles from "@/components/common/Subtitles.vue";
 
 
-
-const hero = useTemplateRef<null | Element>('hero')
-const subtitle = useTemplateRef<null | Element>('title')
+const hero = useTemplateRef<null | Element>('hero-shuffle')
+const subtitle = useTemplateRef<null | Element>('hero-shuffle-subtitle')
 onMounted(() => {
-  if (hero.value) {
-    const split = SplitText.create(hero.value, {type: 'chars, lines, words'})
-    gsap.from(split.chars, {
-      stagger: {
-        amount: 0.2,
-        from: 'random'
-      },
-      scrollTrigger: {
-        trigger: hero.value,
-      },
-      duration: 0.5,
-      yPercent: 'random([-100, 100])',
-      opacity: 0
-    })
-  }
-  if (subtitle.value) {
-    const titleSplit = SplitText.create(subtitle.value, {type: 'chars, lines, words'})
-    gsap.from(titleSplit.chars, {
-      delay: 1,
-      opacity: 0,
-      y: -20,
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: hero.value,
-        toggleActions: 'play none restart none',
-      },
-      ease: "expoScale(0.5,7,none)",
-    })
-  }
+  let tl = gsap.timeline({
+    scrollTrigger:{
+      trigger: '#hero-shuffle',
+      markers: true,
+      end: "top top",
+      start: "bottom bottom",
+      toggleActions: "play reset play reverse"
+    }
+  })
+  const split = SplitText.create('#hero-shuffle', {type: 'chars'})
+  const titleSplit = SplitText.create('#hero-shuffle-subtitle', {type: 'chars'})
+  tl.from(split.chars, {
+    stagger: {
+      amount: 0.2,
+      from: 'random'
+    },
+    duration: 0.5,
+    yPercent: 'random([-100, 100])',
+    opacity: 0
+  })
+  tl.from(titleSplit.chars, {
+    opacity: 0,
+    y: -20,
+    stagger: 0.1,
+    ease: "expoScale(0.5,7,none)",
+  })
+
 })
 </script>
 
 <template>
   <section class="home text-white text-center flex flex-col justify-center items-center">
-    <h1 ref="hero" class=" text-8xl font-black uppercase max-sm:text-5xl">nursain temirtas</h1>
-    <h3 ref="title" class="uppercase">front-end developer</h3>
+    <h3 id="hero-shuffle-subtitle" class="uppercase">front-end developer</h3>
+    <Subtitles :subtitles="['Welcome', 'Est. 2025']" :delay="2">
+      <div>
+        <h1 id="hero-shuffle" class="text-8xl uppercase font-black max-sm:text-5xl">nursain temirtas</h1>
+      </div>
+    </Subtitles>
   </section>
 </template>
 
 <style scoped>
+.hero-shuffle{
+  text-box: ex alphabetic;
+}
 .home {
   color: white;
   background-repeat: round;
