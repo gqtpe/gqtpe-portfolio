@@ -11,7 +11,7 @@ onMounted(() => {
     stagger: 0.04,
     scrollTrigger: {
       id: 'whoIam',
-            markers: true,
+/*       markers: true,*/
       trigger: '#whoiam-wrapper',
       toggleActions: 'play none none reset',
       start: "top 90%",
