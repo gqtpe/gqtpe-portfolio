@@ -9,6 +9,7 @@ defineProps<{ info: InfoPage }>()
 
 <template>
   <section id="about" class="flex justify-center px-10 py-15 max-sm:px-0.5">
+    <div class="bg"></div>
     <div class="glass p-[2rem] flex justify-between gap-[1rem] text-white max-sm:flex-col max-sm:p-5 max-sm:text-center">
       <div class="about__header">
         <div class="about__image rounded-3xl">
