@@ -39,30 +39,30 @@ onMounted(() => {
 type Props = {
   redirect?: string
   text: string
-  subtitles?: [string, string]
+  subtitles: [string, string]
 }
 const {redirect, text, subtitles} = defineProps<Props>()
 </script>
 
 <template>
-  <section :id="'page-'+(redirect?'redirect':'header')" class="projects-hello flex items-center justify-center w-full">
+  <section class="projects-hello flex items-center justify-center w-full">
     <component
         :is="redirect?RouterLink:'div'"
         :to="redirect"
         :class="redirect?'redirect-header-link':'redirect-header-wrapper'"
     >
-      <span id="page-header-subtitle" v-if="!redirect">{{ subtitles![0] }}</span>
-      <DecryptedText
-          :text="text"
-          use-original-chars-only
-          :animateOn="redirect?'hover':'view'"
-          revealDirection="start"
-          :animate-once="true"
-          :max-iterations="redirect?20:5"
-          :speed="redirect?10:55"
-          class="text-9xl font-black uppercase"
-      />
-      <span id="page-header-subtitle" v-if="!redirect">{{ subtitles![1] }}</span>
+      <Subtitles :subtitles="subtitles">
+        <DecryptedText
+            :text="text"
+            use-original-chars-only
+            :animateOn="redirect?'hover':'view'"
+            revealDirection="start"
+            :animate-once="true"
+            :max-iterations="5"
+            :speed="redirect?55:55"
+            class="text-9xl font-main font-semibold max-sm:text-5xl"
+        />
+      </Subtitles>
     </component>
   </section>
 </template>
