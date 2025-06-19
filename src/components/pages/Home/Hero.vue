@@ -1,19 +1,16 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import SplitText from "gsap/SplitText"
-import {onMounted, useTemplateRef} from "vue";
+import {onMounted} from "vue";
 import Subtitles from "@/components/common/Subtitles.vue";
 
-
-const hero = useTemplateRef<null | Element>('hero-shuffle')
-const subtitle = useTemplateRef<null | Element>('hero-shuffle-subtitle')
 onMounted(() => {
   let tl = gsap.timeline({
-    scrollTrigger:{
+    scrollTrigger: {
       trigger: '#hero-shuffle',
       markers: true,
-      end: "top top",
-      start: "bottom bottom",
+      end: "bottom top",
+      start: "top bottom",
       toggleActions: "play reset play reverse"
     }
   })
@@ -24,7 +21,6 @@ onMounted(() => {
       amount: 0.2,
       from: 'random'
     },
-    duration: 0.5,
     yPercent: 'random([-100, 100])',
     opacity: 0
   })
@@ -35,25 +31,28 @@ onMounted(() => {
     ease: "expoScale(0.5,7,none)",
   })
 
+
 })
 </script>
 
 <template>
-  <section class="home text-white text-center flex flex-col justify-center items-center">
-    <h3 id="hero-shuffle-subtitle" class="uppercase">front-end developer</h3>
-    <Subtitles :subtitles="['Welcome', 'Est. 2025']" :delay="2">
+  <section class="home">
+    <Subtitles :subtitles="['Welcome', 'Est. 2025']">
       <div>
-        <h1 id="hero-shuffle" class="text-8xl uppercase font-black max-sm:text-5xl">nursain temirtas</h1>
+        <h3 id="hero-shuffle-subtitle" class="uppercase">front-end developer</h3>
+        <h1 id="hero-shuffle" class="">gqtpe</h1>
       </div>
     </Subtitles>
   </section>
 </template>
 
 <style scoped>
-.hero-shuffle{
-  text-box: ex alphabetic;
-}
+@reference "@/styles/tailwind.css";
+
 .home {
+  @apply font-main text-white text-center flex flex-col justify-center items-center;
+  height: 100vh;
+  width: 100vw;
   color: white;
   background-repeat: round;
   background-color: var(--color-primary-500);
@@ -63,4 +62,13 @@ onMounted(() => {
   }
 }
 
+#hero-shuffle {
+  @apply whitespace-nowrap font-semibold md:text-[12rem] max-md:text-[8rem] max-sm:text-[6rem];
+  font-size: clamp(3rem, 12vw, 12rem);
+}
+
+#hero-shuffle-subtitle {
+  @apply uppercase;
+  font-size: clamp(0.5rem, 6vw, 1rem);
+}
 </style>
