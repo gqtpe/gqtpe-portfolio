@@ -3,7 +3,6 @@ import {onMounted, ref, computed, watch} from "vue";
 import {RouterLink, useRoute} from "vue-router";
 import { navbarLinks as links } from "./links.ts";
 import { useIsMobile } from "@/app/hooks/useIsMobile.ts";
-
 const isMobile = useIsMobile();
 const route = useRoute();
 const active = ref<number|null>(null);
@@ -34,8 +33,8 @@ const navClass = computed(() => ({
   'items-center': true,
   'justify-center': true,
   'text-black': true,
-  show: !isNavbarHidden.value,
-  hide: isNavbarHidden.value,
+  show: isNavbarHidden.value,
+  hide: !isNavbarHidden.value,
 }));
 
 const onMouseLeave = () => {
@@ -70,7 +69,7 @@ const toggleMenuVisibility = () => {
       <div v-for="link in links" :key="link.path" class="link-wrapper">
         <RouterLink
             :to="link.path"
-            class="flex flex-col links"
+            class="flex flex-col links font-main font-light"
             :class="{ active: active === link.id }"
             @mouseenter="onMouseEnter(link.id)"
             @click="onClick"
@@ -89,7 +88,7 @@ const toggleMenuVisibility = () => {
   cursor: pointer;
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 768px) {
   .burger {
     display: block;
   }
@@ -108,11 +107,11 @@ const toggleMenuVisibility = () => {
     transition: transform 0.2s ease-in-out;
   }
 
-  .show {
+  .hide {
     transform: translateX(100%);
   }
 
-  .hide {
+  .show {
     transform: translateX(0);
   }
 }
@@ -133,7 +132,7 @@ const toggleMenuVisibility = () => {
   justify-content: center;
   cursor: pointer;
   height: 2rem;
-  padding: 0 1rem;
+  padding: 0.1rem 0.75rem;
   background: var(--color-zinc-800);
   color: white;
   border-radius: 0.25rem;
@@ -141,6 +140,7 @@ const toggleMenuVisibility = () => {
 
 .link.dark {
   filter: invert(100%);
+
 }
 
 .active {
