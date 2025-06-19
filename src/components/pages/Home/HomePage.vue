@@ -17,10 +17,10 @@ import PageHeaderRedirect from "@/components/common/PageHeaderRedirect/PageHeade
 </script>
 
 <template>
-  <Hero id="home"/>
+  <Hero id="home" />
   <WhoIam/>
   <About :info="data.info"/>
-  <section id="projects-hello" class="projects-hello flex items-center justify-center w-full">
-    <PageHeaderRedirect text="projects" redirect="/projects"/>
+  <section class="bg-white text-black flex items-center justify-center w-full">
+    <PageHeaderRedirect text="projects" redirect="/projects" :subtitles="['Go Ahead', 'Next Page']"/>
   </section>
 </template>
