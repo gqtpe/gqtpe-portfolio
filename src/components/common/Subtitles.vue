@@ -1,62 +1,68 @@
 <script setup lang="ts">
-
-import {onMounted} from "vue";
+import { onMounted, ref, nextTick } from "vue";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import generateUID from "@/utils/uuid.ts";
-import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
+import { useIsMobile } from "@/app/hooks/useIsMobile.ts";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
-  subtitles: [string, string]
-  delay?: number
-}
-const {subtitles, delay} = withDefaults(defineProps<Props>(), {
+  subtitles: [string, string];
+  delay?: number;
+};
+
+const { subtitles, delay } = withDefaults(defineProps<Props>(), {
   delay: 0,
-})
-const isMobile = useIsMobile()
-const subtitleWrapperID = generateUID("subtitleWrapper")
-const subtitleIDs = generateUID("subtitleIDs")
-onMounted(() => {
-  gsap.from(`#${subtitleIDs}`, {
-    delay: delay,
-    opacity: 0,
-    ease: "expo",
-    ...{[`${isMobile ? 'x' : 'y'}`]: gsap.utils.wrap([-100, 100]),},
-    scrollTrigger: {
-      trigger: `#${subtitleWrapperID}`,
-      id: subtitleWrapperID,
-      start: "center 55%",
-      end: "center 45%",
-      toggleActions: 'play reverse play reverse',
-      /*
-      onEnter: ()=>{
-        console.log("entered")
+});
+
+const isMobile = useIsMobile();
+
+const subtitleWrapperID = generateUID("subtitleWrapper");
+const subtitle1ID = generateUID("subtitle1");
+const subtitle2ID = generateUID("subtitle2");
+
+onMounted(async () => {
+  await nextTick(); // ensure DOM rendered
+
+  const directionProp = isMobile.value ? "y" : "x";
+  const offsets = isMobile.value ? [-50, 50] : [-100, 100];
+  const ids = [subtitle1ID, subtitle2ID];
+
+  ids.forEach((id, index) => {
+    gsap.from(`#${id}`, {
+      delay: delay + index * 0.15, // small stagger
+      opacity: 0,
+      duration: 1,
+      ease: "expo",
+      [directionProp]: offsets[index],
+      scrollTrigger: {
+        trigger: `#${subtitleWrapperID}`,
+        start: "center 60%",
+        end: "center 40%",
+        toggleActions: "play reverse play reverse",
+        id: `${subtitleWrapperID}-${index}`,
       },
-      onLeave: ()=>{
-        console.log("leave")
-      },
-      onEnterBack: ()=>{
-        console.log("entered back")
-      },
-      onLeaveBack: ()=>{
-        console.log("leave back")
-      },
-      */
-    },
-  })
-})
+    });
+  });
+});
 </script>
 
 <template>
-  <div :id="subtitleWrapperID" :class="`flex justify-center items-center ${isMobile && 'flex-col'}`">
-    <span class="slide-subtitle" :id="subtitleIDs">{{ subtitles![0] }}</span>
-    <slot/>
-    <span class="slide-subtitle" :id="subtitleIDs">{{ subtitles![1] }}</span>
+  <div :id="subtitleWrapperID" class="wrapper">
+    <span class="slide-subtitle" :id="subtitle1ID">{{ subtitles[0] }}</span>
+    <slot />
+    <span class="slide-subtitle" :id="subtitle2ID">{{ subtitles[1] }}</span>
   </div>
 </template>
 
 <style scoped>
+@reference '@/styles/tailwind.css';
+.wrapper {
+  @apply flex justify-center items-center gap-4 max-sm:flex-col;
+}
 .slide-subtitle {
-  margin: 0 3rem;
-  font-size: 1.25rem;
+  @apply text-lg font-medium;
+
 }
 </style>
