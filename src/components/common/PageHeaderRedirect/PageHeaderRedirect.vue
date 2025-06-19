@@ -28,7 +28,7 @@ const {redirect, text, subtitles} = defineProps<Props>()
             :animate-once="true"
             :max-iterations="5"
             :speed="redirect?55:55"
-            class="text-9xl font-main font-semibold max-sm:text-5xl"
+            class="title"
         />
     </component>
     </Subtitles>
