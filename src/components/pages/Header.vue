@@ -4,18 +4,37 @@ import {links} from "@/app/links.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import gsap from "gsap";
 import {onMounted} from "vue";
-
-onMounted(()=>{
-  gsap.from('#header', {
-    y:-50,
+import {ScrollTrigger} from "gsap/ScrollTrigger"
+onMounted(() => {
+  const header = gsap.from('#header', {
+    yPercent: -100,
     opacity: 0,
-    duration: 1.5,
-    ease: "elastic",
-    scrollTrigger:{
-      trigger: '#header',
+    paused: true,
+    ease: "expo",
+  })
+
+  let isVisible = true // изначально показываем
+
+  setTimeout(()=>{
+    header.play()
+    isVisible = true
+  },1000)
+
+  ScrollTrigger.create({
+    start: "top top",
+    end: "max",
+    onUpdate: (self) => {
+      if (self.direction === -1 && !isVisible) {
+        header.play()
+        isVisible = true
+      } else if (self.direction === 1 && isVisible) {
+        header.reverse()
+        isVisible = false
+      }
     }
   })
 })
+
 </script>
 
 <template>
