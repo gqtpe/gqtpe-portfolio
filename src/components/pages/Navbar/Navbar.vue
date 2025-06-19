@@ -7,7 +7,7 @@ import { useIsMobile } from "@/app/hooks/useIsMobile.ts";
 const isMobile = useIsMobile();
 const route = useRoute();
 const active = ref<number|null>(null);
-const isNavbarHidden = ref(true);
+const isNavbarHidden = ref(false);
 
 onMounted(() => {
   if(active.value === null){
