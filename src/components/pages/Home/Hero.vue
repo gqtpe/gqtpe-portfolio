@@ -8,7 +8,9 @@ onMounted(() => {
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: '#hero-shuffle',
+/*
       markers: true,
+*/
       end: "bottom top",
       start: "top bottom",
       toggleActions: "play reset play reverse"
