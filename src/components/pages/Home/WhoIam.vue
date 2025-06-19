@@ -4,20 +4,20 @@ import {gsap} from 'gsap';
 import SplitText from "gsap/SplitText"
 
 onMounted(() => {
-  const split1 = SplitText.create('#animation1', {type: 'chars, lines, words'})
+  const split1 = SplitText.create('#whoiam', {type: 'chars, lines, words'})
   gsap.from(split1.chars, {
-    opacity: 0,
     y: 200,
-    delay:0.5,
+    opacity: 0,
     stagger: 0.04,
-    duration: 1,
-    ease: 'expo.out',
     scrollTrigger: {
-      trigger: '#animation1',
-      toggleActions: 'resume pause resume pause',
+      id: 'whoIam',
+            markers: true,
+      trigger: '#whoiam-wrapper',
+      toggleActions: 'play none none reset',
+      start: "top 90%",
+      end: "bottom top",
     }
-  });
-
+  })
 });
 </script>
 
@@ -28,12 +28,13 @@ section {
 </style>
 
 <template>
-  <section class="half flex justify-center items-center" id="whoiam">
-    <div class="text-7xl font-black text-zinc-500" id="animation1">WHO I AM?</div>
+  <section class="half flex justify-center items-center" id="whoiam-wrapper">
+    <div class="text-7xl font-black text-zinc-500" id="whoiam">WHO I AM<span id="whoiam-symbol">?</span></div>
   </section>
 </template>
 <style scoped>
-#whoiam {
+#whoiam-wrapper {
+  overflow: hidden;
   background: white;
   @media (prefers-color-scheme: dark) {
     background: black;
