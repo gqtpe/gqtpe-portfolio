@@ -2,39 +2,7 @@
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import gsap from "gsap";
 import {RouterLink} from "vue-router";
-import {onMounted} from "vue";
-
-
-onMounted(() => {
-  if (!redirect) {
-    gsap.from('#page-header-subtitle', {
-      delay: 1,
-      opacity: 0,
-      ease: "expo",
-      x: gsap.utils.wrap([-100, 100]),
-      scrollTrigger: {
-          trigger: "#page-header-subtitle",
-          start: "center 80%",
-          end: "center 49%",
-          toggleActions: 'play reverse play reverse',
-        /*
-        onEnter: ()=>{
-          console.log("entered")
-        },
-        onLeave: ()=>{
-          console.log("leave")
-        },
-        onEnterBack: ()=>{
-          console.log("entered back")
-        },
-        onLeaveBack: ()=>{
-          console.log("leave back")
-        },
-        */
-      },
-    })
-  }
-})
+import Subtitles from "@/components/common/Subtitles.vue"
 
 type Props = {
   redirect?: string
