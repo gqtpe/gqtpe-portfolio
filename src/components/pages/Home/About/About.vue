@@ -61,14 +61,23 @@ defineProps<{ info: InfoPage }>()
   display: flex;
   flex-direction: column;
 }
-#about::before {
-  content: "";
+.bg{
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
   background-image: url("src/assets/img/background/about.png");
   background-size: cover;
-  filter: brightness(80%);
-  z-index: -1;
+  @media(prefers-color-scheme: dark){
+    filter: grayscale(100%);
+  }
+}
+#about{
+position: relative
+
+
 }
 
 @media (prefers-color-scheme: dark) {
