@@ -2,6 +2,7 @@
 
 
 @theme {
+    --font-main: 'Poppins', sans-serif;
     --color-primary-100: #b2e0e7;
     --color-primary-200: #80c5d1;
     --color-primary-300: #4fb3bb;
