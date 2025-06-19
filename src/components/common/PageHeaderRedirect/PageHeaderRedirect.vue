@@ -36,6 +36,12 @@ const {redirect, text, subtitles} = defineProps<Props>()
 </template>
 
 <style scoped>
+@reference '@/styles/tailwind.css';
+.title{
+  @apply font-main font-semibold;
+  font-size: clamp(3rem, 15vw, 12rem);
+
+}
 span {
   display: inline-block
 }
