@@ -13,12 +13,13 @@ const {redirect, text, subtitles} = defineProps<Props>()
 
 <template>
   <section class="projects-hello flex items-center justify-center w-full">
+    <Subtitles :subtitles="subtitles">
     <component
         :is="redirect?RouterLink:'div'"
         :to="redirect"
         :class="redirect?'redirect-header-link':'redirect-header-wrapper'"
     >
-      <Subtitles :subtitles="subtitles">
+
         <DecryptedText
             :text="text"
             use-original-chars-only
@@ -29,8 +30,8 @@ const {redirect, text, subtitles} = defineProps<Props>()
             :speed="redirect?55:55"
             class="text-9xl font-main font-semibold max-sm:text-5xl"
         />
-      </Subtitles>
     </component>
+    </Subtitles>
   </section>
 </template>
 
