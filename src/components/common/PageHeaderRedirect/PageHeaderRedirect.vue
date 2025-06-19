@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import DecryptedText from "@/components/bits/DecryptedText.vue";
-import gsap from "gsap";
 import {RouterLink} from "vue-router";
 import Subtitles from "@/components/common/Subtitles.vue"
 
@@ -52,11 +51,4 @@ span {
   }
 }
 
-.redirect-header-wrapper {
-  #page-header-subtitle {
-    display: inline-block;
-    margin: 0 1rem;
-    font-size: 1.25rem;
-  }
-}
 </style>
