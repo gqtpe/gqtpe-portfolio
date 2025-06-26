@@ -26,7 +26,7 @@ const routes = [
 
 const router = createRouter({
     history: createWebHistory(),//using default web history
-    scrollBehavior(to) {
+    scrollBehavior(to, from) {
         const link = navbarLinks.find(t => t.path === to.path)
         if (link && link.target) {
             const el = document.getElementById(link.target.slice(1));
@@ -35,6 +35,14 @@ const router = createRouter({
                 if(link.disableSmooth){
                     smooth = false
                 }
+                if((link.path === '/about') || (link.path === '/') ){
+                    if((from.path === '/about')||(from.path === '/')){
+                        smooth = true;
+                    }else{
+                        smooth = false
+                    }
+                }
+                debugger;
                 window._smoother.scrollTo(el, smooth, "top")
             } else {
                 window._smoother.scrollTo(0, false, "top")
