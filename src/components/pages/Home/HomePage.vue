@@ -5,6 +5,7 @@ import data from "@/components/pages/Home/About/about.ts";
 import Hero from "@/components/pages/Home/Hero.vue";
 import WhoIam from "@/components/pages/Home/WhoIam.vue";
 import PageHeaderRedirect from "@/components/common/PageHeaderRedirect/PageHeaderRedirect.vue";
+import ProjectCards from "@/components/pages/Projects/ProjectCards.vue";
 
 
 //helpers
@@ -17,10 +18,12 @@ import PageHeaderRedirect from "@/components/common/PageHeaderRedirect/PageHeade
 </script>
 
 <template>
-  <Hero id="home" />
+  <Hero id="home"/>
   <WhoIam/>
   <About :info="data.info"/>
-  <section class="bg-white text-black flex items-center justify-center w-full">
-    <PageHeaderRedirect text="projects" redirect="/projects" :subtitles="['Go Ahead', 'Next Page']"/>
-  </section>
+  <ProjectCards/>
+  <PageHeaderRedirect :subtitles="['Go Ahead', 'Next Page']" text="contacts" class="text-white" redirect="/contacts"/>
 </template>
+<style>
+
+</style>
