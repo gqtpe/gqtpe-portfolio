@@ -12,10 +12,7 @@ type Props = {
   delay?: number;
 };
 
-const { subtitles, delay } = withDefaults(defineProps<Props>(), {
-  delay: 0,
-});
-
+const { subtitles, delay } = defineProps<Props>()
 const isMobile = useIsMobile();
 
 const subtitleWrapperID = generateUID("subtitleWrapper");
