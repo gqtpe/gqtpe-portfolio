@@ -28,7 +28,7 @@ onMounted(async () => {
 
   ids.forEach((id, index) => {
     gsap.from(`#${id}`, {
-      delay: delay + index * 0.15, // small stagger
+      delay: delay || 0, // small stagger
       opacity: 0,
       duration: 1,
       ease: "expo",
