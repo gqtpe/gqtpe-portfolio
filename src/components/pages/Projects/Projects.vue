@@ -5,65 +5,114 @@ import PageHeaderRedirect from "@/components/common/PageHeaderRedirect/PageHeade
 import projects from "@/components/pages/Projects/projects.ts";
 import ProjectCard from "@/components/pages/Projects/ProjectCard.vue";
 
-
 onMounted(() => {
-  const getRatio = (el: HTMLElement) => window.innerHeight / (window.innerHeight + el.offsetHeight);
+  const sections =  gsap.utils.toArray<HTMLElement>(".projects__item")
 
-  gsap.utils.toArray<HTMLElement>("section").forEach((section, i) => {
+  sections.forEach((section, i) => {
     const bg = section.querySelector(".bg") as HTMLElement | null;
     if (!bg) return;
-
-    // Добавляем фоновые изображения
     bg.style.backgroundImage = `url(https://picsum.photos/1600/800?random=${i})`;
+    gsap.to(section, {
+/*            delay: 1,
+            duration: 2,
+            opacity: 0,
+            ease: "easeInOut",*/
+      scrollTrigger: {
+        pin: true,
+        start: " top top",
+        end: `+=100%`,
+        trigger: section,
+      }
+    })
 
-    gsap.fromTo(bg,
-        {
-          backgroundPosition: () =>
-              i === 0 ? "50% 0px" : `50% ${-window.innerHeight * getRatio(section)}px`,
-        },
-        {
-          backgroundPosition: () =>
-              `50% ${window.innerHeight * (1 - getRatio(section))}px`,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: () => (i === 0 ? "top top" : "top bottom"),
-            end: "bottom top",
-            scrub: true,
-            invalidateOnRefresh: true,
-          },
-        }
-    );
   });
+  gsap.to('.projects__inner', {
+    scrollTrigger: {
+      trigger: '.projects__inner',
+      start: "top top",
+      end: `+=${sections.length*100}%`,
+      pin: true,
+    },
+  })
+
 });
+
 </script>
 
 <template>
   <PageHeaderRedirect
       variant="header"
       text="projects"
-      :subtitles="['ss', 'ss']"
+      class="header"
+      :subtitles="['Designs', 'Portfolio']"
   />
-  <div class="projects-wrapper">
-<!--  <div class="relative projects-content">-->
-    <div class="inner__wrapper">
-<!--      <div class="inner__content">
-        <div class="inner__scroller">-->
-<!--          <ProjectCard v-for="project in projects" :project="project"/>-->
-          <ProjectCard class="bg-cyan-800 target1" :project="projects.trello"/>
-<!--        </div>
-      </div>-->
+
+  <section class="projects relative">
+    <div class="projects__inner">
+      <div class="inner">
+        <ProjectCard v-for="project in projects" :project="project"></ProjectCard>
+      </div>
     </div>
-    <section v-for="project in projects">
+    <div class="projects__item" v-for="project in projects">
       <div class="bg"></div>
-    </section>
-<!--  </div>-->
-  </div>
+    </div>
+  </section>
 </template>
 
 
 <style scoped>
-.inner__content {
+.projects__inner {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inner{
+  border: 1px solid black;
+  overflow: scroll;
+  max-height: 10%;
+  aspect-ratio: 1/1;
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}
+.bg-inner {
+  background-image: url(https://picsum.photos/1600/800?random=4);
+  height: 100%;
+}
+
+.header {
+  color: white;
+  background: var(--color-zinc-900)
+}
+
+.projects {
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.projects__item {
+  height: 100vh;
+  width: 100vw;
+}
+
+.projects__scrollable {
+  border: 1px solid white;
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+/*.inner__content {
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -74,59 +123,16 @@ onMounted(() => {
     width: 20rem !important;
     height: 20rem !important;
   }
-}
+}*/
 
-.inner__wrapper {
-  display: flex;
-  justify-content: center;
-/*  align-items: center;*/
-  position: absolute;
-  height: 100%;
-  background: transparent;
-  z-index: 20;
-  width: 100vw;
-  .target1{
-    position: fixed;
-  }
-}
-
-.inner__scroller {
-  overflow-y: scroll;
-  /* хром, сафари */
-
-  &::-webkit-scrollbar {
-    width: 0;
-  }
-
-  /* ie 10+ */
-  -ms-overflow-style: none;
-
-}
-
-.projects-hello {
-  background: var(--color-zinc-800);
-}
-
-.projects-hello {
-  color: white;
-}
-
-
-section {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .bg {
-  position: absolute;
-  top: 0;
-  left: 0;
+  /*  position: absolute;*/
+  /* top: 0;
+   left: 0;*/
   width: 100%;
   height: 100%;
-  z-index: -1;
+  /*  z-index: -1;*/
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
