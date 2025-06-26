@@ -1,16 +1,16 @@
 import type {Image, ProjectName} from "@/components/pages/Projects/types";
-import trelloHome from "@/assets/img/trello/gqtpe.github.io_trello_home.png";
-import trelloLogin from "@/assets/img/trello/gqtpe.github.io_trello_login.png";
+import trelloHome from "@/assets/img/trello/gqtpe.github.io_trello_home.jpg";
+import trelloLogin from "@/assets/img/trello/gqtpe.github.io_trello_login.jpg";
 
-import spotifyHome from "@/assets/img/spotify/spotify-gqtpe.vercel.app_home.png";
-import spotifyLogin from "@/assets/img/spotify/spotify-gqtpe.vercel.app_login.png";
-import spotifyAlbum from "@/assets/img/spotify/spotify-gqtpe.vercel.app_album.png";
-import spotifyLiked from "@/assets/img/spotify/spotify-gqtpe.vercel.app_liked.png";
-import spotifySearch from "@/assets/img/spotify/spotify-gqtpe.vercel.app_search.png";
-import spotifySearchStart from "@/assets/img/spotify/spotify-gqtpe.vercel.app_seach-start.png";
-import spotifyTrack from "@/assets/img/spotify/spotify-gqtpe.vercel.app_track-page.png";
-import spotifyArtists from "@/assets/img/spotify/spotify-gqtpe.vercel.artists-search.png";
-import spotifyAccountConfirmation from "@/assets/img/spotify/user-account-confirmation.png";
+import spotifyHome from "@/assets/img/spotify/spotify-gqtpe.vercel.app_home.jpg";
+import spotifyLogin from "@/assets/img/spotify/spotify-gqtpe.vercel.app_login.jpg";
+import spotifyAlbum from "@/assets/img/spotify/spotify-gqtpe.vercel.app_album.jpg";
+import spotifyLiked from "@/assets/img/spotify/spotify-gqtpe.vercel.app_liked.jpg";
+import spotifySearch from "@/assets/img/spotify/spotify-gqtpe.vercel.app_search.jpg";
+import spotifySearchStart from "@/assets/img/spotify/spotify-gqtpe.vercel.app_seach-start.jpg";
+import spotifyTrack from "@/assets/img/spotify/spotify-gqtpe.vercel.app_track-page.jpg";
+import spotifyArtists from "@/assets/img/spotify/spotify-gqtpe.vercel.artists-search.jpg";
+import spotifyAccountConfirmation from "@/assets/img/spotify/user-account-confirmation.jpg";
 export const socialLinks = {
     linkedin: "https://www.linkedin.com/in/temirtas-nursain",
     github: "https://github.com/gqtpe",
