@@ -48,7 +48,6 @@ export type Project = {
     title: string
     description: string
     id: number
-    icon: string
     links: Link[],
     images?: Image[]
     pills?: Pill[]
