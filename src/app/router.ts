@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from "vue-router";
 import Projects from "@/components/pages/Projects/Projects.vue";
 import HomePage from "@/components/pages/Home/HomePage.vue";
 import {navbarLinks} from "@/components/pages/Navbar/links.ts";
+import Contacts from "@/components/pages/Contacts/Contacts.vue";
 
 declare global {
     interface Window {
@@ -21,6 +22,10 @@ const routes = [
     {
         path: '/projects',
         component: Projects,
+    },
+    {
+        path: '/contacts',
+        component: Contacts,
     }
 ]
 
@@ -36,11 +41,7 @@ const router = createRouter({
                     smooth = false
                 }
                 if((link.path === '/about') || (link.path === '/') ){
-                    if((from.path === '/about')||(from.path === '/')){
-                        smooth = true;
-                    }else{
-                        smooth = false
-                    }
+                    smooth = (from.path === '/about') || (from.path === '/');
                 }
                 debugger;
                 window._smoother.scrollTo(el, smooth, "top")
