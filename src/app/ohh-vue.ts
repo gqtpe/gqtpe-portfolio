@@ -12,6 +12,7 @@ import {
     CoTrello,
     FaExpand,
     FaExternalLinkSquareAlt,
+    MdPeopleRound
 } from "oh-vue-icons/icons";
 
 addIcons(
@@ -27,6 +28,7 @@ addIcons(
     , BiInstagram
     , BiTelegram
     , BiLinkedin
+    ,MdPeopleRound
 );
 
 
