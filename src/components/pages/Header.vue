@@ -38,7 +38,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <header id="header" class="text-white dark:text-zinc-200">
+  <header id="header" data-cursor-disabled class="text-white dark:text-zinc-200">
     <div class="header__wrapper glass">
       <DecryptedText text="GQTPE" use-original-chars-only class="logo font-black" animate-on="view"/>
       <slot/>
