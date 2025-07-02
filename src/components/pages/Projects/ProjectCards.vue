@@ -90,6 +90,7 @@ onBeforeUnmount(() => {
       <span class="project__subtitle">01</span>
       <div class="inner">
         <v-icon
+            data-cursor-action="open"
             v-for="project in projectCards"
             :key="project.id"
             class="glass-light project__inner"
