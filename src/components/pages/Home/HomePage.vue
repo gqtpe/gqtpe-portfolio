@@ -7,7 +7,6 @@ import WhoIam from "@/components/pages/Home/WhoIam.vue";
 import PageHeaderRedirect from "@/components/common/PageHeaderRedirect/PageHeaderRedirect.vue";
 import ProjectCards from "@/components/pages/Projects/ProjectCards.vue";
 
-
 //helpers
 // onMounted(() => {
 //   console.log('HomePage')
@@ -22,7 +21,8 @@ import ProjectCards from "@/components/pages/Projects/ProjectCards.vue";
   <WhoIam/>
   <About :info="data.info"/>
   <ProjectCards/>
-  <PageHeaderRedirect :subtitles="['Go Ahead', 'Next Page']" text="contacts" class="text-white" redirect="/contacts"/>
+  <PageHeaderRedirect data-cursor-action="go to" :subtitles="['Go Ahead', 'Next Page']" text="contacts"
+                      class="text-white" redirect="/contacts"/>
 </template>
 <style>
 
