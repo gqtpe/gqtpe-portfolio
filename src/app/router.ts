@@ -43,7 +43,6 @@ const router = createRouter({
                 if((link.path === '/about') || (link.path === '/') ){
                     smooth = (from.path === '/about') || (from.path === '/');
                 }
-                debugger;
                 window._smoother.scrollTo(el, smooth, "top")
             } else {
                 window._smoother.scrollTo(0, false, "top")
