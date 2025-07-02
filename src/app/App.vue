@@ -9,6 +9,7 @@ import ScrollSmoother from "gsap/ScrollSmoother";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRoute } from "vue-router";
 import { navbarLinks } from "@/components/pages/Navbar/links.ts";
+import MagicCursor from "@/components/common/MagicCursor.vue";
 
 const route = useRoute();
 const { isLoaded } = useLoadingMedia();
@@ -59,6 +60,7 @@ watch(isLoaded, async (loaded) => {
           <component :is="Component" />
         </RouterView>
       </main>
+      <MagicCursor/>
     </div>
   </template>
 </template>
