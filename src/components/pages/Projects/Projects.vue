@@ -17,7 +17,7 @@ import projectCards from "@/components/pages/Projects/projectCards.ts";
       </div>
       <div class="project-content">
         <div class="project-year">{{ project.year }}</div>
-        <div class="icon-wp glass">
+        <div class="icon-wp glass" data-cursor-action="open">
           <v-icon :name="project.icon" class="project-icon">
           </v-icon>
         </div>
