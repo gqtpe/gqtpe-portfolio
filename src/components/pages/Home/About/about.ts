@@ -1,4 +1,4 @@
-import ava from "@/assets/img/ava_pronike(1x1).jpg";
+import ava from "@/assets/img/profile-compressed.jpg";
 import { aboutSVGs } from "@/assets/svg";
 import {links} from "@/app/links.ts";
 type AboutPage ={
