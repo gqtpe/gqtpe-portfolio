@@ -42,7 +42,7 @@ export type Pill =
     | "splidejs"
 type Link = {
     url: string
-    icon: 'fa-expand' | 'bi-github' | 'fa-external-link-square-alt'
+    icon: 'fa-expand' | 'bi-github' | 'bi-link-45deg'
 }
 export type Project = {
     title: string
