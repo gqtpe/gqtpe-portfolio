@@ -86,8 +86,6 @@ onBeforeUnmount(() => {
 
   <section class="project relative">
     <div class="project__inner-wp">
-      <span class="project__subtitle">Trello</span>
-      <span class="project__subtitle">01</span>
       <div class="inner">
         <v-icon
             data-cursor-action="open"
@@ -97,8 +95,6 @@ onBeforeUnmount(() => {
             :name="project.icon"
         />
       </div>
-      <span class="project__subtitle">0{{ projectCards.length }}</span>
-      <span class="project__subtitle">React</span>
     </div>
     <section
         class="project__item"
