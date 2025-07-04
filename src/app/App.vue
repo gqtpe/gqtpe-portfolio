@@ -10,9 +10,11 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRoute } from "vue-router";
 import { navbarLinks } from "@/components/pages/Navbar/links.ts";
 import MagicCursor from "@/components/common/MagicCursor.vue";
+import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
 
 const route = useRoute();
 const { isLoaded } = useLoadingMedia();
+const isMobile = useIsMobile()
 const completeLoading = () => {
   isLoaded.value = true
 }
@@ -63,7 +65,7 @@ watch(isLoaded, async (loaded) => {
           <component :is="Component" />
         </RouterView>
       </main>
-      <MagicCursor/>
+      <MagicCursor v-if="!isMobile"/>
     </div>
   </template>
 </template>
