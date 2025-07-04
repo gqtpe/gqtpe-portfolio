@@ -3,6 +3,7 @@ import Projects from "@/components/pages/Projects/Projects.vue";
 import HomePage from "@/components/pages/Home/HomePage.vue";
 import {navbarLinks} from "@/components/pages/Navbar/links.ts";
 import Contacts from "@/components/pages/Contacts/Contacts.vue";
+import Project from "@/components/pages/Projects/Project/Project.vue";
 
 declare global {
     interface Window {
@@ -26,7 +27,8 @@ const routes = [
     {
         path: '/contacts',
         component: Contacts,
-    }
+    },
+    {path: '/project/:name', component: Project}
 ]
 
 const router = createRouter({
