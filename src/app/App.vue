@@ -13,6 +13,9 @@ import MagicCursor from "@/components/common/MagicCursor.vue";
 
 const route = useRoute();
 const { isLoaded } = useLoadingMedia();
+const completeLoading = () => {
+  isLoaded.value = true
+}
 const smoother = ref<any>(null);
 
 watch(isLoaded, async (loaded) => {
