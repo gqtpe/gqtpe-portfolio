@@ -98,9 +98,16 @@ watch(
     () => route.fullPath,
     () => {
       cleanupCursor();
+      text.value = ''; // ← Сброс текста при переходе
       setTimeout(() => {
-        initCursor();
-      }, 0); // ждать до отрисовки новых DOM-элементов
+        gsap.to('#ball', {
+          scale: 0.5,
+          duration: 0.2,
+          background: 'none',
+          ease: 'expo',
+        });
+        initCursor()
+      }, 0);
     }
 );
 </script>
