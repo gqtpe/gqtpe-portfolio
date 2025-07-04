@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type {Pill} from "@/components/pages/Projects/types.ts";
-import {getPopupPreset} from "@/motion/motion-presets.ts";
 
 defineProps<{ pills?: Pill[] }>()
 
@@ -12,7 +11,6 @@ defineProps<{ pills?: Pill[] }>()
         v-if="pills && pills.length"
         v-for="(pill, index) in pills"
         class="pill"
-        v-motion="getPopupPreset({delay: index * 50, variant: 'visible' })"
     >
       {{ pill }}
     </span>
