@@ -1,59 +1,81 @@
 <script setup lang="ts">
-import {ref, onMounted, onUnmounted} from 'vue'
-import { useMotion } from '@vueuse/motion'
-
-interface Props {
-  endValue: number
-  duration?: number
-}
-
-const props = defineProps<Props>()
-
-const count = ref<number>(0)
-const target = ref<HTMLElement | null>(null)
-
-// Анимация появления и исчезновения
-const { apply } = useMotion(target, {
-  initial: { opacity: 0, scale: 0.5 },
-  enter: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
-  leave: { opacity: 0, y: -20, transition: { duration: 0.5 } }
-})
-
-// Функция плавного счёта
-const animateCount = (to: number, duration: number) => {
-  let start = 0
-  const step = () => {
-    start += (1000 / 60) / (duration * 1000) * to
-    count.value = Math.min(Math.round(start), to)
-    if (count.value < to) requestAnimationFrame(step)
-  }
-  requestAnimationFrame(step)
-}
-
+import gsap from "gsap";
+import { onMounted } from "vue";
+const {onEnd} = defineProps<{onEnd: ()=>void}>()
 onMounted(() => {
-  // Дожидаемся инициализации `target` и только потом применяем анимацию
-  setTimeout(() => {
-    apply('enter')
-    animateCount(props.endValue, props.duration ?? 2)
-  }, 50)
-})
+  const tl = gsap.timeline();
+  tl.set('#wait', { yPercent: 100 });
 
-// Опционально: исчезновение после завершения
-onUnmounted(() => {
-  setTimeout(() => apply('leave'), 1000)
-})
+  tl.to('#complete', { yPercent: 100 });
+
+  tl.to('.loading-number', {
+    yPercent: -90,
+    duration: 1.8,
+    ease: 'circ.inOut',
+    stagger: 0.3,
+  });
+
+  tl.to('#wait', { yPercent: 0, opacity: 1, duration: 0.5 }, '-=1');
+  tl.to('#wait', {delay:0.5, duration: 1, opacity: 0 });
+  tl.to('.loading-number', { yPercent: -120, duration: 1 }, '-=1');
+  tl.to('#complete', { yPercent: 0, opacity: 1, onComplete: ()=>onEnd()}, '-=1');
+});
 </script>
 
 <template>
-  <div ref="target" class="countup">
-    {{ count }}
+  <div class="countup font-main font-semibold flex flex-col items-center">
+    <div class="numbers-wp">
+      <div id="numbers">
+        <span class="loading-number">012345678<span class="last">9</span></span>
+        <span class="loading-number">012345678<span class="last">9</span></span>
+      </div>
+      <span id="complete">100</span>
+    </div>
+    <div id="wait">wait wait</div>
   </div>
 </template>
 
-<style scoped>
+
+<style>
+.last{
+  letter-spacing: -2rem;
+}
 .countup {
-  font-size: 3rem;
-  font-weight: bold;
+  width: 100%;
+  font-size: 9rem;
+}
+
+#complete {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.numbers-wp {
+  overflow: hidden;
+  width: 100%;
+  height: 10rem;
+  position: relative;
   text-align: center;
 }
+
+#wait {
+  opacity: 0;
+  font-size: 2rem;
+}
+
+.loading-number {
+  letter-spacing: -3rem;
+  line-height: 0.6;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  display: inline-block;
+}
+
 </style>
