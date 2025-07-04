@@ -6,9 +6,7 @@ export const useLoadingMedia = () => {
     onMounted(async () => {
         await nextTick(); // Ждём рендеринг
         await waitForFontsAndImages();
-        setTimeout(() => {
-            isLoaded.value = true
-        }, 500);
+
     });
 
     async function waitForFontsAndImages() {
