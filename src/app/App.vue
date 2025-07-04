@@ -10,10 +10,11 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRoute } from "vue-router";
 import { navbarLinks } from "@/components/pages/Navbar/links.ts";
 import MagicCursor from "@/components/common/MagicCursor.vue";
+import CountUp from "@/components/common/CountUp.vue";
 import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
 
 const route = useRoute();
-const { isLoaded } = useLoadingMedia();
+const {isLoaded} = useLoadingMedia();
 const isMobile = useIsMobile()
 const completeLoading = () => {
   isLoaded.value = true
@@ -53,8 +54,9 @@ watch(isLoaded, async (loaded) => {
 </script>
 
 <template>
-  <Loading v-if="!isLoaded" />
-
+  <div v-if="!isLoaded" class="loading-wrapper flex items-center justify-center p-6">
+    <CountUp :onEnd="completeLoading"/>
+  </div>
   <template v-else>
     <Header>
       <Navbar />
