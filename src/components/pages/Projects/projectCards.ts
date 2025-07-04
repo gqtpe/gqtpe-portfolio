@@ -8,13 +8,15 @@ type Card = {
     id: string
     icon: string
     year: number
+    path: string
 }
 const projectCards: Card[] = [
     {
         img: '/01hero.jpg',
         name: 'Spotify',
         subtitle: 'react1',
-        icon: "co-trello",
+        icon: "bi-spotify",
+        path: '/project/spotify',
         year: 2024,
         id: generateUID('project-card')
     },
@@ -22,7 +24,8 @@ const projectCards: Card[] = [
         img: '/02hero.jpg',
         name: 'Trello',
         subtitle: 'react2',
-        icon: "bi-spotify",
+        icon: "co-trello",
+        path:'/project/trello',
         year: 2024,
         id: generateUID('project-card')
     },
@@ -31,6 +34,7 @@ const projectCards: Card[] = [
         name: 'Portfolio',
         subtitle: 'react3',
         icon: "bi-file-earmark-person",
+        path: '/project/portfolio',
         year: 2025,
         id: generateUID('project-card'),
     },
@@ -39,6 +43,7 @@ const projectCards: Card[] = [
         name: 'socila',
         subtitle: 'react4',
         icon: 'md-people-round',
+        path: '/project/socila',
         year: 2023,
         id: generateUID('project-card')
     }

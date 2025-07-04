@@ -7,8 +7,7 @@ const projects: Projects = {
         title: 'Trello-Clone',
         description: 'Todolist is a pet project for task management, created using modern web technologies. This project allows for convenient task management and supports user authorization.',
         links: [
-            {url: '/project/trello', icon: 'fa-expand'},
-            {url: links.trello, icon: 'fa-external-link-square-alt'},
+            {url: links.trello, icon: 'bi-link-45deg'},
             {url: links.trelloGithub, icon: 'bi-github'},
         ],
         images: projectImages["trello"],
@@ -37,8 +36,7 @@ const projects: Projects = {
         title: 'Spotify-Clone',
         description: 'A Spotify clone built with Next.js, offering a similar user experience to the original Spotify platform. This project integrates with the Spotify Web API to provide music streaming, playlists, and user interaction features.',
         links: [
-            {url: links.spotify, icon: 'fa-external-link-square-alt'},
-            {url: '/project/spotify', icon: 'fa-expand'},
+            {url: links.spotify, icon: 'bi-link-45deg'},
             {url: links.spotifyGithub, icon: 'bi-github'},
         ],
         images: projectImages["spotify"],
@@ -69,8 +67,7 @@ const projects: Projects = {
         title: 'Portfolio',
         description: ' A Portfolio application build with Vue.',
         links: [
-            {url: '/project/portfolio', icon: 'fa-expand'},
-            {url: '/', icon: 'fa-external-link-square-alt'},
+            {url: '/', icon: 'bi-link-45deg'},
             {url: links.portfolioGithub, icon: 'bi-github'},
         ],
         images: [],
