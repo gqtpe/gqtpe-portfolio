@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { nextTick, ref, watch } from "vue";
-import Loading from "@/components/common/Loading.vue";
+import {nextTick, ref, watch} from "vue";
 import Header from "@/components/pages/Header.vue";
 import "./App.css";
 import Navbar from "@/components/pages/Navbar/Navbar.vue";
-import { useLoadingMedia } from "@/app/hooks/useLoadingMedia.ts";
+import {useLoadingMedia} from "@/app/hooks/useLoadingMedia.ts";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { useRoute } from "vue-router";
-import { navbarLinks } from "@/components/pages/Navbar/links.ts";
+import {useRoute} from "vue-router";
+import {navbarLinks} from "@/components/pages/Navbar/links.ts";
 import MagicCursor from "@/components/common/MagicCursor.vue";
 import CountUp from "@/components/common/CountUp.vue";
 import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
@@ -59,12 +58,12 @@ watch(isLoaded, async (loaded) => {
   </div>
   <template v-else>
     <Header>
-      <Navbar />
+      <Navbar/>
     </Header>
     <div id="main-wrapper">
       <main id="main">
         <RouterView v-slot="{ Component }">
-          <component :is="Component" />
+          <component :is="Component"/>
         </RouterView>
       </main>
       <MagicCursor v-if="!isMobile"/>
@@ -73,6 +72,13 @@ watch(isLoaded, async (loaded) => {
 </template>
 
 <style>
+.loading-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: var(--color-black);
+  color: white;
+}
+
 .half {
   min-height: 50vh !important;
   height: 50vh !important;
