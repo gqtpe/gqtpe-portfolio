@@ -17,10 +17,9 @@ import projectCards from "@/components/pages/Projects/projectCards.ts";
       </div>
       <div class="project-content">
         <div class="project-year">{{ project.year }}</div>
-        <div class="icon-wp glass" data-cursor-action="open">
-          <v-icon :name="project.icon" class="project-icon">
-          </v-icon>
-        </div>
+          <RouterLink  :to="project.path" class="icon-wp glass" data-cursor-action="open">
+            <v-icon :name="project.icon" class="project-icon"/>
+          </RouterLink>
       </div>
     </div>
   </div>
@@ -60,7 +59,7 @@ import projectCards from "@/components/pages/Projects/projectCards.ts";
     position: relative;
 
     &:hover {
-      .project-year,.icon-wp {
+      .project-year, .icon-wp {
         opacity: 1;
       }
 
@@ -96,10 +95,14 @@ import projectCards from "@/components/pages/Projects/projectCards.ts";
   }
 
   .icon-wp {
+    &:active{
+      filter: brightness(0.8);
+    }
+
     opacity: 0;
     width: 30%;
     height: 30%;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, filter 0.3s ease;
   }
 
   .project-year {

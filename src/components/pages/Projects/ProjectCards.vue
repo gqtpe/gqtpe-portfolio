@@ -59,7 +59,7 @@ const initProjectAnimations = async () => {
   });
   localTriggers.push(pinInner.scrollTrigger!);
 
-  const subtitleTween = gsap.to(".project__subtitle", {
+/*  const subtitleTween = gsap.to(".project__subtitle", {
     yPercent: 100,
     scrollTrigger: {
       trigger: sections[0],
@@ -67,8 +67,8 @@ const initProjectAnimations = async () => {
       start: "top bottom",
       end: "+=100%",
     }
-  });
-  localTriggers.push(subtitleTween.scrollTrigger!);
+  });*/
+/*  localTriggers.push(subtitleTween.scrollTrigger!);*/
 };
 
 onMounted(() => {
@@ -87,12 +87,14 @@ onBeforeUnmount(() => {
   <section class="project relative">
     <div class="project__inner-wp">
       <div class="inner">
+
         <v-icon
             data-cursor-action="open"
             v-for="project in projectCards"
             :key="project.id"
             class="glass-light project__inner"
             :name="project.icon"
+            @click="$router.push(project.path)"
         />
       </div>
     </div>
@@ -141,11 +143,6 @@ onBeforeUnmount(() => {
     width: 100vw;
   }
 
-  .project__subtitle {
-    color: white;
-    font-size: 2rem;
-    font-family: var(--font-main);
-  }
 }
 
 .inner {
@@ -163,5 +160,6 @@ onBeforeUnmount(() => {
 .bg {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 </style>
