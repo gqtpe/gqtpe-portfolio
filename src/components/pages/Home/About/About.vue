@@ -68,9 +68,8 @@ defineProps<{ info: InfoPage }>()
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: url("src/assets/img/background/about.jpg");
-  background-size: cover;
-  @media(prefers-color-scheme: dark){
+  background-image: url("../../../../../public/about.jpg");
+  @media (prefers-color-scheme: dark) {
     filter: grayscale(100%);
   }
 }
