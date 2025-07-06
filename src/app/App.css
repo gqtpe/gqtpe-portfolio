@@ -4,7 +4,7 @@
 section {
     min-height: 100vh;
     max-width: 100vw;
-    overflow-y: auto;
+ /*    overflow-y: auto;*/
     @media(max-width: 768px) {
         min-height: 100vh;
         height: unset;

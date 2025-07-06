@@ -13,7 +13,7 @@ export type InfoPage = {
         link: string
     }[]
     hero: string
-    subtitle: string
+    subtitles: string[]
     cards: {
         cardTitle: string
         title: string
@@ -32,7 +32,11 @@ const aboutPage:AboutPage = {
             /*{fill: "#E4405F", name: "bi-instagram",link: links.instagram},*/
         ],
         hero: "i'm Nursain Temirtas",
-        subtitle: "A Front-end developer with one year of freelance experience (1 year). I have strong skills in modern technologies like React, Vite, TypeScript, and Redux Toolkit. I build scalable and well-structured applications. I like learning new things, discussing ideas with the team, and finding the best solutions together. I also have some Back-end experience, which helps me understand the full development process and work better with Back-end developers. I'm a constantly developing person, open-minded and dedicated.",
+        subtitles: [
+            "I'm Nursain Temirtas — a Front-end Developer with one year of freelance experience. I work with modern technologies like React, Vite, TypeScript, and Redux Toolkit, building scalable, well-structured, and maintainable applications.",
+            "I care about user experience, performance, and clean architecture. I also create smooth, thoughtful web animations using GSAP and CSS, enhancing interfaces without sacrificing usability.",
+            "I'm an open-minded and proactive team player who enjoys learning, discussing ideas, and finding the best solutions together. I'm constantly improving and passionate about creating high-quality products."
+        ],
         cards: [
             {
                 cardTitle: "experience",
