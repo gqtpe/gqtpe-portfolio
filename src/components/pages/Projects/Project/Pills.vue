@@ -9,7 +9,7 @@ defineProps<{ pills?: Pill[] }>()
   <div class="pills">
     <span
         v-if="pills && pills.length"
-        v-for="(pill, index) in pills"
+        v-for="(pill) in pills"
         class="pill"
     >
       {{ pill }}

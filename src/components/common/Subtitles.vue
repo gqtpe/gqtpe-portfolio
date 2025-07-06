@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { onMounted, ref, nextTick } from "vue";
+import {nextTick, onMounted} from "vue";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 import generateUID from "@/utils/uuid.ts";
-import { useIsMobile } from "@/app/hooks/useIsMobile.ts";
+import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +12,7 @@ type Props = {
   delay?: number;
 };
 
-const { subtitles, delay } = defineProps<Props>()
+const {subtitles, delay} = defineProps<Props>()
 const isMobile = useIsMobile();
 
 const subtitleWrapperID = generateUID("subtitleWrapper");
@@ -48,7 +48,7 @@ onMounted(async () => {
 <template>
   <div :id="subtitleWrapperID" class="wrapper">
     <span class="slide-subtitle" :id="subtitle1ID">{{ subtitles[0] }}</span>
-    <slot />
+    <slot/>
     <span class="slide-subtitle" :id="subtitle2ID">{{ subtitles[1] }}</span>
   </div>
 </template>
@@ -58,6 +58,7 @@ onMounted(async () => {
 .wrapper {
   @apply flex justify-center items-center gap-4 max-sm:flex-col;
 }
+
 .slide-subtitle {
   @apply text-lg font-medium;
 
