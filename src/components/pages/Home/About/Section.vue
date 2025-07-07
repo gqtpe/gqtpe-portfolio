@@ -9,8 +9,8 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div class="w-full">
-    <div class="text-xl font-bold flex justify-between"><span>{{ title }}</span> <span>{{period}}</span></div>
-    <p class="text-left text-xl text-gray-300 dark:text-gray-300">{{body}}</p>
+  <div>
+    <div class="font-bold flex justify-between"><span>{{ title }}</span> <span>{{period}}</span></div>
+    <p class="text-left">{{body}}</p>
   </div>
 </template>
