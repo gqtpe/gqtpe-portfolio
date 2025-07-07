@@ -1,111 +1,120 @@
 <script setup lang="ts">
 import type {InfoPage} from "@/components/pages/Home/About/about.ts";
-
+import gsap from "gsap";
+import {onMounted} from "vue";
+import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
+import SectionC from "@/components/pages/Home/About/Section.vue";
+//todo: optimize by killing trigger on route changing
 defineProps<{ info: InfoPage }>()
-/*onMounted(()=>{
+onMounted(() => {
   const tl = gsap.timeline()
+  tl.set('.about__image-wp',{
+    display:"block"
+  })
   tl.to('.about-bg',{
     scrollTrigger: {
-      pin: true,
-      scrub: true,
       trigger: '.about-bg',
       start: 'top top',
-      end: '+=200%'
+      end: "+=100%",
+      pin: true,
     }
   })
-  tl.to('.about__image',{
+  tl.from('.about__image-wp', {
     xPercent: -100,
-    duration: 2,
     scrollTrigger: {
-      pin:true,
-      markers: true,
       scrub: true,
-      trigger: '.about__image',
-      toggleActions: 'play none none play',
-      start: 'top 20%',
-      end: '+=50%',
+      id: 'slide-in',
+      trigger: '#section-about',
+      start: 'top bottom',
+      end: '20% bottom',
     }
   })
-  tl.from('#about-hero',{
-    xPercent: 100,
-    scrollTrigger: {
-      markers: true,
-      trigger: '#section2-about',
-      start: '-=50% bottom',
-      scrub: true,
-    }
-  })
+  tl.from('.about__image-wp',{
+    height: '10%',
 
-})*/
+    scrollTrigger: {
+      scrub: true,
+      id: 'height-change',
+      trigger: '#section-about',
+      toggleActions: 'play none none play',
+      start: '20% 70%',
+      end: 'center 70%',
+    }
+  })
+  tl.from(['#about-hero', '#about-paragraph',], {
+    xPercent: 100,
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: '.about__text',
+      start: 'top 70%',
+      end: 'bottom 70%',
+      scrub: true,
+    }
+  })
+  tl.from('.about__card',{
+    xPercent: 100,
+    stagger: 0.2,
+    scrollTrigger: {
+      markers: true,
+      trigger: '#section-exp',
+      start: 'top 70%',
+      end: 'center 70%',
+      scrub: true,
+    }
+  })
+})
 
 </script>
 
 <template>
-  <section id="about" >
-    <div class="about__bg"></div>
-    <div class="about__image-wp flex-grow">
-      <div class="about__image rounded-full">
-        <img loading="lazy" :src="info.ava" alt=""/>
+  <section id="about">
+    <div class="about-bg"></div>
+    <div class="about__info section" id="section-about">
+      <div class="about__image-wp">
+        <div class="about__image">
+          <img :src="info.ava" alt=""/>
+        </div>
+      </div>
+      <div class="about__text font-main text-end">
+        <h2 class="uppercase mb-3 font-bold" id="about-hero">
+          {{ info.hero }}
+        </h2>
+        <p  id="about-paragraph" v-for="subtitle in info.subtitles">
+          {{ subtitle }}
+        </p>
       </div>
     </div>
-    <div class="about__info font-main text-end">
-      <h2 class="uppercase mb-3 font-bold text-6xl" id="about-hero">
-        {{info.hero}}
+    <div class="section" id="section-exp">
+      <div class="about__card font-main " v-for="card in info.cards">
+      <h2 class="uppercase mb-3 font-bold" >
+        {{ card.cardTitle }}
       </h2>
-      <p v-for="paragraph in info.subtitles" class="text-xl">
-        {{ paragraph }}
-      </p>
+      <SectionC
+
+
+          :title="card.title"
+          :period="card.period"
+          :body="card.body"
+      />
+      </div>
     </div>
-<!--    <div class="p-[2rem] flex justify-between gap-[1rem] text-white max-sm:flex-col max-sm:p-5 max-sm:text-center">-->
-
-        <!--        <div class="flex flex-col justify-around items-center gap-3">
-                  <Button size="large" link="/CV.pdf" class-name="w-[100%]" color="primary">
-                    Download CV
-                  </Button>
-                  <div class="flex glass-light p-1">
-                    <a target="_blank" v-for="icon in info.icons" :href="icon.link">
-                      <v-icon hover animation="flash" :scale="2" :fill="icon.fill" :name="icon.name"/>
-                    </a>
-                  </div>
-                </div>-->
-<!--      </div>-->
-      <!--      <div class="flex flex-col flex-grow self-start gap-2">
-              <h3 class="uppercase mb-3 font-bold text-2xl">
-                <DecryptedText :text="info.hero" animateOn="view" use-original-chars-only/>
-              </h3>
-              <p class="text-xl text-gray-300 dark:text-gray-300">
-                {{ info.subtitle }}
-              </p>
-
-              <div class="divider"/>
-
-              <div class="grid grid-cols-2 gap-8 max-md:flex flex-col ">
-                <div v-for="(card, i) in info.cards" :key="i">
-                  <DecryptedText
-                      :text="card.cardTitle"
-                      use-original-chars-only
-                      animateOn="view"
-                      class="section-title max-sm:ali"
-                  />
-                  <SectionC
-                      :title="card.title"
-                      :period="card.period"
-                      :body="card.body"
-                  />
-                </div>
-              </div>
-            </div>-->
-<!--    </div>-->
   </section>
+
 </template>
 
 
 <style scoped>
-
-.about__info{
-  flex-basis: 70%;
+.section{
+  width: 100vw;
+  height: 100vh;
 }
-.about__bg {
+#about {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.about-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -113,33 +122,60 @@ defineProps<{ info: InfoPage }>()
   height: 100vh;
   background-repeat: round;
   z-index: -1;
-  background-image: url("../../../../../public/about.jpg");
+  background-image: url("/about.jpg");
   @media (prefers-color-scheme: dark) {
     filter: grayscale(100%);
   }
 }
-#about {
- display: flex;
-}
 
-@media (prefers-color-scheme: dark) {
-  #about::before {
-    filter: grayscale(80%);
-  }
-}
-.about__image-wp{
+
+.about__info {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
+
 }
-.about__image {
-  height: 50vh;
-  aspect-ratio: 1 / 1;
+.about__image-wp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:45%;
   overflow: hidden;
-  img {
-    height: 100%;
-    max-height: 100%;
-    max-width: 100%;
+  .about__image {
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%
+
+    }
   }
 }
-
+#about-hero{
+  font-size: clamp(1rem, 9vw, 4rem);
+}
+#about-paragraph, .about__card{
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+.about__text{
+  z-index: 3;
+  width: 60%;
+}
+@media(max-width:768px){
+  .about__info{
+  }
+ .about__text{
+   width: 100%;
+ }
+  .about__image-wp{
+    width: 50%;
+    position: absolute;
+  }
+  .about__card{
+    width: 100%;
+  }
+}
 </style>
