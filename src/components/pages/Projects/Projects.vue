@@ -59,13 +59,12 @@ import projectCards from "@/components/pages/Projects/projectCards.ts";
     position: relative;
 
     &:hover {
-      .project-year, .icon-wp {
-        opacity: 1;
-      }
-
-      .project-img {
-        transform: scale(100%);
-      }
+        .project-year, .icon-wp {
+          opacity: 1;
+        }
+        .project-img {
+          transform: scale(100%);
+        }
     }
   }
 
@@ -98,15 +97,15 @@ import projectCards from "@/components/pages/Projects/projectCards.ts";
     &:active{
       filter: brightness(0.8);
     }
-
-    opacity: 0;
     width: 30%;
-    height: 30%;
     transition: opacity 0.3s ease, filter 0.3s ease;
+    opacity: 0;
+    @media(max-width: 768px){
+      opacity: 1;
+    }
   }
 
   .project-year {
-    opacity: 0;
     transition: opacity 0.3s ease-in-out;
     position: absolute;
     top: 0.5rem;
@@ -115,6 +114,10 @@ import projectCards from "@/components/pages/Projects/projectCards.ts";
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
     color: white;
+    opacity: 0;
+    @media(max-width: 768px){
+      opacity: 1;
+    }
   }
 }
 
