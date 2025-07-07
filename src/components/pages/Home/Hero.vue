@@ -58,7 +58,7 @@ onMounted(() => {
   color: white;
   background-repeat: round;
   background-color: var(--color-primary-500);
-  background-image: url("../../../../public/home.jpg");
+  background-image: url("/home.jpg");
   @media (prefers-color-scheme: dark) {
     filter: grayscale(100%);
   }
