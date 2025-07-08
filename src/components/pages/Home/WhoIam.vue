@@ -24,7 +24,7 @@ onMounted(() => {
   })
   tl.to('#whoiam', {
     scaleY: isMobile?15:10,
-    yPercent: 200,
+    yPercent: 175,
     scrollTrigger: {
       trigger: '#whoiam-wrapper',
       scrub: true,
