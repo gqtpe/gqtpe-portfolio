@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import about, { type InfoPage } from "@/components/pages/Home/About/about.ts";
+import about, {type InfoPage} from "@/components/pages/Home/About/about.ts";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { onMounted, onBeforeUnmount } from "vue";
+import {onBeforeUnmount, onMounted} from "vue";
 import SectionC from "@/components/pages/Home/About/Section.vue";
-import { useIsMobile } from "@/app/hooks/useIsMobile.ts";
-import Stack from "@/components/pages/Home/Stack.vue";
 import SimpleStack from "@/components/pages/Home/About/SimpleStack.vue";
 
 defineProps<{ info: InfoPage }>();
-const isMobile = useIsMobile();
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,18 +32,18 @@ onMounted(() => {
     }
   });
   localTriggers.push(ScrollTrigger.getById('pin-bg')!);
-    tl.from('.about__image-wp', {
-      height: '10%',
-      scrollTrigger: {
-        scrub: true,
-        id: 'height-change',
-        trigger: '#section-about',
-        toggleActions: 'play none none play',
-        start: '40% 70%',
-        end: '70% 70%',
-      }
-    });
-    localTriggers.push(ScrollTrigger.getById('height-change')!);
+  tl.from('.about__image-wp', {
+    height: '10%',
+    scrollTrigger: {
+      scrub: true,
+      id: 'height-change',
+      trigger: '#section-about',
+      toggleActions: 'play none none play',
+      start: '40% 70%',
+      end: '70% 70%',
+    }
+  });
+  localTriggers.push(ScrollTrigger.getById('height-change')!);
   // Слайд-in изображения
   tl.from('.about__image-wp', {
     xPercent: -100,
@@ -200,11 +197,13 @@ onBeforeUnmount(() => {
   white-space: nowrap;
   filter: dropShadow();
 }
-.about-paragraph{
-  &:last-child{
+
+.about-paragraph {
+  &:last-child {
     margin-left: 25%;
   }
 }
+
 .about-paragraph, .about__card {
   font-size: clamp(1rem, 3vw, 1.5rem);
   @media (max-width: 768px) {
