@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Velocity from "@/components/bits/Velocity.vue";
+import FallingItems from "@/components/bits/FallingItems.vue";
+import about from "@/components/pages/Home/About/about.ts";
+import SimpleStack from "@/components/pages/Home/About/SimpleStack.vue";
 </script>
 
 <template>
   <section id="stack-velocity" class="flex justify-center items-center ">
-    <Velocity
-        clas="flex items-center justify-center"
-        :text="['Speed', 'reacts to your','scroll.']"
-    />
+
   </section>
 </template>
 

@@ -12,6 +12,7 @@ const project = projects[params.name as "trello" | "portfolio" | "spotify"]
 
 <template>
   <section class=" page-wrapper project-page text-black flex flex-col items-center">
+    (Currently upgrading with GSAP – work in progress.)
     <h2 class="text-3xl font-black uppercase self-start">
       <DecryptedText
           :speed="50"

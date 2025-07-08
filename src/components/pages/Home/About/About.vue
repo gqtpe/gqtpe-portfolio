@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import type { InfoPage } from "@/components/pages/Home/About/about.ts";
+import about, { type InfoPage } from "@/components/pages/Home/About/about.ts";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { onMounted, onBeforeUnmount } from "vue";
 import SectionC from "@/components/pages/Home/About/Section.vue";
 import { useIsMobile } from "@/app/hooks/useIsMobile.ts";
+import Stack from "@/components/pages/Home/Stack.vue";
+import SimpleStack from "@/components/pages/Home/About/SimpleStack.vue";
 
 defineProps<{ info: InfoPage }>();
 const isMobile = useIsMobile();
@@ -126,8 +128,11 @@ onBeforeUnmount(() => {
               :period="card.period"
               :body="card.body"
           />
+
         </div>
+
       </div>
+      <SimpleStack :svgs="about.stack"/>
     </div>
   </section>
 
@@ -136,7 +141,6 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .section {
-  border: 1px solid red;
   width: 100vw;
   height: 100vh;
 }
@@ -198,7 +202,6 @@ onBeforeUnmount(() => {
 }
 .about-paragraph{
   &:last-child{
-    border: 1px solid red;
     margin-left: 25%;
   }
 }

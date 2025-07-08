@@ -3,6 +3,9 @@ import PageHeaderRedirect from "@/components/common/PageHeaderRedirect/PageHeade
 </script>
 <template>
   <PageHeaderRedirect class="header" :subtitles="['Reach Out', 'Say Hello']" text="contact"/>
+  <section>
+    (Currently upgrading with GSAP – work in progress.)
+  </section>
 </template>
 
 <style scoped>
