@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import about, {type InfoPage} from "@/components/pages/Home/About/about.ts";
+import {type InfoPage} from "@/components/pages/Home/About/about.ts";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {onBeforeUnmount, onMounted} from "vue";
 import SectionC from "@/components/pages/Home/About/Section.vue";
-import SimpleStack from "@/components/pages/Home/About/SimpleStack.vue";
+import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
 
 defineProps<{ info: InfoPage }>();
 
@@ -12,10 +12,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Храним локальные триггеры для очистки
 const localTriggers: ScrollTrigger[] = [];
-
 onMounted(() => {
+  const isMobile = useIsMobile()
   const tl = gsap.timeline();
-
   tl.set('.about__image-wp', {
     display: "block"
   });
@@ -33,61 +32,47 @@ onMounted(() => {
   });
   localTriggers.push(ScrollTrigger.getById('pin-bg')!);
   tl.from('.about__image-wp', {
-    height: '10%',
+    height: 2,
     scrollTrigger: {
+      markers: true,
       scrub: true,
       id: 'height-change',
       trigger: '#section-about',
-      toggleActions: 'play none none play',
-      start: '40% 70%',
-      end: '70% 70%',
+      start: '40% center',
+      end: '60% center',
     }
   });
   localTriggers.push(ScrollTrigger.getById('height-change')!);
   // Слайд-in изображения
-  tl.from('.about__image-wp', {
-    xPercent: -100,
-    scrollTrigger: {
-      scrub: true,
-      id: 'slide-in',
-      trigger: '#section-about',
-      start: '20% bottom',
-      end: '40% bottom',
-    }
-  });
-  localTriggers.push(ScrollTrigger.getById('slide-in')!);
-
+    tl.from('.about__image-wp', {
+      xPercent: -100,
+      scrollTrigger: {
+        scrub: true,
+        id: 'slide-in',
+        trigger: '#section-about',
+        start: '10% center',
+        end: '30% center',
+        markers: true,
+      }
+    });
+    localTriggers.push(ScrollTrigger.getById('slide-in')!);
   // Высота изображения (только на десктопе)
-
 
   // Заголовок и параграфы
   tl.from(['#about-hero', '.about-paragraph'], {
     xPercent: 100,
     stagger: 0.2,
     scrollTrigger: {
-      trigger: '.about__text',
+      trigger: '.about__info',
       start: 'top 70%',
       end: 'bottom 70%',
       scrub: true,
+
       id: 'text-in',
     }
   });
   localTriggers.push(ScrollTrigger.getById('text-in')!);
 
-  // Карточки
-  tl.from('.about__card', {
-    xPercent: 100,
-    stagger: 0.2,
-    scrollTrigger: {
-      trigger: '#section-exp',
-      start: 'top 70%',
-      end: 'center 70%',
-      scrub: true,
-      id: 'cards-in',
-      markers: true,
-    }
-  });
-  localTriggers.push(ScrollTrigger.getById('cards-in')!);
 });
 
 onBeforeUnmount(() => {
@@ -98,7 +83,7 @@ onBeforeUnmount(() => {
 <template>
   <section id="about">
     <div class="about-bg"></div>
-    <div class="about__info section" id="section-about">
+    <div class="about__info" id="section-about">
       <div class="about__image-wp">
         <div class="about__image">
           <img :src="info.ava" alt=""/>
@@ -111,25 +96,19 @@ onBeforeUnmount(() => {
         <p class="about-paragraph" v-for="subtitle in info.subtitles">
           {{ subtitle }}
         </p>
-
-      </div>
-    </div>
-    <div class="section flex flex-col items-end gap-8" id="section-exp">
-      <div class="flex flex-col items-end mt-3 ml-[10%]">
-        <div class="about__card text-start font-main mb-8" v-for="card in info.cards">
-          <h2 class="uppercase mb-3 font-bold ">
-            {{ card.cardTitle }}
-          </h2>
-          <SectionC
-              :title="card.title"
-              :period="card.period"
-              :body="card.body"
-          />
-
+        <div class="about-paragraph" v-for="card in info.cards">
+          <div class="text-start font-main mb-8">
+            <h2 class="uppercase mb-3 font-bold ">
+              {{ card.cardTitle }}
+            </h2>
+            <SectionC
+                :title="card.title"
+                :period="card.period"
+                :body="card.body"
+            />
+          </div>
         </div>
-
       </div>
-      <SimpleStack :svgs="about.stack"/>
     </div>
   </section>
 
@@ -138,6 +117,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .section {
+
   width: 100vw;
   height: 100vh;
 }
@@ -165,18 +145,15 @@ onBeforeUnmount(() => {
 
 .about__info {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 
 }
 
 .about__image-wp {
-  position: absolute;
-  top: 0;
-  left: 0;
+  width: 25vw;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-  height: 100vh;
-  width: 45vw;
 
   .about__image {
     width: 100%;
@@ -194,17 +171,15 @@ onBeforeUnmount(() => {
 
 #about-hero {
   font-size: clamp(1rem, 9vw, 4rem);
+  @media (max-width: 768px) {
+    font-size: clamp(1rem, 8vw, 4rem);
+  }
   white-space: nowrap;
   filter: dropShadow();
 }
 
-.about-paragraph {
-  &:last-child {
-    margin-left: 25%;
-  }
-}
 
-.about-paragraph, .about__card {
+.about-paragraph {
   font-size: clamp(1rem, 3vw, 1.5rem);
   @media (max-width: 768px) {
     font-size: clamp(1rem, 4vw, 1.5rem);
@@ -219,20 +194,19 @@ onBeforeUnmount(() => {
 @media (max-width: 1024px) {
   .about__info {
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .about__text {
+    padding: 1rem;
     width: 100%;
-    height: 50vh;
   }
 
   .about__image-wp {
-    width: unset;
-    aspect-ratio: 1/1;
-    height: 100%;
-    position: static;
+    width: 50vh;
+    max-width: 50rem;
+    padding: 1rem;
   }
 
   .about__card {
