@@ -22,7 +22,7 @@ onMounted(() => {
     stagger: 0.04,
     duration: 0.5,
   })
-  tl.to('#whoiam', {
+ .to('#whoiam', {
     scaleY: isMobile?15:10,
     yPercent: 175,
     scrollTrigger: {

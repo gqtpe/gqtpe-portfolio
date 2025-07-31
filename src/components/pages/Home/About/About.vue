@@ -4,7 +4,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {onBeforeUnmount, onMounted} from "vue";
 import SectionC from "@/components/pages/Home/About/Section.vue";
-import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
 
 defineProps<{ info: InfoPage }>();
 
@@ -13,70 +12,65 @@ gsap.registerPlugin(ScrollTrigger);
 // Храним локальные триггеры для очистки
 const localTriggers: ScrollTrigger[] = [];
 onMounted(() => {
-  const isMobile = useIsMobile()
-  const tl = gsap.timeline();
-  tl.set('.about__image-wp', {
-    display: "block"
+  const imageTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#section-about',
+      id: 'slide-in',
+      start: '30% center',
+      end: '70% center',
+      toggleActions: 'play none none reverse'
+    }
   });
 
-  // Пин фон
-  tl.to('.about-bg', {
+  gsap.to('.about-bg', {
     scrollTrigger: {
       trigger: '.about-bg',
       start: 'top top',
-      end: "+=100%",
+      end: 'bottom bottom',
       pin: true,
+      pinSpacing: false,
       id: 'pin-bg',
-      onRefresh: self => self.update()
     }
   });
   localTriggers.push(ScrollTrigger.getById('pin-bg')!);
-  tl.from('.about__image-wp', {
-    height: 2,
-    scrollTrigger: {
-      markers: true,
-      scrub: true,
-      id: 'height-change',
-      trigger: '#section-about',
-      start: '40% center',
-      end: '60% center',
-    }
-  });
-  localTriggers.push(ScrollTrigger.getById('height-change')!);
-  // Слайд-in изображения
-    tl.from('.about__image-wp', {
-      xPercent: -100,
-      scrollTrigger: {
-        scrub: true,
-        id: 'slide-in',
-        trigger: '#section-about',
-        start: '10% center',
-        end: '30% center',
-        markers: true,
-      }
-    });
-    localTriggers.push(ScrollTrigger.getById('slide-in')!);
-  // Высота изображения (только на десктопе)
 
-  // Заголовок и параграфы
-  tl.from(['#about-hero', '.about-paragraph'], {
+
+  gsap.set('.about__image-wp', {
+    height: 4,
+  });
+
+  imageTl
+      .from('.about__image-wp', {
+        xPercent: -100,
+        duration: 0.5,
+      })
+      .to('.about__image-wp', {
+        height: '50%',
+        duration: 0.5,
+      });
+
+  localTriggers.push(ScrollTrigger.getById('slide-in')!);
+  gsap.from(['#about-hero', '.about-paragraph'], {
     xPercent: 100,
     stagger: 0.2,
+    duration:1,
     scrollTrigger: {
       trigger: '.about__info',
       start: 'top 70%',
-      end: 'bottom 70%',
+      end: '70% 70%',
       scrub: true,
-
       id: 'text-in',
     }
   });
   localTriggers.push(ScrollTrigger.getById('text-in')!);
-
 });
 
 onBeforeUnmount(() => {
-  localTriggers.forEach(trigger => trigger.kill());
+  localTriggers.forEach(trigger => {
+    if(trigger){
+      trigger.kill()
+    }
+  });
 });
 </script>
 
@@ -116,15 +110,10 @@ onBeforeUnmount(() => {
 
 
 <style scoped>
-.section {
 
-  width: 100vw;
-  height: 100vh;
-}
 
 #about {
   position: relative;
-  width: 100vw;
   overflow: hidden;
 }
 
@@ -147,7 +136,7 @@ onBeforeUnmount(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  height: 100vh;
 }
 
 .about__image-wp {
@@ -187,6 +176,7 @@ onBeforeUnmount(() => {
 }
 
 .about__text {
+  padding: 0.5rem;
   z-index: 3;
   width: 60%;
 }
@@ -207,10 +197,6 @@ onBeforeUnmount(() => {
     width: 50vh;
     max-width: 50rem;
     padding: 1rem;
-  }
-
-  .about__card {
-    width: 100%;
   }
 }
 </style>
