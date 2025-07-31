@@ -27,7 +27,6 @@ onMounted(() => {
       trigger: '.about-bg',
       start: 'top top',
       end: '+=100%',
-      end: '+=100%',
       pin: true,
       pinSpacing: false,
       id: 'pin-bg',

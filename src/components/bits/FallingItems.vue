@@ -57,7 +57,7 @@ const initMatter = () => {
   });
 
   const icons = [];
-  const springs = [];
+  const springs: Constraint[] = [];
 
   const total = props.svgs.length;
   const iconWidth = width.value / total * 0.8;
@@ -104,24 +104,26 @@ const initMatter = () => {
   Events.on(render, 'afterRender', () => {
     const ctx = render.context;
     springs.forEach(spring => {
-      const { x: x1, y: y1 } = spring.pointA;
-      const { x: x2, y: y2 } = spring.bodyB.position;
+      if(spring.bodyB && spring.pointA) {
+        const {x: x1, y: y1} = spring.pointA;
+        const {x: x2, y: y2} = spring.bodyB.position;
 
-      const segments = 8;
-      const dx = (x2 - x1) / segments;
-      const dy = (y2 - y1) / segments;
+        const segments = 8;
+        const dx = (x2 - x1) / segments;
+        const dy = (y2 - y1) / segments;
 
-      ctx.beginPath();
-      ctx.moveTo(x1, y1);
-      for (let i = 1; i < segments; i++) {
-        const x = x1 + dx * i;
-        const y = y1 + dy * i + Math.sin(i * Math.PI) * 5;
-        ctx.lineTo(x, y);
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        for (let i = 1; i < segments; i++) {
+          const x = x1 + dx * i;
+          const y = y1 + dy * i + Math.sin(i * Math.PI) * 5;
+          ctx.lineTo(x, y);
+        }
+        ctx.lineTo(x2, y2);
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1;
+        ctx.stroke();
       }
-      ctx.lineTo(x2, y2);
-      ctx.strokeStyle = '#fff';
-      ctx.lineWidth = 1;
-      ctx.stroke();
     });
   });
 };
