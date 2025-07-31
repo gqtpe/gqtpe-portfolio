@@ -16,9 +16,19 @@ defineProps<{svgs: string[]}>()
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    height: 100%;
     justify-content: center;
+
     img{
-      width: 2rem;
+      transition: filter, 0.2s ease-in-out;
+      &:hover{
+        filter: brightness(0.8);
+      }
+      user-select: none;
+      moz-user-select: none;
+      -webkit-user-drag: none;
+      moz-webkit-user-drag: none;
+      width: 4rem;
     }
   }
 </style>

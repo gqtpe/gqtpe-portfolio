@@ -1,42 +1,53 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, nextTick } from "vue";
-import { Engine, Render, World, Bodies, Runner, Mouse, MouseConstraint, Events, Body } from "matter-js";
-const props = defineProps<{svgs: string[]}>()
+import { onMounted, onUnmounted, ref, watch, nextTick } from "vue";
+import {
+  Engine,
+  Render,
+  World,
+  Bodies,
+  Runner,
+  Constraint,
+  Mouse,
+  MouseConstraint,
+  Events,
+} from "matter-js";
 
+const props = defineProps<{
+  svgs: string[];
+}>();
 
 const stackContainer = ref<HTMLElement | null>(null);
+const width = ref(0);
+const height = ref(0);
+
 let engine: Engine;
 let render: Render;
 let runner: Runner;
 let mouseConstraint: MouseConstraint;
+let resizeObserver: ResizeObserver;
 
 const initMatter = () => {
-  if (!stackContainer.value) return;
+  if (!stackContainer.value || width.value === 0 || height.value === 0) return;
 
   engine = Engine.create();
   runner = Runner.create();
 
-  const width = stackContainer.value.clientWidth;
-  const height = stackContainer.value.clientHeight;
-
   render = Render.create({
     element: stackContainer.value,
-    engine: engine,
+    engine,
     options: {
-      width,
-      height,
+      width: width.value,
+      height: height.value,
       background: "transparent",
       wireframes: false,
-      pixelRatio: window.devicePixelRatio || 1, // Оставляем высокое разрешение
+      pixelRatio: window.devicePixelRatio || 1,
     },
   });
 
-  // Создаём мышь и корректируем её поведение
   const mouse = Mouse.create(render.canvas);
   mouse.scale.x = 1 / (window.devicePixelRatio || 1);
   mouse.scale.y = 1 / (window.devicePixelRatio || 1);
 
-  // Настраиваем mouseConstraint
   mouseConstraint = MouseConstraint.create(engine, {
     mouse,
     constraint: {
@@ -45,65 +56,75 @@ const initMatter = () => {
     },
   });
 
-  // Границы
-  const thickness = 30;
-  const ground = Bodies.rectangle(width / 2, height + thickness / 2, width, thickness, { isStatic: true, render:{fillStyle:"transparent"} });
-  const leftWall = Bodies.rectangle(-thickness / 2, height / 2, thickness, height, { isStatic: true,  render:{fillStyle:"transparent"}});
-  const rightWall = Bodies.rectangle(width + thickness / 2, height / 2, thickness, height, { isStatic: true,  render:{fillStyle:"transparent"}});
-  const topWall = Bodies.rectangle(width / 2, -thickness / 2, width, thickness, { isStatic: true, render:{fillStyle:"transparent"}});
+  const icons = [];
+  const springs = [];
 
-  // Иконки
-  const spacing = 0;
-  const diameter = Math.floor(width / props.svgs.length);
-  const scaleFactor = 0.8; // Можно подбирать вручную
-  const scale = (diameter / 250) * scaleFactor;
+  const total = props.svgs.length;
+  const iconWidth = width.value / total * 0.8;
+  const iconHeight = iconWidth;
+  const spacing = width.value / total;
+  const startY = 120;
+  const fixedY = 30;
 
-  const icons = props.svgs.map((src, i) =>{
-        if(width<1024){
-          return Bodies.circle(i * (diameter + spacing), 20, diameter*0.625 , {
-            restitution: 0.8,
-            friction: 0.3,
-            render: {
-              sprite: {
-                texture: src,
-                xScale: scale*1.25,
-                yScale: scale*1.25,
-              },
-            },
-          })
-        }
-        return Bodies.circle(i * (diameter + spacing) + 30, 20, diameter / 2, {
-          restitution: 0.8,
-          friction: 0.3,
-          render: {
-            sprite: {
-              texture: src,
-              xScale: scale,
-              yScale: scale,
-            },
-          },
-        })
-      }
-  );
-  // Добавляем в мир
-  World.add(engine.world, [ground, leftWall, rightWall, topWall, ...icons]);
-  World.add(engine.world, mouseConstraint);
+  for (let i = 0; i < total; i++) {
+    const x = spacing * i + spacing / 2;
+
+    const icon = Bodies.rectangle(x, startY, iconWidth, iconHeight, {
+      restitution: 0.9,
+      friction: 0.1,
+      render: {
+        sprite: {
+          texture: props.svgs[i],
+          xScale: iconWidth / 250,
+          yScale: iconHeight / 250,
+        },
+      },
+    });
+
+    icons.push(icon);
+
+    const spring = Constraint.create({
+      pointA: { x, y: fixedY },
+      bodyB: icon,
+      pointB: { x: 0, y: -iconHeight / 2 },
+      stiffness: 0.02,
+      damping: 0.05,
+      render: { visible: false },
+    });
+
+    springs.push(spring);
+  }
+
+  World.add(engine.world, [...icons, ...springs, mouseConstraint]);
 
   Runner.run(runner, engine);
   Render.run(render);
 
-  // Исправленный обработчик перетаскивания
-  Events.on(mouseConstraint, "enddrag", (event: any) => {
-    const body = event.body as Body | undefined;
-    if (body) {
-      const x = Math.max(20, Math.min(body.position.x, width - 20));
-      const y = Math.max(20, Math.min(body.position.y, height - 20));
-      Body.setPosition(body, { x, y });
-    }
+  // кастомный зигзаг
+  Events.on(render, 'afterRender', () => {
+    const ctx = render.context;
+    springs.forEach(spring => {
+      const { x: x1, y: y1 } = spring.pointA;
+      const { x: x2, y: y2 } = spring.bodyB.position;
+
+      const segments = 8;
+      const dx = (x2 - x1) / segments;
+      const dy = (y2 - y1) / segments;
+
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      for (let i = 1; i < segments; i++) {
+        const x = x1 + dx * i;
+        const y = y1 + dy * i + Math.sin(i * Math.PI) * 5;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(x2, y2);
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
   });
 };
-
-
 
 const destroyMatter = () => {
   if (engine) {
@@ -115,38 +136,32 @@ const destroyMatter = () => {
   }
 };
 
-let resizeTimeout: number | null = null;
-
-const handleResize = async () => {
+const handleResize = () => {
   if (!stackContainer.value) return;
-
-  // Очистка предыдущего таймера (если есть)
-  if (resizeTimeout) {
-    clearTimeout(resizeTimeout);
-  }
-
-  // Устанавливаем небольшой таймер перед обновлением
-  resizeTimeout = window.setTimeout(async () => {
-    stackContainer.value!.style.height = `${window.innerHeight}px`;
-
-    await nextTick(); // Дождаться обновления DOM
-
-    destroyMatter();
-    initMatter();
-  }, 1000); // 100 мс задержки для корректного обновления размеров
+  const rect = stackContainer.value.getBoundingClientRect();
+  width.value = Math.floor(rect.width);
+  height.value = Math.floor(rect.height);
 };
 
 onMounted(() => {
-  if (stackContainer.value) {
-    stackContainer.value.style.height = `${window.innerHeight}px`;
+  handleResize();
+  resizeObserver = new ResizeObserver(() => handleResize());
+  if (stackContainer.value) resizeObserver.observe(stackContainer.value);
+});
+
+watch([width, height], async ([newW, newH], [oldW, oldH]) => {
+  if (newW !== oldW || newH !== oldH) {
+    await nextTick();
+    destroyMatter();
+    initMatter();
   }
-  initMatter();
-  window.addEventListener("resize", handleResize);
 });
 
 onUnmounted(() => {
   destroyMatter();
-  window.removeEventListener("resize", handleResize);
+  if (resizeObserver && stackContainer.value) {
+    resizeObserver.unobserve(stackContainer.value);
+  }
 });
 </script>
 
@@ -154,7 +169,7 @@ onUnmounted(() => {
   <div ref="stackContainer" class="stack-container"></div>
 </template>
 
-<style>
+<style scoped>
 .stack-container {
   width: 100%;
   height: 100%;

@@ -26,7 +26,8 @@ onMounted(() => {
     scrollTrigger: {
       trigger: '.about-bg',
       start: 'top top',
-      end: 'bottom bottom',
+      end: '+=100%',
+      end: '+=100%',
       pin: true,
       pinSpacing: false,
       id: 'pin-bg',
@@ -115,6 +116,7 @@ onBeforeUnmount(() => {
 #about {
   position: relative;
   overflow: hidden;
+
 }
 
 .about-bg {
@@ -136,7 +138,7 @@ onBeforeUnmount(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .about__image-wp {
