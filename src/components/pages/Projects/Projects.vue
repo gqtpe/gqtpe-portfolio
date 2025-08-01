@@ -7,7 +7,7 @@ import projectCards from "@/components/pages/Projects/projectCards.ts";
   <PageHeaderRedirect
       variant="header"
       text="projects"
-      class="header"
+      class="bg-black text-white"
       :subtitles="['Designs', 'Portfolio']"
   />
   <div class="projects">
@@ -24,7 +24,8 @@ import projectCards from "@/components/pages/Projects/projectCards.ts";
     </div>
   </div>
 
-
+  <PageHeaderRedirect :subtitles="['Go Ahead', 'Next Page']" text="contacts"
+                      class="text-white bg-black" redirect="/contacts"/>
 </template>
 
 
