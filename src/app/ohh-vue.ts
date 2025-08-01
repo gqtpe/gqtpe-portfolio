@@ -9,6 +9,7 @@ import {
     BiTelegram,
     CoCodewars,
     CoHamburgerMenu,
+    CoSad,
     CoTrello,
     FaExpand,
     FaExternalLinkSquareAlt,
@@ -16,19 +17,20 @@ import {
 } from "oh-vue-icons/icons";
 
 addIcons(
-    FaExpand,
-    FaExternalLinkSquareAlt,
-    CoTrello,
-    BiFileEarmarkPerson,
-    BiSpotify,
-    BiLink45Deg,
-    CoHamburgerMenu
+    FaExpand
+    , FaExternalLinkSquareAlt
+    , CoTrello
+    , BiFileEarmarkPerson
+    , BiSpotify
+    , BiLink45Deg
+    , CoHamburgerMenu
     , CoCodewars
     , BiGithub
     , BiInstagram
     , BiTelegram
     , BiLinkedin
-    ,MdPeopleRound
+    , MdPeopleRound
+    , CoSad
 );
 
 
