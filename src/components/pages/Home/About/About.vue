@@ -34,20 +34,15 @@ onMounted(() => {
   });
   localTriggers.push(ScrollTrigger.getById('pin-bg')!);
 
-
-  gsap.set('.about__image-wp', {
-    height: 4,
-  });
-
   imageTl
       .from('.about__image-wp', {
         xPercent: -100,
         duration: 0.5,
       })
-      .to('.about__image-wp', {
-        height: '50%',
-        duration: 0.5,
-      });
+      .from('.about__image-wp',{
+        height: 4,
+
+      })
 
   localTriggers.push(ScrollTrigger.getById('slide-in')!);
   gsap.from(['#about-hero', '.about-paragraph'], {
