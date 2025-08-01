@@ -4,6 +4,7 @@ import HomePage from "@/components/pages/Home/HomePage.vue";
 import {navbarLinks} from "@/components/pages/Navbar/links.ts";
 import Contacts from "@/components/pages/Contacts/Contacts.vue";
 import Project from "@/components/pages/Projects/Project/Project.vue";
+import NotFound from "@/components/pages/NotFound.vue";
 
 declare global {
     interface Window {
@@ -28,7 +29,8 @@ const routes = [
         path: '/contacts',
         component: Contacts,
     },
-    {path: '/project/:name', component: Project}
+    {path: '/project/:name', component: Project},
+    { path: '/:pathMatch(.*)*', name: 'not-found', component: NotFound },
 ]
 
 const router = createRouter({
