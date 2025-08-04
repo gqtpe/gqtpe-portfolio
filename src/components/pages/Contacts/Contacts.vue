@@ -13,9 +13,9 @@ function handleMyEvent(payload: boolean) {
 <template>
   <PageHeaderRedirect class="header" :subtitles="['Reach Out', 'Say Hello']" text="contact"/>
   <section class="font-main bg-black text-white flex flex-col justify-center items-center gap-[1rem] px-[0.5rem]">
-    <h2 class="font-semibold text-6xl">Let's Talk</h2>
+    <h2 class="font-semibold text-6xl max-sm:3xl">Let's Talk</h2>
     <form class="form flex flex-col justify-center items-center gap-[1rem]">
-      <div class="flex justify-between gap-[1rem] max-sm:flex-col">
+      <div class="flex justify-between gap-[1rem] w-full max-sm:flex-col">
         <Input name='username' class="input" type="text" placeholder="What's Your Name"/>
         <Input name="email" class="input" type="text" placeholder="Your Email"/>
       </div>
@@ -35,6 +35,9 @@ function handleMyEvent(payload: boolean) {
 .input {
   width: 100%;
   font-size: 2rem;
+  @media(max-width:768px){
+    font-size: 1.5rem;
+  }
 }
 
 </style>
