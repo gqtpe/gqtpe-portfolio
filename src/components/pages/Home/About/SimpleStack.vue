@@ -5,7 +5,7 @@ defineProps<{svgs: string[]}>()
 
 <template>
   <div class="wrapper gap-1">
-    <div v-for="(svg) in svgs"  v-motion-pop-visible-once>
+    <div v-for="(svg) in svgs">
       <img  :src="svg" alt="stack-item" >
     </div>
     </div>
@@ -13,12 +13,12 @@ defineProps<{svgs: string[]}>()
 
 <style scoped>
   .wrapper{
+    overflow: hidden;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    height: 100%;
     justify-content: center;
-
+    height: 100%;
     img{
       transition: filter, 0.2s ease-in-out;
       &:hover{

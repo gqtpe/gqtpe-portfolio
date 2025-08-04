@@ -3,7 +3,7 @@ import randomNumber from "@/utils/randomNumber.ts";
 import { ref } from "vue";
 
 const emit = defineEmits(['myEvent'])
-const timeOutID = ref<NodeJS.Timeout | null>(null)
+const timeOutID = ref<number | null>(null)
 const error = ref<string|null>(null)
 const from0to10 = () => randomNumber(1, 9)
 const a = from0to10()

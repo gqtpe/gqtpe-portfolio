@@ -9,7 +9,6 @@ defineProps<{ info: InfoPage }>();
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Храним локальные триггеры для очистки
 const localTriggers: ScrollTrigger[] = [];
 onMounted(() => {
   const imageTl = gsap.timeline({
@@ -21,25 +20,12 @@ onMounted(() => {
       toggleActions: 'play none none reverse'
     }
   });
-
-  gsap.to('.about-bg', {
-    scrollTrigger: {
-      trigger: '.about-bg',
-      start: 'top top',
-      end: '+=100%',
-      pin: true,
-      pinSpacing: false,
-      id: 'pin-bg',
-    }
-  });
-  localTriggers.push(ScrollTrigger.getById('pin-bg')!);
-
   imageTl
-      .from('.about__image-wp', {
+      .from('.about__image', {
         xPercent: -100,
         duration: 0.5,
       })
-      .from('.about__image-wp',{
+      .from('.about__image',{
         height: 4,
 
       })
@@ -114,13 +100,12 @@ onBeforeUnmount(() => {
 }
 
 .about-bg {
+  height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-repeat: round;
   z-index: -1;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: url("/about.jpg");
   @media (prefers-color-scheme: dark) {
     filter: grayscale(100%);

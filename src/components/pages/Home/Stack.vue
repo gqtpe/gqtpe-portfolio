@@ -17,7 +17,12 @@ const isMobile = useIsMobile()
 
 <style >
 .stack{
-    min-height: 10rem;
+  min-height: 10rem;
   height:25vh;
+  @media(max-width: 768px){
+    min-height: 25vh;
+    height: unset;
+    max-height:50vh;
+  }
 }
 </style>

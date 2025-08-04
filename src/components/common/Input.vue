@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref, useAttrs } from 'vue'
+import { onMounted, ref, useAttrs} from 'vue'
+import type {InputHTMLAttributes} from 'vue'
 import gsap from 'gsap'
 
 
@@ -8,7 +9,7 @@ type Props = {
   textArea?: boolean
 }
 const {textArea} = defineProps<Props>()
-const attrs = useAttrs()
+const attrs:InputHTMLAttributes = useAttrs()
 const progressLine = ref<HTMLElement | null>(null)
 const tl = gsap.timeline({ paused: true })
 
@@ -30,8 +31,8 @@ const handleBlur = () => tl.reverse()
   <div class="input">
     <component
         :is="textArea?'textarea':'input'"
-        type="text"
         v-bind="attrs"
+        :type="textArea?'':'text'"
         @focus="handleFocus"
         @blur="handleBlur"
     />
