@@ -1,14 +1,27 @@
 import {links, projectImages} from "@/app/links";
-import type {Projects} from "@/components/pages/Projects/types";
+import type {ProjectLink, Projects} from "@/components/pages/Projects/types";
 
+
+const defaultLinks: { [key: string]: (url: string)=>ProjectLink } = {
+    github:(url)=> ({
+        icon: 'bi-github',
+        name: 'Source Code',
+        url,
+    }),
+    preview: (url:string)=>({
+        icon: 'bi-link-45deg',
+        name: 'Live Demo',
+        url,
+    })
+}
 const projects: Projects = {
     trello: {
         id: 1,
         title: 'Trello-Clone',
         description: 'Todolist is a pet project for task management, created using modern web technologies. This project allows for convenient task management and supports user authorization.',
         links: [
-            {url: links.trello, icon: 'bi-link-45deg'},
-            {url: links.trelloGithub, icon: 'bi-github'},
+            defaultLinks.preview(links.trello),
+            defaultLinks.github(links.trelloGithub),
         ],
         images: projectImages["trello"],
         pills: [
@@ -36,8 +49,8 @@ const projects: Projects = {
         title: 'Spotify-Clone',
         description: 'A Spotify clone built with Next.js, offering a similar user experience to the original Spotify platform. This project integrates with the Spotify Web API to provide music streaming, playlists, and user interaction features.',
         links: [
-            {url: links.spotify, icon: 'bi-link-45deg'},
-            {url: links.spotifyGithub, icon: 'bi-github'},
+            defaultLinks.github(links.spotifyGithub),
+            defaultLinks.preview(links.spotify),
         ],
         images: projectImages["spotify"],
         pills: [
@@ -52,7 +65,6 @@ const projects: Projects = {
             'toasts',
             'vite',
             'custom-hooks',
-            'storybook',
             'redux-toolkit',
             'tanstack-tables',
             'vitest',
@@ -65,10 +77,9 @@ const projects: Projects = {
     portfolio: {
         id: 3,
         title: 'Portfolio',
-        description: ' A Portfolio application build with Vue.',
+        description: 'A portfolio application built with Vue and modern UI animations.,',
         links: [
-            {url: '/', icon: 'bi-link-45deg'},
-            {url: links.portfolioGithub, icon: 'bi-github'},
+            defaultLinks.github(links.portfolioGithub),
         ],
         images: [],
         pills: [
