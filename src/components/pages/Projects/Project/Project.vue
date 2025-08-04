@@ -3,6 +3,7 @@ import projects from "@/components/pages/Projects/projects.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import Slide from "@/components/common/Splide.vue";
 import Pills from "@/components/pages/Projects/Project/Pills.vue";
+import Button from "@/components/common/Button.vue"
 import {useRoute} from "vue-router";
 
 const {params} = useRoute()
@@ -11,9 +12,8 @@ const project = projects[params.name as "trello" | "portfolio" | "spotify"]
 </script>
 
 <template>
-  <section class=" page-wrapper project-page text-black flex flex-col items-center">
-    (Currently upgrading with GSAP – work in progress.)
-    <h2 class="text-3xl font-black uppercase self-start">
+  <section class=" p-[1rem] project-page mt-[4rem] text-black flex flex-col items-center">
+    <h2 class="text-3xl font-black uppercase">
       <DecryptedText
           :speed="50"
           :use-original-chars-only="true"
@@ -28,13 +28,14 @@ const project = projects[params.name as "trello" | "portfolio" | "spotify"]
     <div class="project-page__content">
       <Slide class="project-page__slider" :images="project.images"/>
       <aside class="project-page__aside">
-        <a v-if="project.links.length" v-for="link in project.links" :href="link.url" class="flex items-center">
+        <Button v-if="project.links.length" v-for="link in project.links" variant="gradient" class="flex items-center gap-1"
+                :link="link.url">
           <v-icon
               :scale="1.5"
               :name="link.icon"
           />
-          <span class="text-link-1 ">{{ link.url.split('//')[1] }}</span>
-        </a>
+          {{link.name}}
+        </Button>
         <div v-else class="helper">(links not provided)</div>
         <Pills class="project-page__pills" :pills="project.pills"/>
       </aside>
@@ -52,7 +53,11 @@ const project = projects[params.name as "trello" | "portfolio" | "spotify"]
   &__aside {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 0.5rem;
+    @media(max-width: 40rem) {
+      align-items: center;
+    }
   }
 
   &__content {
@@ -67,9 +72,9 @@ const project = projects[params.name as "trello" | "portfolio" | "spotify"]
       flex-grow: 1;
     }
 
-    @media(max-width: 40rem) {
+    @media(max-width: 768px) {
       flex-direction: column;
-      align-items: flex-start;
+      justify-content: center;
     }
   }
 
@@ -82,6 +87,7 @@ const project = projects[params.name as "trello" | "portfolio" | "spotify"]
 
   &__pills {
     width: 20rem;
+
   }
 }
 
