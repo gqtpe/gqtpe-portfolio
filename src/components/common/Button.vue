@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useAttrs} from "vue";
+import {type HTMLAttributes, useAttrs} from "vue";
 
 type Props = {
   variant: 'primary' | 'secondary' | 'gradient'|'white'
@@ -9,7 +9,7 @@ type Props = {
   up?:boolean
 }
 
-const attrs = useAttrs()
+const attrs = useAttrs() as HTMLAttributes
 const {size = 'medium',variant} = defineProps<Props>()
 </script>
 
