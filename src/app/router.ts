@@ -49,7 +49,7 @@ const router = createRouter({
                 }
                 window._smoother.scrollTo(el, smooth, "top")
             } else {
-                window._smoother.scrollTo(0, false, "top")
+               setTimeout(()=> window._smoother.scrollTo(0, false, "top"),0)
             }
         }
 
