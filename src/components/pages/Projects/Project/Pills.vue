@@ -27,6 +27,10 @@ defineProps<{ pills?: Pill[] }>()
   row-gap: 0.25rem;
   column-gap: 0.25rem;
   align-items: flex-start;
+  @media(max-width: 768px) {
+    align-items: center;
+    justify-content: center;
+  }
   .pill {
     display: inline-block;
     border-radius: 0.25rem;
