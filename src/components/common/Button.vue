@@ -1,20 +1,17 @@
 <script setup lang="ts">
 
+import {useAttrs} from "vue";
+
 type Props = {
-  color: 'primary' | 'secondary' | 'gradient'
+  variant: 'primary' | 'secondary' | 'gradient'|'white'
   size?: 'medium' | 'large'
   link?: string
   download?: string
-  className?: string
   up?:boolean
 }
 
-//color variant style cases
-const secondaryClasses = "bg-secondary-500 hover:bg-primary-500"
-const primaryClasses = "bg-primary-500 hover:bg-secondary-500"
-
-const {size = 'medium',color, className} = defineProps<Props>()
-const sx = `${color==='primary'?primaryClasses:color === 'secondary'?secondaryClasses:'gradient'} ${className?className:''}`
+const attrs = useAttrs()
+const {size = 'medium',variant} = defineProps<Props>()
 </script>
 
 <template>
@@ -26,13 +23,18 @@ const sx = `${color==='primary'?primaryClasses:color === 'secondary'?secondaryCl
       v-bind="download ? { download } : {}"
       :target="link?'_blank':'_self'">
     <button
-        :class="`${sx}  transition-colors text-white font-bold ${size}`">
+        :class="`${variant} transition-colors text-white font-bold ${size}`"
+        v-bind="attrs"
+    >
       <slot/>
     </button>
   </a>
 </template>
 <style scoped>
 button{
+  &:disabled{
+    opacity: 0.5;
+  }
   cursor: pointer;
 }
 .up {
@@ -48,6 +50,23 @@ button{
 }
 .gradient{
   background: linear-gradient(0.25turn, var(--color-primary-500), var(--color-secondary-500));
+
+}
+.primary{
+  background: var(--color-primary-500);
+  &:hover{
+    background: var(--color-secondary-500)
+  }
+}
+.secondary{
+  background: var(--color-secondary-500);
+  &:hover{
+    background: var(--color-primary-500)
+  }
+}
+.white{
+  background: white;
+  color: black
 }
   a{
     display: inline-block;
