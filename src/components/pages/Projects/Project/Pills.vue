@@ -8,6 +8,7 @@ defineProps<{ pills?: Pill[] }>()
 <template>
   <div class="pills">
     <span
+        data-cursor-disabled
         v-if="pills && pills.length"
         v-for="(pill) in pills"
         class="pill"
