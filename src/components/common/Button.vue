@@ -37,9 +37,9 @@ button{
   cursor: pointer;
 }
 .up {
-
   transition: transform, 0.2s ease-in-out;
   &:hover {
+    opacity: unset;
     transform: translateY(-0.2rem);
   }
   &:active{
