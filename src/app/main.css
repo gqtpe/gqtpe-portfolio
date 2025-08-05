@@ -37,8 +37,11 @@ html {
 }
 
 #app {
+    background: white;
     /*background: var(--color-zinc-900)*/
-
+    @media(prefers-color-scheme: dark) {
+        background-color: black;
+    }
 }
 
 #modal {
