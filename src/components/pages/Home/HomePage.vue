@@ -15,7 +15,7 @@ import Stack from "@/components/pages/Home/Stack.vue";
   <About :info="data.info"/>
   <Stack/>
   <ProjectCards/>
-  <PageHeaderRedirect :subtitles="['Go Ahead', 'Next Page']" text="projects"
+  <PageHeaderRedirect data-cursor-action="go to" :subtitles="['Go Ahead', 'Next Page']" text="projects"
                       class="text-white" redirect="/projects"/>
 </template>
 <style>

@@ -12,7 +12,7 @@ const project = projects[params.name as "trello" | "portfolio" | "spotify"]
 </script>
 
 <template>
-  <section class=" p-[1rem] project-page mt-[4rem] text-black flex flex-col items-center">
+  <section class="p-[1rem] project-page mt-[4rem] text-black flex flex-col items-center">
     <h2 class="text-3xl font-black uppercase">
       <DecryptedText
           :speed="50"
@@ -28,7 +28,7 @@ const project = projects[params.name as "trello" | "portfolio" | "spotify"]
     <div class="project-page__content">
       <Slide class="project-page__slider" :images="project.images"/>
       <aside class="project-page__aside">
-        <Button v-if="project.links.length" v-for="link in project.links" variant="gradient" class="flex items-center gap-1"
+        <Button data-cursor-disabled up v-if="project.links.length" v-for="link in project.links" variant="gradient" class="flex items-center gap-1"
                 :link="link.url">
           <v-icon
               :scale="1.5"

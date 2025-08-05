@@ -24,7 +24,7 @@ import projectCards from "@/components/pages/Projects/projectCards.ts";
     </div>
   </div>
 
-  <PageHeaderRedirect :subtitles="['Go Ahead', 'Next Page']" text="contacts"
+  <PageHeaderRedirect data-cursor-action="go to" :subtitles="['Go Ahead', 'Next Page']" text="contacts"
                       class="text-white bg-black" redirect="/contacts"/>
 </template>
 

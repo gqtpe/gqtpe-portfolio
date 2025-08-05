@@ -17,13 +17,11 @@ const {redirect, text, subtitles} = defineProps<Props>()
     <component
         :is="redirect?RouterLink:'div'"
         :to="redirect"
-        data-cursor-action="go to"
         :class="redirect?'redirect-header-link':'redirect-header-wrapper'"
     >
 
         <DecryptedText
             :text="text"
-
             use-original-chars-only
             :animateOn="redirect?'hover':'view'"
             revealDirection="start"
