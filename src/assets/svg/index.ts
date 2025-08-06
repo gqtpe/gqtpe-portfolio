@@ -25,6 +25,7 @@ import typescript from "./about/typescript.svg";
 import vercel from "./about/vercel.svg";
 import vite from "./about/vitejs.svg";
 import vue from "./about/vue.svg";
+import gsap from "./about/gsap.svg";
 
 const aboutSVGs = [
     html,
@@ -50,6 +51,7 @@ const aboutSVGs = [
     styledcomponents,
     tailwindcss,
     tanstack,
+    gsap,
 ]
 
 const footerSVGs = {
