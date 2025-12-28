@@ -44,8 +44,9 @@ onMounted(() => {
       <DecryptedText text="GQTPE" use-original-chars-only class="logo font-black" animate-on="view"/>
       <slot/>
       <Button variant="gradient" :link="socials.telegram.link" up>
+        Let's talk
       </Button>
-      Let's talk
+
     </div>
   </header>
 </template>
