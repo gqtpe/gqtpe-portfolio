@@ -4,7 +4,6 @@ import Button from "@/components/common/Button.vue"
 import Input from "@/components/common/Input.vue";
 import Captcha from "@/components/common/Captcha.vue";
 import {ref} from "vue";
-import emailjs from "@emailjs/browser";
 
 const submitDisabled = ref(true)
 function handleMyEvent(payload: boolean) {

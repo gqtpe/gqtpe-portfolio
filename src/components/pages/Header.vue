@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Button from "@/components/common/Button.vue";
-import {links} from "@/app/links.ts";
+import {links, socials} from "@/app/links.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import gsap from "gsap";
 import {onMounted} from "vue";
@@ -42,9 +42,9 @@ onMounted(() => {
     <div class="header__wrapper glass">
       <DecryptedText text="GQTPE" use-original-chars-only class="logo font-black" animate-on="view"/>
       <slot/>
-      <Button variant="gradient" :link="links.telegram" up>
-        Let's talk
+      <Button variant="gradient" :link="socials.telegram.link" up>
       </Button>
+      Let's talk
     </div>
   </header>
 </template>
