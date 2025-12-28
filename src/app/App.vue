@@ -51,6 +51,7 @@ watch(isLoaded, async (loaded) => {
 
     const link = navbarLinks.find(t => t.path === route.path);
     if (link?.target) {
+      //@ts-ignore
       setTimeout(() => window._smoother.scrollTo(link.target, true, "top"), 0)
     }
   }
