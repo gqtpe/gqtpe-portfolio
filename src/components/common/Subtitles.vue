@@ -61,6 +61,6 @@ onMounted(async () => {
 
 .slide-subtitle {
   @apply text-lg font-medium;
-
+  user-select: none;
 }
 </style>

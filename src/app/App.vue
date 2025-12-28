@@ -20,6 +20,11 @@ const completeLoading = () => {
 }
 const smoother = ref<any>(null);
 
+const onTransitionEnd = () => {
+  ScrollTrigger.refresh();
+
+
+}
 watch(isLoaded, async (loaded) => {
   if (!loaded) return;
 
@@ -46,29 +51,37 @@ watch(isLoaded, async (loaded) => {
 
     const link = navbarLinks.find(t => t.path === route.path);
     if (link?.target) {
-      setTimeout(()=>window._smoother.scrollTo(link.target, true, "top"),0)
+      //@ts-ignore
+      setTimeout(() => window._smoother.scrollTo(link.target, true, "top"), 0)
     }
   }
 });
 </script>
-
 <template>
-  <div v-if="!isLoaded" class="loading-wrapper flex items-center justify-center p-6">
-    <CountUp :onEnd="completeLoading"/>
-  </div>
-  <template v-else>
-    <Header>
-      <Navbar/>
-    </Header>
-    <div id="main-wrapper">
-      <main id="main">
-        <RouterView v-slot="{ Component }">
-          <component :is="Component"/>
-        </RouterView>
-      </main>
-      <MagicCursor v-if="!isMobile"/>
+    <div v-if="!isLoaded" class="loading-wrapper flex items-center justify-center p-6">
+      <CountUp :onEnd="completeLoading"/>
     </div>
-  </template>
+    <template v-else>
+      <Header>
+        <Navbar/>
+      </Header>
+      <div id="main-wrapper">
+        <main id="main">
+
+          <RouterView v-slot="{ Component }">
+            <Transition
+                name="fade"
+                mode="out-in"
+                @after-enter="onTransitionEnd"
+            >
+              <component :is="Component" :key="route.path"/>
+            </Transition>
+          </RouterView>
+
+        </main>
+        <MagicCursor v-if="!isMobile"/>
+      </div>
+    </template>
 </template>
 
 <style>
@@ -79,6 +92,15 @@ watch(isLoaded, async (loaded) => {
   color: white;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 .half {
   min-height: 50vh !important;
   height: 50vh !important;

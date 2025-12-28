@@ -14,7 +14,7 @@ const projectCards: Card[] = [
     {
         img: '/01hero.jpg',
         name: 'Spotify',
-        subtitle: 'react1',
+        subtitle: 'Project based on Spotify Web API',
         icon: "bi-spotify",
         path: '/project/spotify',
         year: 2024,

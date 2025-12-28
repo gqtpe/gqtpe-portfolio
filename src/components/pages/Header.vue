@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import Button from "@/components/common/Button.vue";
-import {links} from "@/app/links.ts";
+import {socials} from "@/app/links.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import gsap from "gsap";
 import {onMounted} from "vue";
 import {ScrollTrigger} from "gsap/ScrollTrigger"
+
 onMounted(() => {
   const header = gsap.from('#header', {
     yPercent: -100,
@@ -15,10 +16,10 @@ onMounted(() => {
 
   let isVisible = true // изначально показываем
 
-  setTimeout(()=>{
+  setTimeout(() => {
     header.play()
     isVisible = true
-  },1000)
+  }, 1000)
 
   ScrollTrigger.create({
     start: "top top",
@@ -42,15 +43,15 @@ onMounted(() => {
     <div class="header__wrapper glass">
       <DecryptedText text="GQTPE" use-original-chars-only class="logo font-black" animate-on="view"/>
       <slot/>
-      <Button variant="gradient" :link="links.telegram" up>
-        Let's talk
+      <Button variant="gradient" :link="socials.telegram.link" up>
       </Button>
+      Let's talk
     </div>
   </header>
 </template>
 
 <style scoped>
-header{
+header {
   user-select: none;
   position: fixed;
   width: 100%;
@@ -59,15 +60,17 @@ header{
   justify-content: center;
   z-index: 10;
 }
-.header__wrapper{
-  display:grid;
+
+.header__wrapper {
+  display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 2rem;
   margin: 0.5rem 0;
   padding: 0.5rem 1rem;
 }
-.logo{
+
+.logo {
   font-size: 1.5rem;
 }
 </style>

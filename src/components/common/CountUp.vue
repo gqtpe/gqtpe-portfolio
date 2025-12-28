@@ -17,7 +17,7 @@ onMounted(() => {
 
   tl.to('#wait', { yPercent: 0, opacity: 1, duration: 0.5 }, '-=1');
   tl.to('#wait', {delay:0.5, duration: 1, opacity: 0 });
-  tl.to('.loading-number', { yPercent: -120, duration: 1 }, '-=1');
+  tl.to('.loading-number', { yPercent: -120, duration: 1 }, '-=0.7');
   tl.to('#complete', { yPercent: 0, opacity: 1, onComplete: ()=>onEnd()}, '-=1');
 });
 </script>

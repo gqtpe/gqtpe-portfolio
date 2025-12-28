@@ -52,6 +52,7 @@ const initProjectAnimations = async () => {
   const pinInner = gsap.to(".project__inner-wp", {
     scrollTrigger: {
       trigger: ".project__inner-wp",
+      id: 'scroll-trigger',
       start: "top top",
       end: `+=${(sections.length - 1) * 100}%`,
       pin: true,
@@ -87,7 +88,6 @@ onBeforeUnmount(() => {
   <section class="project relative">
     <div class="project__inner-wp">
       <div class="inner">
-
         <v-icon
             data-cursor-action="open"
             v-for="project in projectCards"
@@ -124,7 +124,7 @@ onBeforeUnmount(() => {
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     gap: 4rem;
   }
@@ -141,6 +141,7 @@ onBeforeUnmount(() => {
   .project__item {
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
   }
 
 }

@@ -1,6 +1,9 @@
 import github from "./footer/github-svgrepo-com.svg";
 import linkedin from "./footer/linkedin-1-svgrepo-com.svg";
 import telegram from "./footer/telegram-svgrepo-com.svg";
+import mentor from "./footer/frontendmentor-svgrepo-com.svg";
+import codewars from "./footer/codewars-svgrepo-com.svg";
+import insta from "./footer/instagram-1-svgrepo-com.svg";
 
 import antdesign from "./about/ant_design.svg";
 import css from "./about/css_old.svg";
@@ -57,7 +60,10 @@ const aboutSVGs = [
 const footerSVGs = {
     github,
     linkedin,
-    telegram
+    telegram,
+    mentor,
+    codewars,
+    insta,
 }
 
 export {
