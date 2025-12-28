@@ -47,14 +47,11 @@ export const socials = {
     },
 }
 export const links ={
-
     trello: "https://gqtpe.github.io/trello",
     spotify: "https://spotify-gqtpe.vercel.app",
     trelloGithub: "https://github.com/gqtpe/trello",
     spotifyGithub: "https://github.com/gqtpe/spotify",
     portfolioGithub: "https://github.com/gqtpe/gqtpe-portfolio",
-
-
 }
 
 type ProjectImages = {

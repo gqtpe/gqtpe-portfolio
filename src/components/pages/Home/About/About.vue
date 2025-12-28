@@ -4,7 +4,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {onBeforeUnmount, onMounted, ref} from "vue";
 import Button from "@/components/common/Button.vue";
-import {socials} from "@/app/links.ts";
 
 defineProps<{ info: InfoPage }>();
 
@@ -92,7 +91,7 @@ onBeforeUnmount(() => {
           </div>
         </div>
         <div class="about__socials w-full">
-          <a data-cursor-disabled v-for="(item, i) in socials" :href="item.link" target="_blank" :key="i"><img
+          <a data-cursor-disabled v-for="(item, i) in info.icons" :href="item.link" target="_blank" :key="i"><img
               :src="item.icon" alt="github-icon"></a>
         </div>
       </div>

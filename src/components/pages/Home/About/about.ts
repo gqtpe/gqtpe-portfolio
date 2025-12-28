@@ -1,6 +1,6 @@
 import ava from "@/assets/img/profile-compressed.jpg";
 import {aboutSVGs} from "@/assets/svg";
-import {links} from "@/app/links.ts";
+import {socials} from "@/app/links.ts";
 
 type AboutPage = {
     info: InfoPage
@@ -15,10 +15,11 @@ export type Cards = {
 export type InfoPage = {
     ava: string
     icons: {
-        name: string
-        fill: string
-        link: string
-    }[]
+        [key: string]:{
+            icon: string
+            link: string
+        }
+    }
     hero: string
     subtitles: string[]
     cards: {
@@ -29,13 +30,7 @@ export type InfoPage = {
 const aboutPage: AboutPage = {
     info: {
         ava: ava,
-        icons: [
-            {fill: "#181717", name: "bi-github", link: links.github},
-            {fill: "#0A66C2", name: "bi-linkedin", link: links.linkedin},
-            {fill: "#0088CC", name: "bi-telegram", link: links.telegram},
-            {fill: "#AD2C27", name: "co-codewars", link: links.codewars},
-            /*{fill: "#E4405F", name: "bi-instagram",link: links.instagram},*/
-        ],
+        icons: socials,
         hero: "i'm Nursain Temirtas",
         subtitles: [
            "I'm a front-end developer with a strong foundation in JavaScript and a year of practical experience delivering real"," projects. I work confi dently with React, TypeScript, Vite, Redux Toolkit, and Vue, and I build applications with a focus","on architecture, performance, clean structure, and scalability.",
