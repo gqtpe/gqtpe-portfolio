@@ -104,5 +104,9 @@ watch(isLoaded, async (loaded) => {
 .half {
   min-height: 50vh !important;
   height: 50vh !important;
+  @media(max-width: 768px){
+    min-height: 30vh !important;
+    height: 30vh !important;
+  }
 }
 </style>

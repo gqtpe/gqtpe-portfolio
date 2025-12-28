@@ -45,15 +45,15 @@ onMounted(() => {
         }, "-=0.3");
 
     gsap.from(['#about-hero', '.about-paragraph'], {
-      xPercent: 80,
+      xPercent: window.innerWidth < 1024 ? 30 : 80,
+      autoAlpha: 0,
       stagger: 0.1,
       ease: "power1.out",
       scrollTrigger: {
         trigger: '.about__wrapper',
-        start: 'top center%',
+        start: 'top center', // Исправлено: убран %
         end: 'center center',
         scrub: 1,
-        id: 'text-in',
       }
     });
 
@@ -155,7 +155,6 @@ onBeforeUnmount(() => {
     }
   }
 }
-
 #about-hero {
   font-size: clamp(1rem, 9vw, 4rem);
   @media (max-width: 768px) {
@@ -203,20 +202,27 @@ onBeforeUnmount(() => {
 
 @media (max-width: 1024px) {
   .about__wrapper {
+    margin-top: 2rem;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    padding: 1rem;
+    justify-content: flex-start;
+    min-height: unset;
+  }
+  #about{
+    min-height: unset;
   }
 
   .about__info {
-    padding: 1rem;
     width: 100%;
   }
 
   .about__image-wp {
-    width: 50vh;
-    max-width: 50rem;
-    padding: 1rem;
+    width: 100vw; /* На мобилках лучше использовать vw для ширины */
+    height: auto; /* Сбрасываем фиксированную высоту */
+    max-width: 300px; /* Чтобы на планшетах не было на весь экран */
+    aspect-ratio: 1 / 1;
+    padding: 0;
   }
 }
 </style>

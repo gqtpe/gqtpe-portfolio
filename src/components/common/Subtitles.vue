@@ -63,4 +63,9 @@ onMounted(async () => {
   @apply text-lg font-medium;
   user-select: none;
 }
+@media(max-width: 768px){
+  .slide-subtitle{
+    font-size: 2rem;
+  }
+}
 </style>
