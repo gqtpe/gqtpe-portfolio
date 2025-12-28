@@ -21,7 +21,7 @@ onMounted(() => {
         trigger: '#section-about',
         start: 'top 60%',
         end: 'bottom bottom',
-        toggleActions: 'play none reverse none',
+        toggleActions: 'play none none reverse',
       }
     });
 
