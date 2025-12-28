@@ -7,22 +7,22 @@ type Props = {
   link?: string
   download?: string
   up?:boolean
+  round?: boolean
 }
 
 const attrs = useAttrs() as HTMLAttributes
-const {size = 'medium',variant} = defineProps<Props>()
+const {size = 'medium',variant, round = true} = defineProps<Props>()
 </script>
 
 <template>
   <a :href="link"
      aria-label="button-link"
-     :class="`shadow-lg rounded-full ${up?'up':''}`"
      id="button-link"
      data-cursor-disabled
       v-bind="download ? { download } : {}"
       :target="link?'_blank':'_self'">
     <button
-        :class="`${variant} transition-colors text-white font-bold ${size}`"
+        :class="`${variant} transition-colors text-white font-bold ${size} shadow-lg ${round?'rounded-full':'rounded-md'} ${up?'up':''}`"
         v-bind="attrs"
     >
       <slot/>
@@ -69,7 +69,6 @@ button{
 }
   a{
     display: inline-block;
-    overflow: hidden;
   }
   .large{
     font-size: 1.25rem;

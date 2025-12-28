@@ -4,6 +4,7 @@ import Button from "@/components/common/Button.vue"
 import Input from "@/components/common/Input.vue";
 import Captcha from "@/components/common/Captcha.vue";
 import {ref} from "vue";
+import emailjs from "@emailjs/browser";
 
 const submitDisabled = ref(true)
 function handleMyEvent(payload: boolean) {
@@ -11,6 +12,7 @@ function handleMyEvent(payload: boolean) {
 }
 </script>
 <template>
+  <div class="contact-page">
   <PageHeaderRedirect class="header" :subtitles="['Reach Out', 'Say Hello']" text="contact"/>
   <section class="font-main bg-black text-white flex flex-col justify-center items-center gap-[1rem] px-[0.5rem]">
     <h2 class="font-semibold text-6xl max-sm:3xl">Let's Talk</h2>
@@ -24,6 +26,7 @@ function handleMyEvent(payload: boolean) {
       <Button :disabled="submitDisabled" class="font-normal" variant="white" size="large">Send Mail</Button>
     </form>
   </section>
+  </div>
 </template>
 
 <style scoped>
