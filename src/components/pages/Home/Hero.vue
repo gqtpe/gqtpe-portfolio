@@ -57,6 +57,7 @@ onMounted(() => {
   width: 100vw;
   color: white;
   background-repeat: round;
+  background-size: cover;
   background-color: var(--color-primary-500);
   background-image: url("/home.jpg");
   @media (prefers-color-scheme: dark) {
@@ -66,13 +67,23 @@ onMounted(() => {
 
 #hero-shuffle {
   @apply whitespace-nowrap font-semibold md:text-[12rem] max-md:text-[8rem] max-sm:text-[6rem];
+
   font-size: clamp(3rem, 12vw, 12rem);
   user-select: none;
+
 }
 
 #hero-shuffle-subtitle {
   @apply uppercase;
   user-select: none;
   font-size: clamp(0.5rem, 6vw, 1rem);
+}
+@media(max-width: 768px){
+  #hero-shuffle{
+    font-size: 8rem;
+  }
+  #hero-shuffle-subtitle{
+    font-size: 1.5rem;
+  }
 }
 </style>

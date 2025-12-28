@@ -40,6 +40,9 @@ const {redirect, text, subtitles} = defineProps<Props>()
 .title{
   @apply font-main font-semibold;
   font-size: clamp(3rem, 15vw, 12rem);
+  @media(max-width: 768px){
+    font-size: 6.5rem;
+  }
 
 }
 span {
