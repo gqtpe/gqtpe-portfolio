@@ -1,26 +1,37 @@
-import {nextTick, onMounted, ref} from "vue";
-
+import { nextTick, onMounted, ref } from "vue";
 
 export const useLoadingMedia = () => {
     const isLoaded = ref(false);
-    onMounted(async () => {
-        await nextTick(); // Ждём рендеринг
-        await waitForFontsAndImages();
 
+    onMounted(async () => {
+        await nextTick();
+
+        try {
+            await Promise.race([
+                waitForFontsAndImages(),
+                new Promise(resolve => setTimeout(resolve, 7000))
+            ]);
+        } catch (e) {
+            console.warn("Ошибка при предзагрузке:", e);
+        } finally {
+            isLoaded.value = true;
+        }
     });
 
     async function waitForFontsAndImages() {
-        //waiting all fonts is loaded
-        await document.fonts.ready;
-        //waiting all images is loaded
-        const images = Array.from(document.images).map(
-            (img) =>
-                img.complete
-                    ? Promise.resolve()
-                    : new Promise((resolve) => (img.onload = img.onerror = resolve))
-        );
+        const promises = [];
+        promises.push(document.fonts.ready);
+        const imagePromises = Array.from(document.images).map((img) => {
+            if (img.complete) return Promise.resolve();
+            return new Promise((resolve) => {
+                img.onload = resolve;
+                img.onerror = resolve;
+            });
+        });
 
-        await Promise.all(images);
+        promises.push(Promise.all(imagePromises));
+        await Promise.all(promises);
     }
-    return {isLoaded}
-}
+
+    return { isLoaded };
+};

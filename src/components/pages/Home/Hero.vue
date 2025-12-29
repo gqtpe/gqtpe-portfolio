@@ -1,42 +1,51 @@
 <script setup lang="ts">
 import gsap from "gsap";
-import SplitText from "gsap/SplitText"
-import {onMounted} from "vue";
+import SplitText from "gsap/SplitText";
+import { onMounted, onUnmounted, nextTick } from "vue";
 import Subtitles from "@/components/common/Subtitles.vue";
 
-onMounted(() => {
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '#hero-shuffle',
-/*
-      markers: true,
-*/
-      end: "bottom top",
-      start: "top bottom",
-      toggleActions: "play reset play reverse"
-    }
-  })
-  const split = SplitText.create('#hero-shuffle', {type: 'chars'})
-  const titleSplit = SplitText.create('#hero-shuffle-subtitle', {type: 'chars'})
-  tl.from(split.chars, {
-    stagger: {
-      amount: 0.2,
-      from: 'random'
-    },
-    yPercent: 'random([-100, 100])',
-    opacity: 0
-  })
-  tl.from(titleSplit.chars, {
-    opacity: 0,
-    y: -20,
-    stagger: 0.1,
-    ease: "expoScale(0.5,7,none)",
-  })
+// Переменная для хранения контекста GSAP (нужна для правильной очистки)
+let ctx: gsap.Context;
 
+onMounted(async () => {
+  await document.fonts.ready;
+  await nextTick();
+  ctx = gsap.context(() => {
+    const split = new SplitText('#hero-shuffle', { type: 'chars' });
+    const titleSplit = new SplitText('#hero-shuffle-subtitle', { type: 'chars' });
 
-})
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#hero-shuffle',
+        end: "bottom top",
+        start: "top bottom",
+        toggleActions: "play reset play reverse"
+      }
+    });
+
+    tl.from(split.chars, {
+      stagger: {
+        amount: 0.2,
+        from: 'random'
+      },
+      yPercent: 'random([-100, 100])',
+      opacity: 0,
+      duration: 1
+    });
+
+    tl.from(titleSplit.chars, {
+      opacity: 0,
+      y: -20,
+      stagger: 0.05,
+      ease: "expoScale(0.5,7,none)",
+    }, "<");
+
+  })
+});
+onUnmounted(() => {
+  if (ctx) ctx.revert();
+});
 </script>
-
 <template>
   <section class="home">
     <Subtitles :subtitles="['Welcome', 'Est. 2025']">

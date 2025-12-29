@@ -1,32 +1,31 @@
 <script setup lang="ts">
-import {nextTick, ref, watch} from "vue";
+import { nextTick, ref, watch, computed } from "vue"; // добавил computed
 import Header from "@/components/pages/Header.vue";
 import "./App.css";
 import Navbar from "@/components/pages/Navbar/Navbar.vue";
-import {useLoadingMedia} from "@/app/hooks/useLoadingMedia.ts";
+import { useLoadingMedia } from "@/app/hooks/useLoadingMedia.ts";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import {useRoute} from "vue-router";
-import {navbarLinks} from "@/components/pages/Navbar/links.ts";
+import { useRoute } from "vue-router";
+import { navbarLinks } from "@/components/pages/Navbar/links.ts";
 import MagicCursor from "@/components/common/MagicCursor.vue";
 import CountUp from "@/components/common/CountUp.vue";
-import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
+import { useIsMobile } from "@/app/hooks/useIsMobile.ts";
 
 const route = useRoute();
-const {isLoaded} = useLoadingMedia();
-const isMobile = useIsMobile()
-const completeLoading = () => {
-  isLoaded.value = true
+const isMobile = useIsMobile();
+const { isLoaded: resourcesLoaded } = useLoadingMedia();
+const animationFinished = ref(false);
+const onAnimationEnd = () => {
+  animationFinished.value = true;
 }
+const isReady = computed(() => {
+  return resourcesLoaded.value && animationFinished.value;
+});
+
 const smoother = ref<any>(null);
-
-const onTransitionEnd = () => {
-  ScrollTrigger.refresh();
-
-
-}
-watch(isLoaded, async (loaded) => {
-  if (!loaded) return;
+watch(isReady, async (ready) => {
+  if (!ready) return;
 
   await nextTick();
 
@@ -42,46 +41,50 @@ watch(isLoaded, async (loaded) => {
       content: "#main",
       smooth: 1,
       effects: true,
-      normalizeScroll: true,
-      smoothTouch: 0,
+      normalizeScroll: true, // Часто помогает на мобильных, но тестируйте
+      smoothTouch: 0.1, // Лучше ставить небольшое значение для touch, 0 отключает совсем
     });
 
     smoother.value = smootherObj;
     window._smoother = smootherObj;
 
+    // Скролл к якорю при первой загрузке
     const link = navbarLinks.find(t => t.path === route.path);
     if (link?.target) {
-      //@ts-ignore
-      setTimeout(() => window._smoother.scrollTo(link.target, true, "top"), 0)
+      // Небольшой таймаут, чтобы GSAP успел расчитать высоту
+      setTimeout(() => smootherObj.scrollTo(link.target!, true, "top"), 500);
     }
   }
 });
+
+// Обработка смены страниц (если у вас нет логики в router/index.ts)
+watch(() => route.fullPath, async () => {
+  if (window._smoother) {
+    await nextTick();
+    ScrollTrigger.refresh();
+    window._smoother.refresh();
+  }
+});
 </script>
+
 <template>
-    <div v-if="!isLoaded" class="loading-wrapper flex items-center justify-center p-6">
-      <CountUp :onEnd="completeLoading"/>
+  <div v-if="!isReady" class="loading-wrapper flex items-center justify-center p-6">
+    <CountUp :onEnd="onAnimationEnd"/>
+  </div>
+
+  <template v-else>
+    <Header>
+      <Navbar/>
+    </Header>
+    <div id="main-wrapper">
+      <main id="main">
+        <RouterView v-slot="{ Component }">
+          <component :is="Component" />
+        </RouterView>
+      </main>
+      <MagicCursor v-if="!isMobile"/>
     </div>
-    <template v-else>
-      <Header>
-        <Navbar/>
-      </Header>
-      <div id="main-wrapper">
-        <main id="main">
-
-          <RouterView v-slot="{ Component }">
-            <Transition
-                name="fade"
-                mode="out-in"
-                @after-enter="onTransitionEnd"
-            >
-              <component :is="Component" :key="route.path"/>
-            </Transition>
-          </RouterView>
-
-        </main>
-        <MagicCursor v-if="!isMobile"/>
-      </div>
-    </template>
+  </template>
 </template>
 
 <style>
@@ -92,15 +95,6 @@ watch(isLoaded, async (loaded) => {
   color: white;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.25s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
 .half {
   min-height: 50vh !important;
   height: 50vh !important;

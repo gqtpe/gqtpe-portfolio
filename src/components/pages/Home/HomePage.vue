@@ -13,7 +13,6 @@ import ProjectCards from "@/components/pages/Projects/ProjectCards.vue";
   <Hero id="home"/>
   <WhoIam title="who i am?"/>
   <About :info="data.info"/>
-  <!--  <Stack/>-->
   <WhoIam title="projects"/>
   <ProjectCards/>
   <PageHeaderRedirect data-cursor-action="go to" :subtitles="['Go Ahead', 'Next Page']" text="contacts"
