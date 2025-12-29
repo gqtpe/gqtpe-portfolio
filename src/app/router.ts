@@ -1,13 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { navbarLinks } from "@/components/pages/Navbar/links";
-
-interface Smoother {
-    scrollTo: (target: string | HTMLElement | number, smooth?: boolean, position?: string) => void;
-}
+import {nextTick} from "vue";
 
 declare global {
     interface Window {
-        _smoother?: Smoother;
+        _smoother?: any
     }
 }
 
@@ -45,37 +42,40 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory(),//using default web history
     routes,
-    scrollBehavior(to, from, savedPosition) {
-        if (savedPosition) {
-            return savedPosition;
-        }
+})
 
-        const smoother = window._smoother;
-        const link = navbarLinks.find((t) => t.path === to.path);
+router.afterEach(async (to, from) => {
+    await nextTick();
 
-        if (!smoother) {
-            return { top: 0 };
-        }
+    const smoother = window._smoother;
+    if (!smoother) return;
+    const isHomeContext = (path: string) => path === '/' || path === '/about';
+    const isSamePageNavigation = isHomeContext(to.path) && isHomeContext(from.path);
+    const link = navbarLinks.find(t => t.path === to.path);
 
-        if (link && link.target) {
-            const el = document.getElementById(link.target.slice(1));
-
-            if (el) {
-                let shouldSmooth = !link.disableSmooth;
-
-                const isHomeContext = ['/', '/about'];
-                if (isHomeContext.includes(to.path)) {
-                    shouldSmooth = isHomeContext.includes(from.path);
-                }
-
-                smoother.scrollTo(el, shouldSmooth, "top");
-                return; // Smoother берет управление на себя
+    if (isSamePageNavigation) {
+        if (link?.target) {
+            if (to.path === '/') {
+                smoother.scrollTo(0, true);
+            } else {
+                smoother.scrollTo(link.target, true, "top");
             }
         }
-        smoother.scrollTo(0, false, "top");
-    },
-});
+    } else {
+        smoother.scrollTo(0, false);
 
+        ScrollTrigger.refresh();
+        if (link?.target) {
+
+            setTimeout(() => {
+                const el = document.querySelector(link.target!);
+                if (el) {
+                    smoother.scrollTo(el, false, "top");
+                }
+            }, 100);
+        }
+    }
+});
 export default router;
