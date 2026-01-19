@@ -14,11 +14,9 @@ onMounted(() => {
     ease: "expo",
   })
 
-  let isVisible = true // изначально показываем
 
   setTimeout(() => {
     header.play()
-    isVisible = true
   }, 1000)
 
   ScrollTrigger.create({
