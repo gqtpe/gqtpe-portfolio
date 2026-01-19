@@ -33,7 +33,6 @@ import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
 const isMobile = useIsMobile()
 // Переменная для хранения контекста GSAP (нужна для правильной очистки)
 let ctx: gsap.Context;
-const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 onMounted(async () => {
   await document.fonts.ready;
   await nextTick();
