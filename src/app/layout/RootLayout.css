@@ -1,0 +1,43 @@
+#main{
+    background: black;
+    /*overflow: hidden;*/
+}
+section {
+ /*    overflow-y: auto;*/
+
+}
+
+section.projects-section-wrapper {
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+@media(max-width: 768px) {
+    section[id="about"]{
+        min-height: unset;
+        max-height: unset;
+    }
+    section.half{
+        min-height: unset;
+        max-height: unset;
+    }
+}
+
+section#projects {
+    background-color: #ff99cc;
+    background-image: var(--section2);
+    filter: invert(100%);
+    @media (prefers-color-scheme: dark) {
+        filter: grayscale(100%) invert(100%);
+    }
+}
+
+@media (max-width: 1024px) {
+    aside {
+        display: none;
+    }
+
+    section {
+        width: 100%;
+    }
+}

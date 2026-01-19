@@ -1,4 +1,4 @@
-import type {Image, ProjectName} from "@/components/pages/Projects/types";
+import type {Image, ProjectName} from "@/shared/const/project-types.ts";
 import trelloHome from "@/assets/img/trello/gqtpe.github.io_trello_home.jpg";
 import trelloLogin from "@/assets/img/trello/gqtpe.github.io_trello_login.jpg";
 
