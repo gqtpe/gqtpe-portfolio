@@ -21,11 +21,7 @@ router.afterEach(async (to) => {
     if (!smoother) return;
     const link = navbarLinks.find(t => t.path === to.path);
         if (link?.target) {
-            if (to.path === '/') {
-                smoother.scrollTo(0, true);
-            } else {
                 smoother.scrollTo(link.target, true, "top");
-            }
     } else {
         smoother.scrollTo(0, false);
 

@@ -12,32 +12,46 @@ const {redirect, text, subtitles} = defineProps<Props>()
 </script>
 
 <template>
-  <section class="h-[100vh] projects-hello flex items-center justify-center">
+  <section class="h-[100vh] page-header-redirect flex items-center justify-center">
     <Subtitles :subtitles="subtitles">
     <component
         :is="redirect?RouterLink:'div'"
         :to="redirect"
         :class="redirect?'redirect-header-link':'redirect-header-wrapper'"
+        :data-cursor-action="redirect?'go to':'disabled'"
     >
-
-        <DecryptedText
-            :text="text"
-            use-original-chars-only
-            :animateOn="redirect?'hover':'view'"
-            revealDirection="start"
-            :animate-once="true"
-            :max-iterations="5"
-            :speed="redirect?55:55"
-            class="title"
-        />
+      <DecryptedText
+          v-if="redirect"
+          :text="text"
+          data-cursor-action="go to"
+          use-original-chars-only
+          :sequential="false"
+          animateOn="hover"
+          revealDirection="start"
+          :max-iterations="5"
+          :speed="55"
+          class="redirect-title redirect-decrypted"
+      />
+      <DecryptedText
+          v-else
+          data-cursor-disabled
+          :text="text"
+          use-original-chars-only
+          :sequential="false"
+          animateOn="view"
+          revealDirection="start"
+          :max-iterations="5"
+          :speed="redirect?55:55"
+          class="redirect-decrypted"
+      />
     </component>
     </Subtitles>
   </section>
 </template>
 
-<style scoped>
+<style>
 @reference '@/styles/tailwind.css';
-.title{
+.redirect-decrypted{
   @apply font-main font-semibold;
   font-size: clamp(3rem, 15vw, 12rem);
   @media(max-width: 768px){
@@ -45,15 +59,16 @@ const {redirect, text, subtitles} = defineProps<Props>()
   }
 
 }
-span {
-  display: inline-block
+.page-header-redirect{
+  span{
+    display: inline-block
+  }
+}
+.redirect-title {
+  cursor: pointer
 }
 .redirect-header-link {
   transition: opacity 1s ease;
-
-  &:hover {
-    opacity: 0.5;
-  }
 
   &:active {
     transition: opacity 0.1s ease;

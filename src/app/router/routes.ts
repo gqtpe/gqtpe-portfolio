@@ -7,7 +7,7 @@ export const routes = [
     {
         path: '/about',
         name: 'about',
-        component: () => import('@/pages/AboutPage.vue'),
+        component: () => import('@/pages/About/AboutPage.vue'),
     },
     {
         path: '/projects',
