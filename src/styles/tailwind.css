@@ -3,17 +3,17 @@
 
 @theme {
     --font-main: 'Poppins', sans-serif;
-    --color-primary-100: #b2e0e7;
-    --color-primary-200: #80c5d1;
-    --color-primary-300: #4fb3bb;
-    --color-primary-400: #26a2a3;
-    --color-primary-500: #2fb3cd;
+        --color-primary-100: #e0e7ff;
+        --color-primary-200: #c7d2fe;
+        --color-primary-300: #818cf8;
+        --color-primary-400: #6366f1;
+        --color-primary-500: #4f46e5;
 
-    --color-secondary-100: #fff2b3;
-    --color-secondary-200: #ffe066;
-    --color-secondary-300: #ffcc19;
-    --color-secondary-400: #e6b600;
-    --color-secondary-500: #ffc815;
+    --color-secondary-100: #f7ffcc;
+    --color-secondary-200: #ecff80;
+    --color-secondary-300: #e4ff30;
+    --color-secondary-400: #b5cc26;
+    --color-secondary-500: #8ba11a;
     --white: #FFFFFF;
     --black: #000000;
     --mobile: 768px;

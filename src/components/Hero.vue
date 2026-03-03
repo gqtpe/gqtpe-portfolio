@@ -15,7 +15,7 @@
       />
     </div>
     <Subtitles :subtitles="['Welcome', 'Est. 2025']" class="text-white">
-      <div>
+      <div data-cursor-disabled>
         <h3 id="hero-shuffle-subtitle" class="uppercase">front-end developer</h3>
         <h1 id="hero-shuffle" class="">gqtpe</h1>
       </div>

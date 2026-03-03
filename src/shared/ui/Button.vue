@@ -2,7 +2,7 @@
 import {type HTMLAttributes, useAttrs} from "vue";
 
 type Props = {
-  variant: 'primary' | 'secondary' | 'gradient'|'white'
+  variant: 'primary' | 'secondary' | 'gradient'|'white'|'black'
   size?: 'medium' | 'large'
   link?: string
   download?: string
@@ -48,7 +48,7 @@ button{
   }
 }
 .gradient{
-  background: linear-gradient(0.25turn, var(--color-primary-500), var(--color-secondary-500));
+  background: linear-gradient(0.25turn, var(--color-primary-400), var(--color-secondary-300));
 
 }
 .primary{
@@ -61,6 +61,14 @@ button{
   background: var(--color-secondary-500);
   &:hover{
     background: var(--color-primary-500)
+  }
+}
+.black{
+  background: black;
+  color: white;
+  transition: opacity 0.5s ease-in-out;
+  &:hover{
+    opacity: 0.7
   }
 }
 .white{

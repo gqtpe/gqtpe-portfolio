@@ -27,7 +27,7 @@ onMounted(() => {
       duration: 1,
     })
         .to(textRef.value, {
-          scaleY: mobileValue ? 25 : 15,
+          scaleY: mobileValue ? 10 : 15,
           yPercent: 175,
           scrollTrigger: {
             trigger: wrapperRef.value,

@@ -157,7 +157,7 @@ watch(
   align-items: center;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(15px);
+  background: var(--color-primary-500)
 }
 
 .text:before {
