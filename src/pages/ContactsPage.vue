@@ -2,13 +2,7 @@
 import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedirect.vue";
 import Button from "@/shared/ui/Button.vue"
 import Input from "@/shared/ui/Input.vue";
-import Captcha from "@/components/Captcha.vue";
-import {ref} from "vue";
 
-const submitDisabled = ref(true)
-function handleMyEvent(payload: boolean) {
-  submitDisabled.value = !payload
-}
 </script>
 <template>
   <div class="contact-page">
@@ -21,8 +15,47 @@ function handleMyEvent(payload: boolean) {
         <Input name="email" class="input" type="text" placeholder="Your Email"/>
       </div>
       <Input name="about" text-area class="input" type="text" placeholder="About"/>
-      <Captcha @myEvent="handleMyEvent" />
-      <Button :disabled="submitDisabled" class="font-normal" variant="white" size="large">Send Mail</Button>
+<!--      <Captcha @myEvent="handleMyEvent" />-->
+<!--      <Button :disabled="submitDisabled" class="font-normal" variant="white" size="large">Send Mail</Button>-->
+      <section class="bg-gray-500 h-[100vh]">
+        <h1>variants</h1>
+        <div class="flex gap-2">
+      <Button variant="primary" >Primary</Button>
+      <Button variant="secondary" >Secondary</Button>
+      <Button variant="white" >White</Button>
+      <Button variant="black" >Black</Button>
+      <Button variant="gradient" >Gradient</Button>
+        </div>
+        <h1>sizes</h1>
+        <div class="flex gap-2">
+
+        <Button variant="primary" size="small">Primary</Button>
+        <Button variant="primary" size="default">Primary</Button>
+        <Button variant="primary" size="large">Primary</Button>
+        <Button variant="secondary" size="small">Secondary</Button>
+        <Button variant="secondary" size="default">Secondary</Button>
+        <Button variant="secondary" size="large">Secondary</Button>
+        </div>
+        <h1>sizes</h1>
+        <div class="flex gap-2">
+          <Button variant="secondary" size="small">Secondary</Button>
+          <Button variant="secondary" size="default">Secondary</Button>
+          <Button variant="secondary" size="large">Secondary</Button>
+        </div>
+      <h1>up</h1>
+      <div class="flex gap-2">
+        <Button up variant="secondary" size="small">Secondary</Button>
+        <Button up variant="secondary" size="default">Secondary</Button>
+        <Button up variant="secondary" size="large">Secondary</Button>
+      </div>
+        <h1>round</h1>
+        <div class="flex gap-2">
+          <Button variant="secondary" round size="small"><v-icon :scale="3" name="co-hamburger-menu" />Secondary</Button>
+          <Button variant="secondary" round size="default"><v-icon :scale="3" name="co-hamburger-menu" />Secondary</Button>
+          <Button variant="secondary" round size="large">Secondary<v-icon :scale="3" name="co-hamburger-menu" /></Button>
+        </div>
+
+  </section>
     </form>
   </section>
   </div>

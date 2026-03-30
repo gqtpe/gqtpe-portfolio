@@ -10,7 +10,7 @@
         v-if="props.showLess"
         class="show-more absolute w-full flex justify-center items-center bottom-0 h-25 flex-col gap-1 bg-gradient-to-b from-transparent"
     >
-      <Button @click="navigate" class="z-40" variant="black" size="large" >Show more <v-icon name="bi-eye-fill"/></Button>
+      <Button @click="navigate" class="z-40" round variant="black" size="large" >Show more <v-icon name="bi-eye"/></Button>
       <v-icon name="md-keyboardarrowdown-twotone" animation="float" speed="fast" scale="2" color="black"/>
     </div>
 

@@ -20,8 +20,9 @@
         </div>
       </div>
 
-      <div id="cv-download" class="invisible">
-        <Button variant="white" :round="false" size="large" link="CV.pdf">Download CV</Button>
+      <div class="flex gap-2 w-full flex-col md:flex-row">
+        <Button @click="$router.push('projects')" class="!font-light shrink-0"   variant="black"><v-icon name="bi-eye"/>Show Projects</Button>
+        <Button @click="$router.push('CV.pdf')" class="!font-light  shrink-0 grow-1"  variant="white" link="CV.pdf"><v-icon name="bi-download"/>Download CV</Button>
       </div>
 
     </div>
@@ -127,8 +128,9 @@ onMounted(() => {
       scrollTrigger: {
         trigger:heroContainer.value,
         start: 'top center',
-        end: 'center center',
+        end: '30% center',
         scrub: 1,
+
       }
     });
 

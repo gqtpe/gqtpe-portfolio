@@ -13,10 +13,11 @@ import {
     CoHamburgerMenu,
     CoSad,
     CoTrello,
+    BiDownload,
     FaExpand,
     FaExternalLinkSquareAlt,
     MdKeyboardarrowdownTwotone,
-    MdPeopleRound
+    MdPeopleRound, BiEye
 } from "oh-vue-icons/icons";
 
 addIcons(
@@ -34,9 +35,10 @@ addIcons(
     , BiLinkedin
     , MdPeopleRound
     , MdKeyboardarrowdownTwotone
-    ,BiArrowUpRight
-    , BiEyeFill
+    , BiArrowUpRight
+    , BiEye
     , CoSad
+    , BiDownload
 );
 
 

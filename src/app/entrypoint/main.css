@@ -5,7 +5,7 @@ body{
     overflow: hidden;
 }
 html {
-    font-size: 16px;
+    font-size: var(--text-base);
     font-family: Roboto, sans-serif;
     scroll-behavior: smooth;
 
@@ -18,22 +18,6 @@ html {
     }
 
     /*transition:font-size 0.2s ease-in-out,width 1s ease-in-out;*/
-
-    @media (max-width: 1200px) {
-        font-size: 15px;
-    }
-
-    @media (max-width: 992px) {
-        font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-        font-size: 14px;
-    }
-
-    @media (max-width: 576px) {
-        font-size: 13px;
-    }
 }
 
 #app {
@@ -72,7 +56,7 @@ html {
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.32);
 }
 
 .glass-light {

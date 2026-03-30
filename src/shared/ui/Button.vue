@@ -2,88 +2,96 @@
 import {type HTMLAttributes, useAttrs} from "vue";
 
 type Props = {
-  variant: 'primary' | 'secondary' | 'gradient'|'white'|'black'
-  size?: 'medium' | 'large'
-  link?: string
-  download?: string
-  up?:boolean
+  variant: 'primary' | 'secondary' | 'gradient' | 'white' | 'black'
+  size?: 'default' | 'large' | 'small'
+  up?: boolean
   round?: boolean
 }
 
 const attrs = useAttrs() as HTMLAttributes
-const {size = 'medium',variant, round = true} = defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <template>
-  <a :href="link"
-     aria-label="button-link"
-     id="button-link"
-     data-cursor-disabled
-      v-bind="download ? { download } : {}"
-      :target="link?'_blank':'_self'">
     <button
-        :class="`${variant} transition-colors text-white font-bold ${size} shadow-lg ${round?'rounded-full':'rounded-md'} ${up?'up':''}`"
+        :class="`gqpte-button gqtpe-button-color-${variant} gqtpe-button-size-${size} text-white shadow-lg ${round && '!rounded-full'} ${up?'up':''}`"
         v-bind="attrs"
     >
       <slot/>
     </button>
-  </a>
 </template>
-<style scoped>
-button{
-  &:disabled{
-    opacity: 0.5;
+<style>
+@reference "@/styles/tailwind.css";
+
+.gqpte-button {
+  @apply h-9 rounded-sm font-main  text-white px-4 whitespace-nowrap cursor-pointer disabled:opacity-50 overflow-hidden;
+  transition: scale 0.1s ease-in-out;
+  &:has(svg){
+    @apply flex gap-1 items-center px-4 justify-center;
   }
-  cursor: pointer;
+
+  &:hover{
+    filter: brightness(0.9)
+  }
+  &:active {
+    scale: 0.95;
+    filter: brightness(1)
+  }
+
 }
-.up {
+
+.gqtpe-button__enable-up {
   transition: transform, 0.2s ease-in-out;
   &:hover {
     opacity: unset;
     transform: translateY(-0.2rem);
   }
-  &:active{
+  &:active {
     transform: translateY(0);
-      filter: brightness(80%);
+
   }
 }
-.gradient{
+
+.gqtpe-button-color-gradient {
   background: linear-gradient(0.25turn, var(--color-primary-400), var(--color-secondary-300));
 
 }
-.primary{
+
+.gqtpe-button-color-primary {
   background: var(--color-primary-500);
-  &:hover{
-    background: var(--color-secondary-500)
-  }
 }
-.secondary{
+
+.gqtpe-button-color-secondary {
   background: var(--color-secondary-500);
-  &:hover{
-    background: var(--color-primary-500)
-  }
 }
-.black{
+
+.gqtpe-button-color-black {
   background: black;
   color: white;
-  transition: opacity 0.5s ease-in-out;
-  &:hover{
-    opacity: 0.7
-  }
 }
-.white{
+
+.gqtpe-button-color-white {
   background: white;
   color: black
 }
-  a{
-    display: inline-block;
+
+
+.gqtpe-button-size-large {
+  @apply min-h-12 h-12 font-medium text-lg;
+  .ov-icon{
+   @apply !text-base !size-6;
   }
-  .large{
-    font-size: 1.25rem;
-    padding: 0.75rem 2rem;
-    cursor: pointer;
+}
+.gqtpe-button-size-small {
+  @apply min-h-8 h-8 max-h-8 text-sm rounded-sm font-light px-3;
+  .ov-icon{
+    @apply !text-xs !size-4 ;
   }
-  .medium{
-    padding: 0.5rem 1rem;
+}
+.gqtpe-button-size-default {
+  @apply min-h-9 h-9 font-normal text-base;
+  .ov-icon{
+    @apply !text-sm !size-5 ;
   }
+}
 </style>
