@@ -1,0 +1,16 @@
+# GQTPE — Nursain Temirtas
+
+> Portfolio of Nursain Temirtas (GQTPE), a Front-end Developer building clean, high-performance interfaces with React and Vue.js.
+
+## Pages
+
+- [Home](https://gqtpe-portfolio.vercel.app/): Landing and intro.
+- [About](https://gqtpe-portfolio.vercel.app/about): Bio, experience, education, languages and tech stack.
+- [Projects](https://gqtpe-portfolio.vercel.app/projects): List of featured projects.
+- [Contacts](https://gqtpe-portfolio.vercel.app/contacts): Contact form.
+
+## Projects
+
+- [Spotify clone](https://gqtpe-portfolio.vercel.app/project/spotify): Music player built with the Spotify Web API.
+- [Trello clone](https://gqtpe-portfolio.vercel.app/project/trello): Task-management pet project.
+- [Portfolio](https://gqtpe-portfolio.vercel.app/project/portfolio): This site, built with Vue.
