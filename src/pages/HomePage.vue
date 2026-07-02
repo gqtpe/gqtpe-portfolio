@@ -1,16 +1,19 @@
 <script setup lang="ts">
 
-import AboutPage from "@/pages/About/AboutPage.vue";
 import Hero from "@/components/Hero.vue";
 import WhoIam from "@/components/WhoIam.vue";
 import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedirect.vue";
+import AboutHero from "@/pages/About/AboutHero.vue";
 </script>
 
 <template>
   <div class="home-page">
     <Hero id="home"/>
     <WhoIam title="who i am?"/>
-    <AboutPage show-less/>
+    <section class="min-h-screen relative overflow-hidden w-full px-4 md:px-10">
+      <div class="about-bg absolute inset-0 -z-10 w-full h-full bg-no-repeat bg-cover bg-[url('/about.jpg')] grayscale"></div>
+      <AboutHero />
+    </section>
     <!--    <WhoIam title="projects"/>-->
     <!--    <ProjectCards/>-->
     <!--    <ScrollVelocity-->
