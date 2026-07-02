@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedirect.vue";
-import projectCards from "@/shared/const/projectCards.ts";
+import {useProjectCards} from "@/shared/sanity/useProjectCards.ts";
+
+const projectCards = useProjectCards();
 </script>
 
 <template>
@@ -11,7 +13,7 @@ import projectCards from "@/shared/const/projectCards.ts";
       :subtitles="['Designs', 'Portfolio']"
   />
   <div class="projects">
-    <div v-for="project in projectCards" class="project">
+    <div v-for="project in projectCards" :key="project.id" class="project">
       <div class="image-wp">
         <img :src="project.img" class="project-img" alt="project-img">
       </div>
