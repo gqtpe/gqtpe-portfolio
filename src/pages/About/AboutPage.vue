@@ -4,19 +4,13 @@
       class="relative overflow-hidden w-full"
       :class="[props.showLess ? 'md:h-screen !important' : '']"
   >
-    <div class="about-bg absolute inset-0 -z-10 w-full h-full bg-no-repeat bg-cover bg-[url('/about.jpg')] grayscale"></div>
-
     <div
-        v-if="props.showLess"
-        class="show-more absolute w-full flex justify-center items-center bottom-0 h-25 flex-col gap-1 bg-gradient-to-b from-transparent"
-    >
-      <Button @click="navigate" class="z-40" round variant="black" size="large" >Show more <v-icon name="bi-eye"/></Button>
-      <v-icon name="md-keyboardarrowdown-twotone" animation="float" speed="fast" scale="2" color="black"/>
-    </div>
+        class="about-bg absolute inset-0 -z-10 w-full h-full bg-no-repeat bg-cover bg-[url('/home.jpg')] grayscale"></div>
 
 
-    <div  class="content-wrapper flex flex-col gap-2 min-h-screen px-4 ыр lg:px-10 max-lg:min-h-[unset]">
-      <AboutHero :show-less="showLess && isMobile"/>
+
+    <div  class="content-wrapper flex flex-col gap-2 min-h-screen px-4 lg:px-10 max-lg:min-h-[unset]">
+      <AboutHero/>
       <DecryptedText v-if="!showLess" text="experience" use-original-chars-only data-cursor-disabled class="uppercase text-2xl py-4 text-center font-black font-main"/>
       <div v-if="!showLess" class="grid mb-[10rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div
@@ -46,18 +40,12 @@
 </template>
 
 <script setup lang="ts">
-import {useRouter} from "vue-router";
 import AboutHero from "./AboutHero.vue";
 import data from "@/shared/const/about.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
-import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
-import Button from  "@/shared/ui/Button.vue"
 type IProps = {
   showLess?: boolean
 }
 
 const props = withDefaults(defineProps<IProps>(),{showLess: false})
-const router = useRouter()
-const isMobile = useIsMobile()
-const navigate = () => router.push('/about')
 </script>
