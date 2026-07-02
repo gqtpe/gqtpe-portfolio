@@ -4,6 +4,10 @@
       class="relative overflow-hidden w-full"
       :class="[props.showLess ? 'md:h-screen !important' : '']"
   >
+    <!-- bg-right crops to the image's uniform right side; home.jpg has a dark region on the
+         left that grayscale turns black, and bg-cover on this tall section would show it otherwise.
+         If home.jpg is swapped, re-check the crop. (background-attachment:fixed won't work here —
+         ScrollSmoother transforms #main, which degrades fixed to scroll.) -->
     <div
         class="about-bg absolute inset-0 -z-10 w-full h-full bg-no-repeat bg-cover bg-right bg-[url('/home.jpg')] grayscale"></div>
 

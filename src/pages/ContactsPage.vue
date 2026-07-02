@@ -49,6 +49,8 @@ const canSubmit = computed(() =>
 
 const onInput = (field: 'name' | 'email' | 'message') => (e: Event) => {
   form[field] = (e.target as HTMLInputElement).value
+  // Clear a lingering success/error banner once the user starts a new message.
+  if (status.value === 'success' || status.value === 'error') status.value = 'idle'
 }
 
 const onSubmit = async () => {

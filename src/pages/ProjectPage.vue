@@ -99,11 +99,6 @@ if (!project) {
     min-width: 20rem;
     min-height: 20rem;
   }
-
-  &__pills {
-    width: 20rem;
-
-  }
 }
 
 .helper {
