@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@sanity/client": "^7.23.0",
     "@splidejs/vue-splide": "^0.6.12",
     "@tailwindcss/vite": "^4.0.7",
     "@vueuse/core": "^14.1.0",
