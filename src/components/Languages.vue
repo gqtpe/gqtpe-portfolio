@@ -32,7 +32,7 @@ onBeforeUnmount(() => observer?.disconnect())
       data-cursor-disabled
       class="uppercase text-2xl py-4 text-center font-black font-main"
   />
-  <div ref="root" class="mb-[10rem] mx-auto w-full max-w-2xl flex flex-col gap-6">
+  <div ref="root" class="w-full flex flex-col gap-6">
     <div v-for="lang in data.languages" :key="lang.name" class="flex flex-col gap-2">
       <div class="flex justify-between items-baseline text-white">
         <span class="font-main font-bold text-lg">{{ lang.name }}</span>

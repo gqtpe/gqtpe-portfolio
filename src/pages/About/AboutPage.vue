@@ -15,8 +15,11 @@
 
     <div  class="content-wrapper flex flex-col gap-2 min-h-screen px-4 lg:px-10 max-lg:min-h-[unset]">
       <AboutHero/>
+      <div v-if="!showLess" class="mb-[10rem] grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div><Languages/></div>
+        <div><InfoCards title="education" :cards="data.info.cards.education" flush/></div>
+      </div>
       <InfoCards v-if="!showLess" title="experience" :cards="data.info.cards.experience"/>
-      <InfoCards v-if="!showLess" title="education" :cards="data.info.cards.education"/>
       <template v-if="!showLess">
         <DecryptedText
             text="stack"
@@ -29,10 +32,10 @@
           <LogoLoop :logos="stackRow2" direction="right" :speed="55" :logo-height="44" :gap="48" pause-on-hover fade-out fade-out-color="#18181b" aria-label="Tech stack, row 2 of 2"/>
         </div>
       </template>
-      <Languages v-if="!showLess"/>
-      <AboutCTA v-if="!showLess"/>
     </div>
   </section>
+  <PageHeaderRedirect :subtitles="['Go Ahead', 'Next Page']" text="contacts"
+                      class="text-white bg-black" redirect="/contacts"/>
 </template>
 
 <script setup lang="ts">
@@ -42,7 +45,7 @@ import DecryptedText from "@/components/bits/DecryptedText.vue";
 import LogoLoop from "@/components/bits/LogoLoop.vue";
 import InfoCards from "@/components/InfoCards.vue";
 import Languages from "@/components/Languages.vue";
-import AboutCTA from "@/components/AboutCTA.vue";
+import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedirect.vue";
 type IProps = {
   showLess?: boolean
 }
