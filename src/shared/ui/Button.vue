@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {type HTMLAttributes, useAttrs} from "vue";
 
 type Props = {
   variant: 'primary' | 'secondary' | 'gradient' | 'white' | 'black'
@@ -8,15 +7,11 @@ type Props = {
   round?: boolean
 }
 
-const attrs = useAttrs() as HTMLAttributes
 defineProps<Props>()
 </script>
 
 <template>
-    <button
-        :class="`gqpte-button gqtpe-button-color-${variant} gqtpe-button-size-${size} text-white shadow-lg ${round && '!rounded-full'} ${up?'up':''}`"
-        v-bind="attrs"
-    >
+    <button :class="`gqpte-button gqtpe-button-color-${variant} gqtpe-button-size-${size} text-white shadow-lg ${round && '!rounded-full'} ${up?'up':''}`">
       <slot/>
     </button>
 </template>
@@ -83,7 +78,7 @@ defineProps<Props>()
   }
 }
 .gqtpe-button-size-small {
-  @apply min-h-8 h-8 max-h-8 text-sm rounded-sm font-light px-3;
+  @apply min-h-8 h-8 max-h-8 text-base rounded-sm font-light px-3;
   .ov-icon{
     @apply !text-xs !size-4 ;
   }
