@@ -1,7 +1,7 @@
 import {addIcons, OhVueIcon} from "oh-vue-icons";
 import {
     BiArrowUpRight,
-    BiEyeFill,
+    BiArrowRight,
     BiFileEarmarkPerson,
     BiGithub,
     BiInstagram,
@@ -13,10 +13,11 @@ import {
     CoHamburgerMenu,
     CoSad,
     CoTrello,
+    BiDownload,
     FaExpand,
     FaExternalLinkSquareAlt,
     MdKeyboardarrowdownTwotone,
-    MdPeopleRound
+    MdPeopleRound, BiEye
 } from "oh-vue-icons/icons";
 
 addIcons(
@@ -34,9 +35,11 @@ addIcons(
     , BiLinkedin
     , MdPeopleRound
     , MdKeyboardarrowdownTwotone
-    ,BiArrowUpRight
-    , BiEyeFill
+    , BiArrowUpRight
+    , BiEye
     , CoSad
+    , BiDownload
+    , BiArrowRight
 );
 
 

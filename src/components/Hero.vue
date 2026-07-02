@@ -14,10 +14,10 @@
           :mouse-radius="1"
       />
     </div>
-    <Subtitles :subtitles="['Welcome', 'Est. 2025']" class="text-white">
+    <Subtitles :subtitles="home.heroBadges" class="text-white">
       <div data-cursor-disabled>
-        <h3 id="hero-shuffle-subtitle" class="uppercase">front-end developer</h3>
-        <h1 id="hero-shuffle" class="">gqtpe</h1>
+        <h3 id="hero-shuffle-subtitle" class="uppercase">{{ home.heroSubtitle }}</h3>
+        <h1 id="hero-shuffle" class="">{{ home.heroTitle }}</h1>
       </div>
     </Subtitles>
   </section>
@@ -29,7 +29,9 @@ import { onMounted, onUnmounted, nextTick } from "vue";
 import Subtitles from "@/components/bits/Subtitles.vue";
 import Dither from "@/components/bits/Dither.vue";
 import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
+import {useHome} from "@/shared/sanity/useHome.ts";
 
+const home = useHome()
 const isMobile = useIsMobile()
 // Переменная для хранения контекста GSAP (нужна для правильной очистки)
 let ctx: gsap.Context;
@@ -94,7 +96,7 @@ onUnmounted(() => {
 #hero-shuffle {
   @apply whitespace-nowrap font-semibold md:text-[12rem] max-md:text-[8rem] max-sm:text-[6rem];
 
-  font-size: clamp(3rem, 12vw, 12rem);
+  font-size: clamp(3rem, 18vw, 14rem);
   user-select: none;
 
 }

@@ -1,48 +1,65 @@
 <script setup lang="ts">
-import projects from "@/shared/const/projects.ts";
+import {useProjects} from "@/shared/sanity/useProjects.ts";
+import type {ProjectName} from "@/shared/const/project-types.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
-import Slide from "@/shared/ui/Splide.vue";
+import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedirect.vue";
+import Splide from "@/shared/ui/Splide.vue";
 import Pills from "@/components/Pills.vue";
-import Button from "@/shared/ui/Button.vue"
-import {useRoute} from "vue-router";
+import Button from "@/shared/ui/Button.vue";
+import {useRoute, useRouter} from "vue-router";
 
-const {params} = useRoute()
-const project = projects[params.name as "trello" | "portfolio" | "spotify"]
+const route = useRoute()
+const router = useRouter()
+const projects = useProjects()
+const project = projects[route.params.name as ProjectName]
 
+if (!project) {
+  router.replace({name: 'not-found'})
+}
 </script>
 
 <template>
-  <section class="p-[1rem] project-page mt-[4rem] text-black flex flex-col items-center">
-    <h2 class="text-3xl font-black uppercase">
-      <DecryptedText
-          :speed="50"
-          :use-original-chars-only="true"
-          animate-on="view"
-          revealDirection="start"
-          :text="project.title"
-      />
-    </h2>
-    <p class="text-comment text-sm self-start">
-      {{ project.description }}
-    </p>
-    <div class="project-page__content">
-      <Slide class="project-page__slider" :images="project.images"/>
-      <aside class="project-page__aside">
-        <Button data-cursor-disabled up v-if="project.links.length" v-for="link in project.links" variant="gradient" class="flex items-center gap-1"
-                :link="link.url">
-          <v-icon
-              :scale="1.5"
-              :name="link.icon"
-          />
-          {{link.name}}
-        </Button>
-        <div v-else class="helper">(links not provided)</div>
-        <Pills class="project-page__pills" :pills="project.pills"/>
-      </aside>
-    </div>
-    <!--       {{JSON.stringify(project)}}-->
-    <!--       {{JSON.stringify(route)}}-->
-  </section>
+  <template v-if="project">
+    <PageHeaderRedirect
+        class="header bg-gray-200 text-black"
+        :subtitles="['Case Study', 'Details']"
+        :text="project.title"
+    />
+    <section class="bg-gray-200 px-5 pb-16 project-page min-h-screen text-black flex flex-col items-center">
+      <div class="project-page__content">
+        <aside class="project-page__aside">
+          <h2 class="text-4xl md:text-5xl font-black uppercase">
+            <DecryptedText
+                :speed="50"
+                :use-original-chars-only="true"
+                animate-on="view"
+                revealDirection="start"
+                :text="project.title"
+            />
+          </h2>
+          <p class="text-base md:text-lg max-w-[28rem]">{{ project.description }}</p>
+          <Pills :pills="project.pills"/>
+          <div class="project-page__links flex flex-wrap gap-2 mt-2">
+            <a
+                v-for="link in project.links"
+                :key="link.url"
+                :href="link.url"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+              <Button variant="black" size="large">
+                <v-icon :name="link.icon"/>
+                {{ link.name }}
+              </Button>
+            </a>
+          </div>
+        </aside>
+        <div v-if="project.images && project.images.length" class="project-page__slider">
+          <Splide :images="project.images"/>
+        </div>
+      </div>
+    </section>
+  </template>
 </template>
 
 <style lang="scss">
@@ -50,44 +67,38 @@ const project = projects[params.name as "trello" | "portfolio" | "spotify"]
   padding-top: 1rem;
   width: 100% !important;
 
+  &__content {
+    width: 100%;
+    max-width: 80rem;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+
+    @media(max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
   &__aside {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
-    @media(max-width: 40rem) {
-      align-items: center;
-    }
-  }
-
-  &__content {
-    width: 100%;
-    margin: 1rem 0;
-    align-self: flex-start;
-    display: flex;
-    justify-content: flex-start;
     gap: 1rem;
-
-    .slider {
-      flex-grow: 1;
-    }
-
+    flex: 0 0 20rem;
     @media(max-width: 768px) {
-      flex-direction: column;
-      justify-content: center;
+      flex: 1 1 auto;
+      align-items: center;
+      text-align: center;
     }
   }
 
   &__slider {
-    max-width: 60rem;
+    flex: 1 1 auto;
     min-width: 20rem;
     min-height: 20rem;
-    padding: 2rem;
-  }
-
-  &__pills {
-    width: 20rem;
-
   }
 }
 

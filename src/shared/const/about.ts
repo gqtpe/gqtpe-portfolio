@@ -1,10 +1,16 @@
-import ava from "@/assets/img/profile-compressed.png";
+import ava from "@/assets/img/profile.jpg";
 import {aboutSVGs} from "@/assets/svg";
 import {socials} from "@/app/links.ts";
 
+export type Language = {
+    name: string
+    level: string
+    value: number
+}
 type AboutPage = {
     info: InfoPage
     stack: string[]
+    languages: Language[]
 }
 export type Cards = {
     id: string
@@ -15,11 +21,9 @@ export type Cards = {
 export type InfoPage = {
     ava: string
     icons: {
-        [key: string]:{
             icon: string
             link: string
-        }
-    }
+        }[]
     hero: string
     subtitles: string[]
     cards: {
@@ -86,10 +90,21 @@ const aboutPage: AboutPage = {
                     title: "NKZU",
                     period: "sep. 2022 - may. 2026",
                     body: "Bachelor’s degree in Informatics Engineering.\nGPA:3.2\n Gained expertise in engineering and computational mathematics with a specialization in computation, focusing on numerical methods, optimization algorithms, data analysis, and mathematical modeling, alongside a strong foundation in networking basics (OSI model, routing, switching), low-level programming fundamentals (C and Assembly basics), and higher mathematics including linear algebra, calculus, probability, and statistics.",
+                },
+                {
+                    id: crypto.randomUUID(),
+                    title: "IT-Incubator",
+                    period: "2021 — 2022",
+                    body: "Frontend Developer course. Built SPAs with React, TypeScript, and Redux Toolkit; REST API integration, unit testing, and Git-based team workflow.",
                 }
             ],
         }
     },
-    stack: aboutSVGs
+    stack: aboutSVGs,
+    languages: [
+        {name: "Kazakh", level: "Native", value: 100},
+        {name: "Russian", level: "Native", value: 100},
+        {name: "English", level: "Professional (B2)", value: 75},
+    ]
 }
 export default aboutPage;

@@ -17,7 +17,7 @@ const defaultLinks: { [key: string]: (url: string)=>ProjectLink } = {
 const projects: Projects = {
     trello: {
         id: 1,
-        title: 'Trello-Clone',
+        title: 'trello',
         description: 'Todolist is a pet project for task management, created using modern web technologies. This project allows for convenient task management and supports user authorization.',
         links: [
             defaultLinks.preview(links.trello),
@@ -46,7 +46,7 @@ const projects: Projects = {
     },
     spotify: {
         id: 2,
-        title: 'Spotify-Clone',
+        title: 'player',
         description: 'A Spotify clone built with Next.js, offering a similar user experience to the original Spotify platform. This project integrates with the Spotify Web API to provide music streaming, playlists, and user interaction features.',
         links: [
             defaultLinks.github(links.spotifyGithub),
@@ -76,7 +76,7 @@ const projects: Projects = {
     },
     portfolio: {
         id: 3,
-        title: 'Portfolio',
+        title: 'portfolio',
         description: 'A portfolio application built with Vue and modern UI animations.,',
         links: [
             defaultLinks.github(links.portfolioGithub),

@@ -42,12 +42,12 @@ onMounted(() => {
 }
 .countup {
   width: 100%;
-  font-size: 9rem;
+  font-size: 13rem;
 }
 
 #complete {
   width: 100%;
-  height: 10rem;
+  height: 12rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,7 +60,7 @@ onMounted(() => {
 .numbers-wp {
   overflow: hidden;
   width: 100%;
-  height: 10rem;
+  height: 14rem;
   position: relative;
   text-align: center;
 }
@@ -71,7 +71,7 @@ onMounted(() => {
 }
 
 .loading-number {
-  letter-spacing: -3rem;
+  letter-spacing: -5rem;
   line-height: 0.6;
   writing-mode: vertical-rl;
   text-orientation: upright;
