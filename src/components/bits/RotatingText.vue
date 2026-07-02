@@ -118,7 +118,7 @@ const getLetterTransform = (index: number) => {
         stiffness: 300
       }
     }"
-      :class="`m-0 mx-auto rounded-full w-[120px] h-[120px] relative font-black text-white mix-blend-difference text-center cursor-pointer origin-center ${props.className}`"
+      :class="`m-0 mx-auto rounded-full w-[120px] h-[120px] relative font-black text-gray-300 mix-blend-difference text-center cursor-pointer origin-center ${props.className}`"
       @mouseenter="handleHoverStart"
       @mouseleave="handleHoverEnd"
   >

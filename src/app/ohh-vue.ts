@@ -1,6 +1,7 @@
 import {addIcons, OhVueIcon} from "oh-vue-icons";
 import {
     BiArrowUpRight,
+    BiArrowRight,
     BiFileEarmarkPerson,
     BiGithub,
     BiInstagram,
@@ -38,6 +39,7 @@ addIcons(
     , BiEye
     , CoSad
     , BiDownload
+    , BiArrowRight
 );
 
 

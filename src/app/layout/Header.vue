@@ -1,10 +1,10 @@
 <template>
-  <header id="header" data-cursor-disabled class="text-white dark:text-zinc-200">
-    <div class="header__wrapper glass">
+  <header id="header" class="text-white dark:text-zinc-200">
+    <div class="header__wrapper glass" data-cursor-disabled>
       <DecryptedText text="GQTPE" use-original-chars-only class="logo font-black" animate-on="view"/>
       <slot/>
       <Button variant="gradient" size="small" @click="goTalk" up round>
-        Let's talk
+        Let's talk        <v-icon name="bi-arrow-right"  scale="1.5" />
       </Button>
 
     </div>
