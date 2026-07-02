@@ -11,7 +11,6 @@ import spotifySearchStart from "@/assets/img/spotify/spotify-gqtpe.vercel.app_se
 import spotifyTrack from "@/assets/img/spotify/spotify-gqtpe.vercel.app_track-page.jpg";
 import spotifyArtists from "@/assets/img/spotify/spotify-gqtpe.vercel.artists-search.jpg";
 import spotifyAccountConfirmation from "@/assets/img/spotify/user-account-confirmation.jpg";
-import {footerSVGs} from "@/assets/svg";
 export const socialLinks = {
     linkedin: "https://www.linkedin.com/in/temirtas-nursain",
     github: "https://github.com/gqtpe",
@@ -20,32 +19,28 @@ export const socialLinks = {
     codewars: "https://codewars.com/users/gqtpe",
     mentor: "https://www.frontendmentor.io/profile/gqtpe",
 }
-export const socials = {
-    linkedin: {
-        icon: footerSVGs.linkedin,
+export const socials = [
+    {
+        icon: 'bi-linkedin',
         link: socialLinks.linkedin
     },
-    github: {
-        icon: footerSVGs.github,
+    {
+        icon: 'bi-github',
         link: socialLinks.github
     },
-    telegram: {
-        icon: footerSVGs.telegram,
+    {
+        icon: 'bi-telegram',
         link: socialLinks.telegram
     },
-    instagram: {
-        icon: footerSVGs.insta,
+    {
+        icon: 'bi-instagram',
         link: socialLinks.instagram
     },
-    codewars: {
-        icon: footerSVGs.codewars,
+    {
+        icon: 'co-codewars',
         link: socialLinks.codewars
     },
-    frontendMentor: {
-        icon: footerSVGs.mentor,
-        link: socialLinks.mentor
-    },
-}
+]
 export const links ={
     trello: "https://gqtpe.github.io/trello",
     spotify: "https://spotify-gqtpe.vercel.app",

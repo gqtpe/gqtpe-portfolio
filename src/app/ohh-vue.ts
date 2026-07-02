@@ -1,7 +1,6 @@
 import {addIcons, OhVueIcon} from "oh-vue-icons";
 import {
     BiArrowUpRight,
-    BiEyeFill,
     BiFileEarmarkPerson,
     BiGithub,
     BiInstagram,

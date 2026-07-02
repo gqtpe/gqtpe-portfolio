@@ -15,11 +15,9 @@ export type Cards = {
 export type InfoPage = {
     ava: string
     icons: {
-        [key: string]:{
             icon: string
             link: string
-        }
-    }
+        }[]
     hero: string
     subtitles: string[]
     cards: {
