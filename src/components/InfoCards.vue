@@ -2,7 +2,7 @@
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import type {Cards} from "@/shared/const/about.ts";
 
-defineProps<{ title: string; cards: Cards; flush?: boolean }>()
+defineProps<{ title: string; cards: Cards }>()
 </script>
 
 <template>
@@ -12,7 +12,7 @@ defineProps<{ title: string; cards: Cards; flush?: boolean }>()
       data-cursor-disabled
       class="uppercase text-2xl py-4 text-center font-black font-main"
   />
-  <div :class="['grid grid-cols-1 gap-6', flush ? '' : 'mb-[10rem] md:grid-cols-2 lg:grid-cols-3']">
+  <div class="grid mb-[10rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <div
         v-for="(item, index) in cards"
         :key="item.id ?? index"

@@ -17,7 +17,7 @@
       <AboutHero/>
       <div v-if="!showLess" class="mb-[10rem] grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         <div><Languages/></div>
-        <div><InfoCards title="education" :cards="data.info.cards.education" flush/></div>
+        <div><EducationList :cards="data.info.cards.education"/></div>
       </div>
       <InfoCards v-if="!showLess" title="experience" :cards="data.info.cards.experience"/>
       <template v-if="!showLess">
@@ -44,6 +44,7 @@ import data from "@/shared/const/about.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import LogoLoop from "@/components/bits/LogoLoop.vue";
 import InfoCards from "@/components/InfoCards.vue";
+import EducationList from "@/components/EducationList.vue";
 import Languages from "@/components/Languages.vue";
 import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedirect.vue";
 type IProps = {
