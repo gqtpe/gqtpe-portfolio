@@ -35,6 +35,17 @@
           </p>
         </div>
       </div>
+      <template v-if="!showLess">
+        <DecryptedText
+            text="stack"
+            use-original-chars-only
+            data-cursor-disabled
+            class="uppercase text-2xl py-4 text-center font-black font-main"
+        />
+        <div class="mb-[10rem]">
+          <Stack/>
+        </div>
+      </template>
     </div>
   </section>
 </template>
@@ -43,6 +54,7 @@
 import AboutHero from "./AboutHero.vue";
 import data from "@/shared/const/about.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
+import Stack from "@/components/bits/Stack.vue";
 type IProps = {
   showLess?: boolean
 }
