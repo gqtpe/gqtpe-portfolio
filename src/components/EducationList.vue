@@ -16,17 +16,17 @@ defineProps<{ cards: Cards }>()
     <li
         v-for="item in cards"
         :key="item.id"
-        class="group border-t border-white/15 py-6 last:border-b"
+        class="group py-6 "
     >
       <div class="flex items-baseline justify-between gap-4">
-        <h6 class="font-main font-bold uppercase leading-[0.9] text-white transition-colors group-hover:text-primary-400 text-[clamp(1.25rem,4vw,2.25rem)]">
+        <h6 class="font-main font-bold uppercase leading-[0.9] text-black transition-colors group-hover:text-primary-400 text-[clamp(1.25rem,4vw,2.25rem)]">
           {{ item.title }}
         </h6>
-        <span class="font-mono text-white/50 whitespace-nowrap text-xs md:text-sm">
+        <span class="font-mono text-black whitespace-nowrap text-xs md:text-sm">
           {{ item.period }}
         </span>
       </div>
-      <p class="whitespace-pre-line mt-3 text-white/60 leading-relaxed text-[clamp(0.75rem,3vw,1rem)] md:text-[clamp(0.85rem,2vw,1.05rem)]">
+      <p class="whitespace-pre-line mt-3 text-black leading-relaxed text-[clamp(0.75rem,3vw,1rem)] md:text-[clamp(0.85rem,2vw,1.05rem)]">
         {{ item.body }}
       </p>
     </li>

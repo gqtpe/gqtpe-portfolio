@@ -6,13 +6,14 @@ defineProps<{ title: string; cards: Cards }>()
 </script>
 
 <template>
+  <section>
   <DecryptedText
       :text="title"
       use-original-chars-only
       data-cursor-disabled
       class="uppercase text-2xl py-4 text-center font-black font-main"
   />
-  <div class="grid mb-[10rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="grid mb-[10rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
     <div
         v-for="(item, index) in cards"
         :key="item.id ?? index"
@@ -35,4 +36,5 @@ defineProps<{ title: string; cards: Cards }>()
       </p>
     </div>
   </div>
+  </section>
 </template>

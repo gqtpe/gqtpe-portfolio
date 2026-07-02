@@ -13,8 +13,8 @@
         v-if="!showLess"
         class="flex flex-col gap-4 py-12 [&_img]:grayscale [&_img]:opacity-45 [&_img]:transition-all [&_img]:duration-300 hover:[&_img]:opacity-90 hover:[&_img]:grayscale-0"
     >
-      <LogoLoop :logos="stackRow1" direction="left" :speed="55" :logo-height="40" :gap="40" pause-on-hover fade-out fade-out-color="#18181b" aria-label="Tech stack, row 1 of 2"/>
-      <LogoLoop :logos="stackRow2" direction="right" :speed="55" :logo-height="40" :gap="40" pause-on-hover fade-out fade-out-color="#18181b" aria-label="Tech stack, row 2 of 2"/>
+      <LogoLoop :logos="stackRow1" direction="left" :speed="55" :logo-height="64" :gap="8" pause-on-hover fade-out fade-out-color="#18181b" aria-label="Tech stack, row 1 of 2"/>
+      <LogoLoop :logos="stackRow2" direction="right" :speed="55" :logo-height="64" :gap="8" pause-on-hover fade-out fade-out-color="#18181b" aria-label="Tech stack, row 2 of 2"/>
     </div>
     <div  class="content-wrapper flex flex-col gap-24 px-4 lg:px-10">
       <div v-if="!showLess" class="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
