@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import projects from "@/shared/const/projects.ts";
+import {useProjects} from "@/shared/sanity/useProjects.ts";
 import type {ProjectName} from "@/shared/const/project-types.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedirect.vue";
@@ -10,6 +10,7 @@ import {useRoute, useRouter} from "vue-router";
 
 const route = useRoute()
 const router = useRouter()
+const projects = useProjects()
 const project = projects[route.params.name as ProjectName]
 
 if (!project) {
