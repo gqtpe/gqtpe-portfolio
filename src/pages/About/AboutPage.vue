@@ -29,6 +29,7 @@
           <LogoLoop :logos="stackRow2" direction="right" :speed="55" :logo-height="44" :gap="48" pause-on-hover fade-out fade-out-color="#18181b"/>
         </div>
       </template>
+      <Languages v-if="!showLess"/>
     </div>
   </section>
 </template>
@@ -39,6 +40,7 @@ import data from "@/shared/const/about.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 import LogoLoop from "@/components/bits/LogoLoop.vue";
 import InfoCards from "@/components/InfoCards.vue";
+import Languages from "@/components/Languages.vue";
 type IProps = {
   showLess?: boolean
 }

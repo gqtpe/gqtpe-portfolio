@@ -2,9 +2,15 @@ import ava from "@/assets/img/profile-compressed.png";
 import {aboutSVGs} from "@/assets/svg";
 import {socials} from "@/app/links.ts";
 
+export type Language = {
+    name: string
+    level: string
+    value: number
+}
 type AboutPage = {
     info: InfoPage
     stack: string[]
+    languages: Language[]
 }
 export type Cards = {
     id: string
@@ -88,6 +94,11 @@ const aboutPage: AboutPage = {
             ],
         }
     },
-    stack: aboutSVGs
+    stack: aboutSVGs,
+    languages: [
+        {name: "Kazakh", level: "Native", value: 100},
+        {name: "Russian", level: "Native", value: 100},
+        {name: "English", level: "Professional (B2)", value: 75},
+    ]
 }
 export default aboutPage;
