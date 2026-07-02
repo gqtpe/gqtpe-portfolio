@@ -30,6 +30,7 @@
         </div>
       </template>
       <Languages v-if="!showLess"/>
+      <AboutCTA v-if="!showLess"/>
     </div>
   </section>
 </template>
@@ -41,6 +42,7 @@ import DecryptedText from "@/components/bits/DecryptedText.vue";
 import LogoLoop from "@/components/bits/LogoLoop.vue";
 import InfoCards from "@/components/InfoCards.vue";
 import Languages from "@/components/Languages.vue";
+import AboutCTA from "@/components/AboutCTA.vue";
 type IProps = {
   showLess?: boolean
 }
