@@ -3,6 +3,7 @@ import {onMounted, ref, computed, watch} from "vue";
 import {RouterLink, useRoute} from "vue-router";
 import { navbarLinks as links } from "../../shared/links.ts";
 import { useIsMobile } from "@/app/hooks/useIsMobile.ts";
+import Button from "@/shared/ui/Button.vue";
 const isMobile = useIsMobile();
 const route = useRoute();
 const active = ref<number|null>(null);
@@ -74,8 +75,8 @@ const toggleMenuVisibility = () => {
             @mouseenter="onMouseEnter(link.id)"
             @click="onClick"
         >
-          <span class="link">{{ link.title }}</span>
-          <span class="link dark">{{ link.title }}</span>
+          <Button variant="black" class="!bg-zinc-800" size="small">{{link.title}}</Button>
+          <Button variant="white" size="small">{{link.title}}</Button>
         </RouterLink>
       </div>
     </nav>
