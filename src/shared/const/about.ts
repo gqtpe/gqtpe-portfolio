@@ -1,4 +1,4 @@
-import ava from "@/assets/img/profile-compressed.png";
+import ava from "@/assets/img/profile.jpg";
 import {aboutSVGs} from "@/assets/svg";
 import {socials} from "@/app/links.ts";
 

@@ -8,7 +8,7 @@
       <div
           class="about__image-wp relative  w-screen h-auto max-w-[300px] aspect-square p-0 lg:w-[25vw] lg:h-[25vw] lg:max-w-none">
         <div class="about__image w-full aspect-square overflow-hidden invisible">
-          <img :src="data.info.ava" alt="" class="rounded-2xl object-cover w-full h-full"/>
+          <img :src="data.info.ava" alt="" width="720" height="720" fetchpriority="high" decoding="async" class="rounded-2xl object-cover w-full h-full"/>
         </div>
         <div class="absolute bottom-[-10%] md:top-[-10%] left-[-10%]">
           <RotatingText
