@@ -25,8 +25,8 @@
             class="uppercase text-2xl py-4 text-center font-black font-main"
         />
         <div class="mb-[10rem] flex flex-col gap-6 rounded-2xl bg-zinc-900/60 py-8 overflow-hidden">
-          <LogoLoop :logos="stackRow1" direction="left" :speed="55" :logo-height="44" :gap="48" pause-on-hover fade-out fade-out-color="#18181b"/>
-          <LogoLoop :logos="stackRow2" direction="right" :speed="55" :logo-height="44" :gap="48" pause-on-hover fade-out fade-out-color="#18181b"/>
+          <LogoLoop :logos="stackRow1" direction="left" :speed="55" :logo-height="44" :gap="48" pause-on-hover fade-out fade-out-color="#18181b" aria-label="Tech stack, row 1 of 2"/>
+          <LogoLoop :logos="stackRow2" direction="right" :speed="55" :logo-height="44" :gap="48" pause-on-hover fade-out fade-out-color="#18181b" aria-label="Tech stack, row 2 of 2"/>
         </div>
       </template>
       <Languages v-if="!showLess"/>

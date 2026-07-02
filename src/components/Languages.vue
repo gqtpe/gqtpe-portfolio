@@ -1,14 +1,28 @@
 <script setup lang="ts">
-import {onMounted, ref} from "vue";
+import {onBeforeUnmount, onMounted, ref} from "vue";
 import data from "@/shared/const/about.ts";
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 
+// Reveal the bars (0 -> value) when the section scrolls into view, so the
+// animation is actually seen — mounting alone plays it far below the fold.
 const shown = ref(false)
+const root = ref<HTMLElement | null>(null)
+let observer: IntersectionObserver | null = null
+
 onMounted(() => {
-  requestAnimationFrame(() => {
+  if (!window.IntersectionObserver) {
     shown.value = true
-  })
+    return
+  }
+  observer = new IntersectionObserver((entries) => {
+    if (entries.some(e => e.isIntersecting)) {
+      shown.value = true
+      observer?.disconnect()
+    }
+  }, {threshold: 0.3})
+  if (root.value) observer.observe(root.value)
 })
+onBeforeUnmount(() => observer?.disconnect())
 </script>
 
 <template>
@@ -18,7 +32,7 @@ onMounted(() => {
       data-cursor-disabled
       class="uppercase text-2xl py-4 text-center font-black font-main"
   />
-  <div class="mb-[10rem] mx-auto w-full max-w-2xl flex flex-col gap-6">
+  <div ref="root" class="mb-[10rem] mx-auto w-full max-w-2xl flex flex-col gap-6">
     <div v-for="lang in data.languages" :key="lang.name" class="flex flex-col gap-2">
       <div class="flex justify-between items-baseline text-white">
         <span class="font-main font-bold text-lg">{{ lang.name }}</span>
