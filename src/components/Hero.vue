@@ -94,7 +94,7 @@ onUnmounted(() => {
 #hero-shuffle {
   @apply whitespace-nowrap font-semibold md:text-[12rem] max-md:text-[8rem] max-sm:text-[6rem];
 
-  font-size: clamp(3rem, 12vw, 12rem);
+  font-size: clamp(3rem, 18vw, 14rem);
   user-select: none;
 
 }
