@@ -4,34 +4,25 @@
       class="relative overflow-hidden w-full"
       :class="[props.showLess ? 'md:h-screen !important' : '']"
   >
-    <!-- bg-right crops to the image's uniform right side; home.jpg has a dark region on the
-         left that grayscale turns black, and bg-cover on this tall section would show it otherwise.
-         If home.jpg is swapped, re-check the crop. (background-attachment:fixed won't work here —
-         ScrollSmoother transforms #main, which degrades fixed to scroll.) -->
     <div
         class="about-bg absolute inset-0 -z-10 w-full h-full bg-no-repeat bg-cover bg-right bg-[url('/home.jpg')] grayscale"></div>
 
 
-
-    <div  class="content-wrapper flex flex-col gap-2 min-h-screen px-4 lg:px-10 max-lg:min-h-[unset]">
-      <AboutHero/>
-      <div v-if="!showLess" class="mb-[10rem] grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+    <AboutHero class="px-4 lg:px-10 max-lg:min-h-[unset]"/>
+    <div
+        v-if="!showLess"
+        class="flex flex-col gap-4 py-12 [&_img]:grayscale [&_img]:opacity-45 [&_img]:transition-all [&_img]:duration-300 hover:[&_img]:opacity-90 hover:[&_img]:grayscale-0"
+    >
+      <LogoLoop :logos="stackRow1" direction="left" :speed="55" :logo-height="40" :gap="40" pause-on-hover fade-out fade-out-color="#18181b" aria-label="Tech stack, row 1 of 2"/>
+      <LogoLoop :logos="stackRow2" direction="right" :speed="55" :logo-height="40" :gap="40" pause-on-hover fade-out fade-out-color="#18181b" aria-label="Tech stack, row 2 of 2"/>
+    </div>
+    <div  class="content-wrapper flex flex-col gap-24 px-4 lg:px-10">
+      <div v-if="!showLess" class="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
         <div><Languages/></div>
-        <div><EducationList :cards="data.info.cards.education"/></div>
+        <div class="col-span-2"><EducationList :cards="data.info.cards.education"/></div>
       </div>
       <InfoCards v-if="!showLess" title="experience" :cards="data.info.cards.experience"/>
-      <template v-if="!showLess">
-        <DecryptedText
-            text="stack"
-            use-original-chars-only
-            data-cursor-disabled
-            class="uppercase text-2xl py-4 text-center font-black font-main"
-        />
-        <div class="mb-[10rem] flex flex-col gap-6 rounded-2xl bg-zinc-900/60 py-8 overflow-hidden">
-          <LogoLoop :logos="stackRow1" direction="left" :speed="55" :logo-height="44" :gap="48" pause-on-hover fade-out fade-out-color="#18181b" aria-label="Tech stack, row 1 of 2"/>
-          <LogoLoop :logos="stackRow2" direction="right" :speed="55" :logo-height="44" :gap="48" pause-on-hover fade-out fade-out-color="#18181b" aria-label="Tech stack, row 2 of 2"/>
-        </div>
-      </template>
+
     </div>
   </section>
   <PageHeaderRedirect :subtitles="['Go Ahead', 'Next Page']" text="contacts"
@@ -41,12 +32,12 @@
 <script setup lang="ts">
 import AboutHero from "./AboutHero.vue";
 import data from "@/shared/const/about.ts";
-import DecryptedText from "@/components/bits/DecryptedText.vue";
 import LogoLoop from "@/components/bits/LogoLoop.vue";
 import InfoCards from "@/components/InfoCards.vue";
 import EducationList from "@/components/EducationList.vue";
 import Languages from "@/components/Languages.vue";
 import PageHeaderRedirect from "@/components/PageHeaderRedirect/PageHeaderRedirect.vue";
+
 type IProps = {
   showLess?: boolean
 }

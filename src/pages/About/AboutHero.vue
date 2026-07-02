@@ -1,7 +1,7 @@
 <template>
   <div
       ref="heroContainer"
-      :class="`about-info about__wrapper flex flex-col items-center justify-start gap-8 mt-4 md:mt-16 md:h-[100vh] lg:flex-row lg:justify-between lg:items-start`"
+      :class="`about-info about__wrapper flex flex-col items-center justify-start gap-8 mt-4 md:mt-16 lg:flex-row lg:justify-between lg:items-start`"
       id="section-about"
   >
     <div class="flex flex-col gap-8 items-center">

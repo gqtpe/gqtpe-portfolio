@@ -34,13 +34,13 @@ onBeforeUnmount(() => observer?.disconnect())
   />
   <div ref="root" class="w-full flex flex-col gap-6">
     <div v-for="lang in data.languages" :key="lang.name" class="flex flex-col gap-2">
-      <div class="flex justify-between items-baseline text-white">
+      <div class="flex justify-between items-baseline text-black">
         <span class="font-main font-bold text-lg">{{ lang.name }}</span>
-        <span class="font-mono text-sm text-white/60">{{ lang.level }}</span>
+        <span class="font-mono text-sm text-black/50">{{ lang.level }}</span>
       </div>
-      <div class="h-2 w-full rounded-full bg-white/10 overflow-hidden">
+      <div class="h-2 w-full rounded-full bg-black/10 overflow-hidden">
         <div
-            class="h-full rounded-full bg-white transition-[width] duration-1000 ease-out"
+            class="h-full rounded-full bg-black transition-[width] duration-1000 ease-out"
             :style="{ width: (shown ? lang.value : 0) + '%' }"
         ></div>
       </div>
