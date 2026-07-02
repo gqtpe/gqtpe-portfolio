@@ -5,7 +5,7 @@
       :class="[props.showLess ? 'md:h-screen !important' : '']"
   >
     <div
-        class="about-bg absolute inset-0 -z-10 w-full h-full bg-no-repeat bg-cover bg-fixed bg-[url('/home.jpg')] grayscale"></div>
+        class="about-bg absolute inset-0 -z-10 w-full h-full bg-no-repeat bg-cover bg-right bg-[url('/home.jpg')] grayscale"></div>
 
 
 
