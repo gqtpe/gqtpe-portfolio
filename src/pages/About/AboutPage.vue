@@ -31,7 +31,9 @@
 
 <script setup lang="ts">
 import AboutHero from "./AboutHero.vue";
-import data from "@/shared/const/about.ts";
+import {useAbout} from "@/shared/sanity/useAbout.ts";
+
+const data = useAbout();
 import LogoLoop from "@/components/bits/LogoLoop.vue";
 import InfoCards from "@/components/InfoCards.vue";
 import EducationList from "@/components/EducationList.vue";

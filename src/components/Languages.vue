@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import {onBeforeUnmount, onMounted, ref} from "vue";
-import data from "@/shared/const/about.ts";
+import {useAbout} from "@/shared/sanity/useAbout.ts";
+
+const data = useAbout();
 import DecryptedText from "@/components/bits/DecryptedText.vue";
 
 // Reveal the bars (0 -> value) when the section scrolls into view, so the

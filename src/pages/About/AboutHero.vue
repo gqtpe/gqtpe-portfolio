@@ -77,7 +77,9 @@
 
 <script setup lang="ts">
 import {onMounted, onBeforeUnmount, ref} from "vue";
-import data from "@/shared/const/about.ts";
+import {useAbout} from "@/shared/sanity/useAbout.ts";
+
+const data = useAbout();
 import Button from "@/shared/ui/Button.vue";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
