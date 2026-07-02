@@ -29,6 +29,16 @@ import vercel from "./about/vercel.svg";
 import vite from "./about/vitejs.svg";
 import vue from "./about/vue.svg";
 import gsap from "./about/gsap.svg";
+import inertia from "./about/inertia.svg";
+import pinia from "./about/pinia.svg";
+import gitlab from "./about/gitlab.svg";
+import githubStack from "./about/github.svg";
+import git from "./about/git.svg";
+import docker from "./about/docker.svg";
+import godaddy from "./about/godaddy.svg";
+import supabase from "./about/supabase.svg";
+import mockoon from "./about/mockoon.svg";
+import elementplus from "./about/elementplus.svg";
 
 const aboutSVGs = [
     html,
@@ -55,6 +65,16 @@ const aboutSVGs = [
     tailwindcss,
     tanstack,
     gsap,
+    inertia,
+    pinia,
+    elementplus,
+    supabase,
+    docker,
+    git,
+    githubStack,
+    gitlab,
+    godaddy,
+    mockoon,
 ]
 
 const footerSVGs = {
