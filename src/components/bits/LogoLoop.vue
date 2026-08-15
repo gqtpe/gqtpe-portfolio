@@ -100,8 +100,10 @@ export interface LogoLoopProps {
 
 const ANIMATION_CONFIG = {
   SMOOTH_TAU: 0.25,
+  // Для бесшовной прокрутки достаточно перекрыть вьюпорт плюс одну копию,
+  // которая уезжает за край. Запас в 2 копии давал лишнюю сотню <img> на /about.
   MIN_COPIES: 2,
-  COPY_HEADROOM: 2
+  COPY_HEADROOM: 1
 } as const;
 
 const props = withDefaults(defineProps<LogoLoopProps>(), {

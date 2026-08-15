@@ -13,7 +13,7 @@
         <div class="absolute bottom-[-10%] md:top-[-10%] left-[-10%]">
           <RotatingText
               id="rotating-text"
-              text="FRONTEND * DEVELOPER * 2025 * "
+              text="FRONTEND * DEVELOPER * 2026 * "
               :spin-duration="5"
               on-hover="slowDown"
               class-name="z-[15]"
@@ -84,12 +84,16 @@ import Button from "@/shared/ui/Button.vue";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import RotatingText from "@/components/bits/RotatingText.vue";
+import {whenAppReady} from "@/app/hooks/useAppReady.ts";
 
 gsap.registerPlugin(ScrollTrigger);
 const heroContainer = ref<HTMLElement | null>(null);
 let ctx: gsap.Context;
-gsap.registerPlugin(ScrollTrigger);
-onMounted(() => {
+onMounted(async () => {
+  // Ждём снятия лоадера: до этого блок уже смонтирован и отрисован,
+  // но его входная анимация не должна проигрываться за сплэшем.
+  await whenAppReady();
+  if (!heroContainer.value) return;
   ctx = gsap.context((self) => {
     if (!self || !self.selector) return;
     const s = self.selector;

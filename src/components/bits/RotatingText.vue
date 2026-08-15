@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watchEffect, onUnmounted } from 'vue';
-import { Motion } from 'motion-v';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 
 interface CircularTextProps {
   text: string;
@@ -18,21 +17,34 @@ const props = withDefaults(defineProps<CircularTextProps>(), {
 
 const letters = computed(() => Array.from(props.text));
 const isHovered = ref(false);
+const rootEl = ref<HTMLElement | null>(null);
 
-const currentRotation = ref(0);
-const animationId = ref<number | null>(null);
-const lastTime = ref<number>(Date.now());
-const rotationSpeed = ref<number>(0);
+// Позиции букв по окружности зависят только от текста — считаем один раз,
+// а не на каждый кадр анимации.
+const letterTransforms = computed(() => {
+  const n = letters.value.length;
+  return letters.value.map((_, index) => {
+    const rotationDeg = (360 / n) * index;
+    const factor = Math.PI / n;
+    return `rotateZ(${rotationDeg}deg) translate3d(${factor * index}px, ${factor * index}px, 0)`;
+  });
+});
 
-const getCurrentSpeed = () => {
-  if (isHovered.value && props.onHover === 'pause') return 0;
+// Вращение пишем напрямую в style элемента. Раньше угол лежал в reactive-ref
+// и обновлялся 60 раз в секунду — каждый кадр дёргал перерисовку Vue-компонента
+// и пересчёт пропсов motion-v. Для непрерывной анимации реактивность не нужна.
+let rotation = 0;
+let speed = 0;
+let rafId: number | null = null;
+let lastTime = 0;
 
-  const baseDuration = props.spinDuration;
-  const baseSpeed = 360 / baseDuration;
-
+const getTargetSpeed = () => {
+  const baseSpeed = 360 / props.spinDuration;
   if (!isHovered.value) return baseSpeed;
 
   switch (props.onHover) {
+    case 'pause':
+      return 0;
     case 'slowDown':
       return baseSpeed / 2;
     case 'speedUp':
@@ -44,45 +56,31 @@ const getCurrentSpeed = () => {
   }
 };
 
-const getCurrentScale = () => {
-  return isHovered.value && props.onHover === 'goBonkers' ? 0.8 : 1;
-};
+const getScale = () => (isHovered.value && props.onHover === 'goBonkers' ? 0.8 : 1);
 
-const animate = () => {
-  const now = Date.now();
-  const deltaTime = (now - lastTime.value) / 1000;
-  lastTime.value = now;
+const animate = (now: number) => {
+  const deltaTime = lastTime ? (now - lastTime) / 1000 : 0;
+  lastTime = now;
 
-  const targetSpeed = getCurrentSpeed();
+  // Плавный разгон/торможение к целевой скорости при наведении.
+  speed += (getTargetSpeed() - speed) * Math.min(1, deltaTime * 5);
+  rotation = (rotation + speed * deltaTime) % 360;
 
-  const speedDiff = targetSpeed - rotationSpeed.value;
-  const smoothingFactor = Math.min(1, deltaTime * 5);
-  rotationSpeed.value += speedDiff * smoothingFactor;
-
-  currentRotation.value = (currentRotation.value + rotationSpeed.value * deltaTime) % 360;
-
-  animationId.value = requestAnimationFrame(animate);
-};
-
-const startAnimation = () => {
-  if (animationId.value) {
-    cancelAnimationFrame(animationId.value);
+  if (rootEl.value) {
+    rootEl.value.style.transform = `rotate(${rotation}deg) scale(${getScale()})`;
   }
-  lastTime.value = Date.now();
-  rotationSpeed.value = getCurrentSpeed();
-  animate();
+
+  rafId = requestAnimationFrame(animate);
 };
 
-watchEffect(() => {
-  startAnimation();
+onMounted(() => {
+  speed = getTargetSpeed();
+  lastTime = 0;
+  rafId = requestAnimationFrame(animate);
 });
 
-startAnimation();
-
 onUnmounted(() => {
-  if (animationId.value) {
-    cancelAnimationFrame(animationId.value);
-  }
+  if (rafId !== null) cancelAnimationFrame(rafId);
 });
 
 const handleHoverStart = () => {
@@ -92,46 +90,23 @@ const handleHoverStart = () => {
 const handleHoverEnd = () => {
   isHovered.value = false;
 };
-
-const getLetterTransform = (index: number) => {
-  const rotationDeg = (360 / letters.value.length) * index;
-  const factor = Math.PI / letters.value.length;
-  const x = factor * index;
-  const y = factor * index;
-  return `rotateZ(${rotationDeg}deg) translate3d(${x}px, ${y}px, 0)`;
-};
 </script>
 
 <template>
-  <Motion
-      :animate="{
-      rotate: currentRotation,
-      scale: getCurrentScale()
-    }"
-      :transition="{
-      rotate: {
-        duration: 0
-      },
-      scale: {
-        type: 'spring',
-        damping: 20,
-        stiffness: 300
-      }
-    }"
-      :class="`m-0 mx-auto rounded-full w-[120px] h-[120px] relative font-black text-gray-300 mix-blend-difference text-center cursor-pointer origin-center ${props.className}`"
+  <div
+      ref="rootEl"
+      :class="`m-0 mx-auto rounded-full w-[120px] h-[120px] relative font-black text-gray-300 max-md:text-gray-50 mix-blend-difference text-center cursor-pointer origin-center ${props.className}`"
+      style="transition: scale 0.3s ease-out; will-change: transform"
       @mouseenter="handleHoverStart"
       @mouseleave="handleHoverEnd"
   >
     <span
         v-for="(letter, i) in letters"
         :key="i"
-        class="absolute inline-block inset-0 text-lg transition-all duration-500 ease-[cubic-bezier(0,0,0,1)]"
-        :style="{
-        transform: getLetterTransform(i),
-        WebkitTransform: getLetterTransform(i)
-      }"
+        class="absolute inline-block inset-0 text-lg"
+        :style="{ transform: letterTransforms[i] }"
     >
       {{ letter }}
     </span>
-  </Motion>
+  </div>
 </template>

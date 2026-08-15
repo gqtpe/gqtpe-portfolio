@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
+import { onMounted, onUnmounted, useTemplateRef } from 'vue';
 import { Renderer, Program, Mesh, Triangle, Color } from 'ogl';
 import type { OGLRenderingContext } from 'ogl';
 
@@ -283,11 +283,9 @@ onUnmounted(() => {
   cleanup();
 });
 
-watch(
-    () => props,
-    () => {
-      initializeScene();
-    },
-    { deep: true }
-);
+// Раньше здесь стоял deep-watch на props, который пересоздавал весь WebGL-контекст
+// и перекомпилировал шейдер при любом изменении пропса. На мобильных `disableAnimation`
+// приходит из useIsMobile уже ПОСЛЕ mount — то есть сцена собиралась дважды подряд.
+// Watch не нужен: update() и так синхронизирует все юниформы каждый кадр,
+// а resolution пересчитывает resize().
 </script>

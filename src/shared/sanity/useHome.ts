@@ -13,11 +13,12 @@ const home = reactive({
 const HOME_QUERY = `*[_id == "homeInfo"][0]{ heroTitle, heroSubtitle, heroBadges, whoAmITitle }`;
 
 let started = false;
+let ready: Promise<void> = Promise.resolve();
 
 export function useHome() {
     if (!started) {
         started = true;
-        sanity
+        ready = sanity
             .fetch(HOME_QUERY)
             .then((d) => {
                 if (!d) return;
@@ -32,3 +33,12 @@ export function useHome() {
     }
     return home;
 }
+
+// Резолвится, когда тексты из CMS доехали (или запрос упал).
+// Лоадер ждёт этот промис, чтобы подмена контента произошла ЗА сплэшем:
+// иначе heroTitle приезжает уже после того, как SplitText разбил старый
+// заголовок, Vue затирает разбитый DOM и анимация ломается.
+export const homeReady = () => {
+    useHome();
+    return ready;
+};

@@ -18,11 +18,12 @@ const ABOUT_QUERY = `*[_id == "aboutInfo"][0]{
 }`;
 
 let started = false;
+let ready: Promise<void> = Promise.resolve();
 
 export function useAbout() {
   if (!started) {
     started = true;
-    sanity
+    ready = sanity
       .fetch(ABOUT_QUERY)
       .then((doc) => {
         if (!doc) return;
@@ -36,3 +37,11 @@ export function useAbout() {
   }
   return about;
 }
+
+// Резолвится, когда тексты из CMS доехали (или запрос упал). Лоадер ждёт его,
+// чтобы подмена subtitles/experience/education не вызывала ререндер и пересчёт
+// позиций ScrollTrigger уже после того, как страница показана пользователю.
+export const aboutReady = () => {
+  useAbout();
+  return ready;
+};

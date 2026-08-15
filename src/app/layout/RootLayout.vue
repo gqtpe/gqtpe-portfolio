@@ -11,6 +11,7 @@ import { navbarLinks } from "@/shared/links.ts";
 import MagicCursor from "@/components/bits/MagicCursor.vue";
 import CountUp from "@/components/bits/CountUp.vue";
 import { useIsMobile } from "@/app/hooks/useIsMobile.ts";
+import { markAppReady } from "@/app/hooks/useAppReady.ts";
 
 const route = useRoute();
 const isMobile = useIsMobile();
@@ -61,6 +62,10 @@ watch(isReady, async (ready) => {
       setTimeout(() => smootherObj.scrollTo(link.target!, true, "top"), 100);
     }
   }
+
+  // Только теперь отпускаем входные анимации: DOM уже смонтирован и отрисован
+  // под сплэшем, смузер создан, триггеры пересчитаны.
+  markAppReady();
 });
 
 // Обработка переходов между страницами
@@ -81,11 +86,17 @@ watch(() => route.fullPath, async () => {
 </script>
 
 <template>
+  <!-- Сплэш — оверлей ПОВЕРХ уже смонтированного контента (z-index: 1000),
+       а не замена ему. Контент ниже монтируется сразу, пока крутится каунтап:
+       именно за это время браузер успевает построить DOM, посчитать layout,
+       декодировать картинки и завести WebGL-контекст. -->
   <div v-if="!isReady" class="loading-wrapper flex items-center justify-center p-6">
     <CountUp :onEnd="onAnimationEnd"/>
   </div>
 
-  <template v-else>
+  <!-- inert, пока лоадер на экране: контент уже в DOM, но не должен ловить
+       фокус с клавиатуры и попадать в дерево доступности раньше времени. -->
+  <div class="app-shell" :inert="!isReady || undefined">
     <div class="fixed-header">
       <Header>
         <Navbar/>
@@ -99,9 +110,9 @@ watch(() => route.fullPath, async () => {
         </RouterView>
       </div>
     </div>
+  </div>
 
-    <MagicCursor v-if="!isMobile"/>
-  </template>
+  <MagicCursor v-if="!isMobile && isReady"/>
 </template>
 
 <style>

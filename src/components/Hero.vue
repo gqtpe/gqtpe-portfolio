@@ -30,6 +30,7 @@ import Subtitles from "@/components/bits/Subtitles.vue";
 import Dither from "@/components/bits/Dither.vue";
 import {useIsMobile} from "@/app/hooks/useIsMobile.ts";
 import {useHome} from "@/shared/sanity/useHome.ts";
+import {whenAppReady} from "@/app/hooks/useAppReady.ts";
 
 const home = useHome()
 const isMobile = useIsMobile()
@@ -38,10 +39,21 @@ let ctx: gsap.Context;
 onMounted(async () => {
   await document.fonts.ready;
   await nextTick();
-  ctx = gsap.context(() => {
-    const split = new SplitText('#hero-shuffle', { type: 'chars' });
-    const titleSplit = new SplitText('#hero-shuffle-subtitle', { type: 'chars' });
 
+  // SplitText — это DOM-хирургия по заголовку и принудительный пересчёт layout.
+  // Компонент смонтирован под сплэшем, поэтому разбиение делаем сразу: платим
+  // за него, пока крутится каунтап, а не в кадре появления страницы.
+  let split!: SplitText;
+  let titleSplit!: SplitText;
+  ctx = gsap.context(() => {
+    split = new SplitText('#hero-shuffle', { type: 'chars' });
+    titleSplit = new SplitText('#hero-shuffle-subtitle', { type: 'chars' });
+  });
+
+  // А таймлайн — только после снятия лоадера, иначе анимация отыграет невидимой.
+  await whenAppReady();
+
+  ctx.add(() => {
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#hero-shuffle',
