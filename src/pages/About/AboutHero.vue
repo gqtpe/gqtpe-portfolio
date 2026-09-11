@@ -26,10 +26,11 @@
           <v-icon name="bi-eye"/>
           Show Projects
         </Button>
-        <Button @click="$router.push('CV.pdf')" class="!font-light  shrink-0 grow-1" variant="white" link="CV.pdf">
+        <a href="https://gqtpe-portfolio.vercel.app/CV.pdf" target="_blank"><Button class="!font-light  shrink-0 grow-1" variant="white" link="CV.pdf">
           <v-icon name="bi-download"/>
           Download CV
         </Button>
+        </a>
       </div>
 
     </div>
